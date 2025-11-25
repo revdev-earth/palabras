@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #0c1024;
+  background: radial-gradient(circle at 20% 20%, #eef2ff, #fdfbff 35%),
+    radial-gradient(circle at 80% 0%, #e5f6ff, #ffffff 40%);
+}
+
+body {
+  @apply min-h-screen bg-transparent text-ink-900 antialiased;
+}
+
+input,
+button,
+select,
+textarea {
+  @apply font-sans;
+}
+
+.note-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
