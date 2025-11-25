@@ -4,27 +4,37 @@ import ControlsPanel from "./components/ControlsPanel"
 import PracticeSection from "./components/PracticeSection"
 import StatsHeader from "./components/StatsHeader"
 import WordsTable from "./components/WordsTable"
-import { PRACTICE_REPS } from "./constants"
-import { PracticeStats, Settings, SortBy, Word } from "./types"
+import { SortBy, Word } from "./types"
+import { useAppDispatch, useAppSelector } from "./hooks"
 import {
-  STORE_KEY,
-  SETTINGS_KEY,
-  buildQueue,
-  defaultSettings,
-  effectiveScore,
-  genId,
-  nowISO,
-  safeParse,
-  sampleWords,
-  todayKey,
-} from "./utils"
+  addWord,
+  applyScore,
+  deleteWord,
+  exitPractice as exitPracticeAction,
+  markPractice as markPracticeAction,
+  setAlwaysShow as setAlwaysShowAction,
+  setSettings as setSettingsAction,
+  setWordsAndSettings,
+  startPractice as startPracticeAction,
+  toggleReveal as toggleRevealAction,
+  updateWord,
+  wipeAll as wipeAllAction,
+} from "./store"
+import { STORE_KEY, SETTINGS_KEY, defaultSettings, effectiveScore, genId, sampleWords, todayKey } from "./utils"
 
 function App() {
-  const [words, setWords] = useState<Word[]>(() => safeParse(localStorage.getItem(STORE_KEY), []))
-  const [settings, setSettings] = useState<Settings>(() => {
-    const parsed = safeParse<Partial<Settings>>(localStorage.getItem(SETTINGS_KEY), defaultSettings)
-    return { ...defaultSettings, ...parsed }
-  })
+  const dispatch = useAppDispatch()
+  const words = useAppSelector((s) => s.app.words)
+  const settings = useAppSelector((s) => s.app.settings)
+  const currentPracticeSelection = useAppSelector((s) => s.app.currentPracticeSelection)
+  const practiceQueue = useAppSelector((s) => s.app.practiceQueue)
+  const practiceIndex = useAppSelector((s) => s.app.practiceIndex)
+  const correctCount = useAppSelector((s) => s.app.correctCount)
+  const wrongCount = useAppSelector((s) => s.app.wrongCount)
+  const summary = useAppSelector((s) => s.app.summary)
+  const alwaysShow = useAppSelector((s) => s.app.alwaysShow)
+  const reveal = useAppSelector((s) => s.app.reveal)
+
   const [search, setSearch] = useState("")
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
   const [expandedNotes, setExpandedNotes] = useState<Set<string>>(new Set())
@@ -35,16 +45,6 @@ function App() {
 
   const [editingId, setEditingId] = useState<string | null>(null)
   const [editDraft, setEditDraft] = useState({ term: "", translation: "", notes: "" })
-
-  const [currentPracticeSelection, setCurrentPracticeSelection] = useState<Word[]>([])
-  const [practiceQueue, setPracticeQueue] = useState<string[]>([])
-  const [practiceIndex, setPracticeIndex] = useState(0)
-  const [correctCount, setCorrectCount] = useState(0)
-  const [wrongCount, setWrongCount] = useState(0)
-  const [practiceStats, setPracticeStats] = useState<PracticeStats>({})
-  const [summary, setSummary] = useState<string | null>(null)
-  const [alwaysShow, setAlwaysShow] = useState(false)
-  const [reveal, setReveal] = useState(false)
 
   const importRef = useRef<HTMLInputElement | null>(null)
   const translationRef = useRef<HTMLInputElement | null>(null)
@@ -59,20 +59,13 @@ function App() {
 
   useEffect(() => {
     const tickNewDay = () => {
-      setSettings((prev) => {
-        const today = todayKey()
-        if (prev.lastSeenDay === today) return prev
-        return { ...prev, lastSeenDay: today }
-      })
+      const today = todayKey()
+      if (settings.lastSeenDay !== today) dispatch(setSettingsAction({ lastSeenDay: today }))
     }
     tickNewDay()
     const id = setInterval(tickNewDay, 60 * 1000)
     return () => clearInterval(id)
-  }, [])
-
-  useEffect(() => {
-    setReveal(alwaysShow && practiceQueue.length > 0)
-  }, [alwaysShow, practiceQueue.length])
+  }, [dispatch, settings.lastSeenDay])
 
   const filteredWords = useMemo(() => {
     const q = search.trim().toLowerCase()
@@ -118,18 +111,7 @@ function App() {
     const t = term.trim()
     const tr = translation.trim()
     if (!t || !tr) return
-    setWords((prev) => [
-      {
-        id: genId(),
-        term: t,
-        translation: tr,
-        notes,
-        baseScore: 0,
-        lastPracticedAt: null,
-        createdAt: nowISO(),
-      },
-      ...prev,
-    ])
+    dispatch(addWord({ id: genId(), term: t, translation: tr, notes }))
     setTerm("")
     setTranslation("")
     setNotes("")
@@ -159,22 +141,12 @@ function App() {
       window.alert("Primero guarda o cancela la edición actual.")
       return
     }
-    setWords((prev) =>
-      prev.map((w) =>
-        w.id === id
-          ? {
-              ...w,
-              baseScore: Math.max(0, (w.baseScore || 0) + delta),
-              lastPracticedAt: nowISO(),
-            }
-          : w
-      )
-    )
+    dispatch(applyScore({ id, delta }))
   }
 
   const handleDelete = (id: string) => {
     if (!window.confirm("¿Borrar palabra?")) return
-    setWords((prev) => prev.filter((w) => w.id !== id))
+    dispatch(deleteWord(id))
     setSelectedIds((prev) => {
       const next = new Set(prev)
       next.delete(id)
@@ -203,17 +175,13 @@ function App() {
       window.alert("Palabra y traducción son obligatorias.")
       return
     }
-    setWords((prev) =>
-      prev.map((w) =>
-        w.id === id
-          ? {
-              ...w,
-              term: editDraft.term.trim(),
-              translation: editDraft.translation.trim(),
-              notes: editDraft.notes,
-            }
-          : w
-      )
+    dispatch(
+      updateWord({
+        id,
+        term: editDraft.term.trim(),
+        translation: editDraft.translation.trim(),
+        notes: editDraft.notes,
+      })
     )
     setEditingId(null)
   }
@@ -235,8 +203,12 @@ function App() {
       const text = await file.text()
       const obj = JSON.parse(text)
       if (!obj || !Array.isArray(obj.words)) throw new Error("Formato inválido")
-      setWords(obj.words)
-      setSettings({ ...defaultSettings, ...(obj.settings || {}) })
+      dispatch(
+        setWordsAndSettings({
+          words: obj.words,
+          settings: { ...defaultSettings, ...(obj.settings || {}) },
+        })
+      )
       setSelectedIds(new Set())
       setExpandedNotes(new Set())
       window.alert("Importación completa")
@@ -254,7 +226,7 @@ function App() {
       )
     )
       return
-    setWords([])
+    dispatch(wipeAll())
     setSelectedIds(new Set())
     setExpandedNotes(new Set())
   }
@@ -271,22 +243,7 @@ function App() {
       if (!ok) return
       setEditingId(null)
     }
-    const selected = ids
-      .map((id) => words.find((w) => w.id === id))
-      .filter((x): x is Word => Boolean(x))
-    const stats = selected.reduce<PracticeStats>((acc, w) => {
-      acc[w.id] = { correct: 0, total: 0 }
-      return acc
-    }, {})
-
-    setCurrentPracticeSelection(selected)
-    setPracticeStats(stats)
-    setPracticeQueue(buildQueue(ids))
-    setPracticeIndex(0)
-    setCorrectCount(0)
-    setWrongCount(0)
-    setSummary(null)
-    setReveal(alwaysShow)
+    dispatch(startPracticeAction(ids))
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
@@ -304,62 +261,13 @@ function App() {
 
   const startSelected = () => startPracticeWithIds(Array.from(selectedIds))
 
-  const finishSession = (stats: PracticeStats, okCount: number, wrong: number) => {
-    let deltaTotal = 0
-    setWords((prev) =>
-      prev.map((w) => {
-        const s = stats[w.id]
-        if (!s) return w
-        let delta = 0
-        if (s.correct >= 4) delta = 2
-        else if (s.correct === 3) delta = 1
-        if (!delta) return w
-        deltaTotal += delta
-        return { ...w, baseScore: Math.max(0, (w.baseScore || 0) + delta) }
-      })
-    )
-    const total = practiceQueue.length
-    const pct = total ? Math.round((okCount / total) * 100) : 0
-    setSummary(`Resumen: ${okCount}/${total} correctas (${pct}%). Puntos agregados: +${deltaTotal}.`)
-    setPracticeQueue([])
-    setPracticeIndex(0)
-    setCurrentPracticeSelection([])
-    setPracticeStats({})
-    setReveal(false)
-    setCorrectCount(okCount)
-    setWrongCount(wrong)
-  }
-
   const markPractice = (ok: boolean) => {
-    const id = practiceQueue[practiceIndex]
-    if (!id) return
-    const nextIndex = practiceIndex + 1
-    const nextCorrect = ok ? correctCount + 1 : correctCount
-    const nextWrong = ok ? wrongCount : wrongCount + 1
-
-    setWords((prev) =>
-      prev.map((w) => (w.id === id ? { ...w, lastPracticedAt: nowISO() } : w))
-    )
-
-    const updatedStats: PracticeStats = {
-      ...practiceStats,
-      [id]: {
-        correct: (practiceStats[id]?.correct || 0) + (ok ? 1 : 0),
-        total: (practiceStats[id]?.total || 0) + 1,
-      },
-    }
-    setPracticeStats(updatedStats)
-    setCorrectCount(nextCorrect)
-    setWrongCount(nextWrong)
-    setPracticeIndex(nextIndex)
-    setReveal(alwaysShow)
-
-    if (nextIndex >= practiceQueue.length) finishSession(updatedStats, nextCorrect, nextWrong)
+    dispatch(markPracticeAction({ ok }))
   }
 
   const exitPractice = () => {
     if (!practiceActive) return
-    finishSession(practiceStats, correctCount, wrongCount)
+    dispatch(exitPracticeAction())
   }
 
   const selectAll = (checked: boolean) => {
@@ -396,7 +304,7 @@ function App() {
           />
           <ControlsPanel
             sortBy={settings.sortBy as SortBy}
-            onSortChange={(v) => setSettings((s) => ({ ...s, sortBy: v }))}
+            onSortChange={(v) => dispatch(setSettingsAction({ sortBy: v }))}
             search={search}
             onSearchChange={setSearch}
             onExport={exportData}
@@ -441,9 +349,9 @@ function App() {
         correctCount={correctCount}
         wrongCount={wrongCount}
         alwaysShow={alwaysShow}
-        setAlwaysShow={setAlwaysShow}
+        onAlwaysShowChange={(v) => dispatch(setAlwaysShowAction(v))}
         reveal={reveal}
-        setReveal={setReveal}
+        onToggleReveal={() => dispatch(toggleRevealAction())}
         onMark={markPractice}
         onExit={exitPractice}
         summary={summary}

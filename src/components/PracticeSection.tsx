@@ -10,9 +10,9 @@ interface Props {
   correctCount: number
   wrongCount: number
   alwaysShow: boolean
-  setAlwaysShow: (v: boolean) => void
+  onAlwaysShowChange: (v: boolean) => void
   reveal: boolean
-  setReveal: (cb: (v: boolean) => boolean) => void
+  onToggleReveal: () => void
   onMark: (ok: boolean) => void
   onExit: () => void
   summary: string | null
@@ -33,9 +33,9 @@ function PracticeSection({
   correctCount,
   wrongCount,
   alwaysShow,
-  setAlwaysShow,
+  onAlwaysShowChange,
   reveal,
-  setReveal,
+  onToggleReveal,
   onMark,
   onExit,
   summary,
@@ -57,7 +57,7 @@ function PracticeSection({
           <input
             type="checkbox"
             checked={alwaysShow}
-            onChange={(e) => setAlwaysShow(e.target.checked)}
+            onChange={(e) => onAlwaysShowChange(e.target.checked)}
             className="h-4 w-4 rounded border-ink-300 text-ink-800"
           />
           Mostrar siempre traducción y notas
@@ -85,7 +85,7 @@ function PracticeSection({
       <div
         className="mt-4 cursor-pointer rounded-2xl border border-ink-100 bg-gradient-to-b from-white to-ink-50 px-6 py-8 text-center shadow-soft"
         onClick={() => {
-          if (!alwaysShow) setReveal((r) => !r)
+          if (!alwaysShow) onToggleReveal()
         }}
       >
         <div className="text-2xl font-bold text-ink-900">{practiceWord.term}</div>
@@ -102,7 +102,7 @@ function PracticeSection({
       <div className="mt-3 flex flex-wrap gap-2">
         <button
           onClick={() => {
-            if (!alwaysShow) setReveal((r) => !r)
+            if (!alwaysShow) onToggleReveal()
           }}
           className="rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm font-semibold text-ink-800 hover:border-ink-300"
         >
