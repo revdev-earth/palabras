@@ -3,14 +3,14 @@ import { Settings, Word } from "./types"
 
 export const STORE_KEY = "vocab-tracker-v1"
 export const SETTINGS_KEY = "vocab-tracker-settings"
-export const DECAY_PER_DAY = 1
+export const DECAY_INTERVAL_DAYS = 2
 
 export const todayKey = () => new Date().toISOString().slice(0, 10)
 export const nowISO = () => new Date().toISOString()
 
 export const defaultSettings: Settings = { sortBy: "scoreAsc", lastSeenDay: todayKey() }
 
-export const safeParse = <T,>(raw: string | null, fallback: T): T => {
+export const safeParse = <T>(raw: string | null, fallback: T): T => {
   try {
     return raw ? (JSON.parse(raw) as T) : fallback
   } catch {
@@ -27,12 +27,18 @@ export const daysBetween = (aISO: string, bISO: string) => {
 export const effectiveScore = (word: Word) => {
   if (!word.lastPracticedAt) return word.baseScore || 0
   const d = daysBetween(new Date().toISOString(), word.lastPracticedAt)
-  return Math.max(0, (word.baseScore || 0) - DECAY_PER_DAY * d)
+  const decaySteps = Math.floor(d / DECAY_INTERVAL_DAYS) // 1 punto cada 2 días completos
+  return Math.max(0, (word.baseScore || 0) - decaySteps)
 }
 
-export const formatDate = (iso: string | null) => (iso ? new Date(iso).toLocaleString() : "—")
+export const formatDate = (iso: string | null) =>
+  iso
+    ? new Date(iso).toLocaleString(undefined, {
+        dateStyle: "short",
+      })
+    : "—"
 
-export const shuffle = <T,>(arr: T[]) => {
+export const shuffle = <T>(arr: T[]) => {
   const c = [...arr]
   for (let i = c.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
@@ -78,7 +84,8 @@ export const filterAndSortWords = (words: Word[], search: string, sortBy: Settin
       return new Date(b.lastPracticedAt || 0).getTime() - new Date(a.lastPracticedAt || 0).getTime()
     if (sortBy === "lastPracticedAtAsc")
       return new Date(a.lastPracticedAt || 0).getTime() - new Date(b.lastPracticedAt || 0).getTime()
-    if (sortBy === "createdAt") return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    if (sortBy === "createdAt")
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     if (sortBy === "term") return a.term.localeCompare(b.term)
     return 0
   })
@@ -86,10 +93,12 @@ export const filterAndSortWords = (words: Word[], search: string, sortBy: Settin
 }
 
 export const buildQueue = (ids: string[]) => {
-  const q: string[] = []
-  for (const id of ids) for (let i = 0; i < PRACTICE_REPS; i++) q.push(id)
-  shuffle(q)
-  return breakAdjDuplicates(q)
+  const queue: string[] = []
+  for (let i = 0; i < PRACTICE_REPS; i++) {
+    const round = shuffle([...ids])
+    queue.push(...round)
+  }
+  return breakAdjDuplicates(queue)
 }
 
 export const genId = () =>

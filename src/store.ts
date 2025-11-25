@@ -91,7 +91,7 @@ const appSlice = createSlice({
     addWord(state, action: PayloadAction<Omit<Word, "baseScore" | "lastPracticedAt" | "createdAt">>) {
       state.words.unshift({
         ...action.payload,
-        baseScore: 0,
+        baseScore: 2,
         lastPracticedAt: null,
         createdAt: nowISO(),
       })
