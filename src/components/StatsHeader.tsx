@@ -1,7 +1,5 @@
-interface Props {
-  wordsCount: number
-  dueCount: number
-}
+import { useSelector } from "../hooks"
+import { effectiveScore } from "../utils"
 
 const badge = (label: string) => (
   <span className="rounded-full border border-ink-200 bg-white/70 px-3 py-1 text-xs text-ink-700 shadow-sm">
@@ -9,7 +7,10 @@ const badge = (label: string) => (
   </span>
 )
 
-function StatsHeader({ wordsCount, dueCount }: Props) {
+function StatsHeader() {
+  const words = useSelector((s) => s.app.words)
+  const dueCount = words.filter((w) => effectiveScore(w) >= 2).length
+
   return (
     <header className="mb-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
       <div>
@@ -18,7 +19,7 @@ function StatsHeader({ wordsCount, dueCount }: Props) {
         <p className="text-ink-600">Guarda, repasa y sigue tu progreso sin perder el ritmo.</p>
       </div>
       <div className="flex flex-wrap gap-2">
-        {badge(`Palabras: ${wordsCount}`)}
+        {badge(`Palabras: ${words.length}`)}
         {badge(`Para hoy: ${dueCount}`)}
       </div>
     </header>

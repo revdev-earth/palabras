@@ -61,6 +61,30 @@ export const sampleWords = (arr: Word[], n: number) => {
   return c.slice(0, n)
 }
 
+export const filterAndSortWords = (words: Word[], search: string, sortBy: Settings["sortBy"]) => {
+  const q = search.trim().toLowerCase()
+  const data = words.filter(
+    (w) =>
+      !q ||
+      w.term.toLowerCase().includes(q) ||
+      w.translation.toLowerCase().includes(q) ||
+      (w.notes || "").toLowerCase().includes(q)
+  )
+
+  data.sort((a, b) => {
+    if (sortBy === "score") return effectiveScore(b) - effectiveScore(a)
+    if (sortBy === "scoreAsc") return effectiveScore(a) - effectiveScore(b)
+    if (sortBy === "lastPracticedAt")
+      return new Date(b.lastPracticedAt || 0).getTime() - new Date(a.lastPracticedAt || 0).getTime()
+    if (sortBy === "lastPracticedAtAsc")
+      return new Date(a.lastPracticedAt || 0).getTime() - new Date(b.lastPracticedAt || 0).getTime()
+    if (sortBy === "createdAt") return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    if (sortBy === "term") return a.term.localeCompare(b.term)
+    return 0
+  })
+  return data
+}
+
 export const buildQueue = (ids: string[]) => {
   const q: string[] = []
   for (const id of ids) for (let i = 0; i < PRACTICE_REPS; i++) q.push(id)

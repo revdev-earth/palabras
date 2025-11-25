@@ -1,44 +1,89 @@
-import { Dispatch, SetStateAction } from "react"
-import { effectiveScore, formatDate } from "../utils"
+import { useMemo, useState } from "react"
+import { useDispatch, useSelector } from "../hooks"
+import { applyScore, deleteWord, setSelectedIds, toggleSelect, updateWord } from "../store"
+import { effectiveScore, filterAndSortWords, formatDate } from "../utils"
 import { Word } from "../types"
 
-interface Props {
-  filteredWords: Word[]
-  selectedIds: Set<string>
-  selectAllChecked: boolean
-  onSelectAll: (checked: boolean) => void
-  onToggleSelect: (id: string, checked: boolean) => void
-  expandedNotes: Set<string>
-  onToggleExpand: (id: string) => void
-  editingId: string | null
-  editDraft: { term: string; translation: string; notes: string }
-  setEditDraft: Dispatch<SetStateAction<{ term: string; translation: string; notes: string }>>
-  onStartEdit: (w: Word) => void
-  onCancelEdit: () => void
-  onSaveEdit: (id: string) => void
-  onScore: (id: string, delta: number) => void
-  onDelete: (id: string) => void
-  currentPracticeSelection: Word[]
-}
+function WordsTable() {
+  const dispatch = useDispatch()
+  const selectedIds = useSelector((s) => s.app.selectedIds)
+  const selectedSet = useMemo(() => new Set(selectedIds), [selectedIds])
+  const words = useSelector((s) => s.app.words)
+  const search = useSelector((s) => s.app.search)
+  const sortBy = useSelector((s) => s.app.settings.sortBy)
+  const currentPracticeSelection = useSelector((s) => s.app.currentPracticeSelection)
+  const filteredWords = useMemo(
+    () => filterAndSortWords(words, search, sortBy),
+    [words, search, sortBy]
+  )
 
-function WordsTable({
-  filteredWords,
-  selectedIds,
-  selectAllChecked,
-  onSelectAll,
-  onToggleSelect,
-  expandedNotes,
-  onToggleExpand,
-  editingId,
-  editDraft,
-  setEditDraft,
-  onStartEdit,
-  onCancelEdit,
-  onSaveEdit,
-  onScore,
-  onDelete,
-  currentPracticeSelection,
-}: Props) {
+  const [expandedNotes, setExpandedNotes] = useState<Set<string>>(new Set())
+  const [editingId, setEditingId] = useState<string | null>(null)
+  const [editDraft, setEditDraft] = useState({ term: "", translation: "", notes: "" })
+
+  const selectAllChecked =
+    filteredWords.length > 0 && filteredWords.every((w) => selectedSet.has(w.id))
+
+  const toggleExpandNotes = (id: string) => {
+    setExpandedNotes((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  }
+
+  const onScore = (id: string, delta: number) => {
+    if (editingId && editingId !== id) {
+      window.alert("Primero guarda o cancela la edición actual.")
+      return
+    }
+    dispatch(applyScore({ id, delta }))
+  }
+
+  const onDelete = (id: string) => {
+    if (!window.confirm("¿Borrar palabra?")) return
+    dispatch(deleteWord(id))
+  }
+
+  const startEdit = (word: Word) => {
+    if (editingId && editingId !== word.id) {
+      const ok = window.confirm("Tienes otra fila en edición. ¿Descartar cambios y editar esta?")
+      if (!ok) return
+    }
+    setEditingId(word.id)
+    setEditDraft({ term: word.term, translation: word.translation, notes: word.notes })
+  }
+
+  const cancelEdit = () => setEditingId(null)
+
+  const onSaveEdit = (id: string) => {
+    if (!editDraft.term.trim() || !editDraft.translation.trim()) {
+      window.alert("Palabra y traducción son obligatorias.")
+      return
+    }
+    dispatch(
+      updateWord({
+        id,
+        term: editDraft.term.trim(),
+        translation: editDraft.translation.trim(),
+        notes: editDraft.notes,
+      })
+    )
+    setEditingId(null)
+  }
+
+  const selectAll = (checked: boolean) => {
+    if (!checked) {
+      const next = selectedIds.filter((id) => !filteredWords.find((w) => w.id === id))
+      dispatch(setSelectedIds(next))
+      return
+    }
+    const next = new Set(selectedIds)
+    filteredWords.forEach((w) => next.add(w.id))
+    dispatch(setSelectedIds(Array.from(next)))
+  }
+
   return (
     <section className="mt-5 overflow-hidden rounded-2xl border border-ink-100 bg-white/90 shadow-soft backdrop-blur">
       <div className="flex items-center justify-between border-b border-ink-100 px-5 py-4">
@@ -47,7 +92,7 @@ function WordsTable({
           <input
             type="checkbox"
             checked={selectAllChecked}
-            onChange={(e) => onSelectAll(e.target.checked)}
+            onChange={(e) => selectAll(e.target.checked)}
             className="h-4 w-4 rounded border-ink-300 text-ink-800"
           />
           Seleccionar todo (vista actual)
@@ -78,8 +123,10 @@ function WordsTable({
                     <input
                       type="checkbox"
                       disabled={isEditing}
-                      checked={selectedIds.has(w.id)}
-                      onChange={(e) => onToggleSelect(w.id, e.target.checked)}
+                      checked={selectedSet.has(w.id)}
+                      onChange={(e) =>
+                        dispatch(toggleSelect({ id: w.id, checked: e.target.checked }))
+                      }
                       className="h-4 w-4 rounded border-ink-300 text-ink-800"
                     />
                   </td>
@@ -105,7 +152,9 @@ function WordsTable({
                     {isEditing ? (
                       <input
                         value={editDraft.translation}
-                        onChange={(e) => setEditDraft((d) => ({ ...d, translation: e.target.value }))}
+                        onChange={(e) =>
+                          setEditDraft((d) => ({ ...d, translation: e.target.value }))
+                        }
                         className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
                       />
                     ) : (
@@ -123,10 +172,14 @@ function WordsTable({
                     ) : w.notes ? (
                       <button
                         type="button"
-                        onClick={() => onToggleExpand(w.id)}
+                        onClick={() => toggleExpandNotes(w.id)}
                         className="group w-full text-left text-ink-700"
                       >
-                        <div className={expanded ? "whitespace-pre-wrap" : "note-clamp whitespace-pre-wrap"}>
+                        <div
+                          className={
+                            expanded ? "whitespace-pre-wrap" : "note-clamp whitespace-pre-wrap"
+                          }
+                        >
                           {w.notes}
                         </div>
                         <span className="text-[11px] text-ink-500 group-hover:text-ink-700">
@@ -142,7 +195,9 @@ function WordsTable({
                       {effectiveScore(w).toFixed(1)}
                     </span>
                   </td>
-                  <td className="px-4 py-3 align-top text-ink-600">{formatDate(w.lastPracticedAt)}</td>
+                  <td className="px-4 py-3 align-top text-ink-600">
+                    {formatDate(w.lastPracticedAt)}
+                  </td>
                   <td className="px-4 py-3 align-top text-ink-600">{formatDate(w.createdAt)}</td>
                   <td className="px-4 py-3 align-top text-ink-800">
                     {isEditing ? (
@@ -154,7 +209,7 @@ function WordsTable({
                           Guardar
                         </button>
                         <button
-                          onClick={onCancelEdit}
+                          onClick={cancelEdit}
                           className="rounded-lg border border-ink-200 px-3 py-1.5 text-xs font-semibold text-ink-800"
                         >
                           Cancelar
@@ -172,7 +227,7 @@ function WordsTable({
                           </button>
                         ))}
                         <button
-                          onClick={() => onStartEdit(w)}
+                          onClick={() => startEdit(w)}
                           className="rounded-lg border border-ink-200 px-3 py-1.5 text-xs font-semibold text-ink-800 hover:border-ink-300"
                         >
                           Editar

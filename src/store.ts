@@ -13,6 +13,8 @@ import {
 export type AppSliceState = {
   words: Word[]
   settings: Settings
+  search: string
+  selectedIds: string[]
   currentPracticeSelection: Word[]
   practiceQueue: string[]
   practiceIndex: number
@@ -30,6 +32,8 @@ const initialState: AppSliceState = {
     ...defaultSettings,
     ...safeParse<Partial<Settings>>(localStorage.getItem(SETTINGS_KEY), defaultSettings),
   },
+  search: "",
+  selectedIds: [],
   currentPracticeSelection: [],
   practiceQueue: [],
   practiceIndex: 0,
@@ -72,6 +76,18 @@ const appSlice = createSlice({
     setSettings(state, action: PayloadAction<Partial<Settings>>) {
       state.settings = { ...state.settings, ...action.payload }
     },
+    setSearch(state, action: PayloadAction<string>) {
+      state.search = action.payload
+    },
+    setSelectedIds(state, action: PayloadAction<string[]>) {
+      state.selectedIds = action.payload
+    },
+    toggleSelect(state, action: PayloadAction<{ id: string; checked: boolean }>) {
+      const next = new Set(state.selectedIds)
+      if (action.payload.checked) next.add(action.payload.id)
+      else next.delete(action.payload.id)
+      state.selectedIds = Array.from(next)
+    },
     addWord(state, action: PayloadAction<Omit<Word, "baseScore" | "lastPracticedAt" | "createdAt">>) {
       state.words.unshift({
         ...action.payload,
@@ -82,6 +98,7 @@ const appSlice = createSlice({
     },
     deleteWord(state, action: PayloadAction<string>) {
       state.words = state.words.filter((w) => w.id !== action.payload)
+      state.selectedIds = state.selectedIds.filter((id) => id !== action.payload)
     },
     updateWord(state, action: PayloadAction<{ id: string; term: string; translation: string; notes: string }>) {
       state.words = state.words.map((w) =>
@@ -104,9 +121,11 @@ const appSlice = createSlice({
     setWordsAndSettings(state, action: PayloadAction<{ words: Word[]; settings: Settings }>) {
       state.words = action.payload.words
       state.settings = action.payload.settings
+      state.selectedIds = []
     },
     wipeAll(state) {
       state.words = []
+      state.selectedIds = []
     },
     startPractice(state, action: PayloadAction<string[]>) {
       const ids = action.payload
@@ -168,6 +187,9 @@ export const {
   deleteWord,
   updateWord,
   setSettings,
+  setSearch,
+  setSelectedIds,
+  toggleSelect,
   setWordsAndSettings,
   wipeAll,
   startPractice,
