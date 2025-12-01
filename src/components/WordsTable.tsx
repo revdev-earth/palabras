@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useDispatch, useSelector } from "../hooks"
 import {
   applyScore,
@@ -47,6 +47,9 @@ function WordsTable() {
   const search = useSelector((s) => s.app.search)
   const searchField = useSelector((s) => s.app.searchField)
   const sortBy = useSelector((s) => s.app.settings.sortBy)
+  const speakEnabled = useSelector((s) => s.app.settings.practiceSpeakEnabled)
+  const speakVoiceId = useSelector((s) => s.app.settings.practiceVoiceId)
+  const speakVoiceLang = useSelector((s) => s.app.settings.practiceVoiceLang)
   const currentPracticeSelection = useSelector((s) => s.app.currentPracticeSelection)
   const filteredWords = useMemo(
     () => filterAndSortWords(words, search, sortBy, searchField),
@@ -56,11 +59,37 @@ function WordsTable() {
   const [expandedNotes, setExpandedNotes] = useState<Set<string>>(new Set())
   const [editingId, setEditingId] = useState<string | null>(null)
   const [editDraft, setEditDraft] = useState({ term: "", translation: "", notes: "" })
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([])
+
+  const speak = (text: string) => {
+    if (!speakEnabled || typeof window === "undefined" || !window.speechSynthesis) return
+    const u = new SpeechSynthesisUtterance(text)
+    const voice =
+      voices.find((v) => v.voiceURI === speakVoiceId || v.name === speakVoiceId) ||
+      voices.find((v) => v.lang?.toLowerCase().startsWith(speakVoiceLang || "es")) ||
+      voices.find((v) => v.lang?.toLowerCase().startsWith("es")) ||
+      voices[0]
+    if (voice) u.voice = voice
+    u.rate = 0.9
+    window.speechSynthesis.cancel()
+    window.speechSynthesis.speak(u)
+  }
 
   const selectAllChecked =
     filteredWords.length > 0 && filteredWords.every((w) => selectedSet.has(w.id))
 
   const defaultSort = defaultSettings.sortBy
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.speechSynthesis) return
+    const loadVoices = () => {
+      const list = window.speechSynthesis.getVoices()
+      if (list.length) setVoices(list)
+    }
+    loadVoices()
+    window.speechSynthesis.addEventListener("voiceschanged", loadVoices)
+    return () => window.speechSynthesis.removeEventListener("voiceschanged", loadVoices)
+  }, [])
 
   const toggleExpandNotes = (id: string) => {
     setExpandedNotes((prev) => {
@@ -224,6 +253,14 @@ function WordsTable() {
                   />
                 ) : (
                   <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => speak(w.term)}
+                      className="rounded-full border border-ink-100 bg-ink-50 px-2 py-1 text-[11px] font-semibold text-ink-800 shadow-inner transition hover:-translate-y-0.5 hover:shadow-sm"
+                      title="Pronunciar palabra"
+                    >
+                      🔊
+                    </button>
                     <span className="break-words font-semibold text-ink-900">{w.term}</span>
                     {currentPracticeSelection.some((x) => x.id === w.id) && (
                       <span className="rounded-md border border-ink-100 bg-ink-50 px-2 py-0.5 text-[11px] font-semibold text-ink-700">

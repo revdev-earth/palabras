@@ -25,12 +25,16 @@ function FlashViewer() {
   const selectedIds = useSelector((s) => s.app.selectedIds)
   const [intervalMs, setIntervalMs] = useState(2500)
   const rounds = useSelector((s) => s.app.settings.practiceRounds)
+  const speakEnabled = useSelector((s) => s.app.settings.practiceSpeakEnabled)
+  const voiceIdSetting = useSelector((s) => s.app.settings.practiceVoiceId)
+  const voiceLangSetting = useSelector((s) => s.app.settings.practiceVoiceLang)
   const [showModes, setShowModes] = useState<Set<ShowKey>>(new Set(["term", "translation"]))
   const [queue, setQueue] = useState<Word[]>([])
   const [index, setIndex] = useState(0)
   const [playing, setPlaying] = useState(false)
   const [paused, setPaused] = useState(false)
   const [lastTouchedId, setLastTouchedId] = useState<string | null>(null)
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([])
 
   const wordsById = useMemo(() => new Map(words.map((w) => [w.id, w])), [words])
   const selectedWords = useMemo(
@@ -46,6 +50,7 @@ function FlashViewer() {
       setIndex(0)
       setLastTouchedId(null)
       if (clearSelection) dispatch(setSelectedIds([]))
+      if (typeof window !== "undefined" && window.speechSynthesis) window.speechSynthesis.cancel()
     },
     [dispatch]
   )
@@ -85,6 +90,19 @@ function FlashViewer() {
   )
 
   useEffect(() => {
+    if (typeof window === "undefined" || !window.speechSynthesis) return
+    const loadVoices = () => {
+      const list = window.speechSynthesis.getVoices()
+      if (list.length) {
+        setVoices(list)
+      }
+    }
+    loadVoices()
+    window.speechSynthesis.addEventListener("voiceschanged", loadVoices)
+    return () => window.speechSynthesis.removeEventListener("voiceschanged", loadVoices)
+  }, [])
+
+  useEffect(() => {
     const handler = (ev: Event) => {
       const detail = (ev as CustomEvent<FlashStartDetail>).detail
       if (!detail || !Array.isArray(detail.ids)) return
@@ -105,7 +123,22 @@ function FlashViewer() {
     if (current.id === lastTouchedId) return
     dispatch(touchLastPracticed(current.id))
     setLastTouchedId(current.id)
-  }, [playing, paused, current, dispatch, lastTouchedId])
+    if (speakEnabled && typeof window !== "undefined" && window.speechSynthesis) {
+      const utter = new SpeechSynthesisUtterance(current.term)
+      const voice =
+        voices.find((v) => v.voiceURI === voiceIdSetting || v.name === voiceIdSetting) ||
+        voices.find((v) =>
+          voiceLangSetting ? v.lang?.toLowerCase().startsWith(voiceLangSetting.toLowerCase()) : false
+        ) ||
+        voices.find((v) => v.lang?.toLowerCase().startsWith("es")) ||
+        voices.find((v) => v.lang?.toLowerCase().startsWith("en")) ||
+        voices[0]
+      if (voice) utter.voice = voice
+      utter.rate = 0.9
+      window.speechSynthesis.cancel()
+      window.speechSynthesis.speak(utter)
+    }
+  }, [playing, paused, current, dispatch, lastTouchedId, speakEnabled, voiceIdSetting, voices])
 
   return (
     <section className="rounded-2xl border border-ink-100 bg-white/90 p-4 shadow-soft">
@@ -188,6 +221,12 @@ function FlashViewer() {
                 )
               })}
             </div>
+          </div>
+        </div>
+        <div className="rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm text-ink-700 shadow-inner">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-semibold text-ink-800">Pronunciar</span>
+            <span className="text-xs text-ink-500">(configura en “Configuración aleatoria”)</span>
           </div>
         </div>
       </div>

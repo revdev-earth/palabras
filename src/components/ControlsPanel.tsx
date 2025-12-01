@@ -26,6 +26,9 @@ function ControlsPanel() {
   const practiceCount = settings.practiceCount
   const practiceScoreBuckets = settings.practiceScoreBuckets || []
   const practiceDateFilter = settings.practiceDateFilter || "any"
+  const practiceSpeakEnabled = settings.practiceSpeakEnabled
+  const practiceVoiceId = settings.practiceVoiceId
+  const practiceVoiceLang = settings.practiceVoiceLang
   const words = useSelector((s) => s.app.words)
   const selectedIds = useSelector((s) => s.app.selectedIds)
   const importRef = useRef<HTMLInputElement | null>(null)
@@ -52,6 +55,37 @@ function ControlsPanel() {
       dispatch(setSettings({ practiceScoreBuckets: cleaned }))
     }
   }, [availableScoreBuckets, practiceScoreBuckets, dispatch])
+
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([])
+  const [voiceLangOptions, setVoiceLangOptions] = useState<string[]>([])
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.speechSynthesis) return
+    const loadVoices = () => {
+      const list = window.speechSynthesis.getVoices()
+      if (list.length) {
+        setVoices(list)
+        const langs = Array.from(
+          new Set(
+            list
+              .map((v) => v.lang?.slice(0, 2).toLowerCase())
+              .filter((l) => l === "es" || l === "en" || l === "de")
+          )
+        )
+        setVoiceLangOptions(langs)
+        if (!practiceVoiceLang && langs.length) dispatch(setSettings({ practiceVoiceLang: langs[0] }))
+        if (!practiceVoiceId) {
+          const preferred =
+            list.find((v) => v.lang?.toLowerCase().startsWith(practiceVoiceLang || "es")) ||
+            list.find((v) => v.lang?.toLowerCase().startsWith("es")) ||
+            list[0]
+          if (preferred) dispatch(setSettings({ practiceVoiceId: preferred.voiceURI || preferred.name }))
+        }
+      }
+    }
+    loadVoices()
+    window.speechSynthesis.addEventListener("voiceschanged", loadVoices)
+    return () => window.speechSynthesis.removeEventListener("voiceschanged", loadVoices)
+  }, [dispatch, practiceVoiceId, practiceVoiceLang])
 
   const filteredWords = filterAndSortWords(words, search, sortBy, searchField)
 
@@ -336,6 +370,71 @@ function ControlsPanel() {
                 Limpiar selección
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-4 rounded-2xl border border-ink-100 bg-ink-50/60 p-4 shadow-inner">
+        <div className="flex items-center gap-2 text-sm font-semibold text-ink-900">
+          Configuración de reproducción (voz)
+          <span className="text-xs font-normal text-ink-600">(aplica al visor y al botón 🔊 de la tabla)</span>
+        </div>
+        <div className="mt-3 grid gap-3 lg:grid-cols-[1fr,1fr]">
+          <label className="flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={practiceSpeakEnabled}
+              onChange={(e) => dispatch(setSettings({ practiceSpeakEnabled: e.target.checked }))}
+            />
+            Habilitar pronunciación
+          </label>
+          <div className="flex flex-wrap items-center gap-2 text-sm">
+            <span className="font-semibold text-ink-800">Idioma:</span>
+            {voiceLangOptions.length > 0 ? (
+              <select
+                value={practiceVoiceLang}
+                onChange={(e) => {
+                  const lang = e.target.value
+                  dispatch(setSettings({ practiceVoiceLang: lang }))
+                  const candidate =
+                    voices.find((v) => v.lang?.toLowerCase().startsWith(lang)) ||
+                    voices.find((v) => v.lang?.toLowerCase().startsWith("es")) ||
+                    voices[0]
+                  if (candidate) dispatch(setSettings({ practiceVoiceId: candidate.voiceURI || candidate.name }))
+                }}
+                className="rounded-md border border-ink-100 bg-white px-2 py-1 text-sm focus:border-ink-400 focus:outline-none"
+              >
+                {voiceLangOptions.map((lang) => (
+                  <option key={lang} value={lang}>
+                    {lang}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <span className="text-xs text-ink-500">No hay voces en es/en/de disponibles.</span>
+            )}
+          </div>
+          <div className="lg:col-span-2 flex flex-wrap items-center gap-2 text-sm">
+            <span className="font-semibold text-ink-800">Voz:</span>
+            {practiceSpeakEnabled && voices.length > 0 ? (
+              <select
+                value={practiceVoiceId}
+                onChange={(e) => dispatch(setSettings({ practiceVoiceId: e.target.value }))}
+                className="min-w-[200px] rounded-md border border-ink-100 bg-white px-2 py-1 text-sm focus:border-ink-400 focus:outline-none"
+              >
+                {voices
+                  .filter((v) =>
+                    practiceVoiceLang ? v.lang?.toLowerCase().startsWith(practiceVoiceLang) : true
+                  )
+                  .map((v) => (
+                    <option key={v.voiceURI || v.name} value={v.voiceURI || v.name}>
+                      {v.name} ({v.lang})
+                    </option>
+                  ))}
+              </select>
+            ) : (
+              <span className="text-xs text-ink-500">No se encontraron voces en este navegador.</span>
+            )}
           </div>
         </div>
       </div>

@@ -29,6 +29,9 @@ export type Settings = {
   practiceCount: number
   practiceScoreBuckets: PracticeScoreBucket[]
   practiceDateFilter: PracticeDateFilter
+  practiceSpeakEnabled: boolean
+  practiceVoiceId: string
+  practiceVoiceLang: string
 }
 
 export type PracticeScoreBucket = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9+"

@@ -14,6 +14,9 @@ export const defaultSettings: Settings = {
   practiceCount: 10,
   practiceScoreBuckets: [],
   practiceDateFilter: "any",
+  practiceSpeakEnabled: false,
+  practiceVoiceId: "",
+  practiceVoiceLang: "",
 }
 
 export const safeParse = <T>(raw: string | null, fallback: T): T => {
