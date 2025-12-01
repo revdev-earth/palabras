@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { useDispatch, useSelector } from "../hooks"
 import { buildQueue } from "../utils"
-import { setSelectedIds } from "../store"
+import { setSelectedIds, touchLastPracticed } from "../store"
 import { Word } from "../types"
 
 const speedOptions = [
@@ -30,6 +30,7 @@ function FlashViewer() {
   const [index, setIndex] = useState(0)
   const [playing, setPlaying] = useState(false)
   const [paused, setPaused] = useState(false)
+  const [lastTouchedId, setLastTouchedId] = useState<string | null>(null)
 
   const wordsById = useMemo(() => new Map(words.map((w) => [w.id, w])), [words])
   const selectedWords = useMemo(
@@ -43,6 +44,7 @@ function FlashViewer() {
       setPaused(false)
       setQueue([])
       setIndex(0)
+      setLastTouchedId(null)
       if (clearSelection) dispatch(setSelectedIds([]))
     },
     [dispatch]
@@ -97,6 +99,13 @@ function FlashViewer() {
 
   const current = queue[index] || null
   const progress = queue.length ? `${index + 1} / ${queue.length}` : "—"
+
+  useEffect(() => {
+    if (!playing || paused || !current) return
+    if (current.id === lastTouchedId) return
+    dispatch(touchLastPracticed(current.id))
+    setLastTouchedId(current.id)
+  }, [playing, paused, current, dispatch, lastTouchedId])
 
   return (
     <section className="rounded-2xl border border-ink-100 bg-white/90 p-4 shadow-soft">

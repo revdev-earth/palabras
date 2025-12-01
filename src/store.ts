@@ -182,6 +182,11 @@ const appSlice = createSlice({
       if (state.alwaysShow) return
       state.reveal = !state.reveal
     },
+    touchLastPracticed(state, action: PayloadAction<string>) {
+      state.words = state.words.map((w) =>
+        w.id === action.payload ? { ...w, lastPracticedAt: nowISO() } : w
+      )
+    },
   },
 })
 
@@ -202,6 +207,7 @@ export const {
   exitPractice,
   setAlwaysShow,
   toggleReveal,
+  touchLastPracticed,
 } = appSlice.actions
 
 export const store = configureStore({

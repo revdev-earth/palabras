@@ -37,6 +37,11 @@ export const effectiveScore = (word: Word) => {
   return Math.max(0, (word.baseScore || 0) - decaySteps)
 }
 
+const dateValue = (iso: string | null, direction: "asc" | "desc") => {
+  if (!iso) return direction === "asc" ? 0 : Number.MIN_SAFE_INTEGER
+  return new Date(iso).getTime()
+}
+
 export const formatDate = (iso: string | null) =>
   iso
     ? new Date(iso).toLocaleString(undefined, {
@@ -88,8 +93,16 @@ export const filterAndSortWords = (
   )
 
   data.sort((a, b) => {
-    if (sortBy === "score") return effectiveScore(b) - effectiveScore(a)
-    if (sortBy === "scoreAsc") return effectiveScore(a) - effectiveScore(b)
+    if (sortBy === "score") {
+      const diff = effectiveScore(b) - effectiveScore(a)
+      if (diff !== 0) return diff
+      return dateValue(b.lastPracticedAt, "desc") - dateValue(a.lastPracticedAt, "desc")
+    }
+    if (sortBy === "scoreAsc") {
+      const diff = effectiveScore(a) - effectiveScore(b)
+      if (diff !== 0) return diff
+      return dateValue(a.lastPracticedAt, "asc") - dateValue(b.lastPracticedAt, "asc")
+    }
     if (sortBy === "lastPracticedAt")
       return new Date(b.lastPracticedAt || 0).getTime() - new Date(a.lastPracticedAt || 0).getTime()
     if (sortBy === "lastPracticedAtAsc")
