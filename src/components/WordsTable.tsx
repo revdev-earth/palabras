@@ -24,6 +24,12 @@ const sortIndicator = (current: SortBy, asc: SortBy, desc: SortBy) => {
   return ""
 }
 
+const preserveScroll = (fn: () => void) => {
+  const y = window.scrollY
+  fn()
+  requestAnimationFrame(() => window.scrollTo({ top: y }))
+}
+
 function WordsTable() {
   const dispatch = useDispatch()
   const selectedIds = useSelector((s) => s.app.selectedIds)
@@ -60,12 +66,12 @@ function WordsTable() {
       window.alert("Primero guarda o cancela la edición actual.")
       return
     }
-    dispatch(applyScore({ id, delta }))
+    preserveScroll(() => dispatch(applyScore({ id, delta })))
   }
 
   const onDelete = (id: string) => {
     if (!window.confirm("¿Borrar palabra?")) return
-    dispatch(deleteWord(id))
+    preserveScroll(() => dispatch(deleteWord(id)))
   }
 
   const startEdit = (word: Word) => {
@@ -84,13 +90,15 @@ function WordsTable() {
       window.alert("Palabra y traducción son obligatorias.")
       return
     }
-    dispatch(
-      updateWord({
-        id,
-        term: editDraft.term.trim(),
-        translation: editDraft.translation.trim(),
-        notes: editDraft.notes,
-      })
+    preserveScroll(() =>
+      dispatch(
+        updateWord({
+          id,
+          term: editDraft.term.trim(),
+          translation: editDraft.translation.trim(),
+          notes: editDraft.notes,
+        })
+      )
     )
     setEditingId(null)
   }
@@ -111,7 +119,11 @@ function WordsTable() {
     return (
       <button
         type="button"
-        onClick={() => dispatch(setSettings({ sortBy: nextSort(sortBy, asc, desc, defaultSort) }))}
+        onClick={() =>
+          preserveScroll(() =>
+            dispatch(setSettings({ sortBy: nextSort(sortBy, asc, desc, defaultSort) }))
+          )
+        }
         className="flex items-center gap-1 text-left uppercase tracking-wide text-ink-600 transition hover:text-ink-900"
       >
         {label}
