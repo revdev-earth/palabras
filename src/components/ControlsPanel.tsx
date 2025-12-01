@@ -1,8 +1,20 @@
-import { useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { useDispatch, useSelector } from "../hooks"
 import { setSelectedIds, setSettings, setWordsAndSettings, startPractice, wipeAll } from "../store"
-import { filterAndSortWords, sampleWords } from "../utils"
+import { daysBetween, effectiveScore, filterAndSortWords, shuffle } from "../utils"
+import { PracticeScoreBucket, Word } from "../types"
 import StorageTools from "./StorageTools"
+import FlashViewer from "./FlashViewer"
+
+const dateOptions = [
+  { key: "any", label: "Cualquiera" },
+  { key: "today", label: "Hoy" },
+  { key: "yesterday", label: "Ayer" },
+  { key: "last3", label: "Últimos 3 días" },
+  { key: "last7", label: "Últimos 7 días" },
+  { key: "older7", label: "+7 días" },
+  { key: "never", label: "Sin práctica" },
+] as const
 
 function ControlsPanel() {
   const dispatch = useDispatch()
@@ -12,10 +24,34 @@ function ControlsPanel() {
   const searchField = useSelector((s) => s.app.searchField)
   const practiceRounds = settings.practiceRounds
   const practiceCount = settings.practiceCount
+  const practiceScoreBuckets = settings.practiceScoreBuckets || []
+  const practiceDateFilter = settings.practiceDateFilter || "any"
   const words = useSelector((s) => s.app.words)
   const selectedIds = useSelector((s) => s.app.selectedIds)
   const importRef = useRef<HTMLInputElement | null>(null)
   const [showStorageTools, setShowStorageTools] = useState(false)
+  const [practiceMode, setPracticeMode] = useState<"interactive" | "flash">("flash")
+
+  const availableScoreBuckets: PracticeScoreBucket[] = useMemo(() => {
+    const buckets = new Set<string>()
+    words.forEach((w) => {
+      const s = Math.max(0, Math.round(effectiveScore(w)))
+      if (s >= 9) buckets.add("9+")
+      else buckets.add(String(s))
+    })
+    return Array.from(buckets).sort((a, b) => {
+      if (a === "9+") return 1
+      if (b === "9+") return -1
+      return Number(a) - Number(b)
+    }) as PracticeScoreBucket[]
+  }, [words])
+
+  useEffect(() => {
+    const cleaned = practiceScoreBuckets.filter((b) => availableScoreBuckets.includes(b))
+    if (cleaned.length !== practiceScoreBuckets.length) {
+      dispatch(setSettings({ practiceScoreBuckets: cleaned }))
+    }
+  }, [availableScoreBuckets, practiceScoreBuckets, dispatch])
 
   const filteredWords = filterAndSortWords(words, search, sortBy, searchField)
 
@@ -24,8 +60,54 @@ function ControlsPanel() {
       window.alert("No hay palabras para practicar.")
       return
     }
-    dispatch(startPractice(ids))
-    window.scrollTo({ top: 0, behavior: "smooth" })
+    if (practiceMode === "interactive") {
+      dispatch(startPractice(ids))
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    } else {
+      dispatch(setSelectedIds(ids))
+      window.dispatchEvent(
+        new CustomEvent("flashviewer:start", { detail: { ids, rounds: practiceRounds } })
+      )
+    }
+  }
+
+  const matchesScoreBucket = (w: Word) => {
+    if (!practiceScoreBuckets.length) return true
+    const s = Math.max(0, Math.round(effectiveScore(w)))
+    return practiceScoreBuckets.some((bucket) => {
+      if (bucket === "9+") return s >= 9
+      return s === Number(bucket)
+      return false
+    })
+  }
+
+  const matchesDateFilter = (w: { lastPracticedAt: string | null }) => {
+    if (practiceDateFilter === "any") return true
+    if (!w.lastPracticedAt) return practiceDateFilter === "never"
+    const days = daysBetween(new Date().toISOString(), w.lastPracticedAt)
+    if (practiceDateFilter === "today") return days === 0
+    if (practiceDateFilter === "yesterday") return days === 1
+    if (practiceDateFilter === "last3") return days <= 3
+    if (practiceDateFilter === "last7") return days <= 7
+    if (practiceDateFilter === "older7") return days > 7
+    if (practiceDateFilter === "never") return false
+    return true
+  }
+
+  const pickWordsByBasis = () => {
+    const filtered = words.filter((w) => matchesScoreBucket(w) && matchesDateFilter(w))
+    const pool = filtered.length ? filtered : words
+    if (!pool.length) return []
+    const n = Math.max(1, Math.min(practiceCount, pool.length))
+    const randomized = shuffle([...pool])
+    return randomized.slice(0, n)
+  }
+
+  const toggleScoreBucket = (bucket: PracticeScoreBucket) => {
+    const next = practiceScoreBuckets.includes(bucket)
+      ? practiceScoreBuckets.filter((b) => b !== bucket)
+      : [...practiceScoreBuckets, bucket]
+    dispatch(setSettings({ practiceScoreBuckets: next }))
   }
 
   const startRandom10 = () => {
@@ -33,8 +115,8 @@ function ControlsPanel() {
       window.alert("No hay palabras aún. Añade algunas primero.")
       return
     }
-    const n = Math.max(1, Math.min(practiceCount, words.length))
-    startPracticeWithIds(sampleWords(words, n).map((w) => w.id))
+    const picked = pickWordsByBasis()
+    startPracticeWithIds(picked.map((w) => w.id))
   }
 
   const startFirst10 = () => {
@@ -43,6 +125,15 @@ function ControlsPanel() {
   }
 
   const startSelected = () => startPracticeWithIds(selectedIds)
+
+  const pickRandomAndSelect = () => {
+    const picked = pickWordsByBasis()
+    if (!picked.length) {
+      window.alert("No hay palabras para seleccionar con el filtro actual.")
+      return
+    }
+    dispatch(setSelectedIds(picked.map((w) => w.id)))
+  }
 
   const exportData = () => {
     const blob = new Blob([JSON.stringify({ settings, words }, null, 2)], {
@@ -116,6 +207,17 @@ function ControlsPanel() {
         </button>
       </div>
 
+      <details
+        className="mt-3 rounded-2xl border border-ink-100 bg-ink-50/70 p-4 shadow-inner"
+        open={showStorageTools}
+        onToggle={(e) => setShowStorageTools((e.target as HTMLDetailsElement).open)}
+      >
+        <summary className="cursor-pointer text-sm font-semibold text-ink-900">
+          Ver/editar JSON guardado y adjuntar más datos
+        </summary>
+        <StorageTools />
+      </details>
+
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         <div className="flex items-center gap-2 rounded-xl border border-ink-100 bg-white/80 p-3 shadow-inner">
           <label className="flex items-center gap-2 text-sm text-ink-700">
@@ -157,6 +259,109 @@ function ControlsPanel() {
         </div>
       </div>
 
+      <div className="mt-4 rounded-2xl border border-ink-100 bg-ink-50/60 p-4 shadow-inner">
+        <div className="flex items-center gap-2 text-sm font-semibold text-ink-900">
+          Configuración para selección aleatoria
+          <span className="text-xs font-normal text-ink-600">(aplica al botón “aleatorio”)</span>
+        </div>
+        <div className="mt-3 grid gap-3 lg:grid-cols-2">
+          <div className="rounded-xl border border-ink-100 bg-white/80 p-3 shadow-inner">
+            <div className="flex items-center gap-2 text-sm font-semibold text-ink-800">
+              Filtro de score:
+              <span className="text-xs font-normal text-ink-600">
+                (elige uno o varios, vacío = todos)
+              </span>
+            </div>
+            <div className="mt-2 flex flex-wrap gap-1">
+              {availableScoreBuckets.map((key) => {
+                const active = practiceScoreBuckets.includes(key)
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => toggleScoreBucket(key)}
+                    className={`rounded-full px-3 py-1 text-sm font-semibold transition ${
+                      active ? "bg-ink-900 text-white shadow-soft" : "text-ink-800 hover:bg-white"
+                    }`}
+                  >
+                    {key}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+          <div className="rounded-xl border border-ink-100 bg-white/80 p-3 shadow-inner">
+            <div className="flex items-center gap-2 text-sm font-semibold text-ink-800">
+              Filtro por fecha de práctica:
+              <span className="text-xs font-normal text-ink-600">(elige uno)</span>
+            </div>
+            <div className="mt-2 flex flex-wrap gap-1">
+              {dateOptions.map((opt) => {
+                const active = practiceDateFilter === opt.key
+                return (
+                  <button
+                    key={opt.key}
+                    type="button"
+                    onClick={() => dispatch(setSettings({ practiceDateFilter: opt.key }))}
+                    className={`rounded-full px-3 py-1 text-sm font-semibold transition ${
+                      active ? "bg-ink-900 text-white shadow-soft" : "text-ink-800 hover:bg-white"
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+          <div className="rounded-xl border border-ink-100 bg-white/80 p-3 shadow-inner">
+            <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-ink-800">
+              Seleccionar palabras aleatoriamente
+              <span className="text-xs font-normal text-ink-600">
+                (usa los filtros y el número de “Palabras por sesión”)
+              </span>
+            </div>
+            <div className="mt-2 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={pickRandomAndSelect}
+                className="rounded-lg bg-ink-900 px-3 py-2 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg"
+              >
+                Seleccionar aleatorio
+              </button>
+              <button
+                type="button"
+                onClick={() => dispatch(setSelectedIds([]))}
+                className="rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm font-semibold text-ink-800 hover:border-ink-300"
+              >
+                Limpiar selección
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-3 flex flex-wrap items-center gap-2 rounded-xl border border-ink-100 bg-ink-50/60 p-2 text-sm text-ink-700 shadow-inner">
+        <span className="font-semibold text-ink-800">Modo:</span>
+        {[
+          { key: "interactive", label: "Práctica interactiva" },
+          { key: "flash", label: "Visor rápido" },
+        ].map((opt) => (
+          <button
+            key={opt.key}
+            type="button"
+            onClick={() => setPracticeMode(opt.key as "interactive" | "flash")}
+            className={`rounded-full px-3 py-1 text-sm font-semibold transition ${
+              practiceMode === opt.key ? "bg-ink-900 text-white shadow-soft" : "text-ink-800 hover:bg-white"
+            }`}
+          >
+            {opt.label}
+          </button>
+        ))}
+        <span className="text-xs text-ink-600">
+          El modo aplica a los botones de “Practicar”.
+        </span>
+      </div>
+
       <div className="mt-4 grid gap-2 sm:grid-cols-3">
         <button
           onClick={startRandom10}
@@ -178,16 +383,9 @@ function ControlsPanel() {
         </button>
       </div>
 
-      <details
-        className="mt-4 rounded-2xl border border-ink-100 bg-ink-50/70 p-4 shadow-inner"
-        open={showStorageTools}
-        onToggle={(e) => setShowStorageTools((e.target as HTMLDetailsElement).open)}
-      >
-        <summary className="cursor-pointer text-sm font-semibold text-ink-900">
-          Ver/editar JSON guardado y adjuntar más datos
-        </summary>
-        <StorageTools />
-      </details>
+      <div className="mt-4">
+        <FlashViewer />
+      </div>
     </section>
   )
 }

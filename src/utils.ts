@@ -12,6 +12,8 @@ export const defaultSettings: Settings = {
   lastSeenDay: todayKey(),
   practiceRounds: 5,
   practiceCount: 10,
+  practiceScoreBuckets: [],
+  practiceDateFilter: "any",
 }
 
 export const safeParse = <T>(raw: string | null, fallback: T): T => {
