@@ -28,3 +28,5 @@ export type Settings = {
 }
 
 export type PracticeStats = Record<string, { correct: number; total: number }>
+
+export type SearchField = "term" | "translation"

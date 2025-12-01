@@ -1,8 +1,17 @@
 import { useMemo, useState } from "react"
 import { useDispatch, useSelector } from "../hooks"
-import { applyScore, deleteWord, setSelectedIds, setSettings, toggleSelect, updateWord } from "../store"
+import {
+  applyScore,
+  deleteWord,
+  setSearch,
+  setSearchField,
+  setSelectedIds,
+  setSettings,
+  toggleSelect,
+  updateWord,
+} from "../store"
 import { defaultSettings, effectiveScore, filterAndSortWords, formatDate } from "../utils"
-import { SortBy, Word } from "../types"
+import { SearchField, SortBy, Word } from "../types"
 
 const columns = {
   desktopGrid:
@@ -36,11 +45,12 @@ function WordsTable() {
   const selectedSet = useMemo(() => new Set(selectedIds), [selectedIds])
   const words = useSelector((s) => s.app.words)
   const search = useSelector((s) => s.app.search)
+  const searchField = useSelector((s) => s.app.searchField)
   const sortBy = useSelector((s) => s.app.settings.sortBy)
   const currentPracticeSelection = useSelector((s) => s.app.currentPracticeSelection)
   const filteredWords = useMemo(
-    () => filterAndSortWords(words, search, sortBy),
-    [words, search, sortBy]
+    () => filterAndSortWords(words, search, sortBy, searchField),
+    [words, search, sortBy, searchField]
   )
 
   const [expandedNotes, setExpandedNotes] = useState<Set<string>>(new Set())
@@ -135,7 +145,37 @@ function WordsTable() {
   return (
     <section className="mt-5 overflow-hidden rounded-2xl border border-ink-100 bg-white/90 shadow-soft backdrop-blur">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink-100 px-5 py-4">
-        <h2 className="text-lg font-semibold text-ink-900">Listado de palabras</h2>
+        <div className="flex flex-1 flex-wrap items-center gap-3">
+          <h2 className="text-lg font-semibold text-ink-900">Listado de palabras</h2>
+          <div className="flex flex-1 flex-wrap items-center gap-2">
+            <div className="flex flex-1 items-center gap-2 rounded-xl border border-ink-100 bg-white px-3 py-2 shadow-inner">
+              <span className="text-xs font-semibold uppercase text-ink-600">Buscar</span>
+              <input
+                value={search}
+                onChange={(e) => dispatch(setSearch(e.target.value))}
+                placeholder={searchField === "term" ? "Filtrar por palabra..." : "Filtrar por traducción..."}
+                className="w-full flex-1 bg-transparent text-sm text-ink-900 outline-none"
+              />
+            </div>
+            <div className="flex items-center gap-1 rounded-xl border border-ink-100 bg-ink-50 px-2 py-1 text-[11px] font-semibold text-ink-700 shadow-inner">
+              <span className="uppercase text-ink-500">En</span>
+              {(["term", "translation"] as SearchField[]).map((field) => (
+                <button
+                  key={field}
+                  type="button"
+                  onClick={() => dispatch(setSearchField(field))}
+                  className={`rounded-lg px-2 py-1 transition ${
+                    searchField === field
+                      ? "bg-ink-900 text-white shadow-soft"
+                      : "text-ink-700 hover:bg-white"
+                  }`}
+                >
+                  {field === "term" ? "Palabra" : "Traducción"}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
         <label className="flex items-center gap-2 text-sm text-ink-700">
           <input
             type="checkbox"

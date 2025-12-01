@@ -1,27 +1,20 @@
 import { useRef, useState } from "react"
 import { useDispatch, useSelector } from "../hooks"
-import {
-  setSearch,
-  setSelectedIds,
-  setSettings,
-  setWordsAndSettings,
-  startPractice,
-  wipeAll,
-} from "../store"
+import { setSelectedIds, setWordsAndSettings, startPractice, wipeAll } from "../store"
 import { filterAndSortWords, sampleWords } from "../utils"
-import { SortBy } from "../types"
 import StorageTools from "./StorageTools"
 
 function ControlsPanel() {
   const dispatch = useDispatch()
   const sortBy = useSelector((s) => s.app.settings.sortBy)
   const search = useSelector((s) => s.app.search)
+  const searchField = useSelector((s) => s.app.searchField)
   const words = useSelector((s) => s.app.words)
   const selectedIds = useSelector((s) => s.app.selectedIds)
   const importRef = useRef<HTMLInputElement | null>(null)
   const [showStorageTools, setShowStorageTools] = useState(false)
 
-  const filteredWords = filterAndSortWords(words, search, sortBy)
+  const filteredWords = filterAndSortWords(words, search, sortBy, searchField)
 
   const startPracticeWithIds = (ids: string[]) => {
     if (!ids.length) {
@@ -87,40 +80,7 @@ function ControlsPanel() {
 
   return (
     <section className="rounded-2xl border border-ink-100 bg-white/90 p-5 shadow-soft backdrop-blur">
-      <div className="flex flex-wrap gap-3">
-        <label className="flex items-center gap-2 text-sm text-ink-700">
-          Ordenar por:
-          <select
-            value={sortBy}
-            onChange={(e) => dispatch(setSettings({ sortBy: e.target.value as SortBy }))}
-            className="rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
-          >
-            <option value="score">Score (efectivo)</option>
-            <option value="scoreAsc">Score (menor→mayor)</option>
-            <option value="lastPracticedAt">Última práctica (más reciente)</option>
-            <option value="lastPracticedAtAsc">Última práctica (más antigua)</option>
-            <option value="createdAt">Fecha agregado (recientes primero)</option>
-            <option value="createdAtAsc">Fecha agregado (antiguas primero)</option>
-            <option value="term">Palabra (A→Z)</option>
-            <option value="termDesc">Palabra (Z→A)</option>
-            <option value="translation">Traducción (A→Z)</option>
-            <option value="translationDesc">Traducción (Z→A)</option>
-            <option value="notes">Notas (A→Z)</option>
-            <option value="notesDesc">Notas (Z→A)</option>
-          </select>
-        </label>
-        <label className="flex flex-1 items-center gap-2 text-sm text-ink-700">
-          Búsqueda:
-          <input
-            value={search}
-            onChange={(e) => dispatch(setSearch(e.target.value))}
-            placeholder="Filtrar por palabra o traducción..."
-            className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
-          />
-        </label>
-      </div>
-
-      <div className="mt-3 flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2">
         <button
           onClick={exportData}
           className="rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm font-medium text-ink-800 shadow-sm hover:border-ink-300"

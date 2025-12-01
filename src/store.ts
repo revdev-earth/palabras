@@ -1,6 +1,6 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { PRACTICE_REPS } from "./constants"
-import { PracticeStats, Settings, Word } from "./types"
+import { PracticeStats, SearchField, Settings, Word } from "./types"
 import {
   SETTINGS_KEY,
   STORE_KEY,
@@ -14,6 +14,7 @@ export type AppSliceState = {
   words: Word[]
   settings: Settings
   search: string
+  searchField: SearchField
   selectedIds: string[]
   currentPracticeSelection: Word[]
   practiceQueue: string[]
@@ -33,6 +34,7 @@ const initialState: AppSliceState = {
     ...safeParse<Partial<Settings>>(localStorage.getItem(SETTINGS_KEY), defaultSettings),
   },
   search: "",
+  searchField: "term",
   selectedIds: [],
   currentPracticeSelection: [],
   practiceQueue: [],
@@ -78,6 +80,9 @@ const appSlice = createSlice({
     },
     setSearch(state, action: PayloadAction<string>) {
       state.search = action.payload
+    },
+    setSearchField(state, action: PayloadAction<SearchField>) {
+      state.searchField = action.payload
     },
     setSelectedIds(state, action: PayloadAction<string[]>) {
       state.selectedIds = action.payload
@@ -188,6 +193,7 @@ export const {
   updateWord,
   setSettings,
   setSearch,
+   setSearchField,
   setSelectedIds,
   toggleSelect,
   setWordsAndSettings,

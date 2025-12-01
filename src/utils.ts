@@ -1,5 +1,5 @@
 import { PRACTICE_REPS } from "./constants"
-import { Settings, Word } from "./types"
+import { SearchField, Settings, Word } from "./types"
 
 export const STORE_KEY = "vocab-tracker-v1"
 export const SETTINGS_KEY = "vocab-tracker-settings"
@@ -67,14 +67,18 @@ export const sampleWords = (arr: Word[], n: number) => {
   return c.slice(0, n)
 }
 
-export const filterAndSortWords = (words: Word[], search: string, sortBy: Settings["sortBy"]) => {
+export const filterAndSortWords = (
+  words: Word[],
+  search: string,
+  sortBy: Settings["sortBy"],
+  searchField: SearchField
+) => {
   const q = search.trim().toLowerCase()
   const data = words.filter(
     (w) =>
       !q ||
-      w.term.toLowerCase().includes(q) ||
-      w.translation.toLowerCase().includes(q) ||
-      (w.notes || "").toLowerCase().includes(q)
+      (searchField === "term" && w.term.toLowerCase().includes(q)) ||
+      (searchField === "translation" && w.translation.toLowerCase().includes(q))
   )
 
   data.sort((a, b) => {
