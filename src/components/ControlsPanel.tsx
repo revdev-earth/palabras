@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { useDispatch, useSelector } from "../hooks"
 import {
   setSearch,
@@ -10,6 +10,7 @@ import {
 } from "../store"
 import { filterAndSortWords, sampleWords } from "../utils"
 import { SortBy } from "../types"
+import StorageTools from "./StorageTools"
 
 function ControlsPanel() {
   const dispatch = useDispatch()
@@ -18,6 +19,7 @@ function ControlsPanel() {
   const words = useSelector((s) => s.app.words)
   const selectedIds = useSelector((s) => s.app.selectedIds)
   const importRef = useRef<HTMLInputElement | null>(null)
+  const [showStorageTools, setShowStorageTools] = useState(false)
 
   const filteredWords = filterAndSortWords(words, search, sortBy)
 
@@ -163,6 +165,17 @@ function ControlsPanel() {
           Practicar selección
         </button>
       </div>
+
+      <details
+        className="mt-4 rounded-2xl border border-ink-100 bg-ink-50/70 p-4 shadow-inner"
+        open={showStorageTools}
+        onToggle={(e) => setShowStorageTools((e.target as HTMLDetailsElement).open)}
+      >
+        <summary className="cursor-pointer text-sm font-semibold text-ink-900">
+          Ver/editar JSON guardado y adjuntar más datos
+        </summary>
+        <StorageTools />
+      </details>
     </section>
   )
 }
