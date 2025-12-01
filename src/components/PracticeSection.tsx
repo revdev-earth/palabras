@@ -1,4 +1,3 @@
-import { PRACTICE_REPS } from "../constants"
 import { useDispatch, useSelector } from "../hooks"
 import { exitPractice, markPractice, setAlwaysShow, toggleReveal } from "../store"
 
@@ -19,6 +18,7 @@ function PracticeSection() {
   const alwaysShow = useSelector((s) => s.app.alwaysShow)
   const reveal = useSelector((s) => s.app.reveal)
   const summary = useSelector((s) => s.app.summary)
+  const practiceRounds = useSelector((s) => s.app.settings.practiceRounds)
 
   const practiceWord = practiceQueue.length
     ? words.find((w) => w.id === practiceQueue[practiceIndex]) || null
@@ -36,7 +36,7 @@ function PracticeSection() {
     <section className="rounded-2xl border border-ink-100 bg-white/95 p-5 shadow-soft">
       <div className="flex flex-wrap items-center gap-2 text-sm text-ink-700">
         {badge(`Palabras: ${currentPracticeSelection.length}`)}
-        {badge(`Reps/Palabra: ${PRACTICE_REPS}`)}
+        {badge(`Reps/Palabra: ${practiceRounds}`)}
         {badge(
           `Progreso: ${Math.min(practiceIndex, practiceQueue.length)} / ${practiceQueue.length}`
         )}

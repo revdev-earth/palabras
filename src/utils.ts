@@ -1,4 +1,3 @@
-import { PRACTICE_REPS } from "./constants"
 import { SearchField, Settings, Word } from "./types"
 
 export const STORE_KEY = "vocab-tracker-v1"
@@ -8,7 +7,12 @@ export const DECAY_INTERVAL_DAYS = 2
 export const todayKey = () => new Date().toISOString().slice(0, 10)
 export const nowISO = () => new Date().toISOString()
 
-export const defaultSettings: Settings = { sortBy: "scoreAsc", lastSeenDay: todayKey() }
+export const defaultSettings: Settings = {
+  sortBy: "scoreAsc",
+  lastSeenDay: todayKey(),
+  practiceRounds: 5,
+  practiceCount: 10,
+}
 
 export const safeParse = <T>(raw: string | null, fallback: T): T => {
   try {
@@ -103,9 +107,10 @@ export const filterAndSortWords = (
   return data
 }
 
-export const buildQueue = (ids: string[]) => {
+export const buildQueue = (ids: string[], rounds: number) => {
+  const reps = Math.max(1, Math.floor(rounds) || 1)
   const queue: string[] = []
-  for (let i = 0; i < PRACTICE_REPS; i++) {
+  for (let i = 0; i < reps; i++) {
     const round = shuffle([...ids])
     queue.push(...round)
   }

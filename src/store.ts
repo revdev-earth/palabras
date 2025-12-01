@@ -1,5 +1,4 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { PRACTICE_REPS } from "./constants"
 import { PracticeStats, SearchField, Settings, Word } from "./types"
 import {
   SETTINGS_KEY,
@@ -143,7 +142,7 @@ const appSlice = createSlice({
       }, {})
       state.currentPracticeSelection = selected
       state.practiceStats = stats
-      state.practiceQueue = buildQueue(ids)
+      state.practiceQueue = buildQueue(ids, state.settings.practiceRounds || defaultSettings.practiceRounds)
       state.practiceIndex = 0
       state.correctCount = 0
       state.wrongCount = 0

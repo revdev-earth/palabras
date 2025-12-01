@@ -1,14 +1,17 @@
 import { useRef, useState } from "react"
 import { useDispatch, useSelector } from "../hooks"
-import { setSelectedIds, setWordsAndSettings, startPractice, wipeAll } from "../store"
+import { setSelectedIds, setSettings, setWordsAndSettings, startPractice, wipeAll } from "../store"
 import { filterAndSortWords, sampleWords } from "../utils"
 import StorageTools from "./StorageTools"
 
 function ControlsPanel() {
   const dispatch = useDispatch()
-  const sortBy = useSelector((s) => s.app.settings.sortBy)
+  const settings = useSelector((s) => s.app.settings)
+  const sortBy = settings.sortBy
   const search = useSelector((s) => s.app.search)
   const searchField = useSelector((s) => s.app.searchField)
+  const practiceRounds = settings.practiceRounds
+  const practiceCount = settings.practiceCount
   const words = useSelector((s) => s.app.words)
   const selectedIds = useSelector((s) => s.app.selectedIds)
   const importRef = useRef<HTMLInputElement | null>(null)
@@ -30,17 +33,19 @@ function ControlsPanel() {
       window.alert("No hay palabras aún. Añade algunas primero.")
       return
     }
-    startPracticeWithIds(sampleWords(words, Math.min(10, words.length)).map((w) => w.id))
+    const n = Math.max(1, Math.min(practiceCount, words.length))
+    startPracticeWithIds(sampleWords(words, n).map((w) => w.id))
   }
 
   const startFirst10 = () => {
-    startPracticeWithIds(filteredWords.slice(0, 10).map((w) => w.id))
+    const n = Math.max(1, Math.min(practiceCount, filteredWords.length))
+    startPracticeWithIds(filteredWords.slice(0, n).map((w) => w.id))
   }
 
   const startSelected = () => startPracticeWithIds(selectedIds)
 
   const exportData = () => {
-    const blob = new Blob([JSON.stringify({ settings: { sortBy }, words }, null, 2)], {
+    const blob = new Blob([JSON.stringify({ settings, words }, null, 2)], {
       type: "application/json",
     })
     const url = URL.createObjectURL(blob)
@@ -53,15 +58,15 @@ function ControlsPanel() {
 
   const importData = async (file: File) => {
     try {
-      const text = await file.text()
-      const obj = JSON.parse(text)
-      if (!obj || !Array.isArray(obj.words)) throw new Error("Formato inválido")
-      dispatch(
-        setWordsAndSettings({
-          words: obj.words,
-          settings: { sortBy, ...(obj.settings || {}) },
-        })
-      )
+    const text = await file.text()
+    const obj = JSON.parse(text)
+    if (!obj || !Array.isArray(obj.words)) throw new Error("Formato inválido")
+    dispatch(
+      setWordsAndSettings({
+        words: obj.words,
+        settings: { ...settings, ...(obj.settings || {}) },
+      })
+    )
       dispatch(setSelectedIds([]))
       window.alert("Importación completa")
     } catch (err) {
@@ -111,18 +116,59 @@ function ControlsPanel() {
         </button>
       </div>
 
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        <div className="flex items-center gap-2 rounded-xl border border-ink-100 bg-white/80 p-3 shadow-inner">
+          <label className="flex items-center gap-2 text-sm text-ink-700">
+            Rondas de práctica:
+            <input
+              type="number"
+              min={1}
+              max={20}
+              value={practiceRounds}
+              onChange={(e) => {
+                const n = Math.max(1, Math.min(20, Number.parseInt(e.target.value, 10) || 1))
+                dispatch(setSettings({ practiceRounds: n }))
+              }}
+              className="w-20 rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
+            />
+          </label>
+          <p className="text-xs text-ink-600">
+            Veces que cada palabra aparecerá en la sesión (se barajan cada ronda).
+          </p>
+        </div>
+        <div className="flex items-center gap-2 rounded-xl border border-ink-100 bg-white/80 p-3 shadow-inner">
+          <label className="flex items-center gap-2 text-sm text-ink-700">
+            Palabras por sesión:
+            <input
+              type="number"
+              min={1}
+              max={200}
+              value={practiceCount}
+              onChange={(e) => {
+                const n = Math.max(1, Math.min(200, Number.parseInt(e.target.value, 10) || 1))
+                dispatch(setSettings({ practiceCount: n }))
+              }}
+              className="w-24 rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
+            />
+          </label>
+          <p className="text-xs text-ink-600">
+            Se usa en “Practicar {practiceCount} (aleatorio)” y “primeras de la lista”.
+          </p>
+        </div>
+      </div>
+
       <div className="mt-4 grid gap-2 sm:grid-cols-3">
         <button
           onClick={startRandom10}
           className="rounded-xl border border-ink-100 bg-ink-900 px-3 py-2 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg"
         >
-          Practicar 10 (aleatorio)
+          Practicar {practiceCount} (aleatorio)
         </button>
         <button
           onClick={startFirst10}
           className="rounded-xl border border-ink-100 bg-white px-3 py-2 text-sm font-semibold text-ink-900 shadow-sm hover:border-ink-300"
         >
-          Practicar 10 (primeras de la lista)
+          Practicar {practiceCount} (primeras de la lista)
         </button>
         <button
           onClick={startSelected}

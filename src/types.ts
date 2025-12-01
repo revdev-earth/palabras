@@ -25,6 +25,8 @@ export type Word = {
 export type Settings = {
   sortBy: SortBy
   lastSeenDay: string
+  practiceRounds: number
+  practiceCount: number
 }
 
 export type PracticeStats = Record<string, { correct: number; total: number }>
