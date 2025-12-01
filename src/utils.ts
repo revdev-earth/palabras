@@ -86,7 +86,14 @@ export const filterAndSortWords = (words: Word[], search: string, sortBy: Settin
       return new Date(a.lastPracticedAt || 0).getTime() - new Date(b.lastPracticedAt || 0).getTime()
     if (sortBy === "createdAt")
       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    if (sortBy === "createdAtAsc")
+      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
     if (sortBy === "term") return a.term.localeCompare(b.term)
+    if (sortBy === "termDesc") return b.term.localeCompare(a.term)
+    if (sortBy === "translation") return a.translation.localeCompare(b.translation)
+    if (sortBy === "translationDesc") return b.translation.localeCompare(a.translation)
+    if (sortBy === "notes") return (a.notes || "").localeCompare(b.notes || "")
+    if (sortBy === "notesDesc") return (b.notes || "").localeCompare(a.notes || "")
     return 0
   })
   return data

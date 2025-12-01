@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react"
 import { useDispatch, useSelector } from "../hooks"
-import { applyScore, deleteWord, setSelectedIds, toggleSelect, updateWord } from "../store"
-import { effectiveScore, filterAndSortWords, formatDate } from "../utils"
-import { Word } from "../types"
+import { applyScore, deleteWord, setSelectedIds, setSettings, toggleSelect, updateWord } from "../store"
+import { defaultSettings, effectiveScore, filterAndSortWords, formatDate } from "../utils"
+import { SortBy, Word } from "../types"
 
 const columns = {
   desktopGrid:
@@ -10,6 +10,18 @@ const columns = {
   headerRow:
     "hidden px-4 py-2 text-xs uppercase tracking-wide text-ink-600 md:grid md:items-center",
   bodyRow: "grid gap-3 px-4 py-3 md:items-start",
+}
+
+const nextSort = (current: SortBy, asc: SortBy, desc: SortBy, fallback: SortBy) => {
+  if (current === asc) return desc
+  if (current === desc) return fallback
+  return asc
+}
+
+const sortIndicator = (current: SortBy, asc: SortBy, desc: SortBy) => {
+  if (current === asc) return "↑"
+  if (current === desc) return "↓"
+  return ""
 }
 
 function WordsTable() {
@@ -31,6 +43,8 @@ function WordsTable() {
 
   const selectAllChecked =
     filteredWords.length > 0 && filteredWords.every((w) => selectedSet.has(w.id))
+
+  const defaultSort = defaultSettings.sortBy
 
   const toggleExpandNotes = (id: string) => {
     setExpandedNotes((prev) => {
@@ -92,6 +106,20 @@ function WordsTable() {
     dispatch(setSelectedIds(Array.from(next)))
   }
 
+  const renderHeaderButton = (label: string, asc: SortBy, desc: SortBy) => {
+    const indicator = sortIndicator(sortBy, asc, desc)
+    return (
+      <button
+        type="button"
+        onClick={() => dispatch(setSettings({ sortBy: nextSort(sortBy, asc, desc, defaultSort) }))}
+        className="flex items-center gap-1 text-left uppercase tracking-wide text-ink-600 transition hover:text-ink-900"
+      >
+        {label}
+        {indicator && <span className="text-[10px] leading-none">{indicator}</span>}
+      </button>
+    )
+  }
+
   return (
     <section className="mt-5 overflow-hidden rounded-2xl border border-ink-100 bg-white/90 shadow-soft backdrop-blur">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink-100 px-5 py-4">
@@ -109,12 +137,12 @@ function WordsTable() {
 
       <div className={`${columns.headerRow} ${columns.desktopGrid}`}>
         <span className="text-center">Sel.</span>
-        <span>Palabra</span>
-        <span>Traducción</span>
-        <span>Notas</span>
-        <span className="text-center">Score</span>
-        <span>Última práctica</span>
-        <span>Agregado</span>
+        {renderHeaderButton("Palabra", "term", "termDesc")}
+        {renderHeaderButton("Traducción", "translation", "translationDesc")}
+        {renderHeaderButton("Notas", "notes", "notesDesc")}
+        <div className="text-center">{renderHeaderButton("Score", "scoreAsc", "score")}</div>
+        {renderHeaderButton("Última práctica", "lastPracticedAtAsc", "lastPracticedAt")}
+        {renderHeaderButton("Agregado", "createdAtAsc", "createdAt")}
         <span>Acciones</span>
       </div>
 

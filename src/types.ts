@@ -4,7 +4,13 @@ export type SortBy =
   | "lastPracticedAt"
   | "lastPracticedAtAsc"
   | "createdAt"
+  | "createdAtAsc"
   | "term"
+  | "termDesc"
+  | "translation"
+  | "translationDesc"
+  | "notes"
+  | "notesDesc"
 
 export type Word = {
   id: string

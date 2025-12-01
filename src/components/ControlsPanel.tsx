@@ -99,8 +99,14 @@ function ControlsPanel() {
             <option value="scoreAsc">Score (menor→mayor)</option>
             <option value="lastPracticedAt">Última práctica (más reciente)</option>
             <option value="lastPracticedAtAsc">Última práctica (más antigua)</option>
-            <option value="createdAt">Fecha agregado</option>
+            <option value="createdAt">Fecha agregado (recientes primero)</option>
+            <option value="createdAtAsc">Fecha agregado (antiguas primero)</option>
             <option value="term">Palabra (A→Z)</option>
+            <option value="termDesc">Palabra (Z→A)</option>
+            <option value="translation">Traducción (A→Z)</option>
+            <option value="translationDesc">Traducción (Z→A)</option>
+            <option value="notes">Notas (A→Z)</option>
+            <option value="notesDesc">Notas (Z→A)</option>
           </select>
         </label>
         <label className="flex flex-1 items-center gap-2 text-sm text-ink-700">
