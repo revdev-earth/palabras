@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { useDispatch, useSelector } from "../hooks"
 import { buildQueue } from "../utils"
 import { setSelectedIds, touchLastPracticed } from "../store"
@@ -43,24 +43,39 @@ function FlashViewer() {
   )
 
   const resetSession = useCallback(
-    (clearSelection: boolean) => {
+    (clearSelection: boolean, keepEnded = false) => {
       setPlaying(false)
       setPaused(false)
       setQueue([])
       setIndex(0)
       setLastTouchedId(null)
+      if (!keepEnded) setEnded(false)
       if (clearSelection) dispatch(setSelectedIds([]))
       if (typeof window !== "undefined" && window.speechSynthesis) window.speechSynthesis.cancel()
     },
     [dispatch]
   )
+  
+  const goRelative = (delta: number) => {
+    if (!queue.length) return
+    setPaused(true)
+    setEnded(false)
+    setIndex((i) => Math.max(0, Math.min(queue.length - 1, i + delta)))
+    setLastTouchedId(null)
+  }
 
   useEffect(() => {
     if (!playing || paused || queue.length === 0) return
     const isLast = index >= queue.length - 1
     const id = window.setTimeout(() => {
       if (isLast) {
-        resetSession(true)
+        setEnded(true)
+        const timer = window.setTimeout(() => {
+          resetSession(true, true)
+        }, 3000)
+        finishTimer.current = timer
+        setPlaying(false)
+        setPaused(false)
       } else {
         setIndex((i) => Math.min(queue.length - 1, i + 1))
       }
@@ -84,6 +99,8 @@ function FlashViewer() {
       setIndex(0)
       setPlaying(true)
       setPaused(false)
+      setEnded(false)
+      setLastRun({ ids, rounds: r })
       return true
     },
     [rounds, wordsById]
@@ -117,6 +134,16 @@ function FlashViewer() {
 
   const current = queue[index] || null
   const progress = queue.length ? `${index + 1} / ${queue.length}` : "—"
+  const [ended, setEnded] = useState(false)
+  const [lastRun, setLastRun] = useState<{ ids: string[]; rounds: number } | null>(null)
+  const finishTimer = useRef<number | null>(null)
+
+  useEffect(
+    () => () => {
+      if (finishTimer.current) window.clearTimeout(finishTimer.current)
+    },
+    []
+  )
 
   useEffect(() => {
     if (!playing || paused || !current) return
@@ -154,6 +181,24 @@ function FlashViewer() {
             Seleccionadas: {selectedWords.length}
           </span>
           <span className="rounded-full border border-ink-100 bg-ink-50 px-2.5 py-1">Progreso: {progress}</span>
+          {queue.length > 0 && (
+            <>
+              <button
+                onClick={() => goRelative(-1)}
+                className="rounded-lg border border-ink-200 bg-white px-2 py-1 text-[11px] font-semibold text-ink-800 hover:border-ink-300"
+                title="Anterior"
+              >
+                ←
+              </button>
+              <button
+                onClick={() => goRelative(1)}
+                className="rounded-lg border border-ink-200 bg-white px-2 py-1 text-[11px] font-semibold text-ink-800 hover:border-ink-300"
+                title="Siguiente"
+              >
+                →
+              </button>
+            </>
+          )}
           {queue.length > 0 && (
             <button
               onClick={() => setPaused((p) => !p)}
@@ -223,12 +268,6 @@ function FlashViewer() {
             </div>
           </div>
         </div>
-        <div className="rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm text-ink-700 shadow-inner">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="font-semibold text-ink-800">Pronunciar</span>
-            <span className="text-xs text-ink-500">(configura en “Configuración aleatoria”)</span>
-          </div>
-        </div>
       </div>
 
       <div className="mt-4 rounded-2xl border border-ink-100 bg-gradient-to-b from-white to-ink-50 px-6 py-8 text-center shadow-inner">
@@ -252,6 +291,21 @@ function FlashViewer() {
         ) : (
           <div className="text-sm text-ink-600">
             Usa el modo “Visor rápido” en los botones de Practicar o selecciona palabras en la tabla para iniciar.
+          </div>
+        )}
+        {ended && lastRun && (
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+            <button
+              onClick={() => {
+                if (finishTimer.current) window.clearTimeout(finishTimer.current)
+                resetSession(false, false)
+                startWithIds(lastRun.ids, lastRun.rounds)
+              }}
+              className="rounded-lg bg-ink-900 px-4 py-2 text-sm font-semibold text-white shadow-soft hover:-translate-y-0.5 hover:shadow-lg"
+            >
+              Repetir
+            </button>
+            <span className="text-xs text-ink-500">Se detuvo al completar las rondas.</span>
           </div>
         )}
       </div>
