@@ -35,6 +35,7 @@ function FlashViewer() {
   const [playing, setPlaying] = useState(false)
   const [paused, setPaused] = useState(false)
   const [lastTouchedId, setLastTouchedId] = useState<string | null>(null)
+  const [waitingForSpeech, setWaitingForSpeech] = useState(false)
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([])
 
   const wordsById = useMemo(() => new Map(words.map((w) => [w.id, w])), [words])
@@ -50,6 +51,7 @@ function FlashViewer() {
       setQueue([])
       setIndex(0)
       setLastTouchedId(null)
+      setWaitingForSpeech(false)
       if (!keepEnded) setEnded(false)
       if (clearSelection) dispatch(setSelectedIds([]))
       if (typeof window !== "undefined" && window.speechSynthesis) window.speechSynthesis.cancel()
@@ -61,12 +63,15 @@ function FlashViewer() {
     if (!queue.length) return
     setPaused(true)
     setEnded(false)
+    if (typeof window !== "undefined" && window.speechSynthesis) window.speechSynthesis.cancel()
+    setWaitingForSpeech(false)
     setIndex((i) => Math.max(0, Math.min(queue.length - 1, i + delta)))
     setLastTouchedId(null)
   }
 
   useEffect(() => {
     if (!playing || paused || queue.length === 0) return
+    if (waitingForSpeech) return
     const isLast = index >= queue.length - 1
     const id = window.setTimeout(() => {
       if (isLast) {
@@ -82,7 +87,7 @@ function FlashViewer() {
       }
     }, intervalMs)
     return () => window.clearTimeout(id)
-  }, [playing, paused, queue.length, index, intervalMs, resetSession])
+  }, [playing, paused, queue.length, index, intervalMs, resetSession, waitingForSpeech])
 
   useEffect(() => {
     if (queue.length === 0) setIndex(0)
@@ -96,6 +101,7 @@ function FlashViewer() {
         .map((id) => wordsById.get(id))
         .filter((w): w is Word => Boolean(w))
       if (!list.length) return false
+      setWaitingForSpeech(false)
       setQueue(list)
       setIndex(0)
       setPlaying(true)
@@ -152,7 +158,11 @@ function FlashViewer() {
     dispatch(touchLastPracticed(current.id))
     setLastTouchedId(current.id)
     if (speakEnabled && typeof window !== "undefined" && window.speechSynthesis) {
-      const utter = new SpeechSynthesisUtterance(current.term)
+      const includeNotes = showModes.has("notes") && Boolean(current.notes?.trim())
+      setWaitingForSpeech(includeNotes)
+      const parts = [current.term.trim()]
+      if (includeNotes && current.notes) parts.push(current.notes.trim())
+      const utter = new SpeechSynthesisUtterance(parts.filter(Boolean).join(". "))
       const voice =
         voices.find((v) => v.voiceURI === voiceIdSetting || v.name === voiceIdSetting) ||
         voices.find((v) =>
@@ -163,8 +173,13 @@ function FlashViewer() {
         voices[0]
       if (voice) utter.voice = voice
       utter.rate = Math.min(2, Math.max(0.5, voiceRateSetting || 1))
+      if (includeNotes) setWaitingForSpeech(true)
+      utter.onend = () => setWaitingForSpeech(false)
+      utter.onerror = () => setWaitingForSpeech(false)
       window.speechSynthesis.cancel()
       window.speechSynthesis.speak(utter)
+    } else {
+      setWaitingForSpeech(false)
     }
   }, [
     playing,
@@ -177,6 +192,8 @@ function FlashViewer() {
     voiceLangSetting,
     voices,
     voiceRateSetting,
+    showModes,
+    setWaitingForSpeech,
   ])
 
   return (
