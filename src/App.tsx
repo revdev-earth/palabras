@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import AddWordForm from "./components/AddWordForm"
 import ControlsPanel from "./components/ControlsPanel"
 import PracticeSection from "./components/PracticeSection"
+import SelectionSpeaker from "./components/SelectionSpeaker"
 import StatsHeader from "./components/StatsHeader"
 import WordsTable from "./components/WordsTable"
 import { useDispatch, useSelector } from "./hooks"
@@ -53,6 +54,8 @@ function App() {
           {summary}
         </section>
       )}
+
+      <SelectionSpeaker />
     </div>
   )
 }

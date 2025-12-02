@@ -17,6 +17,7 @@ export const defaultSettings: Settings = {
   practiceSpeakEnabled: false,
   practiceVoiceId: "",
   practiceVoiceLang: "",
+  practiceVoiceRate: 0.95,
 }
 
 export const safeParse = <T>(raw: string | null, fallback: T): T => {

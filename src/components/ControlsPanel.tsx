@@ -29,6 +29,7 @@ function ControlsPanel() {
   const practiceSpeakEnabled = settings.practiceSpeakEnabled
   const practiceVoiceId = settings.practiceVoiceId
   const practiceVoiceLang = settings.practiceVoiceLang
+  const practiceVoiceRate = settings.practiceVoiceRate || 0.95
   const words = useSelector((s) => s.app.words)
   const selectedIds = useSelector((s) => s.app.selectedIds)
   const importRef = useRef<HTMLInputElement | null>(null)
@@ -435,6 +436,28 @@ function ControlsPanel() {
             ) : (
               <span className="text-xs text-ink-500">No se encontraron voces en este navegador.</span>
             )}
+          </div>
+          <div className="lg:col-span-2 flex flex-wrap items-center gap-3 text-sm">
+            <span className="font-semibold text-ink-800">Velocidad de voz:</span>
+            <input
+              type="range"
+              min={0.5}
+              max={1.5}
+              step={0.05}
+              value={practiceVoiceRate}
+              onChange={(e) =>
+                dispatch(
+                  setSettings({
+                    practiceVoiceRate: Math.min(1.5, Math.max(0.5, Number(e.target.value) || 1)),
+                  })
+                )
+              }
+              className="accent-ink-900"
+            />
+            <span className="rounded-full border border-ink-100 bg-white px-3 py-1 text-xs font-semibold text-ink-800 shadow-inner">
+              {practiceVoiceRate.toFixed(2)}x
+            </span>
+            <span className="text-xs text-ink-600">Úsalo si la voz suena muy lenta o muy rápida.</span>
           </div>
         </div>
       </div>

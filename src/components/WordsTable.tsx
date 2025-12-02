@@ -50,6 +50,7 @@ function WordsTable() {
   const speakEnabled = useSelector((s) => s.app.settings.practiceSpeakEnabled)
   const speakVoiceId = useSelector((s) => s.app.settings.practiceVoiceId)
   const speakVoiceLang = useSelector((s) => s.app.settings.practiceVoiceLang)
+  const speakVoiceRate = useSelector((s) => s.app.settings.practiceVoiceRate)
   const currentPracticeSelection = useSelector((s) => s.app.currentPracticeSelection)
   const filteredWords = useMemo(
     () => filterAndSortWords(words, search, sortBy, searchField),
@@ -70,7 +71,7 @@ function WordsTable() {
       voices.find((v) => v.lang?.toLowerCase().startsWith("es")) ||
       voices[0]
     if (voice) u.voice = voice
-    u.rate = 0.9
+    u.rate = Math.min(2, Math.max(0.5, speakVoiceRate || 1))
     window.speechSynthesis.cancel()
     window.speechSynthesis.speak(u)
   }

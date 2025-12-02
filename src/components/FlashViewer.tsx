@@ -28,6 +28,7 @@ function FlashViewer() {
   const speakEnabled = useSelector((s) => s.app.settings.practiceSpeakEnabled)
   const voiceIdSetting = useSelector((s) => s.app.settings.practiceVoiceId)
   const voiceLangSetting = useSelector((s) => s.app.settings.practiceVoiceLang)
+  const voiceRateSetting = useSelector((s) => s.app.settings.practiceVoiceRate)
   const [showModes, setShowModes] = useState<Set<ShowKey>>(new Set(["term", "translation"]))
   const [queue, setQueue] = useState<Word[]>([])
   const [index, setIndex] = useState(0)
@@ -161,11 +162,22 @@ function FlashViewer() {
         voices.find((v) => v.lang?.toLowerCase().startsWith("en")) ||
         voices[0]
       if (voice) utter.voice = voice
-      utter.rate = 0.9
+      utter.rate = Math.min(2, Math.max(0.5, voiceRateSetting || 1))
       window.speechSynthesis.cancel()
       window.speechSynthesis.speak(utter)
     }
-  }, [playing, paused, current, dispatch, lastTouchedId, speakEnabled, voiceIdSetting, voices])
+  }, [
+    playing,
+    paused,
+    current,
+    dispatch,
+    lastTouchedId,
+    speakEnabled,
+    voiceIdSetting,
+    voiceLangSetting,
+    voices,
+    voiceRateSetting,
+  ])
 
   return (
     <section className="rounded-2xl border border-ink-100 bg-white/90 p-4 shadow-soft">

@@ -32,6 +32,7 @@ export type Settings = {
   practiceSpeakEnabled: boolean
   practiceVoiceId: string
   practiceVoiceLang: string
+  practiceVoiceRate: number
 }
 
 export type PracticeScoreBucket = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9+"
