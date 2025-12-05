@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { useDispatch, useSelector } from "+/hooks"
+import { useDispatch, useSelector, useSpeaker } from "+/hooks"
 import { buildQueue } from "+/utils"
 import { setSelectedIds, touchLastPracticed } from "+/store"
 import { Word } from "+/types"
@@ -25,10 +25,6 @@ function FlashViewer() {
   const selectedIds = useSelector((s) => s.app.selectedIds)
   const [intervalMs, setIntervalMs] = useState(2500)
   const rounds = useSelector((s) => s.app.settings.practiceRounds)
-  const speakEnabled = useSelector((s) => s.app.settings.practiceSpeakEnabled)
-  const voiceIdSetting = useSelector((s) => s.app.settings.practiceVoiceId)
-  const voiceLangSetting = useSelector((s) => s.app.settings.practiceVoiceLang)
-  const voiceRateSetting = useSelector((s) => s.app.settings.practiceVoiceRate)
   const [showModes, setShowModes] = useState<Set<ShowKey>>(new Set(["term", "translation"]))
   const [queue, setQueue] = useState<Word[]>([])
   const [index, setIndex] = useState(0)
@@ -36,7 +32,9 @@ function FlashViewer() {
   const [paused, setPaused] = useState(false)
   const [lastTouchedId, setLastTouchedId] = useState<string | null>(null)
   const [waitingForSpeech, setWaitingForSpeech] = useState(false)
-  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([])
+  const { speak, speakEnabled, stopSpeaking, isSpeaking } = useSpeaker()
+  const speakerBtnClass =
+    "rounded-full border border-ink-100 bg-ink-50 px-2 py-1 text-[11px] font-semibold text-ink-800 shadow-inner transition hover:-translate-y-0.5 hover:shadow-sm"
 
   const wordsById = useMemo(() => new Map(words.map((w) => [w.id, w])), [words])
   const selectedWords = useMemo(
@@ -54,16 +52,16 @@ function FlashViewer() {
       setWaitingForSpeech(false)
       if (!keepEnded) setEnded(false)
       if (clearSelection) dispatch(setSelectedIds([]))
-      if (typeof window !== "undefined" && window.speechSynthesis) window.speechSynthesis.cancel()
+      stopSpeaking()
     },
-    [dispatch]
+    [dispatch, stopSpeaking]
   )
-  
+
   const goRelative = (delta: number) => {
     if (!queue.length) return
     setPaused(true)
     setEnded(false)
-    if (typeof window !== "undefined" && window.speechSynthesis) window.speechSynthesis.cancel()
+    stopSpeaking()
     setWaitingForSpeech(false)
     setIndex((i) => Math.max(0, Math.min(queue.length - 1, i + delta)))
     setLastTouchedId(null)
@@ -113,18 +111,14 @@ function FlashViewer() {
     [rounds, wordsById]
   )
 
-  useEffect(() => {
-    if (typeof window === "undefined" || !window.speechSynthesis) return
-    const loadVoices = () => {
-      const list = window.speechSynthesis.getVoices()
-      if (list.length) {
-        setVoices(list)
-      }
+  const toggleSpeak = (text: string, opts?: { sentencePerLine?: boolean }) => {
+    if (isSpeaking) {
+      stopSpeaking()
+      setWaitingForSpeech(false)
+    } else {
+      speak(text, opts)
     }
-    loadVoices()
-    window.speechSynthesis.addEventListener("voiceschanged", loadVoices)
-    return () => window.speechSynthesis.removeEventListener("voiceschanged", loadVoices)
-  }, [])
+  }
 
   useEffect(() => {
     const handler = (ev: Event) => {
@@ -157,30 +151,25 @@ function FlashViewer() {
     if (current.id === lastTouchedId) return
     dispatch(touchLastPracticed(current.id))
     setLastTouchedId(current.id)
-    if (speakEnabled && typeof window !== "undefined" && window.speechSynthesis) {
-      const includeNotes = showModes.has("notes") && Boolean(current.notes?.trim())
-      setWaitingForSpeech(includeNotes)
-      const parts = [current.term.trim()]
-      if (includeNotes && current.notes) parts.push(current.notes.trim())
-      const utter = new SpeechSynthesisUtterance(parts.filter(Boolean).join(". "))
-      const voice =
-        voices.find((v) => v.voiceURI === voiceIdSetting || v.name === voiceIdSetting) ||
-        voices.find((v) =>
-          voiceLangSetting ? v.lang?.toLowerCase().startsWith(voiceLangSetting.toLowerCase()) : false
-        ) ||
-        voices.find((v) => v.lang?.toLowerCase().startsWith("es")) ||
-        voices.find((v) => v.lang?.toLowerCase().startsWith("en")) ||
-        voices[0]
-      if (voice) utter.voice = voice
-      utter.rate = Math.min(2, Math.max(0.5, voiceRateSetting || 1))
-      if (includeNotes) setWaitingForSpeech(true)
-      utter.onend = () => setWaitingForSpeech(false)
-      utter.onerror = () => setWaitingForSpeech(false)
-      window.speechSynthesis.cancel()
-      window.speechSynthesis.speak(utter)
-    } else {
+    if (!speakEnabled) {
       setWaitingForSpeech(false)
+      return
     }
+    const includeNotes = showModes.has("notes") && Boolean(current.notes?.trim())
+    const parts = [current.term.trim()]
+    if (includeNotes && current.notes) parts.push(current.notes)
+    const text = parts.filter(Boolean).join("\n")
+    if (!text) {
+      setWaitingForSpeech(false)
+      return
+    }
+    if (includeNotes) setWaitingForSpeech(true)
+    const spoke = speak(text, {
+      onEnd: () => setWaitingForSpeech(false),
+      onError: () => setWaitingForSpeech(false),
+      sentencePerLine: includeNotes,
+    })
+    if (!spoke) setWaitingForSpeech(false)
   }, [
     playing,
     paused,
@@ -188,12 +177,9 @@ function FlashViewer() {
     dispatch,
     lastTouchedId,
     speakEnabled,
-    voiceIdSetting,
-    voiceLangSetting,
-    voices,
-    voiceRateSetting,
     showModes,
     setWaitingForSpeech,
+    speak,
   ])
 
   return (
@@ -303,14 +289,32 @@ function FlashViewer() {
         {current ? (
           <>
             {showModes.has("term") && (
-              <div className="text-2xl font-bold text-ink-900">{current.term}</div>
+              <div className="flex items-center justify-center gap-2 text-2xl font-bold text-ink-900">
+                <button
+                  type="button"
+                  onClick={() => toggleSpeak(current.term)}
+                  className={speakerBtnClass}
+                  title={isSpeaking ? "Detener audio" : "Pronunciar palabra"}
+                >
+                  {isSpeaking ? "⏹️" : "🔊"}
+                </button>
+                <span>{current.term}</span>
+              </div>
             )}
             {showModes.has("translation") && (
               <div className="mt-2 text-xl font-semibold text-ink-800">{current.translation}</div>
             )}
             {showModes.has("notes") && current.notes && (
-              <div className="mt-3 text-sm text-ink-700 opacity-80 line-clamp-3">
-                {current.notes}
+              <div className="mt-3 flex items-start justify-center gap-2 text-sm text-ink-700 opacity-80">
+                <button
+                  type="button"
+                  onClick={() => toggleSpeak(current.notes || "")}
+                  className={`${speakerBtnClass} mt-0.5`}
+                  title={isSpeaking ? "Detener audio" : "Pronunciar notas"}
+                >
+                  {isSpeaking ? "⏹️" : "🔊"}
+                </button>
+                <div className="line-clamp-3">{current.notes}</div>
               </div>
             )}
             {showModes.has("notes") && !current.notes && (

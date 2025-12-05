@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "+/hooks"
+import { useDispatch, useSelector, useSpeaker } from "+/hooks"
 import { exitPractice, markPractice, setAlwaysShow, toggleReveal } from "+/store"
 
 const badge = (label: string) => (
@@ -19,12 +19,19 @@ function PracticeSection() {
   const reveal = useSelector((s) => s.app.reveal)
   const summary = useSelector((s) => s.app.summary)
   const practiceRounds = useSelector((s) => s.app.settings.practiceRounds)
+  const { speak, isSpeaking, stopSpeaking } = useSpeaker()
+  const speakerBtnClass =
+    "rounded-full border border-ink-100 bg-ink-50 px-2 py-1 text-[11px] font-semibold text-ink-800 shadow-inner transition hover:-translate-y-0.5 hover:shadow-sm"
 
   const practiceWord = practiceQueue.length
     ? words.find((w) => w.id === practiceQueue[practiceIndex]) || null
     : null
 
   const practiceActive = practiceQueue.length > 0 && !!practiceWord
+  const toggleSpeak = (text: string, opts?: { sentencePerLine?: boolean }) => {
+    if (isSpeaking) stopSpeaking()
+    else speak(text, opts)
+  }
 
   if (!practiceActive || !practiceWord) return null
 
@@ -78,15 +85,39 @@ function PracticeSection() {
           if (!alwaysShow) dispatch(toggleReveal())
         }}
       >
-        <div className="text-2xl font-bold text-ink-900">{practiceWord.term}</div>
+        <div className="flex items-center justify-center gap-2 text-2xl font-bold text-ink-900">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              toggleSpeak(practiceWord.term)
+            }}
+            className={speakerBtnClass}
+            title={isSpeaking ? "Detener audio" : "Pronunciar palabra"}
+          >
+            {isSpeaking ? "⏹️" : "🔊"}
+          </button>
+          <span>{practiceWord.term}</span>
+        </div>
         {(reveal || alwaysShow) && (
           <>
             <div className="mt-3 text-xl font-semibold text-ink-800">
               {practiceWord.translation}
             </div>
             {practiceWord.notes && (
-              <div className="mt-2 whitespace-pre-wrap text-sm text-ink-700">
-                {practiceWord.notes}
+              <div className="mt-2 flex items-start justify-center gap-2 text-sm text-ink-700">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    toggleSpeak(practiceWord.notes || "", { sentencePerLine: true })
+                  }}
+                  className={`${speakerBtnClass} mt-0.5`}
+                  title={isSpeaking ? "Detener audio" : "Pronunciar notas"}
+                >
+                  {isSpeaking ? "⏹️" : "🔊"}
+                </button>
+                <div className="whitespace-pre-wrap text-left">{practiceWord.notes}</div>
               </div>
             )}
           </>

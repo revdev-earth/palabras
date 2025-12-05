@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react"
-import { useDispatch, useSelector } from "+/hooks"
+import { useEffect, useMemo, useRef, useState } from "react"
+import { useDispatch, useSelector, useSpeaker } from "+/hooks"
 import {
   applyScore,
   deleteWord,
@@ -47,11 +47,8 @@ function WordsTable() {
   const search = useSelector((s) => s.app.search)
   const searchField = useSelector((s) => s.app.searchField)
   const sortBy = useSelector((s) => s.app.settings.sortBy)
-  const speakEnabled = useSelector((s) => s.app.settings.practiceSpeakEnabled)
-  const speakVoiceId = useSelector((s) => s.app.settings.practiceVoiceId)
-  const speakVoiceLang = useSelector((s) => s.app.settings.practiceVoiceLang)
-  const speakVoiceRate = useSelector((s) => s.app.settings.practiceVoiceRate)
   const currentPracticeSelection = useSelector((s) => s.app.currentPracticeSelection)
+  const { speak, isSpeaking, stopSpeaking } = useSpeaker()
   const filteredWords = useMemo(
     () => filterAndSortWords(words, search, sortBy, searchField),
     [words, search, sortBy, searchField]
@@ -60,37 +57,12 @@ function WordsTable() {
   const [expandedNotes, setExpandedNotes] = useState<Set<string>>(new Set())
   const [editingId, setEditingId] = useState<string | null>(null)
   const [editDraft, setEditDraft] = useState({ term: "", translation: "", notes: "" })
-  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([])
-
-  const speak = (text: string) => {
-    if (!speakEnabled || typeof window === "undefined" || !window.speechSynthesis) return
-    const u = new SpeechSynthesisUtterance(text)
-    const voice =
-      voices.find((v) => v.voiceURI === speakVoiceId || v.name === speakVoiceId) ||
-      voices.find((v) => v.lang?.toLowerCase().startsWith(speakVoiceLang || "es")) ||
-      voices.find((v) => v.lang?.toLowerCase().startsWith("es")) ||
-      voices[0]
-    if (voice) u.voice = voice
-    u.rate = Math.min(2, Math.max(0.5, speakVoiceRate || 1))
-    window.speechSynthesis.cancel()
-    window.speechSynthesis.speak(u)
-  }
+  const notesRef = useRef<HTMLTextAreaElement | null>(null)
 
   const selectAllChecked =
     filteredWords.length > 0 && filteredWords.every((w) => selectedSet.has(w.id))
 
   const defaultSort = defaultSettings.sortBy
-
-  useEffect(() => {
-    if (typeof window === "undefined" || !window.speechSynthesis) return
-    const loadVoices = () => {
-      const list = window.speechSynthesis.getVoices()
-      if (list.length) setVoices(list)
-    }
-    loadVoices()
-    window.speechSynthesis.addEventListener("voiceschanged", loadVoices)
-    return () => window.speechSynthesis.removeEventListener("voiceschanged", loadVoices)
-  }, [])
 
   const toggleExpandNotes = (id: string) => {
     setExpandedNotes((prev) => {
@@ -100,6 +72,16 @@ function WordsTable() {
       return next
     })
   }
+
+  const autoSizeNotes = (el: HTMLTextAreaElement | null) => {
+    if (!el) return
+    el.style.height = "auto"
+    el.style.height = `${el.scrollHeight}px`
+  }
+
+  useEffect(() => {
+    autoSizeNotes(notesRef.current)
+  }, [editDraft.notes, editingId])
 
   const onScore = (id: string, delta: number) => {
     if (editingId && editingId !== id) {
@@ -152,6 +134,11 @@ function WordsTable() {
     const next = new Set(selectedIds)
     filteredWords.forEach((w) => next.add(w.id))
     dispatch(setSelectedIds(Array.from(next)))
+  }
+
+  const toggleSpeak = (text: string, opts?: { sentencePerLine?: boolean }) => {
+    if (isSpeaking) stopSpeaking()
+    else speak(text, opts)
   }
 
   const renderHeaderButton = (label: string, asc: SortBy, desc: SortBy) => {
@@ -256,11 +243,11 @@ function WordsTable() {
                   <div className="flex items-center gap-2">
                     <button
                       type="button"
-                      onClick={() => speak(w.term)}
+                      onClick={() => toggleSpeak(w.term)}
                       className="rounded-full border border-ink-100 bg-ink-50 px-2 py-1 text-[11px] font-semibold text-ink-800 shadow-inner transition hover:-translate-y-0.5 hover:shadow-sm"
-                      title="Pronunciar palabra"
+                      title={isSpeaking ? "Detener audio" : "Pronunciar palabra"}
                     >
-                      🔊
+                      {isSpeaking ? "⏹️" : "🔊"}
                     </button>
                     <span className="break-words font-semibold text-ink-900">{w.term}</span>
                     {currentPracticeSelection.some((x) => x.id === w.id) && (
@@ -291,28 +278,40 @@ function WordsTable() {
                   <textarea
                     value={editDraft.notes}
                     onChange={(e) => setEditDraft((d) => ({ ...d, notes: e.target.value }))}
+                    onInput={(e) => autoSizeNotes(e.currentTarget)}
+                    ref={notesRef}
                     rows={3}
                     className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
                   />
                 ) : w.notes ? (
-                  <button
-                    type="button"
-                    onClick={() => toggleExpandNotes(w.id)}
-                    className="group w-full text-left text-ink-700"
-                  >
-                    <div
-                      className={
-                        expanded
-                          ? "whitespace-pre-wrap break-words"
-                          : "note-clamp whitespace-pre-wrap break-words"
-                      }
+                  <div className="flex items-start gap-2">
+                    <button
+                      type="button"
+                      onClick={() => toggleSpeak(w.notes || "", { sentencePerLine: true })}
+                      className="mt-0.5 rounded-full border border-ink-100 bg-ink-50 px-2 py-1 text-[11px] font-semibold text-ink-800 shadow-inner transition hover:-translate-y-0.5 hover:shadow-sm"
+                      title={isSpeaking ? "Detener audio" : "Pronunciar notas"}
                     >
-                      {w.notes}
-                    </div>
-                    <span className="text-[11px] text-ink-500 group-hover:text-ink-700">
-                      {expanded ? "Ocultar" : "Ver más"}
-                    </span>
-                  </button>
+                      {isSpeaking ? "⏹️" : "🔊"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => toggleExpandNotes(w.id)}
+                      className="group w-full text-left text-ink-700"
+                    >
+                      <div
+                        className={
+                          expanded
+                            ? "whitespace-pre-wrap break-words"
+                            : "note-clamp whitespace-pre-wrap break-words"
+                        }
+                      >
+                        {w.notes}
+                      </div>
+                      <span className="text-[11px] text-ink-500 group-hover:text-ink-700">
+                        {expanded ? "Ocultar" : "Ver más"}
+                      </span>
+                    </button>
+                  </div>
                 ) : (
                   <span className="text-ink-400">—</span>
                 )}

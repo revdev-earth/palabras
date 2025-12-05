@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react"
-import { useSelector } from "+/hooks"
+import { useEffect, useState } from "react"
+import { useSpeaker } from "+/hooks"
 
 type SelectionInfo = {
   text: string
@@ -9,23 +9,8 @@ type SelectionInfo = {
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value))
 
 function SelectionSpeaker() {
-  const speakEnabled = useSelector((s) => s.app.settings.practiceSpeakEnabled)
-  const voiceId = useSelector((s) => s.app.settings.practiceVoiceId)
-  const voiceLang = useSelector((s) => s.app.settings.practiceVoiceLang)
-  const voiceRate = useSelector((s) => s.app.settings.practiceVoiceRate)
-  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([])
+  const { speak, speakEnabled, isSpeaking, stopSpeaking } = useSpeaker()
   const [selection, setSelection] = useState<SelectionInfo | null>(null)
-
-  useEffect(() => {
-    if (typeof window === "undefined" || !window.speechSynthesis) return
-    const loadVoices = () => {
-      const list = window.speechSynthesis.getVoices()
-      if (list.length) setVoices(list)
-    }
-    loadVoices()
-    window.speechSynthesis.addEventListener("voiceschanged", loadVoices)
-    return () => window.speechSynthesis.removeEventListener("voiceschanged", loadVoices)
-  }, [])
 
   useEffect(() => {
     if (typeof window === "undefined") return
@@ -74,34 +59,22 @@ function SelectionSpeaker() {
     }
   }, [])
 
-  const preferredVoice = useMemo(() => {
-    if (!voices.length) return null
-    return (
-      voices.find((v) => v.voiceURI === voiceId || v.name === voiceId) ||
-      voices.find((v) =>
-        voiceLang ? v.lang?.toLowerCase().startsWith(voiceLang.toLowerCase()) : false
-      ) ||
-      voices.find((v) => v.lang?.toLowerCase().startsWith("es")) ||
-      voices[0]
-    )
-  }, [voiceId, voiceLang, voices])
-
   const speakSelection = () => {
     if (!selection) return
     const text = selection.text.trim()
     if (!text) return
     if (typeof window === "undefined" || !window.speechSynthesis) return
+    if (isSpeaking) {
+      stopSpeaking()
+      return
+    }
     if (!speakEnabled) {
       window.alert(
         "Activa “Habilitar pronunciación” en Configuración de reproducción para escuchar el texto seleccionado."
       )
       return
     }
-    const utter = new SpeechSynthesisUtterance(text)
-    if (preferredVoice) utter.voice = preferredVoice
-    utter.rate = clamp(voiceRate || 1, 0.5, 2)
-    window.speechSynthesis.cancel()
-    window.speechSynthesis.speak(utter)
+    speak(text)
   }
 
   const rect = selection?.rect
@@ -117,9 +90,9 @@ function SelectionSpeaker() {
       onClick={speakSelection}
       className="fixed z-50 -translate-x-1/2 rounded-full border border-ink-100 bg-ink-900 px-3 py-2 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-ink-800"
       style={{ top, left }}
-      title="Reproducir texto seleccionado"
+      title={isSpeaking ? "Detener audio" : "Reproducir texto seleccionado"}
     >
-      🔊
+      {isSpeaking ? "⏹️" : "🔊"}
     </button>
   )
 }

@@ -4,6 +4,7 @@ import {
   useSelector as useReduxSelector,
 } from "react-redux"
 import type { AppDispatch, RootState } from "+/store"
+export { useSpeaker } from "./useSpeaker"
 
 export const useDispatch = () => useReduxDispatch<AppDispatch>()
 export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector
