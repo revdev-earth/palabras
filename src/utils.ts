@@ -1,4 +1,4 @@
-import { SearchField, Settings, Word } from "./types"
+import { SearchField, Settings, Word } from "+/types"
 
 export const STORE_KEY = "vocab-tracker-v1"
 export const SETTINGS_KEY = "vocab-tracker-settings"

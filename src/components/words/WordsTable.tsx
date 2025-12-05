@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react"
-import { useDispatch, useSelector } from "../hooks"
+import { useDispatch, useSelector } from "+/hooks"
 import {
   applyScore,
   deleteWord,
@@ -9,9 +9,9 @@ import {
   setSettings,
   toggleSelect,
   updateWord,
-} from "../store"
-import { defaultSettings, effectiveScore, filterAndSortWords, formatDate } from "../utils"
-import { SearchField, SortBy, Word } from "../types"
+} from "+/store"
+import { defaultSettings, effectiveScore, filterAndSortWords, formatDate } from "+/utils"
+import { SearchField, SortBy, Word } from "+/types"
 
 const columns = {
   desktopGrid:

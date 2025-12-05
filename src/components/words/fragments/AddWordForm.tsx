@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
-import { useDispatch } from "../hooks"
-import { addWord } from "../store"
-import { genId } from "../utils"
+import { useDispatch } from "+/hooks"
+import { addWord } from "+/store"
+import { genId } from "+/utils"
 
 function AddWordForm() {
   const dispatch = useDispatch()

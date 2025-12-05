@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react"
-import { useSelector } from "../hooks"
+import { useSelector } from "+/hooks"
 
 type SelectionInfo = {
   text: string

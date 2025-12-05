@@ -1,13 +1,6 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { PracticeStats, SearchField, Settings, Word } from "./types"
-import {
-  SETTINGS_KEY,
-  STORE_KEY,
-  buildQueue,
-  defaultSettings,
-  nowISO,
-  safeParse,
-} from "./utils"
+import { PracticeStats, SearchField, Settings, Word } from "+/types"
+import { SETTINGS_KEY, STORE_KEY, buildQueue, defaultSettings, nowISO, safeParse } from "+/utils"
 
 export type AppSliceState = {
   words: Word[]

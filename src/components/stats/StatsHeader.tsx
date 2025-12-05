@@ -1,5 +1,5 @@
-import { useSelector } from "../hooks"
-import { effectiveScore } from "../utils"
+import { useSelector } from "+/hooks"
+import { effectiveScore } from "+/utils"
 
 const badge = (label: string) => (
   <span className="rounded-full border border-ink-200 bg-white/70 px-3 py-1 text-xs text-ink-700 shadow-sm">

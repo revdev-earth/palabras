@@ -1,13 +1,13 @@
 import { useEffect } from "react"
-import AddWordForm from "./components/AddWordForm"
-import ControlsPanel from "./components/ControlsPanel"
-import PracticeSection from "./components/PracticeSection"
-import SelectionSpeaker from "./components/SelectionSpeaker"
-import StatsHeader from "./components/StatsHeader"
-import WordsTable from "./components/WordsTable"
-import { useDispatch, useSelector } from "./hooks"
-import { setSettings as setSettingsAction } from "./store"
-import { STORE_KEY, SETTINGS_KEY, todayKey } from "./utils"
+import ControlsPanel from "+/components/controls/ControlsPanel"
+import PracticeSection from "+/components/practice/PracticeSection"
+import SelectionSpeaker from "+/components/speech/SelectionSpeaker"
+import StatsHeader from "+/components/stats/StatsHeader"
+import AddWordForm from "+/components/words/fragments/AddWordForm"
+import WordsTable from "+/components/words/WordsTable"
+import { useDispatch, useSelector } from "+/hooks"
+import { setSettings as setSettingsAction } from "+/store"
+import { STORE_KEY, SETTINGS_KEY, todayKey } from "+/utils"
 
 function App() {
   const dispatch = useDispatch()

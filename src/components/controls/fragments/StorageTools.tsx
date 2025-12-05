@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react"
-import { useDispatch, useSelector } from "../hooks"
-import { setSelectedIds, setWordsAndSettings } from "../store"
-import { Settings, Word } from "../types"
-import { defaultSettings, genId, nowISO } from "../utils"
+import { useDispatch, useSelector } from "+/hooks"
+import { setSelectedIds, setWordsAndSettings } from "+/store"
+import { Settings, Word } from "+/types"
+import { defaultSettings, genId, nowISO } from "+/utils"
 
 type Status =
   | { kind: "idle"; text: string }

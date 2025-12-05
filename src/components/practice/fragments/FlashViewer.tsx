@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { useDispatch, useSelector } from "../hooks"
-import { buildQueue } from "../utils"
-import { setSelectedIds, touchLastPracticed } from "../store"
-import { Word } from "../types"
+import { useDispatch, useSelector } from "+/hooks"
+import { buildQueue } from "+/utils"
+import { setSelectedIds, touchLastPracticed } from "+/store"
+import { Word } from "+/types"
 
 const speedOptions = [
   { label: "0.5 s", value: 500 },

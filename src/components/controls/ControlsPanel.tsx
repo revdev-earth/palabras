@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react"
-import { useDispatch, useSelector } from "../hooks"
-import { setSelectedIds, setSettings, setWordsAndSettings, startPractice, wipeAll } from "../store"
-import { daysBetween, effectiveScore, filterAndSortWords, shuffle } from "../utils"
-import { PracticeScoreBucket, Word } from "../types"
-import StorageTools from "./StorageTools"
-import FlashViewer from "./FlashViewer"
+import { useDispatch, useSelector } from "+/hooks"
+import { setSelectedIds, setSettings, setWordsAndSettings, startPractice, wipeAll } from "+/store"
+import { daysBetween, effectiveScore, filterAndSortWords, shuffle } from "+/utils"
+import { PracticeScoreBucket, Word } from "+/types"
+import StorageTools from "+/components/controls/fragments/StorageTools"
+import FlashViewer from "+/components/practice/fragments/FlashViewer"
 
 const dateOptions = [
   { key: "any", label: "Cualquiera" },
