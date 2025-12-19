@@ -1,4 +1,5 @@
-import { useSelector } from "+/hooks"
+import { useSelector } from "+/redux"
+
 import { effectiveScore } from "+/utils"
 
 const badge = (label: string) => (

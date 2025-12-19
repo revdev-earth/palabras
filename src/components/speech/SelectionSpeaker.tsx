@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { useSpeaker } from "+/hooks"
+
+import { useSpeaker } from "+/hooks/useSpeaker"
 
 type SelectionInfo = {
   text: string

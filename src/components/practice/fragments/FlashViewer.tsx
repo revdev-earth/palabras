@@ -1,7 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { useDispatch, useSelector, useSpeaker } from "+/hooks"
+
+import { useDispatch, useSelector } from "+/redux"
+
+import { useSpeaker } from "+/hooks/useSpeaker"
+
+import { setSelectedIds, touchLastPracticed } from "+/redux/slices/appSlice"
+
 import { buildQueue } from "+/utils"
-import { setSelectedIds, touchLastPracticed } from "+/store"
+
 import { Word } from "+/types"
 
 const speedOptions = [
@@ -188,14 +194,17 @@ function FlashViewer() {
         <div className="space-y-1">
           <h3 className="text-base font-semibold text-ink-900">Visor rápido (auto-play)</h3>
           <p className="text-xs text-ink-600">
-            Cicla las palabras seleccionadas a la velocidad elegida. Útil para repasos rápidos sin marcar aciertos.
+            Cicla las palabras seleccionadas a la velocidad elegida. Útil para repasos rápidos sin
+            marcar aciertos.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2 text-xs text-ink-700">
           <span className="rounded-full border border-ink-100 bg-ink-50 px-2.5 py-1">
             Seleccionadas: {selectedWords.length}
           </span>
-          <span className="rounded-full border border-ink-100 bg-ink-50 px-2.5 py-1">Progreso: {progress}</span>
+          <span className="rounded-full border border-ink-100 bg-ink-50 px-2.5 py-1">
+            Progreso: {progress}
+          </span>
           {queue.length > 0 && (
             <>
               <button
@@ -252,7 +261,7 @@ function FlashViewer() {
             ))}
           </select>
         </label>
-        <div className="sm:col-span-2 lg:col-span-2 rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm text-ink-700 shadow-inner">
+        <div className="rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm text-ink-700 shadow-inner sm:col-span-2 lg:col-span-2">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-sm font-semibold text-ink-800">Mostrar:</span>
             <div className="flex flex-wrap gap-1 rounded-full bg-ink-50 p-1">
@@ -323,7 +332,8 @@ function FlashViewer() {
           </>
         ) : (
           <div className="text-sm text-ink-600">
-            Usa el modo “Visor rápido” en los botones de Practicar o selecciona palabras en la tabla para iniciar.
+            Usa el modo “Visor rápido” en los botones de Practicar o selecciona palabras en la tabla
+            para iniciar.
           </div>
         )}
         {ended && lastRun && (

@@ -1,6 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from "react"
-import { useDispatch, useSelector } from "+/hooks"
-import { setSelectedIds, setSettings, setWordsAndSettings, startPractice, wipeAll } from "+/store"
+
+import { useDispatch, useSelector } from "+/redux"
+
+import {
+  setSelectedIds,
+  setSettings,
+  setWordsAndSettings,
+  startPractice,
+  wipeAll,
+} from "+/redux/slices/appSlice"
 import { daysBetween, effectiveScore, filterAndSortWords, shuffle } from "+/utils"
 import { PracticeScoreBucket, Word } from "+/types"
 import StorageTools from "+/components/controls/fragments/StorageTools"
@@ -73,13 +81,15 @@ function ControlsPanel() {
           )
         )
         setVoiceLangOptions(langs)
-        if (!practiceVoiceLang && langs.length) dispatch(setSettings({ practiceVoiceLang: langs[0] }))
+        if (!practiceVoiceLang && langs.length)
+          dispatch(setSettings({ practiceVoiceLang: langs[0] }))
         if (!practiceVoiceId) {
           const preferred =
             list.find((v) => v.lang?.toLowerCase().startsWith(practiceVoiceLang || "es")) ||
             list.find((v) => v.lang?.toLowerCase().startsWith("es")) ||
             list[0]
-          if (preferred) dispatch(setSettings({ practiceVoiceId: preferred.voiceURI || preferred.name }))
+          if (preferred)
+            dispatch(setSettings({ practiceVoiceId: preferred.voiceURI || preferred.name }))
         }
       }
     }
@@ -184,15 +194,15 @@ function ControlsPanel() {
 
   const importData = async (file: File) => {
     try {
-    const text = await file.text()
-    const obj = JSON.parse(text)
-    if (!obj || !Array.isArray(obj.words)) throw new Error("Formato inválido")
-    dispatch(
-      setWordsAndSettings({
-        words: obj.words,
-        settings: { ...settings, ...(obj.settings || {}) },
-      })
-    )
+      const text = await file.text()
+      const obj = JSON.parse(text)
+      if (!obj || !Array.isArray(obj.words)) throw new Error("Formato inválido")
+      dispatch(
+        setWordsAndSettings({
+          words: obj.words,
+          settings: { ...settings, ...(obj.settings || {}) },
+        })
+      )
       dispatch(setSelectedIds([]))
       window.alert("Importación completa")
     } catch (err) {
@@ -378,7 +388,9 @@ function ControlsPanel() {
       <div className="mt-4 rounded-2xl border border-ink-100 bg-ink-50/60 p-4 shadow-inner">
         <div className="flex items-center gap-2 text-sm font-semibold text-ink-900">
           Configuración de reproducción (voz)
-          <span className="text-xs font-normal text-ink-600">(aplica al visor y al botón 🔊 de la tabla)</span>
+          <span className="text-xs font-normal text-ink-600">
+            (aplica al visor y al botón 🔊 de la tabla)
+          </span>
         </div>
         <div className="mt-3 grid gap-3 lg:grid-cols-[1fr,1fr]">
           <label className="flex items-center gap-2 text-sm">
@@ -401,7 +413,8 @@ function ControlsPanel() {
                     voices.find((v) => v.lang?.toLowerCase().startsWith(lang)) ||
                     voices.find((v) => v.lang?.toLowerCase().startsWith("es")) ||
                     voices[0]
-                  if (candidate) dispatch(setSettings({ practiceVoiceId: candidate.voiceURI || candidate.name }))
+                  if (candidate)
+                    dispatch(setSettings({ practiceVoiceId: candidate.voiceURI || candidate.name }))
                 }}
                 className="rounded-md border border-ink-100 bg-white px-2 py-1 text-sm focus:border-ink-400 focus:outline-none"
               >
@@ -415,7 +428,7 @@ function ControlsPanel() {
               <span className="text-xs text-ink-500">No hay voces en es/en/de disponibles.</span>
             )}
           </div>
-          <div className="lg:col-span-2 flex flex-wrap items-center gap-2 text-sm">
+          <div className="flex flex-wrap items-center gap-2 text-sm lg:col-span-2">
             <span className="font-semibold text-ink-800">Voz:</span>
             {practiceSpeakEnabled && voices.length > 0 ? (
               <select
@@ -434,10 +447,12 @@ function ControlsPanel() {
                   ))}
               </select>
             ) : (
-              <span className="text-xs text-ink-500">No se encontraron voces en este navegador.</span>
+              <span className="text-xs text-ink-500">
+                No se encontraron voces en este navegador.
+              </span>
             )}
           </div>
-          <div className="lg:col-span-2 flex flex-wrap items-center gap-3 text-sm">
+          <div className="flex flex-wrap items-center gap-3 text-sm lg:col-span-2">
             <span className="font-semibold text-ink-800">Velocidad de voz:</span>
             <input
               type="range"
@@ -457,7 +472,9 @@ function ControlsPanel() {
             <span className="rounded-full border border-ink-100 bg-white px-3 py-1 text-xs font-semibold text-ink-800 shadow-inner">
               {practiceVoiceRate.toFixed(2)}x
             </span>
-            <span className="text-xs text-ink-600">Úsalo si la voz suena muy lenta o muy rápida.</span>
+            <span className="text-xs text-ink-600">
+              Úsalo si la voz suena muy lenta o muy rápida.
+            </span>
           </div>
         </div>
       </div>
@@ -473,15 +490,15 @@ function ControlsPanel() {
             type="button"
             onClick={() => setPracticeMode(opt.key as "interactive" | "flash")}
             className={`rounded-full px-3 py-1 text-sm font-semibold transition ${
-              practiceMode === opt.key ? "bg-ink-900 text-white shadow-soft" : "text-ink-800 hover:bg-white"
+              practiceMode === opt.key
+                ? "bg-ink-900 text-white shadow-soft"
+                : "text-ink-800 hover:bg-white"
             }`}
           >
             {opt.label}
           </button>
         ))}
-        <span className="text-xs text-ink-600">
-          El modo aplica a los botones de “Practicar”.
-        </span>
+        <span className="text-xs text-ink-600">El modo aplica a los botones de “Practicar”.</span>
       </div>
 
       <div className="mt-4 grid gap-2 sm:grid-cols-3">

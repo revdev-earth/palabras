@@ -1,5 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react"
-import { useDispatch, useSelector, useSpeaker } from "+/hooks"
+
+import { useDispatch, useSelector } from "+/redux"
+
+import { useSpeaker } from "+/hooks/useSpeaker"
+
 import {
   applyScore,
   deleteWord,
@@ -9,8 +13,10 @@ import {
   setSettings,
   toggleSelect,
   updateWord,
-} from "+/store"
+} from "+/redux/slices/appSlice"
+
 import { defaultSettings, effectiveScore, filterAndSortWords, formatDate } from "+/utils"
+
 import { SearchField, SortBy, Word } from "+/types"
 
 const columns = {
@@ -170,7 +176,9 @@ function WordsTable() {
               <input
                 value={search}
                 onChange={(e) => dispatch(setSearch(e.target.value))}
-                placeholder={searchField === "term" ? "Filtrar por palabra..." : "Filtrar por traducción..."}
+                placeholder={
+                  searchField === "term" ? "Filtrar por palabra..." : "Filtrar por traducción..."
+                }
                 className="w-full flex-1 bg-transparent text-sm text-ink-900 outline-none"
               />
             </div>

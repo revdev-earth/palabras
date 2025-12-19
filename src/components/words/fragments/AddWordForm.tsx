@@ -1,6 +1,9 @@
 import { useRef, useState } from "react"
-import { useDispatch } from "+/hooks"
-import { addWord } from "+/store"
+
+import { useDispatch } from "+/redux"
+
+import { addWord } from "+/redux/slices/appSlice"
+
 import { genId } from "+/utils"
 
 function AddWordForm() {

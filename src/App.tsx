@@ -6,7 +6,7 @@ import StatsHeader from "+/components/stats/StatsHeader"
 import AddWordForm from "+/components/words/fragments/AddWordForm"
 import WordsTable from "+/components/words/WordsTable"
 import { useDispatch, useSelector } from "+/hooks"
-import { setSettings as setSettingsAction } from "+/store"
+import { setSettings as setSettingsAction } from "+/redux/slices/appSlice"
 import { STORE_KEY, SETTINGS_KEY, todayKey } from "+/utils"
 
 function App() {

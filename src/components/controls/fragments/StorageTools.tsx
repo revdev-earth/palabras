@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState } from "react"
-import { useDispatch, useSelector } from "+/hooks"
-import { setSelectedIds, setWordsAndSettings } from "+/store"
+
+import { useDispatch, useSelector } from "+/redux"
+
 import { Settings, Word } from "+/types"
+
 import { defaultSettings, genId, nowISO } from "+/utils"
 
-type Status =
-  | { kind: "idle"; text: string }
-  | { kind: "success" | "error"; text: string }
+import { setSelectedIds, setWordsAndSettings } from "+/redux/slices/appSlice"
+
+type Status = { kind: "idle"; text: string } | { kind: "success" | "error"; text: string }
 
 type ConflictDecision = "keep" | "replace" | "addNew"
 type ConflictItem = { existing: Word; incoming: Word; decision: ConflictDecision }
@@ -19,9 +21,13 @@ const normalizeWord = (raw: unknown): Word | null => {
   if (!term || !translation) return null
   const notes = typeof obj.notes === "string" ? obj.notes : ""
   const baseScore =
-    typeof obj.baseScore === "number" && Number.isFinite(obj.baseScore) ? Math.max(0, obj.baseScore) : 2
+    typeof obj.baseScore === "number" && Number.isFinite(obj.baseScore)
+      ? Math.max(0, obj.baseScore)
+      : 2
   const lastPracticedAt =
-    typeof obj.lastPracticedAt === "string" && obj.lastPracticedAt.trim() ? obj.lastPracticedAt : null
+    typeof obj.lastPracticedAt === "string" && obj.lastPracticedAt.trim()
+      ? obj.lastPracticedAt
+      : null
   const createdAt =
     typeof obj.createdAt === "string" && obj.createdAt.trim() ? obj.createdAt : nowISO()
   let id = typeof obj.id === "string" && obj.id.trim() ? obj.id : genId()
@@ -64,7 +70,10 @@ function StorageTools() {
 
   const handleSaveFromEditor = () => {
     try {
-      const { words: parsedWords, settings: parsedSettings } = parseWordsAndSettings(editorValue, settings)
+      const { words: parsedWords, settings: parsedSettings } = parseWordsAndSettings(
+        editorValue,
+        settings
+      )
       const safeWords = ensureUniqueIds(parsedWords)
       dispatch(setWordsAndSettings({ words: safeWords, settings: parsedSettings }))
       dispatch(setSelectedIds([]))
@@ -138,7 +147,8 @@ function StorageTools() {
   return (
     <div className="mt-3 space-y-3">
       <p className="text-xs text-ink-600">
-        Aquí puedes ver lo que hay en localStorage y pegar un JSON para editarlo o adjuntar nuevas palabras sin perder las existentes.
+        Aquí puedes ver lo que hay en localStorage y pegar un JSON para editarlo o adjuntar nuevas
+        palabras sin perder las existentes.
       </p>
 
       <div className="grid gap-3 lg:grid-cols-2">
@@ -173,7 +183,9 @@ function StorageTools() {
 
         <div className="rounded-xl border border-ink-100 bg-white/80 p-3 shadow-inner">
           <div className="mb-2 flex items-center justify-between gap-2">
-            <span className="text-sm font-semibold text-ink-800">Adjuntar JSON (sumar palabras)</span>
+            <span className="text-sm font-semibold text-ink-800">
+              Adjuntar JSON (sumar palabras)
+            </span>
             <button
               onClick={handleAppend}
               className="rounded-lg border border-ink-800 bg-ink-900 px-3 py-1 text-xs font-semibold text-white shadow-soft hover:-translate-y-0.5 hover:shadow-md"
@@ -213,11 +225,15 @@ function StorageTools() {
                 </div>
               </div>
               <p className="text-ink-700">
-                Elige para cada palabra si prefieres mantener la existente, reemplazarla o agregarla como nueva.
+                Elige para cada palabra si prefieres mantener la existente, reemplazarla o agregarla
+                como nueva.
               </p>
               <div className="space-y-2">
                 {pendingConflicts.map((item, idx) => (
-                  <div key={idx} className="rounded-lg border border-ink-100 bg-white/70 p-2 shadow-inner">
+                  <div
+                    key={idx}
+                    className="rounded-lg border border-ink-100 bg-white/70 p-2 shadow-inner"
+                  >
                     <div className="text-[11px] font-semibold text-ink-900">
                       {item.incoming.term} — nueva traducción: {item.incoming.translation}
                     </div>

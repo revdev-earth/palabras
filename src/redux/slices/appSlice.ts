@@ -1,4 +1,4 @@
-import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { PracticeStats, SearchField, Settings, Word } from "+/types"
 import { SETTINGS_KEY, STORE_KEY, buildQueue, defaultSettings, nowISO, safeParse } from "+/utils"
 
@@ -63,7 +63,7 @@ const finishSession = (state: AppSliceState) => {
   state.reveal = false
 }
 
-const appSlice = createSlice({
+export const appSlice = createSlice({
   name: "app",
   initialState,
   reducers: {
@@ -85,7 +85,10 @@ const appSlice = createSlice({
       else next.delete(action.payload.id)
       state.selectedIds = Array.from(next)
     },
-    addWord(state, action: PayloadAction<Omit<Word, "baseScore" | "lastPracticedAt" | "createdAt">>) {
+    addWord(
+      state,
+      action: PayloadAction<Omit<Word, "baseScore" | "lastPracticedAt" | "createdAt">>
+    ) {
       state.words.unshift({
         ...action.payload,
         baseScore: 2,
@@ -97,10 +100,18 @@ const appSlice = createSlice({
       state.words = state.words.filter((w) => w.id !== action.payload)
       state.selectedIds = state.selectedIds.filter((id) => id !== action.payload)
     },
-    updateWord(state, action: PayloadAction<{ id: string; term: string; translation: string; notes: string }>) {
+    updateWord(
+      state,
+      action: PayloadAction<{ id: string; term: string; translation: string; notes: string }>
+    ) {
       state.words = state.words.map((w) =>
         w.id === action.payload.id
-          ? { ...w, term: action.payload.term, translation: action.payload.translation, notes: action.payload.notes }
+          ? {
+              ...w,
+              term: action.payload.term,
+              translation: action.payload.translation,
+              notes: action.payload.notes,
+            }
           : w
       )
     },
@@ -135,7 +146,10 @@ const appSlice = createSlice({
       }, {})
       state.currentPracticeSelection = selected
       state.practiceStats = stats
-      state.practiceQueue = buildQueue(ids, state.settings.practiceRounds || defaultSettings.practiceRounds)
+      state.practiceQueue = buildQueue(
+        ids,
+        state.settings.practiceRounds || defaultSettings.practiceRounds
+      )
       state.practiceIndex = 0
       state.correctCount = 0
       state.wrongCount = 0
@@ -190,7 +204,7 @@ export const {
   updateWord,
   setSettings,
   setSearch,
-   setSearchField,
+  setSearchField,
   setSelectedIds,
   toggleSelect,
   setWordsAndSettings,
@@ -202,12 +216,3 @@ export const {
   toggleReveal,
   touchLastPracticed,
 } = appSlice.actions
-
-export const store = configureStore({
-  reducer: {
-    app: appSlice.reducer,
-  },
-})
-
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch

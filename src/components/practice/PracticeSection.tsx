@@ -1,5 +1,6 @@
-import { useDispatch, useSelector, useSpeaker } from "+/hooks"
-import { exitPractice, markPractice, setAlwaysShow, toggleReveal } from "+/store"
+import { useDispatch, useSelector } from "+/redux"
+import { useSpeaker } from "+/hooks/useSpeaker"
+import { exitPractice, markPractice, setAlwaysShow, toggleReveal } from "+/redux/slices/appSlice"
 
 const badge = (label: string) => (
   <span className="rounded-full border border-ink-200 bg-white/70 px-3 py-1 text-xs text-ink-700 shadow-sm">

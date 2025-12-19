@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react"
-import { useSelector as useReduxSelector } from "react-redux"
-import { RootState } from "+/store"
+
+import { useSelector } from "+/redux"
 
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value))
 
@@ -17,10 +17,10 @@ const toSentencesByLine = (raw: string) =>
     .join(" ")
 
 export const useSpeaker = () => {
-  const speakEnabled = useReduxSelector((s: RootState) => s.app.settings.practiceSpeakEnabled)
-  const voiceId = useReduxSelector((s: RootState) => s.app.settings.practiceVoiceId)
-  const voiceLang = useReduxSelector((s: RootState) => s.app.settings.practiceVoiceLang)
-  const voiceRate = useReduxSelector((s: RootState) => s.app.settings.practiceVoiceRate)
+  const speakEnabled = useSelector((s) => s.app.settings.practiceSpeakEnabled)
+  const voiceId = useSelector((s) => s.app.settings.practiceVoiceId)
+  const voiceLang = useSelector((s) => s.app.settings.practiceVoiceLang)
+  const voiceRate = useSelector((s) => s.app.settings.practiceVoiceRate)
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([])
   const [isSpeaking, setIsSpeaking] = useState(false)
 
