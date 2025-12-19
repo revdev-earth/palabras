@@ -2,9 +2,9 @@ import { useEffect, useMemo, useRef, useState } from "react"
 
 import { useDispatch, useSelector } from "+/redux"
 
-import { addV2Word } from "+/redux/slices/v2Slice"
+import { upsertV2Word } from "+/redux/slices/v2Slice"
 
-import { genId } from "+/utils"
+import { ReconocimientoEditorTabs, WordDraft } from "./ReconocimientoEditorTabs"
 
 type Token = {
   value: string
@@ -89,7 +89,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
   const words = useSelector((s) => s.v2Words.words)
   const [text, setText] = useState(seedPreviewText)
   const [activeWord, setActiveWord] = useState<string | null>(null)
-  const [draft, setDraft] = useState({
+  const [draft, setDraft] = useState<WordDraft>({
     term: "",
     translation: "",
     notes: "",
@@ -102,7 +102,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
     const set = new Set<string>()
     words.forEach((w) => {
       const term = w.term.trim().toLowerCase()
-      if (term) set.add(term)
+      if (term && w.translation.trim()) set.add(term)
     })
     return set
   }, [words])
@@ -134,6 +134,17 @@ export function ReconocimientoDePalabrasEnElTexto() {
 
   const startAdd = (term: string) => {
     setActiveWord(term)
+    const existing = wordsByTerm.get(term.toLowerCase())
+    if (existing) {
+      setDraft({
+        term: existing.term,
+        translation: existing.translation,
+        notes: existing.notes,
+        context: existing.context.join(", "),
+        contextForPractice: existing.contextForPractice.join(", "),
+      })
+      return
+    }
     setDraft({
       term,
       translation: "",
@@ -143,22 +154,29 @@ export function ReconocimientoDePalabrasEnElTexto() {
     })
   }
 
-  const addWord = () => {
-    if (!draft.term.trim() || !draft.translation.trim()) {
+  const saveWord = (nextDraft: WordDraft, previousTerm = activeWord) => {
+    if (!nextDraft.term.trim() || !nextDraft.translation.trim()) {
       window.alert("Palabra y traduccion son obligatorias.")
-      return
+      return false
     }
     dispatch(
-      addV2Word({
-        id: genId(),
-        term: draft.term.trim(),
-        translation: draft.translation.trim(),
-        notes: draft.notes,
-        context: parseList(draft.context),
-        contextForPractice: parseList(draft.contextForPractice),
+      upsertV2Word({
+        term: nextDraft.term.trim(),
+        translation: nextDraft.translation.trim(),
+        notes: nextDraft.notes,
+        context: parseList(nextDraft.context),
+        contextForPractice: parseList(nextDraft.contextForPractice),
+        previousTerm: previousTerm ?? undefined,
       })
     )
-    setActiveWord(null)
+    if (
+      previousTerm &&
+      wordsByTerm.has(previousTerm.trim().toLowerCase()) &&
+      previousTerm.trim().toLowerCase() !== nextDraft.term.trim().toLowerCase()
+    ) {
+      setActiveWord(nextDraft.term.trim())
+    }
+    return true
   }
 
   const addContextSuggestion = (value: string) => {
@@ -203,6 +221,8 @@ export function ReconocimientoDePalabrasEnElTexto() {
                       )
                     }
                     const lookup = wordsByTerm.get(token.value.toLowerCase())
+                    const keyTerm = lookup?.term ?? token.value
+                    const isActive = activeWord === keyTerm
                     return (
                       <span
                         key={`known-word-${groupIndex}-${tokenIndex}`}
@@ -210,8 +230,34 @@ export function ReconocimientoDePalabrasEnElTexto() {
                       >
                         {token.value}
                         <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-1 w-56 -translate-x-1/2 rounded-xl border border-emerald-200 bg-white px-3 py-2 text-xs text-ink-800 opacity-0 shadow-soft transition group-hover:pointer-events-auto group-hover:opacity-100">
-                          <div className="font-semibold text-ink-900">
-                            {lookup?.term ?? token.value}
+                          <div className="flex items-center justify-between gap-2">
+                            <div className="font-semibold text-ink-900">
+                              {lookup?.term ?? token.value}
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                if (isActive) {
+                                  if (saveWord(draft)) setActiveWord(null)
+                                  return
+                                }
+                                startAdd(keyTerm)
+                              }}
+                              className="flex h-6 w-6 items-center justify-center rounded-full border border-emerald-200 text-emerald-700"
+                              aria-label="Editar palabra"
+                              title="Editar palabra"
+                            >
+                              <svg
+                                viewBox="0 0 20 20"
+                                aria-hidden="true"
+                                className="h-3.5 w-3.5"
+                              >
+                                <path
+                                  d="M14.7 2.6a1.5 1.5 0 0 1 2.1 2.1l-9.2 9.2-3.3.7.7-3.3 9.2-9.2Zm-8.4 9.9-.3 1.2 1.2-.3 8.6-8.6-.9-.9-8.6 8.6Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </button>
                           </div>
                           {lookup?.translation && (
                             <div className="text-emerald-700">{lookup.translation}</div>
@@ -232,6 +278,21 @@ export function ReconocimientoDePalabrasEnElTexto() {
                               <div>Contexto practica: {formatList(lookup?.contextForPractice)}</div>
                             </div>
                           </details>
+                          {isActive && (
+                            <div className="mt-2">
+                              <ReconocimientoEditorTabs
+                                key={draft.term}
+                                draft={draft}
+                                setDraft={setDraft}
+                                onSave={() => saveWord(draft)}
+                                onClose={() => {
+                                  if (saveWord(draft)) setActiveWord(null)
+                                }}
+                                contextSuggestions={contextSuggestions}
+                                onAddContextSuggestion={addContextSuggestion}
+                              />
+                            </div>
+                          )}
                         </span>
                       </span>
                     )
@@ -246,84 +307,48 @@ export function ReconocimientoDePalabrasEnElTexto() {
             }
 
             if (token.type === "word") {
+              const isActive = activeWord === token.value
               return (
                 <span
                   key={`word-${groupIndex}`}
                   className="group relative inline-flex rounded-md bg-orange-200/70 px-1 shadow-[0_0_8px_rgba(249,115,22,0.45)] after:absolute after:left-0 after:top-full after:h-2 after:w-full after:content-['']"
                 >
                   {token.value}
-                  <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-1 w-48 -translate-x-1/2 rounded-xl border border-orange-200 bg-white px-3 py-2 text-xs text-ink-800 opacity-0 shadow-soft transition group-hover:pointer-events-auto group-hover:opacity-100">
+                  <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-1 w-64 -translate-x-1/2 rounded-xl border border-orange-200 bg-white px-3 py-2 text-xs text-ink-800 opacity-0 shadow-soft transition group-hover:pointer-events-auto group-hover:opacity-100">
                     <div className="font-semibold text-ink-900">{token.value}</div>
                     <div className="text-orange-700">No registrada</div>
-                    <details className="mt-2">
+                    <details className="mt-2" open={isActive}>
                       <summary
                         className="inline-flex cursor-pointer items-center gap-1 text-[11px] font-semibold text-ink-700"
-                        onClick={() => startAdd(token.value)}
+                        onClick={(event) => {
+                          event.preventDefault()
+                          if (isActive) {
+                            if (saveWord(draft)) setActiveWord(null)
+                            return
+                          }
+                          startAdd(token.value)
+                        }}
                       >
                         <span className="flex h-4 w-4 items-center justify-center rounded-full border border-orange-200 text-orange-600">
-                          +
+                          {isActive ? "-" : "+"}
                         </span>
-                        Agregar
+                        {isActive ? "Cerrar" : "Agregar"}
                       </summary>
-                      <div className="mt-2 space-y-2 text-ink-700">
-                        <input
-                          value={activeWord === token.value ? draft.translation : ""}
-                          onChange={(e) =>
-                            setDraft((prev) => ({ ...prev, translation: e.target.value }))
-                          }
-                          placeholder="Traduccion"
-                          className="w-full rounded-md border border-ink-100 px-2 py-1 text-xs focus:border-orange-300 focus:outline-none"
-                        />
-                        <textarea
-                          value={activeWord === token.value ? draft.notes : ""}
-                          onChange={(e) => setDraft((prev) => ({ ...prev, notes: e.target.value }))}
-                          rows={2}
-                          placeholder="Notas"
-                          className="w-full resize-none rounded-md border border-ink-100 px-2 py-1 text-xs focus:border-orange-300 focus:outline-none"
-                        />
-                        <input
-                          value={activeWord === token.value ? draft.context : ""}
-                          onChange={(e) =>
-                            setDraft((prev) => ({ ...prev, context: e.target.value }))
-                          }
-                          placeholder="Contexto (coma separada)"
-                          className="w-full rounded-md border border-ink-100 px-2 py-1 text-xs focus:border-orange-300 focus:outline-none"
-                        />
-                        <input
-                          value={activeWord === token.value ? draft.contextForPractice : ""}
-                          onChange={(e) =>
-                            setDraft((prev) => ({
-                              ...prev,
-                              contextForPractice: e.target.value,
-                            }))
-                          }
-                          placeholder="Contexto practica"
-                          className="w-full rounded-md border border-ink-100 px-2 py-1 text-xs focus:border-orange-300 focus:outline-none"
-                        />
-                        {contextSuggestions.length > 0 && (
-                          <div className="flex flex-wrap gap-2 text-[11px]">
-                            {contextSuggestions.map((tag) => (
-                              <button
-                                key={tag}
-                                type="button"
-                                onClick={() => addContextSuggestion(tag)}
-                                className="rounded-full border border-orange-200 px-2 py-0.5 font-semibold text-orange-700"
-                              >
-                                #{tag}
-                              </button>
-                            ))}
-                          </div>
-                        )}
-                        <div className="flex flex-wrap gap-2">
-                          <button
-                            type="button"
-                            onClick={addWord}
-                            className="rounded-md bg-orange-500 px-2 py-1 text-[11px] font-semibold text-white"
-                          >
-                            Guardar
-                          </button>
+                      {isActive && (
+                        <div className="mt-2">
+                          <ReconocimientoEditorTabs
+                            key={draft.term || token.value}
+                            draft={draft}
+                            setDraft={setDraft}
+                            onSave={() => saveWord(draft)}
+                            onClose={() => {
+                              if (saveWord(draft)) setActiveWord(null)
+                            }}
+                            contextSuggestions={contextSuggestions}
+                            onAddContextSuggestion={addContextSuggestion}
+                          />
                         </div>
-                      </div>
+                      )}
                     </details>
                   </span>
                 </span>
