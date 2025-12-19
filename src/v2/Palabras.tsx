@@ -5,6 +5,7 @@ import { useSelector } from "+/redux"
 import { V2_STORE_KEY } from "+/redux/slices/v2Slice"
 
 import { Biblioteca } from "./Biblioteca"
+import { ReconocimientoDePalabrasEnElTexto } from "./ReconocimientoDePalabrasEnElTexto"
 
 function Palabras() {
   const words = useSelector((s) => s.v2Words.words)
@@ -47,7 +48,7 @@ function Palabras() {
           </button>
         </div>
         {tab === "reconocimiento" ? (
-          <div>reconocimiento de texto</div>
+          <ReconocimientoDePalabrasEnElTexto />
         ) : (
           <Biblioteca words={words} />
         )}
