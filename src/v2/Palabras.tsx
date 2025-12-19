@@ -23,7 +23,6 @@ function Palabras() {
 
       <main className="space-y-4">
         <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-ink-700">
-          <span>tabs</span>
           <button
             type="button"
             onClick={() => setTab("reconocimiento")}
@@ -33,7 +32,7 @@ function Palabras() {
                 : "border border-ink-100 bg-white/80 hover:bg-white"
             }`}
           >
-            [reconocimiento de texto]
+            Reconocimiento de texto
           </button>
           <button
             type="button"
@@ -44,7 +43,7 @@ function Palabras() {
                 : "border border-ink-100 bg-white/80 hover:bg-white"
             }`}
           >
-            [biblioteca]
+            Biblioteca
           </button>
         </div>
         {tab === "reconocimiento" ? (

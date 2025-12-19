@@ -1,6 +1,16 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { genId, nowISO, safeParse } from "+/utils"
 
+export const LEARNING_STATES = [
+  "SAVED",
+  "LEARNING_1",
+  "LEARNING_2",
+  "LEARNING_3",
+  "LEARNED",
+] as const
+
+export type LearningState = (typeof LEARNING_STATES)[number]
+
 export type V2Word = {
   id: string
   term: string
@@ -11,6 +21,7 @@ export type V2Word = {
   createdAt: string
   context: string[]
   contextForPractice: string[]
+  learningState: LearningState
 }
 
 export type V2SliceState = {
@@ -18,6 +29,19 @@ export type V2SliceState = {
 }
 
 export const V2_STORE_KEY = "vocab-tracker-v2"
+
+export const learningStateFromScore = (score: number): LearningState => {
+  if (score >= 10) return "LEARNED"
+  if (score >= 9) return "LEARNING_3"
+  if (score >= 6) return "LEARNING_2"
+  if (score >= 3) return "LEARNING_1"
+  return "SAVED"
+}
+
+export const normalizeLearningState = (value: unknown, score: number): LearningState => {
+  if (LEARNING_STATES.includes(value as LearningState)) return value as LearningState
+  return learningStateFromScore(score)
+}
 
 const seedWords: V2Word[] = [
   {
@@ -30,6 +54,7 @@ const seedWords: V2Word[] = [
     createdAt: nowISO(),
     context: [],
     contextForPractice: [],
+    learningState: "SAVED",
   },
   {
     id: "de-danke",
@@ -41,6 +66,7 @@ const seedWords: V2Word[] = [
     createdAt: nowISO(),
     context: [],
     contextForPractice: [],
+    learningState: "SAVED",
   },
   {
     id: "de-bitte",
@@ -52,6 +78,7 @@ const seedWords: V2Word[] = [
     createdAt: nowISO(),
     context: [],
     contextForPractice: [],
+    learningState: "SAVED",
   },
   {
     id: "de-wasser",
@@ -63,6 +90,7 @@ const seedWords: V2Word[] = [
     createdAt: nowISO(),
     context: [],
     contextForPractice: [],
+    learningState: "SAVED",
   },
   {
     id: "de-buch",
@@ -74,11 +102,17 @@ const seedWords: V2Word[] = [
     createdAt: nowISO(),
     context: [],
     contextForPractice: [],
+    learningState: "SAVED",
   },
 ]
 
 const storedWords = safeParse(localStorage.getItem(V2_STORE_KEY), [] as V2Word[])
-const initialWords = storedWords.length ? storedWords : seedWords
+const initialWords = storedWords.length
+  ? storedWords.map((word) => ({
+      ...word,
+      learningState: normalizeLearningState(word.learningState, word.baseScore || 0),
+    }))
+  : seedWords
 
 export const v2Slice = createSlice({
   name: "v2Words",
@@ -87,7 +121,10 @@ export const v2Slice = createSlice({
   } as V2SliceState,
   reducers: {
     setV2Words(state, action: PayloadAction<V2Word[]>) {
-      state.words = action.payload
+      state.words = action.payload.map((word) => ({
+        ...word,
+        learningState: normalizeLearningState(word.learningState, word.baseScore || 0),
+      }))
     },
     addV2Word(
       state,
@@ -98,6 +135,7 @@ export const v2Slice = createSlice({
         baseScore: 2,
         lastPracticedAt: null,
         createdAt: nowISO(),
+        learningState: normalizeLearningState(action.payload.learningState, 2),
       })
     },
     upsertV2Word(
@@ -134,12 +172,16 @@ export const v2Slice = createSlice({
       const duplicateIndex = state.words.findIndex(
         (word, idx) => idx !== index && word.term.trim().toLowerCase() === key
       )
+      const fallbackState =
+        action.payload.learningState ??
+        (index !== -1 ? state.words[index].learningState : learningStateFromScore(2))
       const incoming = {
         term,
         translation: action.payload.translation.trim(),
         notes: action.payload.notes,
         context: action.payload.context,
         contextForPractice: action.payload.contextForPractice,
+        learningState: normalizeLearningState(fallbackState, 2),
       }
       if (duplicateIndex !== -1) {
         const target = state.words[duplicateIndex]
@@ -156,7 +198,22 @@ export const v2Slice = createSlice({
         ...incoming,
       }
     },
+    updateV2WordScore(
+      state,
+      action: PayloadAction<{ id: string; baseScore: number; lastPracticedAt: string | null }>
+    ) {
+      const index = state.words.findIndex((word) => word.id === action.payload.id)
+      if (index === -1) return
+      const current = state.words[index]
+      const nextScore = Math.max(0, action.payload.baseScore)
+      state.words[index] = {
+        ...current,
+        baseScore: nextScore,
+        lastPracticedAt: action.payload.lastPracticedAt,
+        learningState: learningStateFromScore(nextScore),
+      }
+    },
   },
 })
 
-export const { addV2Word, setV2Words, upsertV2Word } = v2Slice.actions
+export const { addV2Word, setV2Words, upsertV2Word, updateV2WordScore } = v2Slice.actions

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react"
 
 import { useDispatch, useSelector } from "+/redux"
 
+import type { LearningState } from "+/redux/slices/v2Slice"
 import { upsertV2Word } from "+/redux/slices/v2Slice"
 
 import { ReconocimientoEditorTabs, WordDraft } from "./ReconocimientoEditorTabs"
@@ -95,6 +96,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
     notes: "",
     context: "",
     contextForPractice: "",
+    learningState: "SAVED",
   })
   const modelRef = useRef<Model>({ text: "", tokens: [] })
 
@@ -142,6 +144,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
         notes: existing.notes,
         context: existing.context.join(", "),
         contextForPractice: existing.contextForPractice.join(", "),
+        learningState: existing.learningState ?? "SAVED",
       })
       return
     }
@@ -151,6 +154,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
       notes: "",
       context: "",
       contextForPractice: "",
+      learningState: "SAVED",
     })
   }
 
@@ -166,6 +170,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
         notes: nextDraft.notes,
         context: parseList(nextDraft.context),
         contextForPractice: parseList(nextDraft.contextForPractice),
+        learningState: nextDraft.learningState,
         previousTerm: previousTerm ?? undefined,
       })
     )
@@ -186,6 +191,46 @@ export function ReconocimientoDePalabrasEnElTexto() {
       current.add(value)
       return { ...prev, contextForPractice: Array.from(current).join(", ") }
     })
+  }
+
+  const learningTone = (state: LearningState | undefined) => {
+    switch (state) {
+      case "LEARNED":
+        return {
+          bg: "bg-emerald-200/70",
+          border: "border-emerald-200",
+          shadow: "shadow-[0_0_8px_rgba(16,185,129,0.4)]",
+          text: "text-emerald-700",
+        }
+      case "LEARNING_3":
+        return {
+          bg: "bg-indigo-200/70",
+          border: "border-indigo-200",
+          shadow: "shadow-[0_0_8px_rgba(99,102,241,0.35)]",
+          text: "text-indigo-700",
+        }
+      case "LEARNING_2":
+        return {
+          bg: "bg-orange-200/70",
+          border: "border-orange-200",
+          shadow: "shadow-[0_0_8px_rgba(249,115,22,0.35)]",
+          text: "text-orange-700",
+        }
+      case "LEARNING_1":
+        return {
+          bg: "bg-amber-200/70",
+          border: "border-amber-200",
+          shadow: "shadow-[0_0_8px_rgba(251,191,36,0.35)]",
+          text: "text-amber-700",
+        }
+      default:
+        return {
+          bg: "bg-teal-200/70",
+          border: "border-teal-200",
+          shadow: "shadow-[0_0_8px_rgba(20,184,166,0.35)]",
+          text: "text-teal-700",
+        }
+    }
   }
 
   return (
@@ -209,10 +254,13 @@ export function ReconocimientoDePalabrasEnElTexto() {
           {tokens.length === 0 && <span className="text-ink-400">Sin texto para analizar.</span>}
           {groups.map((group, groupIndex) => {
             if (group.kind === "knownGroup") {
+              const firstWord = group.tokens.find((t) => t.type === "word")
+              const firstLookup = firstWord ? wordsByTerm.get(firstWord.value.toLowerCase()) : null
+              const tone = learningTone(firstLookup?.learningState)
               return (
                 <span
                   key={`known-group-${groupIndex}`}
-                  className="rounded-md bg-emerald-200/70 px-1 shadow-[0_0_8px_rgba(16,185,129,0.4)]"
+                  className={`rounded-md px-1 ${tone.bg} ${tone.shadow}`}
                 >
                   {group.tokens.map((token, tokenIndex) => {
                     if (token.type === "space") {
@@ -223,13 +271,16 @@ export function ReconocimientoDePalabrasEnElTexto() {
                     const lookup = wordsByTerm.get(token.value.toLowerCase())
                     const keyTerm = lookup?.term ?? token.value
                     const isActive = activeWord === keyTerm
+                    const tone = learningTone(lookup?.learningState)
                     return (
                       <span
                         key={`known-word-${groupIndex}-${tokenIndex}`}
                         className="group relative inline-flex rounded-sm px-0.5 text-ink-900 after:absolute after:left-0 after:top-full after:h-2 after:w-full after:content-['']"
                       >
                         {token.value}
-                        <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-1 w-56 -translate-x-1/2 rounded-xl border border-emerald-200 bg-white px-3 py-2 text-xs text-ink-800 opacity-0 shadow-soft transition group-hover:pointer-events-auto group-hover:opacity-100">
+                        <span
+                          className={`pointer-events-none absolute left-1/2 top-full z-10 mt-1 w-56 -translate-x-1/2 rounded-xl border bg-white px-3 py-2 text-xs text-ink-800 opacity-0 shadow-soft transition group-hover:pointer-events-auto group-hover:opacity-100 ${tone.border}`}
+                        >
                           <div className="flex items-center justify-between gap-2">
                             <div className="font-semibold text-ink-900">
                               {lookup?.term ?? token.value}
@@ -243,7 +294,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
                                 }
                                 startAdd(keyTerm)
                               }}
-                              className="flex h-6 w-6 items-center justify-center rounded-full border border-emerald-200 text-emerald-700"
+                              className={`flex h-6 w-6 items-center justify-center rounded-full border ${tone.border} ${tone.text}`}
                               aria-label="Editar palabra"
                               title="Editar palabra"
                             >
@@ -260,10 +311,10 @@ export function ReconocimientoDePalabrasEnElTexto() {
                             </button>
                           </div>
                           {lookup?.translation && (
-                            <div className="text-emerald-700">{lookup.translation}</div>
+                            <div className={tone.text}>{lookup.translation}</div>
                           )}
-                          <div className="mt-1 text-[10px] uppercase tracking-wide text-emerald-600">
-                            Aprendida
+                          <div className={`mt-1 text-[10px] uppercase tracking-wide ${tone.text}`}>
+                            {lookup?.learningState ?? "SAVED"}
                           </div>
                           <details className="mt-2">
                             <summary className="inline-flex cursor-pointer items-center gap-1 text-[11px] font-semibold text-ink-700">

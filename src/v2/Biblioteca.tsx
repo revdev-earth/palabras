@@ -2,7 +2,14 @@ import { useEffect, useMemo, useRef, useState } from "react"
 
 import { useDispatch } from "+/redux"
 
-import { addV2Word, setV2Words } from "+/redux/slices/v2Slice"
+import type { LearningState } from "+/redux/slices/v2Slice"
+import {
+  LEARNING_STATES,
+  addV2Word,
+  learningStateFromScore,
+  normalizeLearningState,
+  setV2Words,
+} from "+/redux/slices/v2Slice"
 
 import { effectiveScore, formatDate, genId, nowISO } from "+/utils"
 
@@ -18,6 +25,7 @@ type V2Word = {
   createdAt: string
   context: string[]
   contextForPractice: string[]
+  learningState: LearningState
 }
 
 const normalizeList = (raw: unknown) => {
@@ -51,6 +59,7 @@ const normalizeWord = (raw: unknown): V2Word | null => {
   let id = typeof obj.id === "string" && obj.id.trim() ? obj.id : genId()
   const context = normalizeList(obj.context)
   const contextForPractice = normalizeList(obj.contextForPractice)
+  const learningState = normalizeLearningState(obj.learningState, baseScore)
   return {
     id,
     term,
@@ -61,6 +70,7 @@ const normalizeWord = (raw: unknown): V2Word | null => {
     createdAt,
     context,
     contextForPractice,
+    learningState,
   }
 }
 
@@ -88,6 +98,21 @@ const renderList = (items: string[]) => {
       ))}
     </div>
   )
+}
+
+const learningBadgeTone = (state: LearningState) => {
+  switch (state) {
+    case "LEARNED":
+      return "border-emerald-200 bg-emerald-50 text-emerald-700"
+    case "LEARNING_3":
+      return "border-indigo-200 bg-indigo-50 text-indigo-700"
+    case "LEARNING_2":
+      return "border-orange-200 bg-orange-50 text-orange-700"
+    case "LEARNING_1":
+      return "border-amber-200 bg-amber-50 text-amber-700"
+    default:
+      return "border-teal-200 bg-teal-50 text-teal-700"
+  }
 }
 
 const parseList = (value: string) =>
@@ -171,10 +196,18 @@ function WordsTableView({ words }: { words: V2Word[] }) {
     notes: "",
     context: "",
     contextForPractice: "",
+    learningState: "SAVED" as LearningState,
   })
 
   const resetDraft = () =>
-    setDraft({ term: "", translation: "", notes: "", context: "", contextForPractice: "" })
+    setDraft({
+      term: "",
+      translation: "",
+      notes: "",
+      context: "",
+      contextForPractice: "",
+      learningState: "SAVED",
+    })
 
   const startAdd = () => setIsAdding(true)
 
@@ -196,6 +229,7 @@ function WordsTableView({ words }: { words: V2Word[] }) {
         notes: draft.notes,
         context: parseList(draft.context),
         contextForPractice: parseList(draft.contextForPractice),
+        learningState: draft.learningState,
       })
     )
     resetDraft()
@@ -213,6 +247,7 @@ function WordsTableView({ words }: { words: V2Word[] }) {
             <tr>
               <th className="px-4 py-3">Palabra</th>
               <th className="px-4 py-3">Traducción</th>
+              <th className="px-4 py-3">Estado</th>
               <th className="px-4 py-3">Notas</th>
               <th className="px-4 py-3">Contexto</th>
               <th className="px-4 py-3">Contexto práctica</th>
@@ -224,7 +259,7 @@ function WordsTableView({ words }: { words: V2Word[] }) {
           <tbody className="divide-y divide-ink-50">
             {!isAdding && (
               <tr>
-                <td colSpan={8} className="px-4 py-3">
+                <td colSpan={9} className="px-4 py-3">
                   <button
                     type="button"
                     onClick={startAdd}
@@ -254,6 +289,24 @@ function WordsTableView({ words }: { words: V2Word[] }) {
                     placeholder="Traducción"
                     className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
                   />
+                </td>
+                <td className="px-4 py-3">
+                  <select
+                    value={draft.learningState}
+                    onChange={(e) =>
+                      setDraft((d) => ({
+                        ...d,
+                        learningState: e.target.value as LearningState,
+                      }))
+                    }
+                    className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
+                  >
+                    {LEARNING_STATES.map((state) => (
+                      <option key={state} value={state}>
+                        {state}
+                      </option>
+                    ))}
+                  </select>
                 </td>
                 <td className="px-4 py-3">
                   <input
@@ -307,6 +360,15 @@ function WordsTableView({ words }: { words: V2Word[] }) {
               <tr key={w.id} className="align-top">
                 <td className="px-4 py-3 font-semibold text-ink-900">{w.term}</td>
                 <td className="px-4 py-3 text-ink-800">{w.translation}</td>
+                <td className="px-4 py-3 text-ink-800">
+                  <span
+                    className={`inline-flex rounded-full border px-2 py-0.5 text-[11px] font-semibold ${learningBadgeTone(
+                      w.learningState
+                    )}`}
+                  >
+                    {w.learningState}
+                  </span>
+                </td>
                 <td className="whitespace-pre-wrap px-4 py-3 text-ink-700">{w.notes || "—"}</td>
                 <td className="px-4 py-3">{renderList(w.context)}</td>
                 <td className="px-4 py-3">{renderList(w.contextForPractice)}</td>
