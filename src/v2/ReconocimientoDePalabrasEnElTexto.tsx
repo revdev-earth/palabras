@@ -25,12 +25,13 @@ type Model = {
 const normalizeTerm = (value: string) => value.toLowerCase().replace(/\s+/g, " ").trim()
 
 const tokenize = (text: string, knownWords: Set<string>): Token[] => {
-  const parts = text.match(/([\p{L}\p{N}]+|[^\p{L}\p{N}\s]+|\s+)/gu) || []
+  const parts =
+    text.match(/([\p{L}\p{N}]+(?:[-'’][\p{L}\p{N}]+)*|[^\p{L}\p{N}\s]+|\s+)/gu) || []
   return parts.map((value) => {
     if (/^\s+$/.test(value)) {
       return { value, type: "space", known: false }
     }
-    if (/^[\p{L}\p{N}]+$/u.test(value)) {
+    if (/^[\p{L}\p{N}]+(?:[-'’][\p{L}\p{N}]+)*$/u.test(value)) {
       const key = normalizeTerm(value)
       return { value, type: "word", known: knownWords.has(key) }
     }
@@ -543,10 +544,11 @@ export function ReconocimientoDePalabrasEnElTexto() {
   const words = useSelector((s) => s.v2Words.words)
   const [text, setText] = useState(seedPreviewText)
   const [activeWord, setActiveWord] = useState<string | null>(null)
-  const [previewFontSize, setPreviewFontSize] = useState(14)
-  const [previewLineHeight, setPreviewLineHeight] = useState(1.6)
-  const [previewWordSpacing, setPreviewWordSpacing] = useState(0)
+  const [previewFontSize, setPreviewFontSize] = useState(16)
+  const [previewLineHeight, setPreviewLineHeight] = useState(2.0)
+  const [previewWordSpacing, setPreviewWordSpacing] = useState(1.5)
   const [showPreviewConfig, setShowPreviewConfig] = useState(false)
+  const [showUnknownList, setShowUnknownList] = useState(false)
   const [draft, setDraft] = useState<WordDraft>({
     term: "",
     translation: "",
@@ -583,6 +585,27 @@ export function ReconocimientoDePalabrasEnElTexto() {
     })
     return map
   }, [words])
+
+  useEffect(() => {
+    setTooltip((prev) => {
+      if (!prev) return prev
+      if (prev.kind === "known") {
+        const nextLookup = wordsByTerm.get(normalizeTerm(prev.lookup.term))
+        if (!nextLookup || nextLookup === prev.lookup) return prev
+        return { ...prev, lookup: nextLookup }
+      }
+      if (prev.kind === "phrase") {
+        const nextOptions = prev.options.map((option) => ({
+          ...option,
+          lookup: option.label
+            ? wordsByTerm.get(normalizeTerm(option.label)) ?? option.lookup
+            : option.lookup,
+        }))
+        return { ...prev, options: nextOptions }
+      }
+      return prev
+    })
+  }, [wordsByTerm])
 
   useEffect(() => {
     modelRef.current = { text, tokens }
@@ -623,6 +646,35 @@ export function ReconocimientoDePalabrasEnElTexto() {
     })
     return Array.from(suggestions)
   }, [activeWord, tokens, words])
+
+  const unknownWords = useMemo(() => {
+    const list: string[] = []
+    const seen = new Set<string>()
+    tokens.forEach((token) => {
+      if (token.type !== "word") return
+      const key = normalizeTerm(token.value)
+      if (!key || wordsByTerm.has(key) || seen.has(key)) return
+      seen.add(key)
+      list.push(token.value)
+    })
+    return list
+  }, [tokens, wordsByTerm])
+
+  const unknownWordsJson = useMemo(
+    () =>
+      JSON.stringify(
+        unknownWords.map((term) => ({
+          term,
+          translation: "",
+          notes: "",
+          context: [],
+          contextForPractice: [],
+        })),
+        null,
+        2
+      ),
+    [unknownWords]
+  )
 
   const startAdd = (term: string) => {
     setActiveWord(term)
@@ -762,16 +814,25 @@ export function ReconocimientoDePalabrasEnElTexto() {
       <div className="rounded-2xl border border-ink-100 bg-white/90 px-4 py-3 shadow-soft">
         <div className="flex items-center justify-between gap-2 text-xs font-semibold uppercase tracking-wide text-ink-500">
           <span>Vista previa</span>
-          <PreviewConfigMenu
-            fontSize={previewFontSize}
-            lineHeight={previewLineHeight}
-            wordSpacing={previewWordSpacing}
-            isOpen={showPreviewConfig}
-            onToggle={() => setShowPreviewConfig((prev) => !prev)}
-            onFontSizeChange={setPreviewFontSize}
-            onLineHeightChange={setPreviewLineHeight}
-            onWordSpacingChange={setPreviewWordSpacing}
-          />
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setShowUnknownList((prev) => !prev)}
+              className="rounded-full border border-ink-100 bg-white px-2.5 py-1 text-[10px] font-semibold text-ink-600 shadow-inner transition hover:bg-ink-50"
+            >
+              Desconocidas {unknownWords.length ? `(${unknownWords.length})` : ""}
+            </button>
+            <PreviewConfigMenu
+              fontSize={previewFontSize}
+              lineHeight={previewLineHeight}
+              wordSpacing={previewWordSpacing}
+              isOpen={showPreviewConfig}
+              onToggle={() => setShowPreviewConfig((prev) => !prev)}
+              onFontSizeChange={setPreviewFontSize}
+              onLineHeightChange={setPreviewLineHeight}
+              onWordSpacingChange={setPreviewWordSpacing}
+            />
+          </div>
         </div>
         <div
           className="relative mt-3 whitespace-pre-wrap text-ink-900"
@@ -957,6 +1018,53 @@ export function ReconocimientoDePalabrasEnElTexto() {
           )}
         </div>
       </div>
+      {showUnknownList && (
+        <div className="space-y-3">
+          <div className="rounded-2xl border border-ink-100 bg-white/90 px-4 py-3 text-sm text-ink-800 shadow-soft">
+            <div className="text-xs font-semibold uppercase tracking-wide text-ink-500">
+              Palabras desconocidas
+            </div>
+            {unknownWords.length ? (
+              <div className="mt-2 flex flex-wrap gap-2">
+                {unknownWords.map((word) => (
+                  <span
+                    key={word}
+                    className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-[11px] font-semibold text-slate-700"
+                  >
+                    {word}
+                  </span>
+                ))}
+              </div>
+            ) : (
+              <div className="mt-2 text-sm text-ink-500">No hay palabras desconocidas.</div>
+            )}
+          </div>
+          <div className="rounded-2xl border border-ink-100 bg-white/90 px-4 py-3 text-sm text-ink-800 shadow-soft">
+            <div className="flex items-center justify-between gap-2 text-xs font-semibold uppercase tracking-wide text-ink-500">
+              <span>JSON para importar</span>
+              <button
+                type="button"
+                onClick={async () => {
+                  try {
+                    await navigator.clipboard.writeText(unknownWordsJson)
+                  } catch {
+                    window.alert("No se pudo copiar el JSON.")
+                  }
+                }}
+                className="rounded-full border border-ink-100 bg-white px-2.5 py-1 text-[10px] font-semibold text-ink-600 shadow-inner transition hover:bg-ink-50"
+              >
+                Copiar
+              </button>
+            </div>
+            <textarea
+              value={unknownWordsJson}
+              readOnly
+              rows={10}
+              className="mt-2 w-full resize-y rounded-xl border border-ink-100 bg-ink-50/60 px-3 py-2 font-mono text-[11px] text-ink-900 shadow-inner focus:border-ink-400 focus:outline-none"
+            />
+          </div>
+        </div>
+      )}
     </section>
   )
 }
