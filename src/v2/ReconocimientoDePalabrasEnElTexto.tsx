@@ -2,10 +2,12 @@ import { useEffect, useMemo, useRef, useState } from "react"
 
 import { useDispatch, useSelector } from "+/redux"
 
-import type { LearningState } from "+/redux/slices/v2Slice"
-import { upsertV2Word } from "+/redux/slices/v2Slice"
+import { upsertWord } from "+/redux/slices/v2Slice"
 
 import { ReconocimientoEditorTabs, WordDraft } from "./ReconocimientoEditorTabs"
+
+import { effectiveScore } from "+/utils"
+import { scoreTone } from "./utils/scoreTone"
 
 type Token = {
   value: string
@@ -72,7 +74,7 @@ const matchPhrase = (tokens: Token[], startIndex: number, trie: PhraseTrieNode) 
   while (index < tokens.length && node) {
     const token = tokens[index]
     if (token.type !== "word") break
-    const nextNode = node.children.get(normalizeTerm(token.value))
+    const nextNode: PhraseTrieNode | undefined = node.children.get(normalizeTerm(token.value))
     if (!nextNode) break
     node = nextNode
     if (node.term) {
@@ -163,7 +165,6 @@ export function ReconocimientoDePalabrasEnElTexto() {
     notes: "",
     context: "",
     contextForPractice: "",
-    learningState: "SAVED",
   })
   const modelRef = useRef<Model>({ text: "", tokens: [] })
 
@@ -242,7 +243,6 @@ export function ReconocimientoDePalabrasEnElTexto() {
         notes: existing.notes,
         context: existing.context.join(", "),
         contextForPractice: existing.contextForPractice.join(", "),
-        learningState: existing.learningState ?? "SAVED",
       })
       return
     }
@@ -252,27 +252,21 @@ export function ReconocimientoDePalabrasEnElTexto() {
       notes: "",
       context: "",
       contextForPractice: "",
-      learningState: "SAVED",
     })
   }
 
-  const saveWord = (
-    nextDraft: WordDraft,
-    previousTerm = activeWord,
-    shouldAlert = true
-  ) => {
+  const saveWord = (nextDraft: WordDraft, previousTerm = activeWord, shouldAlert = true) => {
     if (!nextDraft.term.trim() || !nextDraft.translation.trim()) {
       if (shouldAlert) window.alert("Palabra y traduccion son obligatorias.")
       return false
     }
     dispatch(
-      upsertV2Word({
+      upsertWord({
         term: nextDraft.term.trim(),
         translation: nextDraft.translation.trim(),
         notes: nextDraft.notes,
         context: parseList(nextDraft.context),
         contextForPractice: parseList(nextDraft.contextForPractice),
-        learningState: nextDraft.learningState,
         previousTerm: previousTerm ?? undefined,
       })
     )
@@ -307,46 +301,6 @@ export function ReconocimientoDePalabrasEnElTexto() {
     text: "text-violet-700",
   }
 
-  const learningTone = (state: LearningState | undefined) => {
-    switch (state) {
-      case "LEARNED":
-        return {
-          bg: "bg-emerald-100/70",
-          border: "border-emerald-100",
-          shadow: "shadow-[0_0_8px_rgba(16,185,129,0.25)]",
-          text: "text-emerald-700",
-        }
-      case "LEARNING_3":
-        return {
-          bg: "bg-indigo-100/70",
-          border: "border-indigo-100",
-          shadow: "shadow-[0_0_8px_rgba(99,102,241,0.25)]",
-          text: "text-indigo-700",
-        }
-      case "LEARNING_2":
-        return {
-          bg: "bg-orange-100/70",
-          border: "border-orange-100",
-          shadow: "shadow-[0_0_8px_rgba(251,146,60,0.2)]",
-          text: "text-orange-700",
-        }
-      case "LEARNING_1":
-        return {
-          bg: "bg-yellow-100/70",
-          border: "border-yellow-100",
-          shadow: "shadow-[0_0_8px_rgba(250,204,21,0.22)]",
-          text: "text-yellow-700",
-        }
-      default:
-        return {
-          bg: "bg-teal-100/70",
-          border: "border-teal-100",
-          shadow: "shadow-[0_0_8px_rgba(20,184,166,0.25)]",
-          text: "text-teal-700",
-        }
-    }
-  }
-
   return (
     <section className="space-y-4">
       <div className="rounded-2xl border border-ink-100 bg-white/90 px-4 py-3 shadow-soft">
@@ -369,10 +323,8 @@ export function ReconocimientoDePalabrasEnElTexto() {
           {groups.map((group, groupIndex) => {
             if (group.kind === "knownGroup") {
               const firstWord = group.tokens.find((t) => t.type === "word")
-              const firstLookup = firstWord
-                ? wordsByTerm.get(normalizeTerm(firstWord.value))
-                : null
-              const tone = learningTone(firstLookup?.learningState)
+              const firstLookup = firstWord ? wordsByTerm.get(normalizeTerm(firstWord.value)) : null
+              const tone = scoreTone(firstLookup ? effectiveScore(firstLookup) : 0)
               return (
                 <span
                   key={`known-group-${groupIndex}`}
@@ -387,7 +339,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
                     const lookup = wordsByTerm.get(normalizeTerm(token.value))
                     const keyTerm = lookup?.term ?? token.value
                     const isActive = activeWord === keyTerm
-                    const tone = learningTone(lookup?.learningState)
+                    const tone = scoreTone(lookup ? effectiveScore(lookup) : 0)
                     return (
                       <span
                         key={`known-word-${groupIndex}-${tokenIndex}`}
@@ -414,11 +366,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
                               aria-label="Editar palabra"
                               title="Editar palabra"
                             >
-                              <svg
-                                viewBox="0 0 20 20"
-                                aria-hidden="true"
-                                className="h-3.5 w-3.5"
-                              >
+                              <svg viewBox="0 0 20 20" aria-hidden="true" className="h-3.5 w-3.5">
                                 <path
                                   d="M14.7 2.6a1.5 1.5 0 0 1 2.1 2.1l-9.2 9.2-3.3.7.7-3.3 9.2-9.2Zm-8.4 9.9-.3 1.2 1.2-.3 8.6-8.6-.9-.9-8.6 8.6Z"
                                   fill="currentColor"
@@ -430,7 +378,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
                             <div className={tone.text}>{lookup.translation}</div>
                           )}
                           <div className={`mt-1 text-[10px] uppercase tracking-wide ${tone.text}`}>
-                            {lookup?.learningState ?? "SAVED"}
+                            {tone.label} · Score {lookup ? effectiveScore(lookup).toFixed(1) : "0"}
                           </div>
                           <details className="mt-2">
                             <summary className="inline-flex cursor-pointer items-center gap-1 text-[11px] font-semibold text-ink-700">
@@ -474,9 +422,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
               const phraseParts = group.tokens
                 .filter((token) => token.type === "word")
                 .map((token) => token.value)
-              const phraseOptions = Array.from(
-                new Set([label, ...phraseParts].filter(Boolean))
-              )
+              const phraseOptions = Array.from(new Set([label, ...phraseParts].filter(Boolean)))
               return (
                 <span
                   key={`phrase-${groupIndex}`}
@@ -532,7 +478,9 @@ export function ReconocimientoDePalabrasEnElTexto() {
                             <div className="mt-2 space-y-1 text-ink-600">
                               <div>Notas: {optionLookup?.notes || "—"}</div>
                               <div>Contexto: {formatList(optionLookup?.context)}</div>
-                              <div>Contexto practica: {formatList(optionLookup?.contextForPractice)}</div>
+                              <div>
+                                Contexto practica: {formatList(optionLookup?.contextForPractice)}
+                              </div>
                             </div>
                           </details>
                           {optionIsActive && (

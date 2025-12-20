@@ -1,432 +1,418 @@
+import { useEffect, useMemo, useRef, useState } from "react"
+
+import { useDispatch, useSelector } from "+/redux"
+
+import { useSpeaker } from "+/hooks/useSpeaker"
+
+import type { V2Word } from "+/redux/slices/v2Slice"
 import {
-  addV2Word,
-  LEARNING_STATES,
-  LearningState,
-  removeV2Word,
-  updateV2WordScore,
-  upsertV2Word,
-  V2Word,
+  applyScore,
+  removeWord,
+  setSearch,
+  setSearchField,
+  setSelectedIds,
+  setSortBy,
+  toggleSelect,
+  updateWord,
 } from "+/redux/slices/v2Slice"
-import { effectiveScore, formatDate, genId, nowISO } from "+/utils"
-import { useState } from "react"
-import { useDispatch } from "react-redux"
 
-const parseList = (value: string) =>
-  value
-    .split(",")
-    .map((item) => item.trim())
-    .filter(Boolean)
+import { defaultSettings, effectiveScore, filterAndSortWords, formatDate } from "+/utils"
 
-const renderList = (items: string[]) => {
-  if (!items.length) return <span className="text-ink-400">—</span>
-  return (
-    <div className="flex flex-wrap gap-1.5">
-      {items.map((item) => (
-        <span
-          key={item}
-          className="rounded-full border border-ink-100 bg-ink-50 px-2 py-0.5 text-[11px] font-semibold text-ink-700"
-        >
-          {item}
-        </span>
-      ))}
-    </div>
-  )
+import { SearchField, SortBy } from "+/types"
+
+const columns = {
+  desktopGrid:
+    "md:grid-cols-[30px,0.6fr,0.8fr,minmax(180px,1.3fr),60px,100px,100px,120px] md:gap-3",
+  headerRow:
+    "hidden px-4 py-2 text-xs uppercase tracking-wide text-ink-600 md:grid md:items-center",
+  bodyRow: "grid gap-3 px-4 py-3 md:items-start",
 }
 
-const learningBadgeTone = (state: LearningState) => {
-  switch (state) {
-    case "LEARNED":
-      return "border-emerald-100 bg-emerald-50 text-emerald-700"
-    case "LEARNING_3":
-      return "border-indigo-100 bg-indigo-50 text-indigo-700"
-    case "LEARNING_2":
-      return "border-orange-100 bg-orange-50 text-orange-700"
-    case "LEARNING_1":
-      return "border-yellow-100 bg-yellow-50 text-yellow-700"
-    default:
-      return "border-teal-100 bg-teal-50 text-teal-700"
-  }
+const nextSort = (current: SortBy, asc: SortBy, desc: SortBy, fallback: SortBy) => {
+  if (current === asc) return desc
+  if (current === desc) return fallback
+  return asc
 }
 
-export default function WordsTableView({ words }: { words: V2Word[] }) {
+const sortIndicator = (current: SortBy, asc: SortBy, desc: SortBy) => {
+  if (current === asc) return "↑"
+  if (current === desc) return "↓"
+  return ""
+}
+
+const preserveScroll = (fn: () => void) => {
+  const y = window.scrollY
+  fn()
+  requestAnimationFrame(() => window.scrollTo({ top: y }))
+}
+
+function WordsTable({ words }: { words: V2Word[] }) {
   const dispatch = useDispatch()
-  const [isAdding, setIsAdding] = useState(false)
+  const selectedIds = useSelector((s) => s.v2Words.selectedIds)
+  const selectedSet = useMemo(() => new Set(selectedIds), [selectedIds])
+  const search = useSelector((s) => s.v2Words.search)
+  const searchField = useSelector((s) => s.v2Words.searchField)
+  const sortBy = useSelector((s) => s.v2Words.sortBy)
+  const { speak, isSpeaking, stopSpeaking } = useSpeaker({ enabled: true })
+  const filteredWords = useMemo(
+    () => filterAndSortWords(words, search, sortBy, searchField),
+    [words, search, sortBy, searchField]
+  )
+
+  const [expandedNotes, setExpandedNotes] = useState<Set<string>>(new Set())
   const [editingId, setEditingId] = useState<string | null>(null)
-  const [draft, setDraft] = useState({
-    term: "",
-    translation: "",
-    notes: "",
-    context: "",
-    contextForPractice: "",
-    learningState: "SAVED" as LearningState,
-  })
-  const [editDraft, setEditDraft] = useState({
-    term: "",
-    translation: "",
-    notes: "",
-    context: "",
-    contextForPractice: "",
-    learningState: "SAVED" as LearningState,
-  })
+  const [editDraft, setEditDraft] = useState({ term: "", translation: "", notes: "" })
+  const notesRef = useRef<HTMLTextAreaElement | null>(null)
+  const [speakingKey, setSpeakingKey] = useState<string | null>(null)
 
-  const resetDraft = () =>
-    setDraft({
-      term: "",
-      translation: "",
-      notes: "",
-      context: "",
-      contextForPractice: "",
-      learningState: "SAVED",
+  const selectAllChecked =
+    filteredWords.length > 0 && filteredWords.every((w) => selectedSet.has(w.id))
+
+  const defaultSort = defaultSettings.sortBy
+
+  const toggleExpandNotes = (id: string) => {
+    setExpandedNotes((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
     })
+  }
 
-  const startAdd = () => setIsAdding(true)
+  const autoSizeNotes = (el: HTMLTextAreaElement | null) => {
+    if (!el) return
+    el.style.height = "auto"
+    el.style.height = `${el.scrollHeight}px`
+  }
+
+  useEffect(() => {
+    autoSizeNotes(notesRef.current)
+  }, [editDraft.notes, editingId])
+
+  const onScore = (id: string, delta: number) => {
+    if (editingId && editingId !== id) {
+      window.alert("Primero guarda o cancela la edición actual.")
+      return
+    }
+    preserveScroll(() => dispatch(applyScore({ id, delta })))
+  }
+
+  const onDelete = (id: string) => {
+    if (!window.confirm("¿Borrar palabra?")) return
+    preserveScroll(() => dispatch(removeWord(id)))
+  }
 
   const startEdit = (word: V2Word) => {
-    if (isAdding) return
+    if (editingId && editingId !== word.id) {
+      const ok = window.confirm("Tienes otra fila en edición. ¿Descartar cambios y editar esta?")
+      if (!ok) return
+    }
     setEditingId(word.id)
-    setEditDraft({
-      term: word.term,
-      translation: word.translation,
-      notes: word.notes,
-      context: word.context.join(", "),
-      contextForPractice: word.contextForPractice.join(", "),
-      learningState: word.learningState,
-    })
+    setEditDraft({ term: word.term, translation: word.translation, notes: word.notes })
   }
 
   const cancelEdit = () => setEditingId(null)
 
-  const cancelAdd = () => {
-    resetDraft()
-    setIsAdding(false)
-  }
-
-  const saveAdd = () => {
-    if (!draft.term.trim() || !draft.translation.trim()) {
-      window.alert("Palabra y traducción son obligatorias.")
-      return
-    }
-    dispatch(
-      addV2Word({
-        id: genId(),
-        term: draft.term.trim(),
-        translation: draft.translation.trim(),
-        notes: draft.notes,
-        context: parseList(draft.context),
-        contextForPractice: parseList(draft.contextForPractice),
-        learningState: draft.learningState,
-      })
-    )
-    resetDraft()
-    setIsAdding(false)
-  }
-
-  const saveEdit = (word: V2Word) => {
+  const onSaveEdit = (id: string) => {
     if (!editDraft.term.trim() || !editDraft.translation.trim()) {
       window.alert("Palabra y traducción son obligatorias.")
       return
     }
-    dispatch(
-      upsertV2Word({
-        term: editDraft.term.trim(),
-        translation: editDraft.translation.trim(),
-        notes: editDraft.notes,
-        context: parseList(editDraft.context),
-        contextForPractice: parseList(editDraft.contextForPractice),
-        learningState: editDraft.learningState,
-        previousTerm: word.term,
-      })
+    preserveScroll(() =>
+      dispatch(
+        updateWord({
+          id,
+          term: editDraft.term.trim(),
+          translation: editDraft.translation.trim(),
+          notes: editDraft.notes,
+        })
+      )
     )
     setEditingId(null)
   }
 
-  const updateScore = (word: V2Word, delta: number) => {
-    const nextScore = Math.max(0, (word.baseScore || 0) + delta)
-    dispatch(
-      updateV2WordScore({
-        id: word.id,
-        baseScore: nextScore,
-        lastPracticedAt: nowISO(),
-      })
+  const selectAll = (checked: boolean) => {
+    if (!checked) {
+      const next = selectedIds.filter((id) => !filteredWords.find((w) => w.id === id))
+      dispatch(setSelectedIds(next))
+      return
+    }
+    const next = new Set(selectedIds)
+    filteredWords.forEach((w) => next.add(w.id))
+    dispatch(setSelectedIds(Array.from(next)))
+  }
+
+  const toggleSpeak = (key: string, text: string, opts?: { sentencePerLine?: boolean }) => {
+    if (isSpeaking) {
+      stopSpeaking()
+      if (speakingKey === key) {
+        setSpeakingKey(null)
+        return
+      }
+    }
+    setSpeakingKey(key)
+    speak(text, {
+      ...opts,
+      onEnd: () => setSpeakingKey(null),
+      onError: () => setSpeakingKey(null),
+    })
+  }
+
+  const renderHeaderButton = (label: string, asc: SortBy, desc: SortBy) => {
+    const indicator = sortIndicator(sortBy, asc, desc)
+    return (
+      <button
+        type="button"
+        onClick={() =>
+          preserveScroll(() => dispatch(setSortBy(nextSort(sortBy, asc, desc, defaultSort))))
+        }
+        className="flex items-center gap-1 text-left uppercase tracking-wide text-ink-600 transition hover:text-ink-900"
+      >
+        {label}
+        {indicator && <span className="text-[10px] leading-none">{indicator}</span>}
+      </button>
     )
   }
 
-  const deleteWord = (word: V2Word) => {
-    if (!window.confirm(`¿Borrar "${word.term}"?`)) return
-    dispatch(removeV2Word(word.id))
-  }
-
   return (
-    <section className="overflow-hidden rounded-2xl border border-ink-100 bg-white/90 shadow-soft backdrop-blur">
-      <div className="border-b border-ink-100 px-4 py-3 text-sm font-semibold text-ink-800">
-        Tabla
+    <section className="mt-5 overflow-hidden rounded-2xl border border-ink-100 bg-white/90 shadow-soft backdrop-blur">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink-100 px-5 py-4">
+        <div className="flex flex-1 flex-wrap items-center gap-3">
+          <h2 className="text-lg font-semibold text-ink-900">Listado de palabras</h2>
+          <div className="flex flex-1 flex-wrap items-center gap-2">
+            <div className="flex flex-1 items-center gap-2 rounded-xl border border-ink-100 bg-white px-3 py-2 shadow-inner">
+              <span className="text-xs font-semibold uppercase text-ink-600">Buscar</span>
+              <input
+                value={search}
+                onChange={(e) => dispatch(setSearch(e.target.value))}
+                placeholder={
+                  searchField === "term" ? "Filtrar por palabra..." : "Filtrar por traducción..."
+                }
+                className="w-full flex-1 bg-transparent text-sm text-ink-900 outline-none"
+              />
+            </div>
+            <div className="flex items-center gap-1 rounded-xl border border-ink-100 bg-ink-50 px-2 py-1 text-[11px] font-semibold text-ink-700 shadow-inner">
+              <span className="uppercase text-ink-500">En</span>
+              {(["term", "translation"] as SearchField[]).map((field) => (
+                <button
+                  key={field}
+                  type="button"
+                  onClick={() => dispatch(setSearchField(field))}
+                  className={`rounded-lg px-2 py-1 transition ${
+                    searchField === field
+                      ? "bg-ink-900 text-white shadow-soft"
+                      : "text-ink-700 hover:bg-white"
+                  }`}
+                >
+                  {field === "term" ? "Palabra" : "Traducción"}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+        <label className="flex items-center gap-2 text-sm text-ink-700">
+          <input
+            type="checkbox"
+            checked={selectAllChecked}
+            onChange={(e) => selectAll(e.target.checked)}
+            className="h-4 w-4 rounded border-ink-300 text-ink-800"
+          />
+          Seleccionar todo (vista actual)
+        </label>
       </div>
-      <div className="overflow-auto">
-        <table className="w-full text-left text-sm">
-          <thead className="bg-ink-50 text-xs uppercase tracking-wide text-ink-600">
-            <tr>
-              <th className="px-4 py-3">Palabra</th>
-              <th className="px-4 py-3">Traducción</th>
-              <th className="px-4 py-3">Estado</th>
-              <th className="px-4 py-3">Notas</th>
-              <th className="px-4 py-3">Contexto</th>
-              <th className="px-4 py-3">Contexto práctica</th>
-              <th className="px-4 py-3 text-center">Score</th>
-              <th className="px-4 py-3">Última práctica</th>
-              <th className="px-4 py-3">Agregado</th>
-              <th className="px-4 py-3">Acciones</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-ink-50">
-            {!isAdding && (
-              <tr>
-                <td colSpan={10} className="px-4 py-3">
-                  <button
-                    type="button"
-                    onClick={startAdd}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-ink-200 bg-ink-50 text-sm font-semibold text-ink-800 shadow-inner transition hover:-translate-y-0.5 hover:bg-white hover:shadow-soft"
-                    aria-label="Agregar palabra"
-                    title="Agregar palabra"
-                  >
-                    +
-                  </button>
-                </td>
-              </tr>
-            )}
-            {isAdding && (
-              <tr className="align-top">
-                <td className="px-4 py-3">
+
+      <div className={`${columns.headerRow} ${columns.desktopGrid}`}>
+        <span className="text-center">Sel.</span>
+        {renderHeaderButton("Palabra", "term", "termDesc")}
+        {renderHeaderButton("Traducción", "translation", "translationDesc")}
+        {renderHeaderButton("Notas", "notes", "notesDesc")}
+        <div className="text-center">{renderHeaderButton("Score", "scoreAsc", "score")}</div>
+        {renderHeaderButton("Última práctica", "lastPracticedAtAsc", "lastPracticedAt")}
+        {renderHeaderButton("Agregado", "createdAtAsc", "createdAt")}
+        <span>Acciones</span>
+      </div>
+
+      <div className="divide-y divide-ink-50">
+        {filteredWords.map((w) => {
+          const isEditing = editingId === w.id
+          const expanded = expandedNotes.has(w.id)
+          return (
+            <div key={w.id} className={`${columns.bodyRow} ${columns.desktopGrid}`}>
+              <div className="flex items-start gap-2 md:justify-center">
+                <input
+                  type="checkbox"
+                  disabled={isEditing}
+                  checked={selectedSet.has(w.id)}
+                  onChange={(e) =>
+                    dispatch(toggleSelect({ id: w.id, checked: e.target.checked }))
+                  }
+                  className="mt-1 h-4 w-4 rounded border-ink-300 text-ink-800"
+                />
+              </div>
+
+              <div className="min-w-0 space-y-1">
+                <p className="text-[11px] text-ink-500 md:hidden">Palabra</p>
+                {isEditing ? (
                   <input
-                    value={draft.term}
-                    onChange={(e) => setDraft((d) => ({ ...d, term: e.target.value }))}
-                    placeholder="Palabra"
+                    value={editDraft.term}
+                    onChange={(e) => setEditDraft((d) => ({ ...d, term: e.target.value }))}
                     className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
                   />
-                </td>
-                <td className="px-4 py-3">
-                  <input
-                    value={draft.translation}
-                    onChange={(e) => setDraft((d) => ({ ...d, translation: e.target.value }))}
-                    placeholder="Traducción"
-                    className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
-                  />
-                </td>
-                <td className="px-4 py-3">
-                  <select
-                    value={draft.learningState}
-                    onChange={(e) =>
-                      setDraft((d) => ({
-                        ...d,
-                        learningState: e.target.value as LearningState,
-                      }))
-                    }
-                    className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
-                  >
-                    {LEARNING_STATES.map((state) => (
-                      <option key={state} value={state}>
-                        {state}
-                      </option>
-                    ))}
-                  </select>
-                </td>
-                <td className="px-4 py-3">
-                  <input
-                    value={draft.notes}
-                    onChange={(e) => setDraft((d) => ({ ...d, notes: e.target.value }))}
-                    placeholder="Notas"
-                    className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
-                  />
-                </td>
-                <td className="px-4 py-3">
-                  <input
-                    value={draft.context}
-                    onChange={(e) => setDraft((d) => ({ ...d, context: e.target.value }))}
-                    placeholder="ej: saludo, color, ropa"
-                    className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
-                  />
-                </td>
-                <td className="px-4 py-3">
-                  <input
-                    value={draft.contextForPractice}
-                    onChange={(e) =>
-                      setDraft((d) => ({ ...d, contextForPractice: e.target.value }))
-                    }
-                    placeholder="ej: buch-wir-spielen"
-                    className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
-                  />
-                </td>
-                <td className="px-4 py-3 text-center text-ink-500">—</td>
-                <td className="px-4 py-3 text-ink-500">—</td>
-                <td className="px-4 py-3 text-ink-500">—</td>
-                <td className="px-4 py-3">
-                  <div className="flex flex-wrap gap-2">
+                ) : (
+                  <div className="flex items-center gap-2">
                     <button
                       type="button"
-                      onClick={saveAdd}
-                      className="rounded-lg bg-ink-900 px-3 py-1 text-xs font-semibold text-white shadow-soft"
+                      onClick={() => toggleSpeak(`term:${w.id}`, w.term)}
+                      className="rounded-full border border-ink-100 bg-ink-50 px-2 py-1 text-[11px] font-semibold text-ink-800 shadow-inner transition hover:-translate-y-0.5 hover:shadow-sm"
+                      title={
+                        isSpeaking && speakingKey === `term:${w.id}`
+                          ? "Detener audio"
+                          : "Pronunciar palabra"
+                      }
                     >
-                      Agregar
+                      {isSpeaking && speakingKey === `term:${w.id}` ? "⏹️" : "🔊"}
+                    </button>
+                    <span className="break-words font-semibold text-ink-900">{w.term}</span>
+                  </div>
+                )}
+              </div>
+
+              <div className="min-w-0 space-y-1">
+                <p className="text-[11px] text-ink-500 md:hidden">Traducción</p>
+                {isEditing ? (
+                  <input
+                    value={editDraft.translation}
+                    onChange={(e) => setEditDraft((d) => ({ ...d, translation: e.target.value }))}
+                    className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
+                  />
+                ) : (
+                  <span className="break-words text-ink-800">{w.translation}</span>
+                )}
+              </div>
+
+              <div className="min-w-0 space-y-1">
+                <p className="text-[11px] text-ink-500 md:hidden">Notas</p>
+                {isEditing ? (
+                  <textarea
+                    value={editDraft.notes}
+                    onChange={(e) => setEditDraft((d) => ({ ...d, notes: e.target.value }))}
+                    onInput={(e) => autoSizeNotes(e.currentTarget)}
+                    ref={notesRef}
+                    rows={3}
+                    className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
+                  />
+                ) : w.notes ? (
+                  <div className="flex items-start gap-2">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        toggleSpeak(`notes:${w.id}`, w.notes || "", { sentencePerLine: true })
+                      }
+                      className="mt-0.5 rounded-full border border-ink-100 bg-ink-50 px-2 py-1 text-[11px] font-semibold text-ink-800 shadow-inner transition hover:-translate-y-0.5 hover:shadow-sm"
+                      title={
+                        isSpeaking && speakingKey === `notes:${w.id}`
+                          ? "Detener audio"
+                          : "Pronunciar notas"
+                      }
+                    >
+                      {isSpeaking && speakingKey === `notes:${w.id}` ? "⏹️" : "🔊"}
                     </button>
                     <button
                       type="button"
-                      onClick={cancelAdd}
-                      className="rounded-lg border border-ink-200 px-3 py-1 text-xs font-semibold text-ink-800"
+                      onClick={() => toggleExpandNotes(w.id)}
+                      className="group w-full text-left text-ink-700"
+                    >
+                      <div
+                        className={
+                          expanded
+                            ? "whitespace-pre-wrap break-words"
+                            : "note-clamp whitespace-pre-wrap break-words"
+                        }
+                      >
+                        {w.notes}
+                      </div>
+                      <span className="text-[11px] text-ink-500 group-hover:text-ink-700">
+                        {expanded ? "Ocultar" : "Ver más"}
+                      </span>
+                    </button>
+                  </div>
+                ) : (
+                  <span className="text-ink-400">—</span>
+                )}
+              </div>
+
+              <div className="space-y-1 text-center">
+                <p className="text-[11px] text-ink-500 md:hidden">Score</p>
+                <span className="rounded-full bg-ink-50 px-3 py-1 text-xs font-semibold text-ink-800">
+                  {effectiveScore(w).toFixed(1)}
+                </span>
+              </div>
+
+              <div className="space-y-1">
+                <p className="text-[11px] text-ink-500 md:hidden">Última práctica</p>
+                <p className="text-ink-600">{formatDate(w.lastPracticedAt)}</p>
+              </div>
+
+              <div className="space-y-1">
+                <p className="text-[11px] text-ink-500 md:hidden">Agregado</p>
+                <p className="text-ink-600">{formatDate(w.createdAt)}</p>
+              </div>
+
+              <div className="min-w-0 space-y-1">
+                <p className="text-[11px] text-ink-500 md:hidden">Acciones</p>
+                {isEditing ? (
+                  <div className="flex flex-wrap gap-1.5">
+                    <button
+                      onClick={() => onSaveEdit(w.id)}
+                      className="rounded-lg bg-ink-900 px-2.5 py-1 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      Guardar
+                    </button>
+                    <button
+                      onClick={cancelEdit}
+                      className="rounded-lg border border-ink-200 px-2.5 py-1 text-[11px] font-semibold text-ink-800"
                     >
                       Cancelar
                     </button>
                   </div>
-                </td>
-              </tr>
-            )}
-            {words.map((w) => (
-              <tr key={w.id} className="align-top">
-                <td className="px-4 py-3 font-semibold text-ink-900">
-                  {editingId === w.id ? (
-                    <input
-                      value={editDraft.term}
-                      onChange={(e) => setEditDraft((d) => ({ ...d, term: e.target.value }))}
-                      className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
-                    />
-                  ) : (
-                    w.term
-                  )}
-                </td>
-                <td className="px-4 py-3 text-ink-800">
-                  {editingId === w.id ? (
-                    <input
-                      value={editDraft.translation}
-                      onChange={(e) => setEditDraft((d) => ({ ...d, translation: e.target.value }))}
-                      className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
-                    />
-                  ) : (
-                    w.translation
-                  )}
-                </td>
-                <td className="px-4 py-3 text-ink-800">
-                  {editingId === w.id ? (
-                    <select
-                      value={editDraft.learningState}
-                      onChange={(e) =>
-                        setEditDraft((d) => ({
-                          ...d,
-                          learningState: e.target.value as LearningState,
-                        }))
-                      }
-                      className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
+                ) : (
+                  <div className="flex flex-wrap gap-1">
+                    {[-1, 1, 2].map((d) => (
+                      <button
+                        key={d}
+                        onClick={() => onScore(w.id, d)}
+                        className="rounded-lg border border-ink-200 px-2 py-1 text-[11px] font-semibold text-ink-800 hover:border-ink-300"
+                      >
+                        {d > 0 ? `+${d}` : d}
+                      </button>
+                    ))}
+                    <button
+                      onClick={() => startEdit(w)}
+                      className="rounded-lg border border-ink-200 px-2.5 py-1 text-[11px] font-semibold text-ink-800 hover:border-ink-300"
                     >
-                      {LEARNING_STATES.map((state) => (
-                        <option key={state} value={state}>
-                          {state}
-                        </option>
-                      ))}
-                    </select>
-                  ) : (
-                    <span
-                      className={`inline-flex rounded-full border px-2 py-0.5 text-[11px] font-semibold ${learningBadgeTone(
-                        w.learningState
-                      )}`}
+                      Editar
+                    </button>
+                    <button
+                      onClick={() => onDelete(w.id)}
+                      className="rounded-lg border border-rose-200 bg-rose-50 px-2.5 py-1 text-[11px] font-semibold text-rose-700 hover:border-rose-300"
                     >
-                      {w.learningState}
-                    </span>
-                  )}
-                </td>
-                <td className="whitespace-pre-wrap px-4 py-3 text-ink-700">
-                  {editingId === w.id ? (
-                    <input
-                      value={editDraft.notes}
-                      onChange={(e) => setEditDraft((d) => ({ ...d, notes: e.target.value }))}
-                      className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
-                    />
-                  ) : (
-                    w.notes || "—"
-                  )}
-                </td>
-                <td className="px-4 py-3">
-                  {editingId === w.id ? (
-                    <input
-                      value={editDraft.context}
-                      onChange={(e) => setEditDraft((d) => ({ ...d, context: e.target.value }))}
-                      className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
-                    />
-                  ) : (
-                    renderList(w.context)
-                  )}
-                </td>
-                <td className="px-4 py-3">
-                  {editingId === w.id ? (
-                    <input
-                      value={editDraft.contextForPractice}
-                      onChange={(e) =>
-                        setEditDraft((d) => ({ ...d, contextForPractice: e.target.value }))
-                      }
-                      className="w-full rounded-lg border border-ink-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-ink-400 focus:outline-none"
-                    />
-                  ) : (
-                    renderList(w.contextForPractice)
-                  )}
-                </td>
-                <td className="px-4 py-3 text-center text-ink-700">
-                  {effectiveScore(w).toFixed(1)}
-                </td>
-                <td className="px-4 py-3 text-ink-600">{formatDate(w.lastPracticedAt)}</td>
-                <td className="px-4 py-3 text-ink-600">{formatDate(w.createdAt)}</td>
-                <td className="px-4 py-3">
-                  {editingId === w.id ? (
-                    <div className="flex flex-wrap gap-2">
-                      <button
-                        type="button"
-                        onClick={() => saveEdit(w)}
-                        className="rounded-lg bg-ink-900 px-3 py-1 text-xs font-semibold text-white shadow-soft"
-                      >
-                        Guardar
-                      </button>
-                      <button
-                        type="button"
-                        onClick={cancelEdit}
-                        className="rounded-lg border border-ink-200 px-3 py-1 text-xs font-semibold text-ink-800"
-                      >
-                        Cancelar
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="flex flex-wrap gap-1.5">
-                      {[-1, 1, 2].map((d) => (
-                        <button
-                          key={d}
-                          type="button"
-                          onClick={() => updateScore(w, d)}
-                          className="rounded-lg border border-ink-200 px-2 py-1 text-[11px] font-semibold text-ink-800 hover:border-ink-300"
-                        >
-                          {d > 0 ? `+${d}` : d}
-                        </button>
-                      ))}
-                      <button
-                        type="button"
-                        onClick={() => startEdit(w)}
-                        className="rounded-lg border border-ink-200 px-2.5 py-1 text-[11px] font-semibold text-ink-800 hover:border-ink-300"
-                      >
-                        Editar
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => deleteWord(w)}
-                        className="rounded-lg border border-rose-200 bg-rose-50 px-2.5 py-1 text-[11px] font-semibold text-rose-700 hover:border-rose-300"
-                      >
-                        Borrar
-                      </button>
-                    </div>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        {!words.length && !isAdding && (
+                      Borrar
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          )
+        })}
+
+        {!filteredWords.length && (
           <div className="px-4 py-10 text-center text-sm text-ink-500">
-            No hay palabras todavía.
+            No hay palabras. Añade algunas para comenzar.
           </div>
         )}
       </div>
     </section>
   )
 }
+
+export default WordsTable

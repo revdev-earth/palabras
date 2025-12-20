@@ -16,7 +16,7 @@ const toSentencesByLine = (raw: string) =>
     .filter(Boolean)
     .join(" ")
 
-export const useSpeaker = () => {
+export const useSpeaker = (hookOpts?: { enabled?: boolean }) => {
   const speakEnabled = useSelector((s) => s.app.settings.practiceSpeakEnabled)
   const voiceId = useSelector((s) => s.app.settings.practiceVoiceId)
   const voiceLang = useSelector((s) => s.app.settings.practiceVoiceLang)
@@ -59,9 +59,10 @@ export const useSpeaker = () => {
       text: string,
       opts?: { onEnd?: () => void; onError?: () => void; sentencePerLine?: boolean }
     ) => {
+      const enabled = typeof hookOpts?.enabled === "boolean" ? hookOpts.enabled : speakEnabled
       const prepared = opts?.sentencePerLine ? toSentencesByLine(text || "") : text
       const clean = prepared?.trim()
-      if (!clean || typeof window === "undefined" || !window.speechSynthesis || !speakEnabled)
+      if (!clean || typeof window === "undefined" || !window.speechSynthesis || !enabled)
         return false
       const utter = new SpeechSynthesisUtterance(clean)
       if (preferredVoice) utter.voice = preferredVoice
@@ -79,8 +80,9 @@ export const useSpeaker = () => {
       window.speechSynthesis.speak(utter)
       return true
     },
-    [preferredVoice, speakEnabled, voiceRate]
+    [hookOpts?.enabled, preferredVoice, speakEnabled, voiceRate]
   )
 
-  return { speak, stopSpeaking, voices, preferredVoice, speakEnabled, isSpeaking }
+  const enabled = typeof hookOpts?.enabled === "boolean" ? hookOpts.enabled : speakEnabled
+  return { speak, stopSpeaking, voices, preferredVoice, speakEnabled: enabled, isSpeaking }
 }

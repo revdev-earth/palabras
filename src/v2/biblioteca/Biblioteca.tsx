@@ -2,8 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react"
 
 import { useDispatch } from "+/redux"
 
-import type { LearningState } from "+/redux/slices/v2Slice"
-import { normalizeLearningState, setV2Words } from "+/redux/slices/v2Slice"
+import { setWords } from "+/redux/slices/v2Slice"
 
 import { genId, nowISO } from "+/utils"
 import Table from "./Table"
@@ -20,7 +19,6 @@ type V2Word = {
   createdAt: string
   context: string[]
   contextForPractice: string[]
-  learningState: LearningState
 }
 
 const normalizeList = (raw: unknown) => {
@@ -54,7 +52,6 @@ const normalizeWord = (raw: unknown): V2Word | null => {
   let id = typeof obj.id === "string" && obj.id.trim() ? obj.id : genId()
   const context = normalizeList(obj.context)
   const contextForPractice = normalizeList(obj.contextForPractice)
-  const learningState = normalizeLearningState(obj.learningState, baseScore)
   return {
     id,
     term,
@@ -65,7 +62,6 @@ const normalizeWord = (raw: unknown): V2Word | null => {
     createdAt,
     context,
     contextForPractice,
-    learningState,
   }
 }
 
@@ -127,7 +123,7 @@ function JsonWordsEditor({ words }: { words: V2Word[] }) {
         if (wordsRaw.length > 0 && normalized.length === 0) {
           throw new Error("No se encontraron palabras válidas en el JSON.")
         }
-        dispatch(setV2Words(ensureUniqueIds(normalized)))
+        dispatch(setWords(ensureUniqueIds(normalized)))
         setStatus({ kind: "success", text: "Actualizado automáticamente." })
       } catch (err) {
         setStatus({ kind: "error", text: (err as Error).message })

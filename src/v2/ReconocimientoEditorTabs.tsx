@@ -1,16 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import type { Dispatch, SetStateAction } from "react"
 
-import type { LearningState } from "+/redux/slices/v2Slice"
-import { LEARNING_STATES } from "+/redux/slices/v2Slice"
-
 export type WordDraft = {
   term: string
   translation: string
   notes: string
   context: string
   contextForPractice: string
-  learningState: LearningState
 }
 
 type Props = {
@@ -54,7 +50,6 @@ export function ReconocimientoEditorTabs({
           notes: draft.notes,
           context: normalizeList(draft.context),
           contextForPractice: normalizeList(draft.contextForPractice),
-          learningState: draft.learningState,
         },
         null,
         2
@@ -95,12 +90,6 @@ export function ReconocimientoEditorTabs({
           next.contextForPractice = normalizeList(
             (parsed as { contextForPractice?: unknown }).contextForPractice
           ).join(", ")
-        }
-        if (
-          typeof (parsed as { learningState?: unknown }).learningState === "string" &&
-          LEARNING_STATES.includes((parsed as { learningState: LearningState }).learningState)
-        ) {
-          next.learningState = (parsed as { learningState: LearningState }).learningState
         }
         return next
       })
@@ -168,27 +157,6 @@ export function ReconocimientoEditorTabs({
             placeholder="Traduccion"
             className="w-full rounded-md border border-ink-100 px-2 py-1 text-xs focus:border-orange-300 focus:outline-none"
           />
-          <div>
-            <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-ink-500">
-              Estado
-            </div>
-            <select
-              value={draft.learningState}
-              onChange={(e) =>
-                setDraft((prev) => ({
-                  ...prev,
-                  learningState: e.target.value as LearningState,
-                }))
-              }
-              className="w-full rounded-md border border-ink-100 bg-white px-2 py-1 text-xs focus:border-orange-300 focus:outline-none"
-            >
-              {LEARNING_STATES.map((state) => (
-                <option key={state} value={state}>
-                  {state}
-                </option>
-              ))}
-            </select>
-          </div>
           <textarea
             value={draft.notes}
             onChange={(e) => setDraft((prev) => ({ ...prev, notes: e.target.value }))}
