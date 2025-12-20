@@ -9,7 +9,7 @@ import { applyScore, upsertWord } from "+/redux/slices/v2Slice"
 import { ReconocimientoEditorTabs, WordDraft } from "./ReconocimientoEditorTabs"
 
 import { effectiveScore } from "+/utils"
-import { scoreTone } from "./utils/scoreTone"
+import { scoreTone, ToneVariant } from "./utils/scoreTone"
 
 type Token = {
   value: string
@@ -192,6 +192,7 @@ type TooltipProps = {
   tooltip: TooltipState
   activeWord: string | null
   draft: WordDraft
+  toneVariant: ToneVariant
   phraseSuggestions: string[]
   contextSuggestions: string[]
   onAddPhraseSuggestion: (value: string) => void
@@ -209,6 +210,7 @@ function ReconocimientoTooltip({
   tooltip,
   activeWord,
   draft,
+  toneVariant,
   phraseSuggestions,
   contextSuggestions,
   onAddPhraseSuggestion,
@@ -225,8 +227,8 @@ function ReconocimientoTooltip({
     tooltip.kind === "phrase"
       ? phraseTone.border
       : tooltip.kind === "unknown"
-        ? "border-slate-200"
-        : scoreTone(effectiveScore(tooltip.lookup)).border
+      ? "border-slate-200"
+      : scoreTone(effectiveScore(tooltip.lookup), toneVariant).border
 
   return (
     <div
@@ -242,7 +244,7 @@ function ReconocimientoTooltip({
       {tooltip.kind === "known" &&
         (() => {
           const isActive = activeWord === tooltip.keyTerm
-          const tone = scoreTone(effectiveScore(tooltip.lookup))
+          const tone = scoreTone(effectiveScore(tooltip.lookup), toneVariant)
           return (
             <>
               <div className="flex items-center justify-between gap-2">
@@ -445,22 +447,26 @@ type PreviewConfigProps = {
   fontSize: number
   lineHeight: number
   wordSpacing: number
+  toneVariant: ToneVariant
   isOpen: boolean
   onToggle: () => void
   onFontSizeChange: (value: number) => void
   onLineHeightChange: (value: number) => void
   onWordSpacingChange: (value: number) => void
+  onToneVariantChange: (value: ToneVariant) => void
 }
 
 function PreviewConfigMenu({
   fontSize,
   lineHeight,
   wordSpacing,
+  toneVariant,
   isOpen,
   onToggle,
   onFontSizeChange,
   onLineHeightChange,
   onWordSpacingChange,
+  onToneVariantChange,
 }: PreviewConfigProps) {
   return (
     <div className="relative">
@@ -533,6 +539,21 @@ function PreviewConfigMenu({
               </span>
             </div>
           </label>
+          <label className="mt-3 flex flex-col gap-1">
+            <span className="text-[10px] font-semibold uppercase tracking-wide text-ink-500">
+              Resaltado
+            </span>
+            <select
+              value={toneVariant}
+              onChange={(e) => onToneVariantChange(e.target.value as ToneVariant)}
+              className="rounded-lg border border-ink-100 bg-white px-2 py-1 text-xs text-ink-900"
+            >
+              <option value="green">Verde</option>
+              <option value="blue">Azul</option>
+              <option value="purple">Morado</option>
+              <option value="mix">Mix</option>
+            </select>
+          </label>
         </div>
       )}
     </div>
@@ -547,6 +568,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
   const [previewFontSize, setPreviewFontSize] = useState(16)
   const [previewLineHeight, setPreviewLineHeight] = useState(2.0)
   const [previewWordSpacing, setPreviewWordSpacing] = useState(1.5)
+  const [toneVariant, setToneVariant] = useState<ToneVariant>("mix")
   const [showPreviewConfig, setShowPreviewConfig] = useState(false)
   const [showUnknownList, setShowUnknownList] = useState(false)
   const [draft, setDraft] = useState<WordDraft>({
@@ -822,16 +844,18 @@ export function ReconocimientoDePalabrasEnElTexto() {
             >
               Desconocidas {unknownWords.length ? `(${unknownWords.length})` : ""}
             </button>
-            <PreviewConfigMenu
-              fontSize={previewFontSize}
-              lineHeight={previewLineHeight}
-              wordSpacing={previewWordSpacing}
-              isOpen={showPreviewConfig}
-              onToggle={() => setShowPreviewConfig((prev) => !prev)}
-              onFontSizeChange={setPreviewFontSize}
-              onLineHeightChange={setPreviewLineHeight}
-              onWordSpacingChange={setPreviewWordSpacing}
-            />
+          <PreviewConfigMenu
+            fontSize={previewFontSize}
+            lineHeight={previewLineHeight}
+            wordSpacing={previewWordSpacing}
+            toneVariant={toneVariant}
+            isOpen={showPreviewConfig}
+            onToggle={() => setShowPreviewConfig((prev) => !prev)}
+            onFontSizeChange={setPreviewFontSize}
+            onLineHeightChange={setPreviewLineHeight}
+            onWordSpacingChange={setPreviewWordSpacing}
+            onToneVariantChange={setToneVariant}
+          />
           </div>
         </div>
         <div
@@ -890,7 +914,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
                       }
                       const lookup = wordsByTerm.get(normalizeTerm(token.value))
                       const keyTerm = lookup?.term ?? token.value
-                      const tone = lookup ? scoreTone(effectiveScore(lookup)) : null
+                      const tone = lookup ? scoreTone(effectiveScore(lookup), toneVariant) : null
                       return (
                         <span
                           key={`known-word-${groupIndex}-${tokenIndex}`}
@@ -913,7 +937,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
                       )
                     }
 
-                    const highTone = scoreTone(10)
+                    const highTone = scoreTone(10, toneVariant)
                     return segments.map((segment, segmentIndex) =>
                       segment.kind === "high" ? (
                         <span
@@ -997,6 +1021,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
               tooltip={tooltip}
               activeWord={activeWord}
               draft={draft}
+              toneVariant={toneVariant}
               phraseSuggestions={phraseSuggestions}
               contextSuggestions={contextSuggestions}
               onAddPhraseSuggestion={addPhraseSuggestion}
