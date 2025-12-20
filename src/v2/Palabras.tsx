@@ -4,6 +4,8 @@ import { useSelector } from "+/redux"
 
 import { V2_STORE_KEY } from "+/redux/slices/v2Slice"
 
+import { AudioPanel } from "./AudioPanel"
+
 import { Biblioteca } from "./biblioteca/Biblioteca"
 import { ReconocimientoDePalabrasEnElTexto } from "./ReconocimientoDePalabrasEnElTexto"
 
@@ -17,8 +19,9 @@ function Palabras() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <header className="mb-6 space-y-1">
+      <header className="mb-6 flex flex-wrap items-start justify-between gap-3">
         <h1 className="text-3xl font-semibold text-ink-900">Palabras</h1>
+        <AudioPanel />
       </header>
 
       <main className="space-y-4">
