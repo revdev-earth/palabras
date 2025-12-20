@@ -4585,3 +4585,5 @@ const memory = [
     learningState: "SAVED",
   },
 ]
+
+export default memory

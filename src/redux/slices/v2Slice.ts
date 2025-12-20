@@ -20,6 +20,7 @@ export type V2SliceState = {
   searchField: SearchField
   sortBy: SortBy
   selectedIds: string[]
+  useMemory: boolean
 }
 
 export const V2_STORE_KEY = "vocab-tracker-v2"
@@ -93,8 +94,12 @@ export const v2Slice = createSlice({
     searchField: "term",
     sortBy: defaultSettings.sortBy,
     selectedIds: [],
+    useMemory: false,
   } as V2SliceState,
   reducers: {
+    setUseMemory(state, action: PayloadAction<boolean>) {
+      state.useMemory = action.payload
+    },
     setSearch(state, action: PayloadAction<string>) {
       state.search = action.payload
     },
@@ -242,6 +247,7 @@ export const {
   setSearchField,
   setSelectedIds,
   setSortBy,
+  setUseMemory,
   toggleSelect,
   upsertWord,
   updateWord,
