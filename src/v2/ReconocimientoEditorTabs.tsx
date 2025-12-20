@@ -16,8 +16,9 @@ export type WordDraft = {
 type Props = {
   draft: WordDraft
   setDraft: Dispatch<SetStateAction<WordDraft>>
-  onSave: () => void
-  onClose: () => void
+  onSave: () => boolean
+  phraseSuggestions: string[]
+  onAddPhraseSuggestion: (value: string) => void
   contextSuggestions: string[]
   onAddContextSuggestion: (value: string) => void
 }
@@ -37,7 +38,8 @@ export function ReconocimientoEditorTabs({
   draft,
   setDraft,
   onSave,
-  onClose,
+  phraseSuggestions,
+  onAddPhraseSuggestion,
   contextSuggestions,
   onAddContextSuggestion,
 }: Props) {
@@ -131,13 +133,6 @@ export function ReconocimientoEditorTabs({
             JSON
           </button>
         </div>
-        <button
-          type="button"
-          onClick={onClose}
-          className="rounded-md border border-ink-200 px-2 py-1 text-[11px] font-semibold text-ink-700"
-        >
-          Cerrar
-        </button>
       </div>
 
       {tab === "form" ? (
@@ -148,6 +143,25 @@ export function ReconocimientoEditorTabs({
             placeholder="Palabra"
             className="w-full rounded-md border border-ink-100 px-2 py-1 text-xs focus:border-orange-300 focus:outline-none"
           />
+          {phraseSuggestions.length > 0 && (
+            <div>
+              <div className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-ink-500">
+                Frases sugeridas
+              </div>
+              <div className="flex flex-wrap gap-2 text-[11px]">
+                {phraseSuggestions.map((phrase) => (
+                  <button
+                    key={phrase}
+                    type="button"
+                    onClick={() => onAddPhraseSuggestion(phrase)}
+                    className="rounded-full border border-violet-200 px-2 py-0.5 font-semibold text-violet-700"
+                  >
+                    {phrase}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
           <input
             value={draft.translation}
             onChange={(e) => setDraft((prev) => ({ ...prev, translation: e.target.value }))}
@@ -217,6 +231,25 @@ export function ReconocimientoEditorTabs({
             rows={8}
             className="w-full resize-none rounded-md border border-ink-100 bg-ink-50/60 px-2 py-1 font-mono text-[11px] text-ink-900 shadow-inner focus:border-orange-300 focus:outline-none"
           />
+          {phraseSuggestions.length > 0 && (
+            <div className="mt-2">
+              <div className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-ink-500">
+                Frases sugeridas
+              </div>
+              <div className="flex flex-wrap gap-2 text-[11px]">
+                {phraseSuggestions.map((phrase) => (
+                  <button
+                    key={phrase}
+                    type="button"
+                    onClick={() => onAddPhraseSuggestion(phrase)}
+                    className="rounded-full border border-violet-200 px-2 py-0.5 font-semibold text-violet-700"
+                  >
+                    {phrase}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
           {contextSuggestions.length > 0 && (
             <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
               {contextSuggestions.map((tag) => (

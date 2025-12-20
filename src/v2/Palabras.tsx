@@ -4,7 +4,7 @@ import { useSelector } from "+/redux"
 
 import { V2_STORE_KEY } from "+/redux/slices/v2Slice"
 
-import { Biblioteca } from "./Biblioteca"
+import { Biblioteca } from "./biblioteca/Biblioteca"
 import { ReconocimientoDePalabrasEnElTexto } from "./ReconocimientoDePalabrasEnElTexto"
 
 function Palabras() {

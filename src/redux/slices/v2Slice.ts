@@ -32,9 +32,9 @@ export const V2_STORE_KEY = "vocab-tracker-v2"
 
 export const learningStateFromScore = (score: number): LearningState => {
   if (score >= 10) return "LEARNED"
-  if (score >= 9) return "LEARNING_3"
-  if (score >= 6) return "LEARNING_2"
-  if (score >= 3) return "LEARNING_1"
+  if (score >= 7) return "LEARNING_3"
+  if (score >= 4) return "LEARNING_2"
+  if (score >= 1) return "LEARNING_1"
   return "SAVED"
 }
 
@@ -54,7 +54,7 @@ const seedWords: V2Word[] = [
     createdAt: nowISO(),
     context: [],
     contextForPractice: [],
-    learningState: "SAVED",
+    learningState: learningStateFromScore(2),
   },
   {
     id: "de-danke",
@@ -66,7 +66,7 @@ const seedWords: V2Word[] = [
     createdAt: nowISO(),
     context: [],
     contextForPractice: [],
-    learningState: "SAVED",
+    learningState: learningStateFromScore(2),
   },
   {
     id: "de-bitte",
@@ -78,7 +78,7 @@ const seedWords: V2Word[] = [
     createdAt: nowISO(),
     context: [],
     contextForPractice: [],
-    learningState: "SAVED",
+    learningState: learningStateFromScore(2),
   },
   {
     id: "de-wasser",
@@ -90,7 +90,7 @@ const seedWords: V2Word[] = [
     createdAt: nowISO(),
     context: [],
     contextForPractice: [],
-    learningState: "SAVED",
+    learningState: learningStateFromScore(2),
   },
   {
     id: "de-buch",
@@ -102,7 +102,7 @@ const seedWords: V2Word[] = [
     createdAt: nowISO(),
     context: [],
     contextForPractice: [],
-    learningState: "SAVED",
+    learningState: learningStateFromScore(2),
   },
 ]
 
@@ -213,7 +213,16 @@ export const v2Slice = createSlice({
         learningState: learningStateFromScore(nextScore),
       }
     },
+    removeV2Word(state, action: PayloadAction<string>) {
+      state.words = state.words.filter((word) => word.id !== action.payload)
+    },
   },
 })
 
-export const { addV2Word, setV2Words, upsertV2Word, updateV2WordScore } = v2Slice.actions
+export const {
+  addV2Word,
+  setV2Words,
+  upsertV2Word,
+  updateV2WordScore,
+  removeV2Word,
+} = v2Slice.actions

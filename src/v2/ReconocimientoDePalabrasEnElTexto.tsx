@@ -18,6 +18,8 @@ type Model = {
   tokens: Token[]
 }
 
+const normalizeTerm = (value: string) => value.toLowerCase().replace(/\s+/g, " ").trim()
+
 const tokenize = (text: string, knownWords: Set<string>): Token[] => {
   const parts = text.match(/([\p{L}\p{N}]+|[^\p{L}\p{N}\s]+|\s+)/gu) || []
   return parts.map((value) => {
@@ -25,20 +27,85 @@ const tokenize = (text: string, knownWords: Set<string>): Token[] => {
       return { value, type: "space", known: false }
     }
     if (/^[\p{L}\p{N}]+$/u.test(value)) {
-      const key = value.toLowerCase()
+      const key = normalizeTerm(value)
       return { value, type: "word", known: knownWords.has(key) }
     }
     return { value, type: "punct", known: false }
   })
 }
 
-type TokenGroup = { kind: "knownGroup"; tokens: Token[] } | { kind: "token"; token: Token }
+type PhraseTrieNode = {
+  term?: string
+  children: Map<string, PhraseTrieNode>
+}
 
-const groupTokens = (tokens: Token[]): TokenGroup[] => {
+type TokenGroup =
+  | { kind: "knownGroup"; tokens: Token[] }
+  | { kind: "phrase"; tokens: Token[]; term: string }
+  | { kind: "token"; token: Token }
+
+const MAX_PHRASE_WORDS = 4
+
+const buildPhraseTrie = (terms: string[]) => {
+  const root: PhraseTrieNode = { children: new Map() }
+  terms.forEach((term) => {
+    const parts = normalizeTerm(term).split(" ").filter(Boolean)
+    if (parts.length < 2 || parts.length > MAX_PHRASE_WORDS) return
+    let node = root
+    parts.forEach((part) => {
+      let next = node.children.get(part)
+      if (!next) {
+        next = { children: new Map() }
+        node.children.set(part, next)
+      }
+      node = next
+    })
+    node.term = normalizeTerm(term)
+  })
+  return root
+}
+
+const matchPhrase = (tokens: Token[], startIndex: number, trie: PhraseTrieNode) => {
+  let node: PhraseTrieNode | undefined = trie
+  let index = startIndex
+  let lastMatch: { endIndex: number; term: string } | null = null
+  while (index < tokens.length && node) {
+    const token = tokens[index]
+    if (token.type !== "word") break
+    const nextNode = node.children.get(normalizeTerm(token.value))
+    if (!nextNode) break
+    node = nextNode
+    if (node.term) {
+      lastMatch = { endIndex: index, term: node.term }
+    }
+    const nextToken = tokens[index + 1]
+    const afterNext = tokens[index + 2]
+    if (nextToken?.type === "space" && afterNext?.type === "word") {
+      index += 2
+      continue
+    }
+    break
+  }
+  return lastMatch
+}
+
+const groupTokens = (tokens: Token[], trie: PhraseTrieNode): TokenGroup[] => {
   const groups: TokenGroup[] = []
   let i = 0
   while (i < tokens.length) {
     const current = tokens[i]
+    if (current.type === "word") {
+      const phraseMatch = matchPhrase(tokens, i, trie)
+      if (phraseMatch?.term && phraseMatch.term.includes(" ")) {
+        groups.push({
+          kind: "phrase",
+          tokens: tokens.slice(i, phraseMatch.endIndex + 1),
+          term: phraseMatch.term,
+        })
+        i = phraseMatch.endIndex + 1
+        continue
+      }
+    }
     if (current.type === "word" && current.known) {
       const groupTokensList: Token[] = [current]
       let j = i + 1
@@ -103,18 +170,23 @@ export function ReconocimientoDePalabrasEnElTexto() {
   const knownWords = useMemo(() => {
     const set = new Set<string>()
     words.forEach((w) => {
-      const term = w.term.trim().toLowerCase()
-      if (term && w.translation.trim()) set.add(term)
+      const term = normalizeTerm(w.term)
+      if (term && w.translation.trim() && !term.includes(" ")) set.add(term)
     })
     return set
   }, [words])
 
+  const phraseTrie = useMemo(() => {
+    const terms = words.map((word) => word.term)
+    return buildPhraseTrie(terms)
+  }, [words])
+
   const tokens = useMemo(() => tokenize(text, knownWords), [text, knownWords])
-  const groups = useMemo(() => groupTokens(tokens), [tokens])
+  const groups = useMemo(() => groupTokens(tokens, phraseTrie), [tokens, phraseTrie])
   const wordsByTerm = useMemo(() => {
     const map = new Map<string, (typeof words)[number]>()
     words.forEach((word) => {
-      const key = word.term.trim().toLowerCase()
+      const key = normalizeTerm(word.term)
       if (key && !map.has(key)) map.set(key, word)
     })
     return map
@@ -134,9 +206,35 @@ export function ReconocimientoDePalabrasEnElTexto() {
     return Array.from(new Set(tags))
   }, [text])
 
+  const phraseSuggestions = useMemo(() => {
+    if (!activeWord) return []
+    const key = normalizeTerm(activeWord)
+    const suggestions = new Set<string>()
+    for (let i = 0; i < tokens.length - 2; i += 1) {
+      const token = tokens[i]
+      const next = tokens[i + 1]
+      const afterNext = tokens[i + 2]
+      if (
+        token.type === "word" &&
+        normalizeTerm(token.value) === key &&
+        next?.type === "space" &&
+        afterNext?.type === "word"
+      ) {
+        suggestions.add(`${token.value} ${afterNext.value}`)
+      }
+    }
+    words.forEach((word) => {
+      const normalized = normalizeTerm(word.term)
+      if (normalized.startsWith(`${key} `)) {
+        suggestions.add(word.term)
+      }
+    })
+    return Array.from(suggestions)
+  }, [activeWord, tokens, words])
+
   const startAdd = (term: string) => {
     setActiveWord(term)
-    const existing = wordsByTerm.get(term.toLowerCase())
+    const existing = wordsByTerm.get(normalizeTerm(term))
     if (existing) {
       setDraft({
         term: existing.term,
@@ -158,9 +256,13 @@ export function ReconocimientoDePalabrasEnElTexto() {
     })
   }
 
-  const saveWord = (nextDraft: WordDraft, previousTerm = activeWord) => {
+  const saveWord = (
+    nextDraft: WordDraft,
+    previousTerm = activeWord,
+    shouldAlert = true
+  ) => {
     if (!nextDraft.term.trim() || !nextDraft.translation.trim()) {
-      window.alert("Palabra y traduccion son obligatorias.")
+      if (shouldAlert) window.alert("Palabra y traduccion son obligatorias.")
       return false
     }
     dispatch(
@@ -176,8 +278,8 @@ export function ReconocimientoDePalabrasEnElTexto() {
     )
     if (
       previousTerm &&
-      wordsByTerm.has(previousTerm.trim().toLowerCase()) &&
-      previousTerm.trim().toLowerCase() !== nextDraft.term.trim().toLowerCase()
+      wordsByTerm.has(normalizeTerm(previousTerm)) &&
+      normalizeTerm(previousTerm) !== normalizeTerm(nextDraft.term)
     ) {
       setActiveWord(nextDraft.term.trim())
     }
@@ -193,41 +295,53 @@ export function ReconocimientoDePalabrasEnElTexto() {
     })
   }
 
+  const addPhraseSuggestion = (value: string) => {
+    if (!value) return
+    setDraft((prev) => ({ ...prev, term: value }))
+  }
+
+  const phraseTone = {
+    bg: "bg-violet-100/70",
+    border: "border-violet-100",
+    shadow: "shadow-[0_0_8px_rgba(139,92,246,0.2)]",
+    text: "text-violet-700",
+  }
+
   const learningTone = (state: LearningState | undefined) => {
     switch (state) {
       case "LEARNED":
         return {
-          bg: "bg-emerald-200/70",
-          border: "border-emerald-200",
-          shadow: "shadow-[0_0_8px_rgba(16,185,129,0.4)]",
+          bg: "bg-emerald-100/70",
+          border: "border-emerald-100",
+          shadow: "shadow-[0_0_8px_rgba(16,185,129,0.25)]",
           text: "text-emerald-700",
         }
       case "LEARNING_3":
         return {
-          bg: "bg-indigo-200/70",
-          border: "border-indigo-200",
-          shadow: "shadow-[0_0_8px_rgba(99,102,241,0.35)]",
+          bg: "bg-indigo-100/70",
+          border: "border-indigo-100",
+          shadow: "shadow-[0_0_8px_rgba(99,102,241,0.25)]",
           text: "text-indigo-700",
         }
       case "LEARNING_2":
         return {
-          bg: "bg-orange-200/70",
-          border: "border-orange-200",
-          shadow: "shadow-[0_0_8px_rgba(249,115,22,0.35)]",
+          bg: "bg-orange-100/70",
+          border: "border-orange-100",
+          shadow: "shadow-[0_0_8px_rgba(251,146,60,0.2)]",
           text: "text-orange-700",
         }
       case "LEARNING_1":
         return {
-          bg: "bg-amber-200/70",
-          border: "border-amber-200",
-          shadow: "shadow-[0_0_8px_rgba(251,191,36,0.35)]",
-          text: "text-amber-700",
+          bg: "bg-yellow-100/70",
+          border: "border-yellow-100",
+          shadow: "shadow-[0_0_8px_rgba(250,204,21,0.22)]",
+          text: "text-yellow-700",
         }
       default:
         return {
-          bg: "bg-teal-200/70",
-          border: "border-teal-200",
-          shadow: "shadow-[0_0_8px_rgba(20,184,166,0.35)]",
+          bg: "bg-teal-100/70",
+          border: "border-teal-100",
+          shadow: "shadow-[0_0_8px_rgba(20,184,166,0.25)]",
           text: "text-teal-700",
         }
     }
@@ -250,12 +364,14 @@ export function ReconocimientoDePalabrasEnElTexto() {
         <div className="text-xs font-semibold uppercase tracking-wide text-ink-500">
           Vista previa
         </div>
-        <div className="mt-3 flex flex-wrap items-baseline gap-x-1 gap-y-2 text-sm text-ink-900">
+        <div className="mt-3 whitespace-pre-wrap text-sm text-ink-900">
           {tokens.length === 0 && <span className="text-ink-400">Sin texto para analizar.</span>}
           {groups.map((group, groupIndex) => {
             if (group.kind === "knownGroup") {
               const firstWord = group.tokens.find((t) => t.type === "word")
-              const firstLookup = firstWord ? wordsByTerm.get(firstWord.value.toLowerCase()) : null
+              const firstLookup = firstWord
+                ? wordsByTerm.get(normalizeTerm(firstWord.value))
+                : null
               const tone = learningTone(firstLookup?.learningState)
               return (
                 <span
@@ -268,7 +384,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
                         <span key={`known-space-${groupIndex}-${tokenIndex}`}>{token.value}</span>
                       )
                     }
-                    const lookup = wordsByTerm.get(token.value.toLowerCase())
+                    const lookup = wordsByTerm.get(normalizeTerm(token.value))
                     const keyTerm = lookup?.term ?? token.value
                     const isActive = activeWord === keyTerm
                     const tone = learningTone(lookup?.learningState)
@@ -289,7 +405,7 @@ export function ReconocimientoDePalabrasEnElTexto() {
                               type="button"
                               onClick={() => {
                                 if (isActive) {
-                                  if (saveWord(draft)) setActiveWord(null)
+                                  setActiveWord(null)
                                   return
                                 }
                                 startAdd(keyTerm)
@@ -335,10 +451,9 @@ export function ReconocimientoDePalabrasEnElTexto() {
                                 key={draft.term}
                                 draft={draft}
                                 setDraft={setDraft}
-                                onSave={() => saveWord(draft)}
-                                onClose={() => {
-                                  if (saveWord(draft)) setActiveWord(null)
-                                }}
+                                onSave={() => saveWord(draft, activeWord, false)}
+                                phraseSuggestions={phraseSuggestions}
+                                onAddPhraseSuggestion={addPhraseSuggestion}
                                 contextSuggestions={contextSuggestions}
                                 onAddContextSuggestion={addContextSuggestion}
                               />
@@ -348,6 +463,96 @@ export function ReconocimientoDePalabrasEnElTexto() {
                       </span>
                     )
                   })}
+                </span>
+              )
+            }
+
+            if (group.kind === "phrase") {
+              const lookup = wordsByTerm.get(group.term)
+              const label = lookup?.term ?? group.term
+              const phraseText = group.tokens.map((token) => token.value).join("")
+              const phraseParts = group.tokens
+                .filter((token) => token.type === "word")
+                .map((token) => token.value)
+              const phraseOptions = Array.from(
+                new Set([label, ...phraseParts].filter(Boolean))
+              )
+              return (
+                <span
+                  key={`phrase-${groupIndex}`}
+                  className={`group relative inline-flex rounded-md px-1 ${phraseTone.bg} ${phraseTone.shadow} after:absolute after:left-0 after:top-full after:h-2 after:w-full after:content-['']`}
+                >
+                  {phraseText}
+                  <span
+                    className={`pointer-events-none absolute left-1/2 top-full z-10 mt-1 w-60 -translate-x-1/2 rounded-xl border bg-white px-3 py-2 text-xs text-ink-800 opacity-0 shadow-soft transition group-hover:pointer-events-auto group-hover:opacity-100 ${phraseTone.border}`}
+                  >
+                    {phraseOptions.map((option, optionIndex) => {
+                      const optionLookup = wordsByTerm.get(normalizeTerm(option))
+                      const optionIsActive = activeWord === option
+                      return (
+                        <div key={option}>
+                          {optionIndex > 0 && <div className="my-2 h-px bg-ink-100" />}
+                          <div className="flex items-center justify-between gap-2">
+                            <div className="font-semibold text-ink-900">{option}</div>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                if (optionIsActive) {
+                                  setActiveWord(null)
+                                  return
+                                }
+                                startAdd(option)
+                              }}
+                              className={`flex h-6 w-6 items-center justify-center rounded-full border ${phraseTone.border} ${phraseTone.text}`}
+                              aria-label="Editar termino"
+                              title="Editar termino"
+                            >
+                              <svg viewBox="0 0 20 20" aria-hidden="true" className="h-3.5 w-3.5">
+                                <path
+                                  d="M14.7 2.6a1.5 1.5 0 0 1 2.1 2.1l-9.2 9.2-3.3.7.7-3.3 9.2-9.2Zm-8.4 9.9-.3 1.2 1.2-.3 8.6-8.6-.9-.9-8.6 8.6Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+                          {optionLookup?.translation ? (
+                            <div className={phraseTone.text}>{optionLookup.translation}</div>
+                          ) : (
+                            <div className="text-ink-500">No registrada</div>
+                          )}
+                          <details className="mt-2">
+                            <summary className="inline-flex cursor-pointer items-center gap-1 text-[11px] font-semibold text-ink-700">
+                              <span
+                                className={`flex h-4 w-4 items-center justify-center rounded-full border ${phraseTone.border} ${phraseTone.text}`}
+                              >
+                                +
+                              </span>
+                              Detalles
+                            </summary>
+                            <div className="mt-2 space-y-1 text-ink-600">
+                              <div>Notas: {optionLookup?.notes || "—"}</div>
+                              <div>Contexto: {formatList(optionLookup?.context)}</div>
+                              <div>Contexto practica: {formatList(optionLookup?.contextForPractice)}</div>
+                            </div>
+                          </details>
+                          {optionIsActive && (
+                            <div className="mt-2">
+                              <ReconocimientoEditorTabs
+                                key={draft.term}
+                                draft={draft}
+                                setDraft={setDraft}
+                                onSave={() => saveWord(draft, activeWord, false)}
+                                phraseSuggestions={phraseSuggestions}
+                                onAddPhraseSuggestion={addPhraseSuggestion}
+                                contextSuggestions={contextSuggestions}
+                                onAddContextSuggestion={addContextSuggestion}
+                              />
+                            </div>
+                          )}
+                        </div>
+                      )
+                    })}
+                  </span>
                 </span>
               )
             }
@@ -362,25 +567,25 @@ export function ReconocimientoDePalabrasEnElTexto() {
               return (
                 <span
                   key={`word-${groupIndex}`}
-                  className="group relative inline-flex rounded-md bg-orange-200/70 px-1 shadow-[0_0_8px_rgba(249,115,22,0.45)] after:absolute after:left-0 after:top-full after:h-2 after:w-full after:content-['']"
+                  className="group relative inline-flex rounded-md bg-slate-200/70 px-1 shadow-[0_0_8px_rgba(100,116,139,0.35)] after:absolute after:left-0 after:top-full after:h-2 after:w-full after:content-['']"
                 >
                   {token.value}
-                  <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-1 w-64 -translate-x-1/2 rounded-xl border border-orange-200 bg-white px-3 py-2 text-xs text-ink-800 opacity-0 shadow-soft transition group-hover:pointer-events-auto group-hover:opacity-100">
+                  <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-1 w-64 -translate-x-1/2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs text-ink-800 opacity-0 shadow-soft transition group-hover:pointer-events-auto group-hover:opacity-100">
                     <div className="font-semibold text-ink-900">{token.value}</div>
-                    <div className="text-orange-700">No registrada</div>
+                    <div className="text-slate-700">No registrada</div>
                     <details className="mt-2" open={isActive}>
                       <summary
                         className="inline-flex cursor-pointer items-center gap-1 text-[11px] font-semibold text-ink-700"
                         onClick={(event) => {
                           event.preventDefault()
                           if (isActive) {
-                            if (saveWord(draft)) setActiveWord(null)
+                            setActiveWord(null)
                             return
                           }
                           startAdd(token.value)
                         }}
                       >
-                        <span className="flex h-4 w-4 items-center justify-center rounded-full border border-orange-200 text-orange-600">
+                        <span className="flex h-4 w-4 items-center justify-center rounded-full border border-slate-200 text-slate-600">
                           {isActive ? "-" : "+"}
                         </span>
                         {isActive ? "Cerrar" : "Agregar"}
@@ -391,10 +596,9 @@ export function ReconocimientoDePalabrasEnElTexto() {
                             key={draft.term || token.value}
                             draft={draft}
                             setDraft={setDraft}
-                            onSave={() => saveWord(draft)}
-                            onClose={() => {
-                              if (saveWord(draft)) setActiveWord(null)
-                            }}
+                            onSave={() => saveWord(draft, activeWord, false)}
+                            phraseSuggestions={phraseSuggestions}
+                            onAddPhraseSuggestion={addPhraseSuggestion}
                             contextSuggestions={contextSuggestions}
                             onAddContextSuggestion={addContextSuggestion}
                           />
