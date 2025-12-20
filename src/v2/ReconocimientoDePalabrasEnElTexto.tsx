@@ -1,8 +1,10 @@
+import type { Dispatch, SetStateAction } from "react"
 import { useEffect, useMemo, useRef, useState } from "react"
 
 import { useDispatch, useSelector } from "+/redux"
 
-import { upsertWord } from "+/redux/slices/v2Slice"
+import type { V2Word } from "+/redux/slices/v2Slice"
+import { applyScore, upsertWord } from "+/redux/slices/v2Slice"
 
 import { ReconocimientoEditorTabs, WordDraft } from "./ReconocimientoEditorTabs"
 
@@ -154,11 +156,397 @@ const toTag = (value: string) =>
     .replace(/\s+/g, "-")
     .replace(/-+/g, "-")
 
+const phraseTone = {
+  bg: "bg-violet-100/70",
+  border: "border-violet-100",
+  shadow: "shadow-[0_0_8px_rgba(139,92,246,0.2)]",
+  text: "text-violet-700",
+}
+
+type TooltipState =
+  | {
+      kind: "known"
+      left: number
+      top: number
+      widthClass: "w-56"
+      lookup: V2Word
+      keyTerm: string
+    }
+  | {
+      kind: "phrase"
+      left: number
+      top: number
+      widthClass: "w-60"
+      options: Array<{ label: string; lookup?: V2Word }>
+    }
+  | {
+      kind: "unknown"
+      left: number
+      top: number
+      widthClass: "w-64"
+      token: string
+    }
+
+type TooltipProps = {
+  tooltip: TooltipState
+  activeWord: string | null
+  draft: WordDraft
+  phraseSuggestions: string[]
+  contextSuggestions: string[]
+  onAddPhraseSuggestion: (value: string) => void
+  onAddContextSuggestion: (value: string) => void
+  onScore: (id: string, delta: number) => void
+  onStartEdit: (term: string) => void
+  onToggleActive: (term: string) => void
+  onSave: (draft: WordDraft, previousTerm?: string, shouldAlert?: boolean) => boolean
+  onMouseEnter: () => void
+  onMouseLeave: () => void
+  setDraft: Dispatch<SetStateAction<WordDraft>>
+}
+
+function ReconocimientoTooltip({
+  tooltip,
+  activeWord,
+  draft,
+  phraseSuggestions,
+  contextSuggestions,
+  onAddPhraseSuggestion,
+  onAddContextSuggestion,
+  onScore,
+  onStartEdit,
+  onToggleActive,
+  onSave,
+  onMouseEnter,
+  onMouseLeave,
+  setDraft,
+}: TooltipProps) {
+  const borderClass =
+    tooltip.kind === "phrase"
+      ? phraseTone.border
+      : tooltip.kind === "unknown"
+        ? "border-slate-200"
+        : scoreTone(effectiveScore(tooltip.lookup)).border
+
+  return (
+    <div
+      className={`pointer-events-auto absolute z-20 ${tooltip.widthClass} -translate-x-1/2 rounded-xl border bg-white px-3 py-2 text-xs text-ink-800 shadow-soft ${borderClass}`}
+      style={{
+        left: tooltip.left,
+        top: tooltip.top,
+        transform: "translate(-50%, calc(-100% - 1px))",
+      }}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      {tooltip.kind === "known" &&
+        (() => {
+          const isActive = activeWord === tooltip.keyTerm
+          const tone = scoreTone(effectiveScore(tooltip.lookup))
+          return (
+            <>
+              <div className="flex items-center justify-between gap-2">
+                <div className="font-semibold text-ink-900">{tooltip.lookup.term}</div>
+                <div className="flex items-center gap-2 text-[11px] font-semibold text-ink-600">
+                  <button
+                    type="button"
+                    onClick={() => onScore(tooltip.lookup.id, -1)}
+                    className="text-ink-600 hover:text-ink-900"
+                  >
+                    -1
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onScore(tooltip.lookup.id, 1)}
+                    className="text-ink-600 hover:text-ink-900"
+                  >
+                    +1
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onToggleActive(tooltip.keyTerm)}
+                    className={`flex h-6 w-6 items-center justify-center rounded-full border ${tone.border} ${tone.text}`}
+                    aria-label="Editar palabra"
+                    title="Editar palabra"
+                  >
+                    <svg viewBox="0 0 20 20" aria-hidden="true" className="h-3.5 w-3.5">
+                      <path
+                        d="M14.7 2.6a1.5 1.5 0 0 1 2.1 2.1l-9.2 9.2-3.3.7.7-3.3 9.2-9.2Zm-8.4 9.9-.3 1.2 1.2-.3 8.6-8.6-.9-.9-8.6 8.6Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              {tooltip.lookup.translation && (
+                <div className={tone.text}>{tooltip.lookup.translation}</div>
+              )}
+              <div className={`mt-1 text-[10px] uppercase tracking-wide ${tone.text}`}>
+                {tone.label} · Score {effectiveScore(tooltip.lookup).toFixed(1)}
+              </div>
+              <details className="mt-2">
+                <summary className="inline-flex cursor-pointer items-center gap-1 text-[11px] font-semibold text-ink-700">
+                  <span className="flex h-4 w-4 items-center justify-center rounded-full border border-emerald-200 text-emerald-700">
+                    +
+                  </span>
+                  Detalles
+                </summary>
+                <div className="mt-2 space-y-1 text-ink-600">
+                  <div>Notas: {tooltip.lookup.notes || "—"}</div>
+                  <div>Contexto: {formatList(tooltip.lookup.context)}</div>
+                  <div>Contexto practica: {formatList(tooltip.lookup.contextForPractice)}</div>
+                </div>
+              </details>
+              {isActive && (
+                <div className="mt-2">
+                  <ReconocimientoEditorTabs
+                    key={draft.term}
+                    draft={draft}
+                    setDraft={setDraft}
+                    onSave={() => onSave(draft, activeWord, false)}
+                    phraseSuggestions={phraseSuggestions}
+                    onAddPhraseSuggestion={onAddPhraseSuggestion}
+                    contextSuggestions={contextSuggestions}
+                    onAddContextSuggestion={onAddContextSuggestion}
+                  />
+                </div>
+              )}
+            </>
+          )
+        })()}
+      {tooltip.kind === "phrase" &&
+        tooltip.options.map((option, optionIndex) => {
+          const optionLookup = option.lookup
+          const optionIsActive = activeWord === option.label
+          return (
+            <div key={option.label}>
+              {optionIndex > 0 && <div className="my-2 h-px bg-ink-100" />}
+              <div className="flex items-center justify-between gap-2">
+                <div className="font-semibold text-ink-900">{option.label}</div>
+                <div className="flex items-center gap-2 text-[11px] font-semibold text-ink-600">
+                  {optionLookup && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => onScore(optionLookup.id, -1)}
+                        className="text-ink-600 hover:text-ink-900"
+                      >
+                        -1
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onScore(optionLookup.id, 1)}
+                        className="text-ink-600 hover:text-ink-900"
+                      >
+                        +1
+                      </button>
+                    </>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => onToggleActive(option.label)}
+                    className={`flex h-6 w-6 items-center justify-center rounded-full border ${phraseTone.border} ${phraseTone.text}`}
+                    aria-label="Editar termino"
+                    title="Editar termino"
+                  >
+                    <svg viewBox="0 0 20 20" aria-hidden="true" className="h-3.5 w-3.5">
+                      <path
+                        d="M14.7 2.6a1.5 1.5 0 0 1 2.1 2.1l-9.2 9.2-3.3.7.7-3.3 9.2-9.2Zm-8.4 9.9-.3 1.2 1.2-.3 8.6-8.6-.9-.9-8.6 8.6Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              {optionLookup?.translation ? (
+                <div className={phraseTone.text}>{optionLookup.translation}</div>
+              ) : (
+                <div className="text-ink-500">No registrada</div>
+              )}
+              <details className="mt-2">
+                <summary className="inline-flex cursor-pointer items-center gap-1 text-[11px] font-semibold text-ink-700">
+                  <span
+                    className={`flex h-4 w-4 items-center justify-center rounded-full border ${phraseTone.border} ${phraseTone.text}`}
+                  >
+                    +
+                  </span>
+                  Detalles
+                </summary>
+                <div className="mt-2 space-y-1 text-ink-600">
+                  <div>Notas: {optionLookup?.notes || "—"}</div>
+                  <div>Contexto: {formatList(optionLookup?.context)}</div>
+                  <div>Contexto practica: {formatList(optionLookup?.contextForPractice)}</div>
+                </div>
+              </details>
+              {optionIsActive && (
+                <div className="mt-2">
+                  <ReconocimientoEditorTabs
+                    key={draft.term}
+                    draft={draft}
+                    setDraft={setDraft}
+                    onSave={() => onSave(draft, activeWord, false)}
+                    phraseSuggestions={phraseSuggestions}
+                    onAddPhraseSuggestion={onAddPhraseSuggestion}
+                    contextSuggestions={contextSuggestions}
+                    onAddContextSuggestion={onAddContextSuggestion}
+                  />
+                </div>
+              )}
+            </div>
+          )
+        })}
+      {tooltip.kind === "unknown" &&
+        (() => {
+          const isActive = activeWord === tooltip.token
+          return (
+            <>
+              <div className="font-semibold text-ink-900">{tooltip.token}</div>
+              <div className="text-slate-700">No registrada</div>
+              <details className="mt-2" open={isActive}>
+                <summary
+                  className="inline-flex cursor-pointer items-center gap-1 text-[11px] font-semibold text-ink-700"
+                  onClick={(event) => {
+                    event.preventDefault()
+                    if (isActive) {
+                      onToggleActive(tooltip.token)
+                      return
+                    }
+                    onStartEdit(tooltip.token)
+                  }}
+                >
+                  <span className="flex h-4 w-4 items-center justify-center rounded-full border border-slate-200 text-slate-600">
+                    {isActive ? "-" : "+"}
+                  </span>
+                  {isActive ? "Cerrar" : "Agregar"}
+                </summary>
+                {isActive && (
+                  <div className="mt-2">
+                    <ReconocimientoEditorTabs
+                      key={draft.term || tooltip.token}
+                      draft={draft}
+                      setDraft={setDraft}
+                      onSave={() => onSave(draft, activeWord, false)}
+                      phraseSuggestions={phraseSuggestions}
+                      onAddPhraseSuggestion={onAddPhraseSuggestion}
+                      contextSuggestions={contextSuggestions}
+                      onAddContextSuggestion={onAddContextSuggestion}
+                    />
+                  </div>
+                )}
+              </details>
+            </>
+          )
+        })()}
+    </div>
+  )
+}
+
+type PreviewConfigProps = {
+  fontSize: number
+  lineHeight: number
+  wordSpacing: number
+  isOpen: boolean
+  onToggle: () => void
+  onFontSizeChange: (value: number) => void
+  onLineHeightChange: (value: number) => void
+  onWordSpacingChange: (value: number) => void
+}
+
+function PreviewConfigMenu({
+  fontSize,
+  lineHeight,
+  wordSpacing,
+  isOpen,
+  onToggle,
+  onFontSizeChange,
+  onLineHeightChange,
+  onWordSpacingChange,
+}: PreviewConfigProps) {
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        onClick={onToggle}
+        className={`flex h-7 w-7 items-center justify-center rounded-full border text-[11px] shadow-inner transition ${
+          isOpen
+            ? "border-ink-300 bg-ink-900 text-white"
+            : "border-ink-100 bg-white text-ink-700 hover:bg-ink-50"
+        }`}
+        title="Configurar vista previa"
+      >
+        ⚙️
+      </button>
+      {isOpen && (
+        <div className="absolute right-0 top-full z-20 mt-2 w-[220px] rounded-xl border border-ink-100 bg-ink-50/95 px-3 py-3 text-[11px] font-medium text-ink-700 shadow-soft backdrop-blur">
+          <label className="flex flex-col gap-1">
+            <span className="text-[10px] font-semibold uppercase tracking-wide text-ink-500">
+              Tamano
+            </span>
+            <div className="flex items-center gap-2">
+              <input
+                type="range"
+                min={12}
+                max={20}
+                step={1}
+                value={fontSize}
+                onChange={(e) => onFontSizeChange(Number(e.target.value))}
+                className="w-full"
+              />
+              <span className="min-w-[24px] text-right text-[10px] font-semibold">{fontSize}</span>
+            </div>
+          </label>
+          <label className="mt-3 flex flex-col gap-1">
+            <span className="text-[10px] font-semibold uppercase tracking-wide text-ink-500">
+              Interlineado
+            </span>
+            <div className="flex items-center gap-2">
+              <input
+                type="range"
+                min={1.2}
+                max={2.2}
+                step={0.05}
+                value={lineHeight}
+                onChange={(e) => onLineHeightChange(Number(e.target.value))}
+                className="w-full"
+              />
+              <span className="min-w-[28px] text-right text-[10px] font-semibold">
+                {lineHeight.toFixed(2)}
+              </span>
+            </div>
+          </label>
+          <label className="mt-3 flex flex-col gap-1">
+            <span className="text-[10px] font-semibold uppercase tracking-wide text-ink-500">
+              Espaciado
+            </span>
+            <div className="flex items-center gap-2">
+              <input
+                type="range"
+                min={0}
+                max={10}
+                step={0.5}
+                value={wordSpacing}
+                onChange={(e) => onWordSpacingChange(Number(e.target.value))}
+                className="w-full"
+              />
+              <span className="min-w-[28px] text-right text-[10px] font-semibold">
+                {wordSpacing.toFixed(1)}
+              </span>
+            </div>
+          </label>
+        </div>
+      )}
+    </div>
+  )
+}
+
 export function ReconocimientoDePalabrasEnElTexto() {
   const dispatch = useDispatch()
   const words = useSelector((s) => s.v2Words.words)
   const [text, setText] = useState(seedPreviewText)
   const [activeWord, setActiveWord] = useState<string | null>(null)
+  const [previewFontSize, setPreviewFontSize] = useState(14)
+  const [previewLineHeight, setPreviewLineHeight] = useState(1.6)
+  const [previewWordSpacing, setPreviewWordSpacing] = useState(0)
+  const [showPreviewConfig, setShowPreviewConfig] = useState(false)
   const [draft, setDraft] = useState<WordDraft>({
     term: "",
     translation: "",
@@ -167,6 +555,9 @@ export function ReconocimientoDePalabrasEnElTexto() {
     contextForPractice: "",
   })
   const modelRef = useRef<Model>({ text: "", tokens: [] })
+  const previewRef = useRef<HTMLDivElement | null>(null)
+  const closeTimeoutRef = useRef<number | null>(null)
+  const [tooltip, setTooltip] = useState<TooltipState | null>(null)
 
   const knownWords = useMemo(() => {
     const set = new Set<string>()
@@ -294,11 +685,65 @@ export function ReconocimientoDePalabrasEnElTexto() {
     setDraft((prev) => ({ ...prev, term: value }))
   }
 
-  const phraseTone = {
-    bg: "bg-violet-100/70",
-    border: "border-violet-100",
-    shadow: "shadow-[0_0_8px_rgba(139,92,246,0.2)]",
-    text: "text-violet-700",
+  const onScore = (id: string, delta: number) => {
+    dispatch(applyScore({ id, delta }))
+  }
+
+  const cancelClose = () => {
+    if (closeTimeoutRef.current) {
+      window.clearTimeout(closeTimeoutRef.current)
+      closeTimeoutRef.current = null
+    }
+  }
+
+  const scheduleClose = () => {
+    if (closeTimeoutRef.current) window.clearTimeout(closeTimeoutRef.current)
+    closeTimeoutRef.current = window.setTimeout(() => {
+      setTooltip(null)
+      closeTimeoutRef.current = null
+    }, 300)
+  }
+
+  const openTooltip = (
+    el: HTMLElement,
+    next:
+      | { kind: "known"; lookup: V2Word; keyTerm: string }
+      | { kind: "phrase"; options: Array<{ label: string; lookup?: V2Word }> }
+      | { kind: "unknown"; token: string }
+  ) => {
+    if (!previewRef.current) return
+    const rect = el.getBoundingClientRect()
+    const containerRect = previewRef.current.getBoundingClientRect()
+    const left = rect.left - containerRect.left + rect.width / 2
+    const top = rect.top - containerRect.top
+    if (next.kind === "known") {
+      setTooltip({
+        kind: "known",
+        left,
+        top,
+        widthClass: "w-56",
+        lookup: next.lookup,
+        keyTerm: next.keyTerm,
+      })
+      return
+    }
+    if (next.kind === "phrase") {
+      setTooltip({
+        kind: "phrase",
+        left,
+        top,
+        widthClass: "w-60",
+        options: next.options,
+      })
+      return
+    }
+    setTooltip({
+      kind: "unknown",
+      left,
+      top,
+      widthClass: "w-64",
+      token: next.token,
+    })
   }
 
   return (
@@ -315,21 +760,33 @@ export function ReconocimientoDePalabrasEnElTexto() {
       </div>
 
       <div className="rounded-2xl border border-ink-100 bg-white/90 px-4 py-3 shadow-soft">
-        <div className="text-xs font-semibold uppercase tracking-wide text-ink-500">
-          Vista previa
+        <div className="flex items-center justify-between gap-2 text-xs font-semibold uppercase tracking-wide text-ink-500">
+          <span>Vista previa</span>
+          <PreviewConfigMenu
+            fontSize={previewFontSize}
+            lineHeight={previewLineHeight}
+            wordSpacing={previewWordSpacing}
+            isOpen={showPreviewConfig}
+            onToggle={() => setShowPreviewConfig((prev) => !prev)}
+            onFontSizeChange={setPreviewFontSize}
+            onLineHeightChange={setPreviewLineHeight}
+            onWordSpacingChange={setPreviewWordSpacing}
+          />
         </div>
-        <div className="mt-3 whitespace-pre-wrap text-sm text-ink-900">
+        <div
+          className="relative mt-3 whitespace-pre-wrap text-ink-900"
+          style={{
+            fontSize: `${previewFontSize}px`,
+            lineHeight: previewLineHeight,
+            wordSpacing: `${previewWordSpacing}px`,
+          }}
+          ref={previewRef}
+        >
           {tokens.length === 0 && <span className="text-ink-400">Sin texto para analizar.</span>}
           {groups.map((group, groupIndex) => {
             if (group.kind === "knownGroup") {
-              const firstWord = group.tokens.find((t) => t.type === "word")
-              const firstLookup = firstWord ? wordsByTerm.get(normalizeTerm(firstWord.value)) : null
-              const tone = scoreTone(firstLookup ? effectiveScore(firstLookup) : 0)
               return (
-                <span
-                  key={`known-group-${groupIndex}`}
-                  className={`rounded-md px-1 ${tone.bg} ${tone.shadow}`}
-                >
+                <span key={`known-group-${groupIndex}`}>
                   {group.tokens.map((token, tokenIndex) => {
                     if (token.type === "space") {
                       return (
@@ -338,76 +795,25 @@ export function ReconocimientoDePalabrasEnElTexto() {
                     }
                     const lookup = wordsByTerm.get(normalizeTerm(token.value))
                     const keyTerm = lookup?.term ?? token.value
-                    const isActive = activeWord === keyTerm
-                    const tone = scoreTone(lookup ? effectiveScore(lookup) : 0)
+                    const tone = lookup ? scoreTone(effectiveScore(lookup)) : null
                     return (
                       <span
                         key={`known-word-${groupIndex}-${tokenIndex}`}
-                        className="group relative inline-flex rounded-sm px-0.5 text-ink-900 after:absolute after:left-0 after:top-full after:h-2 after:w-full after:content-['']"
+                        className={`inline-flex rounded-sm px-0.5 text-ink-900 ${
+                          tone ? `${tone.bg} ${tone.shadow}` : ""
+                        }`}
+                        onMouseEnter={(event) => {
+                          if (!lookup) return
+                          cancelClose()
+                          openTooltip(event.currentTarget, {
+                            kind: "known",
+                            lookup,
+                            keyTerm,
+                          })
+                        }}
+                        onMouseLeave={scheduleClose}
                       >
                         {token.value}
-                        <span
-                          className={`pointer-events-none absolute left-1/2 top-full z-10 mt-1 w-56 -translate-x-1/2 rounded-xl border bg-white px-3 py-2 text-xs text-ink-800 opacity-0 shadow-soft transition group-hover:pointer-events-auto group-hover:opacity-100 ${tone.border}`}
-                        >
-                          <div className="flex items-center justify-between gap-2">
-                            <div className="font-semibold text-ink-900">
-                              {lookup?.term ?? token.value}
-                            </div>
-                            <button
-                              type="button"
-                              onClick={() => {
-                                if (isActive) {
-                                  setActiveWord(null)
-                                  return
-                                }
-                                startAdd(keyTerm)
-                              }}
-                              className={`flex h-6 w-6 items-center justify-center rounded-full border ${tone.border} ${tone.text}`}
-                              aria-label="Editar palabra"
-                              title="Editar palabra"
-                            >
-                              <svg viewBox="0 0 20 20" aria-hidden="true" className="h-3.5 w-3.5">
-                                <path
-                                  d="M14.7 2.6a1.5 1.5 0 0 1 2.1 2.1l-9.2 9.2-3.3.7.7-3.3 9.2-9.2Zm-8.4 9.9-.3 1.2 1.2-.3 8.6-8.6-.9-.9-8.6 8.6Z"
-                                  fill="currentColor"
-                                />
-                              </svg>
-                            </button>
-                          </div>
-                          {lookup?.translation && (
-                            <div className={tone.text}>{lookup.translation}</div>
-                          )}
-                          <div className={`mt-1 text-[10px] uppercase tracking-wide ${tone.text}`}>
-                            {tone.label} · Score {lookup ? effectiveScore(lookup).toFixed(1) : "0"}
-                          </div>
-                          <details className="mt-2">
-                            <summary className="inline-flex cursor-pointer items-center gap-1 text-[11px] font-semibold text-ink-700">
-                              <span className="flex h-4 w-4 items-center justify-center rounded-full border border-emerald-200 text-emerald-700">
-                                +
-                              </span>
-                              Detalles
-                            </summary>
-                            <div className="mt-2 space-y-1 text-ink-600">
-                              <div>Notas: {lookup?.notes || "—"}</div>
-                              <div>Contexto: {formatList(lookup?.context)}</div>
-                              <div>Contexto practica: {formatList(lookup?.contextForPractice)}</div>
-                            </div>
-                          </details>
-                          {isActive && (
-                            <div className="mt-2">
-                              <ReconocimientoEditorTabs
-                                key={draft.term}
-                                draft={draft}
-                                setDraft={setDraft}
-                                onSave={() => saveWord(draft, activeWord, false)}
-                                phraseSuggestions={phraseSuggestions}
-                                onAddPhraseSuggestion={addPhraseSuggestion}
-                                contextSuggestions={contextSuggestions}
-                                onAddContextSuggestion={addContextSuggestion}
-                              />
-                            </div>
-                          )}
-                        </span>
                       </span>
                     )
                   })}
@@ -426,81 +832,20 @@ export function ReconocimientoDePalabrasEnElTexto() {
               return (
                 <span
                   key={`phrase-${groupIndex}`}
-                  className={`group relative inline-flex rounded-md px-1 ${phraseTone.bg} ${phraseTone.shadow} after:absolute after:left-0 after:top-full after:h-2 after:w-full after:content-['']`}
+                  className={`inline-flex rounded-md px-1 ${phraseTone.bg} ${phraseTone.shadow}`}
+                  onMouseEnter={(event) => {
+                    cancelClose()
+                    openTooltip(event.currentTarget, {
+                      kind: "phrase",
+                      options: phraseOptions.map((option) => ({
+                        label: option,
+                        lookup: wordsByTerm.get(normalizeTerm(option)),
+                      })),
+                    })
+                  }}
+                  onMouseLeave={scheduleClose}
                 >
                   {phraseText}
-                  <span
-                    className={`pointer-events-none absolute left-1/2 top-full z-10 mt-1 w-60 -translate-x-1/2 rounded-xl border bg-white px-3 py-2 text-xs text-ink-800 opacity-0 shadow-soft transition group-hover:pointer-events-auto group-hover:opacity-100 ${phraseTone.border}`}
-                  >
-                    {phraseOptions.map((option, optionIndex) => {
-                      const optionLookup = wordsByTerm.get(normalizeTerm(option))
-                      const optionIsActive = activeWord === option
-                      return (
-                        <div key={option}>
-                          {optionIndex > 0 && <div className="my-2 h-px bg-ink-100" />}
-                          <div className="flex items-center justify-between gap-2">
-                            <div className="font-semibold text-ink-900">{option}</div>
-                            <button
-                              type="button"
-                              onClick={() => {
-                                if (optionIsActive) {
-                                  setActiveWord(null)
-                                  return
-                                }
-                                startAdd(option)
-                              }}
-                              className={`flex h-6 w-6 items-center justify-center rounded-full border ${phraseTone.border} ${phraseTone.text}`}
-                              aria-label="Editar termino"
-                              title="Editar termino"
-                            >
-                              <svg viewBox="0 0 20 20" aria-hidden="true" className="h-3.5 w-3.5">
-                                <path
-                                  d="M14.7 2.6a1.5 1.5 0 0 1 2.1 2.1l-9.2 9.2-3.3.7.7-3.3 9.2-9.2Zm-8.4 9.9-.3 1.2 1.2-.3 8.6-8.6-.9-.9-8.6 8.6Z"
-                                  fill="currentColor"
-                                />
-                              </svg>
-                            </button>
-                          </div>
-                          {optionLookup?.translation ? (
-                            <div className={phraseTone.text}>{optionLookup.translation}</div>
-                          ) : (
-                            <div className="text-ink-500">No registrada</div>
-                          )}
-                          <details className="mt-2">
-                            <summary className="inline-flex cursor-pointer items-center gap-1 text-[11px] font-semibold text-ink-700">
-                              <span
-                                className={`flex h-4 w-4 items-center justify-center rounded-full border ${phraseTone.border} ${phraseTone.text}`}
-                              >
-                                +
-                              </span>
-                              Detalles
-                            </summary>
-                            <div className="mt-2 space-y-1 text-ink-600">
-                              <div>Notas: {optionLookup?.notes || "—"}</div>
-                              <div>Contexto: {formatList(optionLookup?.context)}</div>
-                              <div>
-                                Contexto practica: {formatList(optionLookup?.contextForPractice)}
-                              </div>
-                            </div>
-                          </details>
-                          {optionIsActive && (
-                            <div className="mt-2">
-                              <ReconocimientoEditorTabs
-                                key={draft.term}
-                                draft={draft}
-                                setDraft={setDraft}
-                                onSave={() => saveWord(draft, activeWord, false)}
-                                phraseSuggestions={phraseSuggestions}
-                                onAddPhraseSuggestion={addPhraseSuggestion}
-                                contextSuggestions={contextSuggestions}
-                                onAddContextSuggestion={addContextSuggestion}
-                              />
-                            </div>
-                          )}
-                        </div>
-                      )
-                    })}
-                  </span>
                 </span>
               )
             }
@@ -511,55 +856,50 @@ export function ReconocimientoDePalabrasEnElTexto() {
             }
 
             if (token.type === "word") {
-              const isActive = activeWord === token.value
               return (
                 <span
                   key={`word-${groupIndex}`}
-                  className="group relative inline-flex rounded-md bg-slate-200/70 px-1 shadow-[0_0_8px_rgba(100,116,139,0.35)] after:absolute after:left-0 after:top-full after:h-2 after:w-full after:content-['']"
+                  className="inline-flex rounded-md bg-slate-200/70 px-1 shadow-[0_0_8px_rgba(100,116,139,0.35)]"
+                  onMouseEnter={(event) => {
+                    cancelClose()
+                    openTooltip(event.currentTarget, {
+                      kind: "unknown",
+                      token: token.value,
+                    })
+                  }}
+                  onMouseLeave={scheduleClose}
                 >
                   {token.value}
-                  <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-1 w-64 -translate-x-1/2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs text-ink-800 opacity-0 shadow-soft transition group-hover:pointer-events-auto group-hover:opacity-100">
-                    <div className="font-semibold text-ink-900">{token.value}</div>
-                    <div className="text-slate-700">No registrada</div>
-                    <details className="mt-2" open={isActive}>
-                      <summary
-                        className="inline-flex cursor-pointer items-center gap-1 text-[11px] font-semibold text-ink-700"
-                        onClick={(event) => {
-                          event.preventDefault()
-                          if (isActive) {
-                            setActiveWord(null)
-                            return
-                          }
-                          startAdd(token.value)
-                        }}
-                      >
-                        <span className="flex h-4 w-4 items-center justify-center rounded-full border border-slate-200 text-slate-600">
-                          {isActive ? "-" : "+"}
-                        </span>
-                        {isActive ? "Cerrar" : "Agregar"}
-                      </summary>
-                      {isActive && (
-                        <div className="mt-2">
-                          <ReconocimientoEditorTabs
-                            key={draft.term || token.value}
-                            draft={draft}
-                            setDraft={setDraft}
-                            onSave={() => saveWord(draft, activeWord, false)}
-                            phraseSuggestions={phraseSuggestions}
-                            onAddPhraseSuggestion={addPhraseSuggestion}
-                            contextSuggestions={contextSuggestions}
-                            onAddContextSuggestion={addContextSuggestion}
-                          />
-                        </div>
-                      )}
-                    </details>
-                  </span>
                 </span>
               )
             }
 
             return <span key={`punct-${groupIndex}`}>{token.value}</span>
           })}
+          {tooltip && (
+            <ReconocimientoTooltip
+              tooltip={tooltip}
+              activeWord={activeWord}
+              draft={draft}
+              phraseSuggestions={phraseSuggestions}
+              contextSuggestions={contextSuggestions}
+              onAddPhraseSuggestion={addPhraseSuggestion}
+              onAddContextSuggestion={addContextSuggestion}
+              onScore={onScore}
+              onStartEdit={startAdd}
+              onToggleActive={(term) => {
+                if (activeWord === term) {
+                  setActiveWord(null)
+                  return
+                }
+                startAdd(term)
+              }}
+              onSave={saveWord}
+              onMouseEnter={cancelClose}
+              onMouseLeave={scheduleClose}
+              setDraft={setDraft}
+            />
+          )}
         </div>
       </div>
     </section>
