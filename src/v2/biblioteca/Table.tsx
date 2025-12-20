@@ -54,10 +54,37 @@ function WordsTable({ words }: { words: V2Word[] }) {
   const searchField = useSelector((s) => s.v2Words.searchField)
   const sortBy = useSelector((s) => s.v2Words.sortBy)
   const { speak, isSpeaking, stopSpeaking } = useSpeaker({ enabled: true })
+  const [activeContexts, setActiveContexts] = useState<Set<string>>(new Set())
+  const [activePracticeContexts, setActivePracticeContexts] = useState<Set<string>>(new Set())
   const filteredWords = useMemo(
     () => filterAndSortWords(words, search, sortBy, searchField),
     [words, search, sortBy, searchField]
   )
+  const contextOptions = useMemo(() => {
+    const set = new Set<string>()
+    words.forEach((w) => (w.context || []).forEach((c) => set.add(c)))
+    return Array.from(set).sort((a, b) => a.localeCompare(b))
+  }, [words])
+  const contextPracticeOptions = useMemo(() => {
+    const set = new Set<string>()
+    words.forEach((w) => (w.contextForPractice || []).forEach((c) => set.add(c)))
+    return Array.from(set).sort((a, b) => a.localeCompare(b))
+  }, [words])
+  const visibleWords = useMemo(() => {
+    return filteredWords.filter((w) => {
+      if (activeContexts.size) {
+        const contexts = w.context || []
+        const hasAll = Array.from(activeContexts).every((c) => contexts.includes(c))
+        if (!hasAll) return false
+      }
+      if (activePracticeContexts.size) {
+        const practices = w.contextForPractice || []
+        const hasAll = Array.from(activePracticeContexts).every((c) => practices.includes(c))
+        if (!hasAll) return false
+      }
+      return true
+    })
+  }, [activeContexts, activePracticeContexts, filteredWords])
 
   const [expandedNotes, setExpandedNotes] = useState<Set<string>>(new Set())
   const [editingId, setEditingId] = useState<string | null>(null)
@@ -66,7 +93,7 @@ function WordsTable({ words }: { words: V2Word[] }) {
   const [speakingKey, setSpeakingKey] = useState<string | null>(null)
 
   const selectAllChecked =
-    filteredWords.length > 0 && filteredWords.every((w) => selectedSet.has(w.id))
+    visibleWords.length > 0 && visibleWords.every((w) => selectedSet.has(w.id))
 
   const defaultSort = defaultSettings.sortBy
 
@@ -133,12 +160,12 @@ function WordsTable({ words }: { words: V2Word[] }) {
 
   const selectAll = (checked: boolean) => {
     if (!checked) {
-      const next = selectedIds.filter((id) => !filteredWords.find((w) => w.id === id))
+      const next = selectedIds.filter((id) => !visibleWords.find((w) => w.id === id))
       dispatch(setSelectedIds(next))
       return
     }
     const next = new Set(selectedIds)
-    filteredWords.forEach((w) => next.add(w.id))
+    visibleWords.forEach((w) => next.add(w.id))
     dispatch(setSelectedIds(Array.from(next)))
   }
 
@@ -221,6 +248,63 @@ function WordsTable({ words }: { words: V2Word[] }) {
         </label>
       </div>
 
+      {(contextOptions.length > 0 || contextPracticeOptions.length > 0) && (
+        <div className="border-b border-ink-100 px-5 py-3 text-xs text-ink-600">
+          {contextOptions.length > 0 && (
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="font-semibold uppercase text-ink-500">context:</span>
+              {contextOptions.map((ctx) => (
+                <button
+                  key={ctx}
+                  type="button"
+                  onClick={() =>
+                    setActiveContexts((prev) => {
+                      const next = new Set(prev)
+                      if (next.has(ctx)) next.delete(ctx)
+                      else next.add(ctx)
+                      return next
+                    })
+                  }
+                  className={`rounded-full border border-ink-100 px-2 py-0.5 text-[11px] transition ${
+                    activeContexts.has(ctx)
+                      ? "bg-ink-900 text-white shadow-soft font-semibold"
+                      : "text-ink-700 hover:bg-white"
+                  }`}
+                >
+                  {ctx}
+                </button>
+              ))}
+            </div>
+          )}
+          {contextPracticeOptions.length > 0 && (
+            <div className="mt-2 flex flex-wrap items-center gap-2">
+              <span className="font-semibold uppercase text-ink-500">contextToPractice:</span>
+              {contextPracticeOptions.map((ctx) => (
+                <button
+                  key={ctx}
+                  type="button"
+                  onClick={() =>
+                    setActivePracticeContexts((prev) => {
+                      const next = new Set(prev)
+                      if (next.has(ctx)) next.delete(ctx)
+                      else next.add(ctx)
+                      return next
+                    })
+                  }
+                  className={`rounded-full border border-ink-100 px-2 py-0.5 text-[11px] transition ${
+                    activePracticeContexts.has(ctx)
+                      ? "bg-ink-900 text-white shadow-soft font-semibold"
+                      : "text-ink-700 hover:bg-white"
+                  }`}
+                >
+                  {ctx}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
       <div className={`${columns.headerRow} ${columns.desktopGrid}`}>
         <span className="text-center">Sel.</span>
         {renderHeaderButton("Palabra", "term", "termDesc")}
@@ -233,7 +317,7 @@ function WordsTable({ words }: { words: V2Word[] }) {
       </div>
 
       <div className="divide-y divide-ink-50">
-        {filteredWords.map((w) => {
+        {visibleWords.map((w) => {
           const isEditing = editingId === w.id
           const expanded = expandedNotes.has(w.id)
           return (
@@ -405,7 +489,7 @@ function WordsTable({ words }: { words: V2Word[] }) {
           )
         })}
 
-        {!filteredWords.length && (
+        {!visibleWords.length && (
           <div className="px-4 py-10 text-center text-sm text-ink-500">
             No hay palabras. Añade algunas para comenzar.
           </div>

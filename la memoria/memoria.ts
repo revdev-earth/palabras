@@ -9,7 +9,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-haben",
@@ -21,7 +20,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-mein",
@@ -33,7 +31,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-sein",
@@ -45,7 +42,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-war",
@@ -57,7 +53,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-ist",
@@ -69,7 +64,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-ein",
@@ -81,7 +75,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-der",
@@ -93,7 +86,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-die",
@@ -105,7 +97,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-das",
@@ -117,7 +108,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-nicht",
@@ -129,7 +119,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-so",
@@ -141,7 +130,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-bei",
@@ -153,7 +141,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-uns",
@@ -165,7 +152,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-in",
@@ -177,7 +163,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-nur",
@@ -189,7 +174,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-für",
@@ -201,7 +185,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-mit",
@@ -213,7 +196,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-mir",
@@ -225,7 +207,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-er",
@@ -237,7 +218,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-und",
@@ -249,7 +229,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-oft",
@@ -261,7 +240,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-als",
@@ -273,7 +251,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-aber",
@@ -285,7 +262,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-fahren",
@@ -297,7 +273,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-gerne",
@@ -309,7 +284,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-also",
@@ -321,7 +295,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-was",
@@ -333,7 +306,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-aus",
@@ -345,7 +317,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-über",
@@ -357,7 +328,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-nach",
@@ -369,7 +339,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-links",
@@ -381,7 +350,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-eine",
@@ -393,7 +361,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-kommen",
@@ -405,7 +372,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-groß",
@@ -417,7 +383,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-gut",
@@ -429,7 +394,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-an",
@@ -441,7 +405,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-zwei",
@@ -453,7 +416,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-wir",
@@ -465,7 +427,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-auf",
@@ -477,7 +438,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-hören",
@@ -489,7 +449,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-lang",
@@ -501,7 +460,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-haar",
@@ -513,7 +471,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-haare",
@@ -525,7 +482,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-brille",
@@ -537,7 +493,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-kopf",
@@ -549,7 +504,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-größer",
@@ -561,7 +515,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-bin",
@@ -573,7 +526,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-zurück",
@@ -585,7 +537,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-gehen",
@@ -597,7 +548,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-wie",
@@ -609,7 +559,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-um",
@@ -621,7 +570,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-nächste",
@@ -633,7 +581,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-greifen",
@@ -645,7 +592,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-rechts",
@@ -657,7 +603,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-arm",
@@ -669,7 +614,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-packen",
@@ -681,7 +625,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-zu",
@@ -693,7 +636,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-auge",
@@ -705,7 +647,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-augen",
@@ -717,7 +658,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-auch",
@@ -729,7 +669,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-sagen",
@@ -741,7 +680,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-hoffentlich",
@@ -753,7 +691,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-ganz",
@@ -765,7 +702,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-ruhig",
@@ -777,7 +713,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-im",
@@ -789,7 +724,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-film",
@@ -801,7 +735,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-vielleicht",
@@ -813,7 +746,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-wollen",
@@ -825,7 +757,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-willst",
@@ -837,7 +768,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-du",
@@ -849,7 +779,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-versuchen",
@@ -861,7 +790,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-noch",
@@ -873,7 +801,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-immer",
@@ -885,7 +812,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-dann",
@@ -897,7 +823,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-auf-einmal",
@@ -909,7 +834,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-hilfe",
@@ -921,7 +845,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-lassen",
@@ -933,7 +856,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-loslasse",
@@ -945,7 +867,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-nie",
@@ -957,7 +878,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-selbst",
@@ -969,7 +889,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-damals",
@@ -981,7 +900,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-sekunde",
@@ -993,7 +911,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-drei",
@@ -1005,7 +922,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-können",
@@ -1017,7 +933,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-könnte",
@@ -1029,7 +944,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-wieder",
@@ -1041,7 +955,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-vorne",
@@ -1053,7 +966,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-beide",
@@ -1065,7 +977,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-hand",
@@ -1077,7 +988,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-händen",
@@ -1089,7 +999,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-los",
@@ -1101,7 +1010,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-erzählen",
@@ -1113,7 +1021,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-erzähl",
@@ -1125,7 +1032,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-einen",
@@ -1137,7 +1043,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-großen",
@@ -1149,7 +1054,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-licht",
@@ -1161,7 +1065,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-sich",
@@ -1173,7 +1076,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-machen",
@@ -1185,7 +1087,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-sie",
@@ -1197,7 +1098,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-denn",
@@ -1209,7 +1109,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-da",
@@ -1221,7 +1120,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-strichmännchen",
@@ -1233,7 +1131,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-hitze",
@@ -1245,7 +1142,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-speiseröhre",
@@ -1257,7 +1153,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-eckig",
@@ -1269,7 +1164,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-abgehackt",
@@ -1281,7 +1175,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-schlägerei",
@@ -1293,7 +1186,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-reh",
@@ -1305,7 +1197,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-autoscheinwerfer",
@@ -1317,7 +1208,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-fett",
@@ -1329,7 +1219,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-aufhören",
@@ -1341,7 +1230,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-faust",
@@ -1353,7 +1241,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-niere",
@@ -1365,7 +1252,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-steuer",
@@ -1377,7 +1263,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-vorletzt",
@@ -1386,10 +1271,9 @@ const memory = [
     notes: "adjetivo; uso: vorletzter Waggon",
     context: ["A1", "A2", "B2"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 1,
+    lastPracticedAt: "2025-12-20T11:45:36.206Z",
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-hart",
@@ -1401,7 +1285,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-rücken",
@@ -1413,7 +1296,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-magen",
@@ -1425,7 +1307,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-seltsam",
@@ -1437,7 +1318,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-leid",
@@ -1449,7 +1329,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-angst",
@@ -1461,7 +1340,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-überfall",
@@ -1473,7 +1351,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-fair",
@@ -1485,7 +1362,6 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
   {
     id: "de-held",
@@ -1497,9 +1373,7 @@ const memory = [
     baseScore: 10,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:30:00.000Z",
-    learningState: "LEARNED",
   },
-
   {
     id: "de-erst",
     term: "erst",
@@ -1510,7 +1384,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-klein",
@@ -1522,7 +1395,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-eigentlich",
@@ -1534,7 +1406,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-holen",
@@ -1546,7 +1417,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-meinen",
@@ -1558,7 +1428,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-bulle",
@@ -1570,7 +1439,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-bullen",
@@ -1579,10 +1447,9 @@ const memory = [
     notes: "plural de Bulle",
     context: ["A2"],
     contextForPractice: [],
-    baseScore: 5,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:33:11.176Z",
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-kontrollieren",
@@ -1591,10 +1458,9 @@ const memory = [
     notes: "verbo",
     context: ["A2"],
     contextForPractice: [],
-    baseScore: 5,
-    lastPracticedAt: null,
+    baseScore: 7,
+    lastPracticedAt: "2025-12-20T12:33:38.882Z",
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-einfach",
@@ -1603,10 +1469,9 @@ const memory = [
     notes: "adjetivo/adverbio",
     context: ["A2"],
     contextForPractice: [],
-    baseScore: 5,
-    lastPracticedAt: null,
+    baseScore: 7,
+    lastPracticedAt: "2025-12-20T12:33:44.934Z",
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-faul",
@@ -1618,7 +1483,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-sack",
@@ -1627,10 +1491,9 @@ const memory = [
     notes: "sustantivo masculino",
     context: ["A2"],
     contextForPractice: [],
-    baseScore: 5,
-    lastPracticedAt: null,
+    baseScore: 7,
+    lastPracticedAt: "2025-12-20T12:33:49.068Z",
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-bahnhof",
@@ -1639,10 +1502,9 @@ const memory = [
     notes: "sustantivo masculino",
     context: ["A2"],
     contextForPractice: [],
-    baseScore: 5,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:34:07.164Z",
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-kreuzung",
@@ -1651,10 +1513,9 @@ const memory = [
     notes: "sustantivo femenino",
     context: ["A2"],
     contextForPractice: [],
-    baseScore: 5,
-    lastPracticedAt: null,
+    baseScore: 6,
+    lastPracticedAt: "2025-12-20T12:34:15.551Z",
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-straße",
@@ -1666,7 +1527,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-friedhof",
@@ -1675,10 +1535,9 @@ const memory = [
     notes: "sustantivo masculino",
     context: ["A2"],
     contextForPractice: [],
-    baseScore: 5,
-    lastPracticedAt: null,
+    baseScore: 6,
+    lastPracticedAt: "2025-12-20T12:34:35.570Z",
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-etwa",
@@ -1690,7 +1549,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-schätzen",
@@ -1699,10 +1557,9 @@ const memory = [
     notes: "verbo",
     context: ["A2"],
     contextForPractice: [],
-    baseScore: 5,
-    lastPracticedAt: null,
+    baseScore: 7,
+    lastPracticedAt: "2025-12-20T12:34:51.944Z",
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-oben",
@@ -1714,7 +1571,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-typ",
@@ -1726,7 +1582,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-schwarz",
@@ -1738,7 +1593,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-schulter",
@@ -1750,7 +1604,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-komplett",
@@ -1762,7 +1615,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-leder",
@@ -1774,7 +1626,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-unten",
@@ -1786,7 +1637,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-gucken",
@@ -1798,7 +1648,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-gleich",
@@ -1810,7 +1659,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-höhe",
@@ -1822,7 +1670,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-flauschig",
@@ -1834,7 +1681,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-stoff",
@@ -1844,9 +1690,8 @@ const memory = [
     context: ["A2"],
     contextForPractice: [],
     baseScore: 5,
-    lastPracticedAt: null,
+    lastPracticedAt: "2025-12-20T12:35:22.613Z",
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-steigen",
@@ -1858,7 +1703,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-gehirn",
@@ -1870,7 +1714,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-welt",
@@ -1879,10 +1722,9 @@ const memory = [
     notes: "sustantivo femenino",
     context: ["A2"],
     contextForPractice: [],
-    baseScore: 5,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:36:55.586Z",
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-neben",
@@ -1891,10 +1733,9 @@ const memory = [
     notes: "preposición + dativo/acusativo",
     context: ["A2"],
     contextForPractice: [],
-    baseScore: 5,
-    lastPracticedAt: null,
+    baseScore: 6,
+    lastPracticedAt: "2025-12-20T12:37:00.680Z",
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-drehen",
@@ -1906,7 +1747,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-laufen",
@@ -1918,7 +1758,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-hinterher",
@@ -1930,7 +1769,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-ampel",
@@ -1942,7 +1780,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-oberarm",
@@ -1954,7 +1791,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-reißen",
@@ -1966,7 +1802,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-herum",
@@ -1978,7 +1813,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-dunkelgrün",
@@ -1990,7 +1824,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-wünschen",
@@ -2002,7 +1835,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-laut",
@@ -2014,7 +1846,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-brüllen",
@@ -2026,7 +1857,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-schwul",
@@ -2038,7 +1868,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-festhalten",
@@ -2050,7 +1879,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-schreien",
@@ -2062,7 +1890,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-überrascht",
@@ -2074,7 +1901,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-mann",
@@ -2086,7 +1912,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-bein",
@@ -2098,7 +1923,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-beinen",
@@ -2110,7 +1934,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-judenwitz",
@@ -2122,7 +1945,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-zählen",
@@ -2134,7 +1956,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-krallen",
@@ -2146,7 +1967,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-ballen",
@@ -2158,7 +1978,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-hochsteigen",
@@ -2170,7 +1989,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-flippen",
@@ -2182,7 +2000,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-losrennen",
@@ -2194,7 +2011,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-überrumpeln",
@@ -2206,7 +2022,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-schütteln",
@@ -2218,7 +2033,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-schiffbrüchiger",
@@ -2230,7 +2044,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-treffen",
@@ -2242,7 +2055,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-fallen",
@@ -2254,7 +2066,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-aufwachen",
@@ -2266,7 +2077,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-stecken",
@@ -2278,7 +2088,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-jedenfalls",
@@ -2290,7 +2099,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-handballen",
@@ -2302,7 +2110,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-verwirrt",
@@ -2314,7 +2121,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-krümmen",
@@ -2326,7 +2132,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-wiegen",
@@ -2338,7 +2143,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-knacksen",
@@ -2350,7 +2154,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-walnuss",
@@ -2362,7 +2165,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-rammen",
@@ -2374,7 +2176,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-hallen",
@@ -2386,7 +2187,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-rutschen",
@@ -2398,7 +2198,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-quetschen",
@@ -2410,7 +2209,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-breitbeinig",
@@ -2422,7 +2220,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-bilden",
@@ -2434,7 +2231,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-schützend",
@@ -2446,7 +2242,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-rüstung",
@@ -2458,7 +2253,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-ausholen",
@@ -2470,7 +2264,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-ansehen",
@@ -2482,7 +2275,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-angucken",
@@ -2494,7 +2286,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-fressen",
@@ -2506,7 +2297,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-schließlich",
@@ -2518,7 +2308,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-mitfahren",
@@ -2530,7 +2319,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-tippen",
@@ -2542,7 +2330,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-aussage",
@@ -2554,7 +2341,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-anzeigen",
@@ -2566,7 +2352,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-rechtsschutzversicherung",
@@ -2578,7 +2363,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-gericht",
@@ -2590,7 +2374,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-wehren",
@@ -2602,7 +2385,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-katzensatt",
@@ -2614,7 +2396,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-verdreschen",
@@ -2626,7 +2407,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-retten",
@@ -2638,7 +2418,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-weglaufen",
@@ -2650,7 +2429,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-einzelheit",
@@ -2662,7 +2440,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-vergebung",
@@ -2674,7 +2451,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-priester",
@@ -2686,7 +2462,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-tacken",
@@ -2698,7 +2473,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-klären",
@@ -2710,7 +2484,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-scheiß",
@@ -2722,7 +2495,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-feigling",
@@ -2734,7 +2506,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-die-klappe-halten",
@@ -2746,7 +2517,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-tausch",
@@ -2758,7 +2528,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-eine-reinziehen",
@@ -2770,7 +2539,6 @@ const memory = [
     baseScore: 5,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:35:00.000Z",
-    learningState: "LEARNING_2",
   },
   {
     id: "de-verfilzt",
@@ -2782,7 +2550,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-bunt",
@@ -2791,10 +2558,9 @@ const memory = [
     notes: "adjetivo",
     context: ["B1"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 1,
+    lastPracticedAt: "2025-12-20T11:45:48.780Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-häkeln",
@@ -2806,7 +2572,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-pflanzen",
@@ -2815,10 +2580,9 @@ const memory = [
     notes: "verbo",
     context: ["B1"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 1,
+    lastPracticedAt: "2025-12-20T11:46:05.524Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-sich-ducken",
@@ -2830,7 +2594,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-bescheuert",
@@ -2839,10 +2602,9 @@ const memory = [
     notes: "adjetivo, coloquial",
     context: ["B1"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 5,
+    lastPracticedAt: "2025-12-20T11:46:47.020Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-poltern",
@@ -2854,7 +2616,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-erwischen",
@@ -2866,7 +2627,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-riesenreifen",
@@ -2878,7 +2638,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-fuchteln",
@@ -2890,7 +2649,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-sprinten",
@@ -2902,7 +2660,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-sich-quetschen",
@@ -2914,7 +2671,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-zuschnappen",
@@ -2926,7 +2682,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-aufreißen",
@@ -2938,7 +2693,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-seinesgleichen",
@@ -2950,7 +2704,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-tänzeln",
@@ -2962,7 +2715,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-zimmern",
@@ -2974,7 +2726,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-sacken",
@@ -2986,7 +2737,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-drankommen",
@@ -2998,7 +2748,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-riskant",
@@ -3010,7 +2759,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-hampelmann",
@@ -3022,7 +2770,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-kopfhaut",
@@ -3034,7 +2781,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-abziehen",
@@ -3046,7 +2792,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-taumeln",
@@ -3058,7 +2803,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-riesengewese",
@@ -3070,7 +2814,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-verfrachten",
@@ -3082,7 +2825,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-lauern",
@@ -3094,7 +2836,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-hinkriegen",
@@ -3106,7 +2847,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-habe",
@@ -3115,10 +2855,9 @@ const memory = [
     notes: "verbo, 1ra persona de haben",
     context: ["A1", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:22:51.203Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-ersten",
@@ -3127,10 +2866,9 @@ const memory = [
     notes: "adjetivo ordinal",
     context: ["A1", "adjetivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:26:24.360Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-nazi",
@@ -3142,7 +2880,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-erwischt",
@@ -3151,10 +2888,9 @@ const memory = [
     notes: "participio de erwischen",
     context: ["A2", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 1,
+    lastPracticedAt: "2025-12-20T12:31:45.896Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-es",
@@ -3163,10 +2899,9 @@ const memory = [
     notes: "pronombre neutro",
     context: ["A1", "pronombre"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:24:13.471Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-kleiner",
@@ -3175,10 +2910,9 @@ const memory = [
     notes: "comparativo",
     context: ["A1", "adjetivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:26:21.080Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-wessi",
@@ -3187,10 +2921,9 @@ const memory = [
     notes: "sustantivo, coloquial",
     context: ["B1", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:32:33.715Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-kaventsmann",
@@ -3199,10 +2932,9 @@ const memory = [
     notes: "sustantivo, coloquial",
     context: ["B2", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 6,
+    lastPracticedAt: "2025-12-20T12:32:45.594Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-brandenburg",
@@ -3211,10 +2943,9 @@ const memory = [
     notes: "nombre propio (estado)",
     context: ["A2", "nombre propio"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:29:24.089Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-rumlaufen",
@@ -3223,10 +2954,9 @@ const memory = [
     notes: "verbo separable",
     context: ["A2", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 8,
+    lastPracticedAt: "2025-12-20T12:31:18.825Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-dabei",
@@ -3238,7 +2968,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-wollte",
@@ -3247,10 +2976,9 @@ const memory = [
     notes: "verbo modal (querer)",
     context: ["A1", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:22:48.829Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-dope",
@@ -3262,7 +2990,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-marik",
@@ -3271,10 +2998,9 @@ const memory = [
     notes: "nombre propio",
     context: ["A1", "nombre propio"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 12,
+    lastPracticedAt: "2025-12-20T12:17:42.551Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-macht",
@@ -3283,10 +3009,9 @@ const memory = [
     notes: "verbo, 3ra persona de machen",
     context: ["A1", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:22:41.173Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-zivi",
@@ -3295,10 +3020,9 @@ const memory = [
     notes: "sustantivo, coloquial",
     context: ["B1", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 6,
+    lastPracticedAt: "2025-12-20T12:32:53.195Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-meint",
@@ -3307,10 +3031,9 @@ const memory = [
     notes: "verbo, 3ra persona de meinen",
     context: ["A1", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:22:45.856Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-mich",
@@ -3319,10 +3042,9 @@ const memory = [
     notes: "pronombre acusativo",
     context: ["A1", "pronombre"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:24:06.307Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-ihn",
@@ -3331,10 +3053,9 @@ const memory = [
     notes: "pronombre acusativo",
     context: ["A1", "pronombre"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:24:03.923Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-fauler",
@@ -3343,10 +3064,9 @@ const memory = [
     notes: "comparativo",
     context: ["A1", "adjetivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 3,
+    lastPracticedAt: "2025-12-20T12:33:54.576Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-fahre",
@@ -3355,10 +3075,9 @@ const memory = [
     notes: "verbo, 1ra persona de fahren",
     context: ["A1", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:22:45.325Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-s-bahn",
@@ -3367,10 +3086,9 @@ const memory = [
     notes: "sustantivo",
     context: ["A2", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:30:38.047Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-bahn",
@@ -3379,10 +3097,9 @@ const memory = [
     notes: "sustantivo",
     context: ["A1", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:23:40.064Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-berlin",
@@ -3391,10 +3108,9 @@ const memory = [
     notes: "nombre propio",
     context: ["A1", "nombre propio"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:17:54.184Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-soll",
@@ -3403,10 +3119,9 @@ const memory = [
     notes: "verbo modal (sollen)",
     context: ["A1", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:22:44.935Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-laufe",
@@ -3415,10 +3130,9 @@ const memory = [
     notes: "verbo, 1ra persona de laufen",
     context: ["A1", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:22:44.763Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-dem",
@@ -3427,10 +3141,9 @@ const memory = [
     notes: "artículo dativo",
     context: ["A1", "artículo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:24:50.778Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-raus",
@@ -3439,10 +3152,9 @@ const memory = [
     notes: "adverbio",
     context: ["A1", "adverbio"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:25:56.492Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-einem",
@@ -3451,10 +3163,9 @@ const memory = [
     notes: "artículo indefinido dativo",
     context: ["A1", "artículo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:24:49.048Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-lauter",
@@ -3466,7 +3177,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-einfamilienhäusern",
@@ -3475,10 +3185,9 @@ const memory = [
     notes: "sustantivo plural (dativo)",
     context: ["B2", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 5,
+    lastPracticedAt: "2025-12-20T12:33:27.266Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-kommt",
@@ -3487,10 +3196,9 @@ const memory = [
     notes: "verbo, 3ra persona de kommen",
     context: ["A1", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:22:44.320Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-glatze",
@@ -3499,10 +3207,9 @@ const memory = [
     notes: "sustantivo",
     context: ["B1", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 3,
+    lastPracticedAt: "2025-12-20T12:34:42.501Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-entgegen",
@@ -3511,10 +3218,9 @@ const memory = [
     notes: "preposición/adverbio",
     context: ["B1", "preposición"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 2,
+    lastPracticedAt: "2025-12-20T12:34:45.316Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-eins",
@@ -3523,10 +3229,9 @@ const memory = [
     notes: "numeral",
     context: ["A1", "numeral"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:24:29.221Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-siebzig",
@@ -3535,10 +3240,9 @@ const memory = [
     notes: "numeral",
     context: ["A1", "numeral"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:24:27.441Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-obenrum",
@@ -3550,7 +3254,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-sieht",
@@ -3559,10 +3262,9 @@ const memory = [
     notes: "verbo, 3ra persona de sehen",
     context: ["A1", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:22:44.174Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-bullig",
@@ -3574,7 +3276,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-wegen",
@@ -3583,10 +3284,9 @@ const memory = [
     notes: "preposición",
     context: ["A2", "preposición"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 5,
+    lastPracticedAt: "2025-12-20T12:29:32.250Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-seiner",
@@ -3595,10 +3295,9 @@ const memory = [
     notes: "posesivo (genitivo)",
     context: ["A2", "pronombre"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:30:11.549Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-donkey",
@@ -3610,7 +3309,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-jacke",
@@ -3619,10 +3317,9 @@ const memory = [
     notes: "sustantivo",
     context: ["A1", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:23:33.969Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-den",
@@ -3631,10 +3328,9 @@ const memory = [
     notes: "artículo acusativo",
     context: ["A1", "artículo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:24:46.564Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-schultern",
@@ -3643,10 +3339,9 @@ const memory = [
     notes: "sustantivo plural",
     context: ["A1", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 5,
+    lastPracticedAt: "2025-12-20T12:23:37.254Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-spillerbeinchen",
@@ -3655,10 +3350,9 @@ const memory = [
     notes: "sustantivo, coloquial",
     context: ["B2", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 5,
+    lastPracticedAt: "2025-12-20T12:35:41.309Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-gleicher",
@@ -3667,10 +3361,9 @@ const memory = [
     notes: "adjetivo",
     context: ["A2", "adjetivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 5,
+    lastPracticedAt: "2025-12-20T12:35:49.922Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-sind",
@@ -3679,10 +3372,9 @@ const memory = [
     notes: "verbo, 3ra persona plural de sein",
     context: ["A1", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:22:44.054Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-hore",
@@ -3691,10 +3383,9 @@ const memory = [
     notes: "verbo, 1ra persona de hören",
     context: ["A1", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:22:43.934Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-schwuchtel",
@@ -3703,10 +3394,9 @@ const memory = [
     notes: "sustantivo, insulto homofóbico",
     context: ["B2", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 9,
+    lastPracticedAt: "2025-12-20T12:35:57.069Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-hippie",
@@ -3718,7 +3408,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-sensor",
@@ -3727,10 +3416,9 @@ const memory = [
     notes: "sustantivo",
     context: ["A2", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:30:40.580Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-angesprungen",
@@ -3742,7 +3430,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-meine",
@@ -3751,10 +3438,9 @@ const memory = [
     notes: "posesivo",
     context: ["A1", "pronombre"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:24:01.878Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-langen",
@@ -3763,10 +3449,9 @@ const memory = [
     notes: "adjetivo",
     context: ["A1", "adjetivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:26:15.854Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-flauschige",
@@ -3778,7 +3463,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-meiner",
@@ -3787,22 +3471,9 @@ const memory = [
     notes: "posesivo (genitivo/dativo)",
     context: ["A2", "pronombre"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:30:09.095Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
-  },
-  {
-    id: "de-inka",
-    term: "Inka",
-    translation: "Inka",
-    notes: "nombre propio",
-    context: ["A1", "nombre propio"],
-    contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
-    createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-kopfe",
@@ -3811,10 +3482,9 @@ const memory = [
     notes: "sustantivo plural",
     context: ["A1", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:23:16.858Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-dieses",
@@ -3823,10 +3493,9 @@ const memory = [
     notes: "demostrativo",
     context: ["A1", "pronombre"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:23:59.986Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-ballt",
@@ -3838,7 +3507,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-meinem",
@@ -3847,10 +3515,9 @@ const memory = [
     notes: "posesivo (dativo)",
     context: ["A2", "pronombre"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:30:06.188Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-zusammen",
@@ -3859,10 +3526,9 @@ const memory = [
     notes: "adverbio",
     context: ["A1", "adverbio"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:25:53.824Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-steigt",
@@ -3871,10 +3537,9 @@ const memory = [
     notes: "verbo, 3ra persona de steigen",
     context: ["A2", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 3,
+    lastPracticedAt: "2025-12-20T12:30:58.025Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-hoch",
@@ -3883,10 +3548,9 @@ const memory = [
     notes: "adverbio/adjetivo",
     context: ["A1", "adjetivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:26:13.359Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-flippt",
@@ -3898,7 +3562,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-dieser",
@@ -3907,10 +3570,9 @@ const memory = [
     notes: "demostrativo",
     context: ["A1", "pronombre"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:23:58.278Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-gehe",
@@ -3919,10 +3581,9 @@ const memory = [
     notes: "verbo, 1ra persona de gehen",
     context: ["A1", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:22:43.761Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-roboter",
@@ -3931,10 +3592,9 @@ const memory = [
     notes: "sustantivo",
     context: ["A2", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 6,
+    lastPracticedAt: "2025-12-20T12:30:34.608Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-eckige",
@@ -3946,7 +3606,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-abgehackte",
@@ -3958,7 +3617,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-schritte",
@@ -3967,10 +3625,9 @@ const memory = [
     notes: "sustantivo plural",
     context: ["A1", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:23:14.113Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-drehe",
@@ -3979,10 +3636,9 @@ const memory = [
     notes: "verbo, 1ra persona de drehen",
     context: ["A2", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 1,
+    lastPracticedAt: "2025-12-20T12:31:47.748Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-typen",
@@ -3994,7 +3650,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-nachsten",
@@ -4003,10 +3658,9 @@ const memory = [
     notes: "adjetivo",
     context: ["A1", "adjetivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:26:11.079Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-greife",
@@ -4015,10 +3669,9 @@ const memory = [
     notes: "verbo, 1ra persona de greifen",
     context: ["A2", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 1,
+    lastPracticedAt: "2025-12-20T12:31:43.760Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-seinen",
@@ -4027,10 +3680,9 @@ const memory = [
     notes: "posesivo (masc./acc.)",
     context: ["A1", "pronombre"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:23:55.997Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-rechten",
@@ -4039,10 +3691,9 @@ const memory = [
     notes: "adjetivo",
     context: ["A1", "adjetivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:26:07.906Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-packe",
@@ -4051,10 +3702,9 @@ const memory = [
     notes: "verbo, 1ra persona de packen",
     context: ["A2", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 2,
+    lastPracticedAt: "2025-12-20T12:31:36.292Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-reisse",
@@ -4063,10 +3713,9 @@ const memory = [
     notes: "verbo, 1ra persona de reißen",
     context: ["A2", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:31:22.745Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-ey",
@@ -4075,10 +3724,9 @@ const memory = [
     notes: "interjección, coloquial",
     context: ["A2", "interjección"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:29:18.441Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-seine",
@@ -4087,10 +3735,9 @@ const memory = [
     notes: "posesivo",
     context: ["A1", "pronombre"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:23:53.877Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-wunsch",
@@ -4099,10 +3746,9 @@ const memory = [
     notes: "verbo (wünschen)",
     context: ["A2", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 6,
+    lastPracticedAt: "2025-12-20T12:30:48.625Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-waren",
@@ -4114,7 +3760,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-hallo",
@@ -4123,10 +3768,9 @@ const memory = [
     notes: "saludo",
     context: ["A1", "interjección"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:17:28.300Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-sage",
@@ -4135,10 +3779,9 @@ const memory = [
     notes: "verbo, 1ra persona de sagen",
     context: ["A1", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:22:43.603Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-lachle",
@@ -4147,10 +3790,9 @@ const memory = [
     notes: "verbo, 1ra persona de lächeln",
     context: ["A2", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 1,
+    lastPracticedAt: "2025-12-20T12:31:38.510Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-sogar",
@@ -4162,7 +3804,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-versucht",
@@ -4171,10 +3812,9 @@ const memory = [
     notes: "verbo (versuchen)",
     context: ["A2", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 6,
+    lastPracticedAt: "2025-12-20T12:30:51.101Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-loszureißen",
@@ -4186,7 +3826,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-wird",
@@ -4195,10 +3834,9 @@ const memory = [
     notes: "verbo, 3ra persona de werden",
     context: ["A1", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:22:43.241Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-brullt",
@@ -4210,7 +3848,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-ware",
@@ -4222,7 +3859,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-schwules",
@@ -4234,7 +3870,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-arschloch",
@@ -4246,7 +3881,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-halte",
@@ -4255,10 +3889,9 @@ const memory = [
     notes: "verbo, 1ra persona de halten",
     context: ["A2", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 1,
+    lastPracticedAt: "2025-12-20T12:31:40.242Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-fest",
@@ -4270,7 +3903,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-schreit",
@@ -4279,10 +3911,9 @@ const memory = [
     notes: "verbo",
     context: ["A2", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 3,
+    lastPracticedAt: "2025-12-20T12:31:14.073Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-einmal",
@@ -4291,10 +3922,9 @@ const memory = [
     notes: "adverbio",
     context: ["A1", "adverbio"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:25:51.907Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-dass",
@@ -4303,10 +3933,9 @@ const memory = [
     notes: "conjunción",
     context: ["A2", "conjunción"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:29:12.567Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-parkplatz",
@@ -4315,10 +3944,9 @@ const memory = [
     notes: "sustantivo",
     context: ["A1", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:23:10.458Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-torsten",
@@ -4327,10 +3955,9 @@ const memory = [
     notes: "nombre propio",
     context: ["A1", "nombre propio"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:17:42.419Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-zermanscht",
@@ -4342,7 +3969,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-tomate",
@@ -4351,10 +3977,9 @@ const memory = [
     notes: "sustantivo",
     context: ["A1", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:23:06.592Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-sekunden",
@@ -4363,10 +3988,9 @@ const memory = [
     notes: "sustantivo plural",
     context: ["A1", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:23:03.244Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-glatzenmann",
@@ -4378,7 +4002,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-dunnen",
@@ -4390,7 +4013,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-uberrumpelt",
@@ -4402,7 +4024,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-beiden",
@@ -4411,10 +4032,9 @@ const memory = [
     notes: "pronombre",
     context: ["A2", "pronombre"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:29:57.016Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-arier",
@@ -4426,7 +4046,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-schuttle",
@@ -4435,10 +4054,9 @@ const memory = [
     notes: "verbo, 1ra persona de schütteln",
     context: ["A2", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 1,
+    lastPracticedAt: "2025-12-20T12:31:05.624Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-palme",
@@ -4447,10 +4065,9 @@ const memory = [
     notes: "sustantivo",
     context: ["A2", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 6,
+    lastPracticedAt: "2025-12-20T12:30:32.794Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-guckt",
@@ -4459,10 +4076,9 @@ const memory = [
     notes: "verbo, coloquial",
     context: ["A2", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 1,
+    lastPracticedAt: "2025-12-20T12:31:42.134Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-grunen",
@@ -4471,10 +4087,9 @@ const memory = [
     notes: "adjetivo",
     context: ["A1", "adjetivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:26:05.145Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-eines",
@@ -4483,10 +4098,9 @@ const memory = [
     notes: "pronombre/artículo (genitivo)",
     context: ["A2", "pronombre"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 7,
+    lastPracticedAt: "2025-12-20T12:29:49.852Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-autoscheinwerfers",
@@ -4495,10 +4109,9 @@ const memory = [
     notes: "sustantivo (genitivo)",
     context: ["B2", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 2,
+    lastPracticedAt: "2025-12-20T12:46:46.973Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-zahle",
@@ -4507,10 +4120,9 @@ const memory = [
     notes: "verbo, 1ra persona de zählen",
     context: ["A1", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:22:42.686Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-krallt",
@@ -4522,7 +4134,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-hey",
@@ -4531,10 +4142,9 @@ const memory = [
     notes: "interjección",
     context: ["A1", "interjección"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:17:28.576Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-solls",
@@ -4543,10 +4153,9 @@ const memory = [
     notes: "contracción de 'soll es'",
     context: ["A2", "verbo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:31:02.569Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-donkey-jacke",
@@ -4558,7 +4167,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-hippie-sensor",
@@ -4567,10 +4175,9 @@ const memory = [
     notes: "sustantivo compuesto",
     context: ["B1", "sustantivo"],
     contextForPractice: [],
-    baseScore: 0,
-    lastPracticedAt: null,
+    baseScore: 10,
+    lastPracticedAt: "2025-12-20T12:36:05.297Z",
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
   {
     id: "de-inka-jacke",
@@ -4582,7 +4189,6 @@ const memory = [
     baseScore: 0,
     lastPracticedAt: null,
     createdAt: "2025-12-19T20:40:00.000Z",
-    learningState: "SAVED",
   },
 ]
 
