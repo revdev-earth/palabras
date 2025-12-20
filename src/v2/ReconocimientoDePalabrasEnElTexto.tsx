@@ -787,36 +787,91 @@ export function ReconocimientoDePalabrasEnElTexto() {
             if (group.kind === "knownGroup") {
               return (
                 <span key={`known-group-${groupIndex}`}>
-                  {group.tokens.map((token, tokenIndex) => {
-                    if (token.type === "space") {
+                  {(() => {
+                    const segments: Array<{ kind: "high" | "normal"; tokens: Token[] }> = []
+                    let i = 0
+                    while (i < group.tokens.length) {
+                      const token = group.tokens[i]
+                      if (token.type === "word") {
+                        const lookup = wordsByTerm.get(normalizeTerm(token.value))
+                        const score = lookup ? effectiveScore(lookup) : 0
+                        if (score >= 10) {
+                          const segTokens: Token[] = [token]
+                          let j = i + 1
+                          while (j < group.tokens.length) {
+                            const space = group.tokens[j]
+                            const nextWord = group.tokens[j + 1]
+                            if (space?.type === "space" && nextWord?.type === "word") {
+                              const nextLookup = wordsByTerm.get(normalizeTerm(nextWord.value))
+                              const nextScore = nextLookup ? effectiveScore(nextLookup) : 0
+                              if (nextScore >= 10) {
+                                segTokens.push(space, nextWord)
+                                j += 2
+                                continue
+                              }
+                            }
+                            break
+                          }
+                          segments.push({ kind: "high", tokens: segTokens })
+                          i = j
+                          continue
+                        }
+                      }
+                      segments.push({ kind: "normal", tokens: [token] })
+                      i += 1
+                    }
+
+                    const renderToken = (token: Token, tokenIndex: number, inHigh: boolean) => {
+                      if (token.type === "space") {
+                        return (
+                          <span key={`known-space-${groupIndex}-${tokenIndex}`}>{token.value}</span>
+                        )
+                      }
+                      const lookup = wordsByTerm.get(normalizeTerm(token.value))
+                      const keyTerm = lookup?.term ?? token.value
+                      const tone = lookup ? scoreTone(effectiveScore(lookup)) : null
                       return (
-                        <span key={`known-space-${groupIndex}-${tokenIndex}`}>{token.value}</span>
+                        <span
+                          key={`known-word-${groupIndex}-${tokenIndex}`}
+                          className={`inline-flex rounded-sm px-0.5 text-ink-900 ${
+                            !inHigh && tone ? `${tone.bg} ${tone.shadow}` : ""
+                          }`}
+                          onMouseEnter={(event) => {
+                            if (!lookup) return
+                            cancelClose()
+                            openTooltip(event.currentTarget, {
+                              kind: "known",
+                              lookup,
+                              keyTerm,
+                            })
+                          }}
+                          onMouseLeave={scheduleClose}
+                        >
+                          {token.value}
+                        </span>
                       )
                     }
-                    const lookup = wordsByTerm.get(normalizeTerm(token.value))
-                    const keyTerm = lookup?.term ?? token.value
-                    const tone = lookup ? scoreTone(effectiveScore(lookup)) : null
-                    return (
-                      <span
-                        key={`known-word-${groupIndex}-${tokenIndex}`}
-                        className={`inline-flex rounded-sm px-0.5 text-ink-900 ${
-                          tone ? `${tone.bg} ${tone.shadow}` : ""
-                        }`}
-                        onMouseEnter={(event) => {
-                          if (!lookup) return
-                          cancelClose()
-                          openTooltip(event.currentTarget, {
-                            kind: "known",
-                            lookup,
-                            keyTerm,
-                          })
-                        }}
-                        onMouseLeave={scheduleClose}
-                      >
-                        {token.value}
-                      </span>
+
+                    const highTone = scoreTone(10)
+                    return segments.map((segment, segmentIndex) =>
+                      segment.kind === "high" ? (
+                        <span
+                          key={`known-high-${groupIndex}-${segmentIndex}`}
+                          className={`rounded-md px-1 ${highTone.bg} ${highTone.shadow}`}
+                        >
+                          {segment.tokens.map((token, tokenIndex) =>
+                            renderToken(token, tokenIndex, true)
+                          )}
+                        </span>
+                      ) : (
+                        <span key={`known-normal-${groupIndex}-${segmentIndex}`}>
+                          {segment.tokens.map((token, tokenIndex) =>
+                            renderToken(token, tokenIndex, false)
+                          )}
+                        </span>
+                      )
                     )
-                  })}
+                  })()}
                 </span>
               )
             }
