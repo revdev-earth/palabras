@@ -1,7 +1,7 @@
-import type { RefObject } from "react"
+import { memo, type RefObject } from "react"
 
 import type { WordEntry } from "+/redux/slices/wordsSlice"
-import { effectiveScore, formatDate } from "+/utils"
+import { formatDate } from "+/utils"
 
 import { columns } from "./tableLayout"
 
@@ -19,6 +19,7 @@ type ToggleSpeak = (
 
 type WordRowProps = {
   word: WordEntry
+  effectiveScore: number
   isEditing: boolean
   expanded: boolean
   selected: boolean
@@ -38,8 +39,9 @@ type WordRowProps = {
   onToggleSpeak: ToggleSpeak
 }
 
-export function WordRow({
+export const WordRow = memo(function WordRow({
   word,
+  effectiveScore,
   isEditing,
   expanded,
   selected,
@@ -58,6 +60,11 @@ export function WordRow({
   onDelete,
   onToggleSpeak,
 }: WordRowProps) {
+  const termKey = `term:${word.id}`
+  const notesKey = `notes:${word.id}`
+  const isTermSpeaking = isSpeaking && speakingKey === termKey
+  const isNotesSpeaking = isSpeaking && speakingKey === notesKey
+
   return (
     <div className={`${columns.bodyRow} ${columns.desktopGrid}`}>
       <div className="flex items-start gap-2 md:justify-center">
@@ -82,15 +89,11 @@ export function WordRow({
           <div className="flex items-center gap-2">
             <button
               type="button"
-              onClick={() => onToggleSpeak(`term:${word.id}`, word.term)}
+              onClick={() => onToggleSpeak(termKey, word.term)}
               className="rounded-full border border-slate-100 bg-slate-50 px-2 py-1 text-[11px] font-semibold text-slate-800 shadow-inner transition hover:-translate-y-0.5 hover:shadow-sm"
-              title={
-                isSpeaking && speakingKey === `term:${word.id}`
-                  ? "Detener audio"
-                  : "Pronunciar palabra"
-              }
+              title={isTermSpeaking ? "Detener audio" : "Pronunciar palabra"}
             >
-              {isSpeaking && speakingKey === `term:${word.id}` ? "⏹️" : "🔊"}
+              {isTermSpeaking ? "⏹️" : "🔊"}
             </button>
             <span className="wrap-break-word font-semibold text-slate-900">
               {word.term}
@@ -130,18 +133,14 @@ export function WordRow({
             <button
               type="button"
               onClick={() =>
-                onToggleSpeak(`notes:${word.id}`, word.notes || "", {
+                onToggleSpeak(notesKey, word.notes || "", {
                   sentencePerLine: true,
                 })
               }
               className="mt-0.5 rounded-full border border-slate-100 bg-slate-50 px-2 py-1 text-[11px] font-semibold text-slate-800 shadow-inner transition hover:-translate-y-0.5 hover:shadow-sm"
-              title={
-                isSpeaking && speakingKey === `notes:${word.id}`
-                  ? "Detener audio"
-                  : "Pronunciar notas"
-              }
+              title={isNotesSpeaking ? "Detener audio" : "Pronunciar notas"}
             >
-              {isSpeaking && speakingKey === `notes:${word.id}` ? "⏹️" : "🔊"}
+              {isNotesSpeaking ? "⏹️" : "🔊"}
             </button>
             <button
               type="button"
@@ -170,7 +169,7 @@ export function WordRow({
       <div className="space-y-1 text-center">
         <p className="text-[11px] text-slate-500 md:hidden">Score</p>
         <span className="rounded-full bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-800">
-          {effectiveScore(word).toFixed(1)}
+          {effectiveScore.toFixed(1)}
         </span>
       </div>
 
@@ -203,15 +202,24 @@ export function WordRow({
           </div>
         ) : (
           <div className="flex flex-wrap gap-1">
-            {[-1, 1, 2].map((d) => (
-              <button
-                key={d}
-                onClick={() => onScore(d)}
-                className="rounded-lg border border-slate-200 px-2 py-1 text-[11px] font-semibold text-slate-800 hover:border-slate-300"
-              >
-                {d > 0 ? `+${d}` : d}
-              </button>
-            ))}
+            <button
+              onClick={() => onScore(-1)}
+              className="rounded-lg border border-slate-200 px-2 py-1 text-[11px] font-semibold text-slate-800 hover:border-slate-300"
+            >
+              -1
+            </button>
+            <button
+              onClick={() => onScore(1)}
+              className="rounded-lg border border-slate-200 px-2 py-1 text-[11px] font-semibold text-slate-800 hover:border-slate-300"
+            >
+              +1
+            </button>
+            <button
+              onClick={() => onScore(2)}
+              className="rounded-lg border border-slate-200 px-2 py-1 text-[11px] font-semibold text-slate-800 hover:border-slate-300"
+            >
+              +2
+            </button>
             <button
               onClick={onStartEdit}
               className="rounded-lg border border-slate-200 px-2.5 py-1 text-[11px] font-semibold text-slate-800 hover:border-slate-300"
@@ -229,4 +237,4 @@ export function WordRow({
       </div>
     </div>
   )
-}
+})
