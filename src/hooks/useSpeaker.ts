@@ -2,7 +2,8 @@ import { useCallback, useEffect, useMemo, useState } from "react"
 
 import { useSelector } from "+/redux"
 
-const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value))
+const clamp = (value: number, min: number, max: number) =>
+  Math.min(max, Math.max(min, value))
 
 const toSentencesByLine = (raw: string) =>
   raw
@@ -32,7 +33,8 @@ export const useSpeaker = (hookOpts?: { enabled?: boolean }) => {
     }
     loadVoices()
     window.speechSynthesis.addEventListener("voiceschanged", loadVoices)
-    return () => window.speechSynthesis.removeEventListener("voiceschanged", loadVoices)
+    return () =>
+      window.speechSynthesis.removeEventListener("voiceschanged", loadVoices)
   }, [])
 
   const stopSpeaking = useCallback(() => {
@@ -46,7 +48,9 @@ export const useSpeaker = (hookOpts?: { enabled?: boolean }) => {
     return (
       voices.find((v) => v.voiceURI === voiceId || v.name === voiceId) ||
       voices.find((v) =>
-        voiceLang ? v.lang?.toLowerCase().startsWith(voiceLang.toLowerCase()) : false
+        voiceLang
+          ? v.lang?.toLowerCase().startsWith(voiceLang.toLowerCase())
+          : false
       ) ||
       voices.find((v) => v.lang?.toLowerCase().startsWith("es")) ||
       voices.find((v) => v.lang?.toLowerCase().startsWith("en")) ||
@@ -57,12 +61,24 @@ export const useSpeaker = (hookOpts?: { enabled?: boolean }) => {
   const speak = useCallback(
     (
       text: string,
-      opts?: { onEnd?: () => void; onError?: () => void; sentencePerLine?: boolean }
+      opts?: {
+        onEnd?: () => void
+        onError?: () => void
+        sentencePerLine?: boolean
+      }
     ) => {
-      const enabled = typeof hookOpts?.enabled === "boolean" ? hookOpts.enabled : speakEnabled
-      const prepared = opts?.sentencePerLine ? toSentencesByLine(text || "") : text
+      const enabled =
+        typeof hookOpts?.enabled === "boolean" ? hookOpts.enabled : speakEnabled
+      const prepared = opts?.sentencePerLine
+        ? toSentencesByLine(text || "")
+        : text
       const clean = prepared?.trim()
-      if (!clean || typeof window === "undefined" || !window.speechSynthesis || !enabled)
+      if (
+        !clean ||
+        typeof window === "undefined" ||
+        !window.speechSynthesis ||
+        !enabled
+      )
         return false
       const utter = new SpeechSynthesisUtterance(clean)
       if (preferredVoice) utter.voice = preferredVoice
@@ -83,6 +99,14 @@ export const useSpeaker = (hookOpts?: { enabled?: boolean }) => {
     [hookOpts, preferredVoice, speakEnabled, voiceRate]
   )
 
-  const enabled = typeof hookOpts?.enabled === "boolean" ? hookOpts.enabled : speakEnabled
-  return { speak, stopSpeaking, voices, preferredVoice, speakEnabled: enabled, isSpeaking }
+  const enabled =
+    typeof hookOpts?.enabled === "boolean" ? hookOpts.enabled : speakEnabled
+  return {
+    speak,
+    stopSpeaking,
+    voices,
+    preferredVoice,
+    speakEnabled: enabled,
+    isSpeaking,
+  }
 }

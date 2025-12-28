@@ -18,7 +18,11 @@ import { TextHistoryMenu } from "./components/TextHistoryMenu"
 import { UnknownWordsPanel } from "./components/UnknownWordsPanel"
 import { LearningWordsPanel } from "./components/LearningWordsPanel"
 import { TextPreview } from "./components/TextPreview"
-import { selectLearningWords, selectRecognitionDerived, selectUnknownWords } from "./selectors"
+import {
+  selectLearningWords,
+  selectRecognitionDerived,
+  selectUnknownWords,
+} from "./selectors"
 
 const parseList = (value: string) =>
   value
@@ -33,13 +37,15 @@ const phraseTone: PhraseTone = {
   text: "text-violet-700",
 }
 
-export function ReconocimientoDePalabrasEnElTexto() {
+export function Reconocimiento() {
   const dispatch = useDispatch()
   const text = useSelector((s) => s.recognition.recognitionText)
   const [activeWord, setActiveWord] = useState<string | null>(null)
   const previewFontSize = useSelector((s) => s.recognition.previewFontSize)
   const previewLineHeight = useSelector((s) => s.recognition.previewLineHeight)
-  const previewWordSpacing = useSelector((s) => s.recognition.previewWordSpacing)
+  const previewWordSpacing = useSelector(
+    (s) => s.recognition.previewWordSpacing
+  )
   const toneVariant = useSelector((s) => s.recognition.toneVariant)
   const [showUnknownList, setShowUnknownList] = useState(false)
   const [showLearningList, setShowLearningList] = useState(false)
@@ -53,8 +59,14 @@ export function ReconocimientoDePalabrasEnElTexto() {
     contextForPractice: "",
   })
   const previewRef = useRef<HTMLDivElement | null>(null)
-  const { tokens, groups, wordsByTerm, contextSuggestions, phraseSuggestions, practiceTargets } =
-    useSelector((state) => selectRecognitionDerived(state, activeWord))
+  const {
+    tokens,
+    groups,
+    wordsByTerm,
+    contextSuggestions,
+    phraseSuggestions,
+    practiceTargets,
+  } = useSelector((state) => selectRecognitionDerived(state, activeWord))
   const unknownWords = useSelector(selectUnknownWords)
   const learningWords = useSelector(selectLearningWords)
   const { tooltip, cancelClose, scheduleClose, openTooltip } = useTooltipState({
@@ -84,7 +96,11 @@ export function ReconocimientoDePalabrasEnElTexto() {
     })
   }
 
-  const saveWord = (nextDraft: WordDraft, previousTerm = activeWord, shouldAlert = true) => {
+  const saveWord = (
+    nextDraft: WordDraft,
+    previousTerm = activeWord,
+    shouldAlert = true
+  ) => {
     if (!nextDraft.term.trim() || !nextDraft.translation.trim()) {
       if (shouldAlert) window.alert("Palabra y traduccion son obligatorias.")
       return false
@@ -208,7 +224,8 @@ export function ReconocimientoDePalabrasEnElTexto() {
               onClick={() => setShowUnknownList((prev) => !prev)}
               className="rounded-full border border-slate-100 bg-white px-2.5 py-1 text-[10px] font-semibold text-slate-600 shadow-inner transition hover:bg-slate-50"
             >
-              Desconocidas {unknownWords.length ? `(${unknownWords.length})` : ""}
+              Desconocidas{" "}
+              {unknownWords.length ? `(${unknownWords.length})` : ""}
             </button>
 
             <button
@@ -216,7 +233,8 @@ export function ReconocimientoDePalabrasEnElTexto() {
               onClick={() => setShowLearningList((prev) => !prev)}
               className="rounded-full border border-slate-100 bg-white px-2.5 py-1 text-[10px] font-semibold text-slate-600 shadow-inner transition hover:bg-slate-50"
             >
-              Aprendiendo {learningWords.length ? `(${learningWords.length})` : ""}
+              Aprendiendo{" "}
+              {learningWords.length ? `(${learningWords.length})` : ""}
             </button>
 
             <PreviewConfigMenu />
@@ -259,3 +277,5 @@ export function ReconocimientoDePalabrasEnElTexto() {
     </section>
   )
 }
+
+export default Reconocimiento

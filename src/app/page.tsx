@@ -1,5 +1,7 @@
-import Palabras from "+/features/palabras/Palabras"
+"use client"
+
+import Reconocimiento from "+/features/reconocimiento/Reconocimiento"
 
 export default function Home() {
-  return <Palabras />
+  return <Reconocimiento />
 }

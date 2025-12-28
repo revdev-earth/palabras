@@ -5,7 +5,7 @@ import { useState } from "react"
 import { Header } from "+/components/Header"
 import { Biblioteca } from "../biblioteca/Biblioteca"
 import { Practicas } from "../practicas/Practicas"
-import { ReconocimientoDePalabrasEnElTexto } from "../reconocimiento/ReconocimientoDePalabrasEnElTexto"
+import { Reconocimiento } from "../reconocimiento/Reconocimiento"
 
 const tabs = [
   { key: "reconocimiento", label: "Reconocimiento de texto" },
@@ -42,7 +42,7 @@ function Palabras() {
 
         {
           {
-            reconocimiento: <ReconocimientoDePalabrasEnElTexto />,
+            reconocimiento: <Reconocimiento />,
             practicas: <Practicas />,
             biblioteca: <Biblioteca />,
           }[tab]
