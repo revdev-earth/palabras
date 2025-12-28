@@ -34,7 +34,6 @@ const phraseTone: PhraseTone = {
 
 export function ReconocimientoDePalabrasEnElTexto() {
   const dispatch = useDispatch()
-  const words = useSelector((s) => s.words.words)
   const text = useSelector((s) => s.recognition.recognitionText)
   const [activeWord, setActiveWord] = useState<string | null>(null)
   const previewFontSize = useSelector((s) => s.recognition.previewFontSize)

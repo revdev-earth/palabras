@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 export type UserState = {
   id: string
@@ -6,15 +6,16 @@ export type UserState = {
   name?: string | null
   lastName?: string | null
   role?: string | null
+  canUploadWords?: boolean
 } | null
 
 const initialState: UserState = null
 
 export const userSlice = createSlice({
   name: "user",
-  initialState,
+  initialState: initialState as UserState,
   reducers: {
-    setUser(_state, action: { payload: UserState }) {
+    setUser(_state, action: PayloadAction<UserState>) {
       return action.payload
     },
   },

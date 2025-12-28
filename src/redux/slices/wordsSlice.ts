@@ -19,7 +19,6 @@ export type WordsSliceState = {
   search: string
   searchField: SearchField
   selectedIds: string[]
-  useMemory: boolean
 }
 
 const seedWords: WordEntry[] = [
@@ -90,12 +89,8 @@ export const wordsSlice = createSlice({
     search: "",
     searchField: "term",
     selectedIds: initialSelectedIds,
-    useMemory: false,
   } as WordsSliceState,
   reducers: {
-    setUseMemory(state, action: PayloadAction<boolean>) {
-      state.useMemory = action.payload
-    },
     setSearch(state, action: PayloadAction<string>) {
       state.search = action.payload
     },
@@ -241,7 +236,6 @@ export const {
   setSearch,
   setSearchField,
   setSelectedIds,
-  setUseMemory,
   setWords,
   toggleSelect,
   touchLastPracticed,

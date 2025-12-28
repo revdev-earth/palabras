@@ -25,9 +25,68 @@ model User {
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
     lastLoginAt DateTime?
+    canUploadWords Boolean  @default(false)
+
+    wordProgresses WordProgress[]
+    settings       Settings?
 
     @@index([email])
     @@index([createdAt])
     @@index([lastLoginAt])
+    @@index([canUploadWords])
     @@map("users")
+}
+
+model WordLibrary {
+    id                 String   @id
+    term               String
+    translation        String
+    notes              String
+    context            Json?
+    contextForPractice Json?
+    createdAt          DateTime
+    updatedAt          DateTime @updatedAt
+
+    progresses WordProgress[]
+
+    @@index([term])
+    @@map("word_library")
+}
+
+model WordProgress {
+    id              String   @id @default(cuid())
+    userId          String
+    wordId          String
+    baseScore       Int
+    lastPracticedAt DateTime?
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+
+    user User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+    word WordLibrary @relation(fields: [wordId], references: [id], onDelete: Cascade)
+
+    @@unique([userId, wordId])
+    @@index([userId])
+    @@index([wordId])
+    @@map("word_progress")
+}
+
+model Settings {
+    id                   String  @id @default(cuid())
+    userId               String  @unique
+    sortBy               String
+    lastSeenDay          String
+    practiceRounds       Int
+    practiceCount        Int
+    practiceScoreBuckets Json?
+    practiceDateFilter   String
+    practiceSpeakEnabled Boolean
+    practiceVoiceId      String
+    practiceVoiceLang    String
+    practiceVoiceRate    Float
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@index([userId])
+    @@map("settings")
 }

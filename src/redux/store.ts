@@ -14,6 +14,7 @@ import { userSlice } from "+/redux/slices/user"
 import { WORDS_STORE_KEY } from "+/constants"
 import { genId } from "+/utils"
 import type { WordEntry } from "+/redux/slices/wordsSlice"
+import { syncMiddleware } from "+/redux/syncMiddleware"
 
 export const HYDRATE_ACTION_TYPE = "HYDRATE"
 
@@ -64,7 +65,8 @@ const authResetMiddleware: Middleware = (storeApi) => (next) => (action) => {
 
 export const store = configureStore({
   reducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authResetMiddleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(authResetMiddleware, syncMiddleware),
 })
 
 export type AppDispatch = typeof store.dispatch
@@ -86,6 +88,7 @@ if (typeof window !== "undefined") {
     schedule(() => {
       saveScheduled = false
       const state = store.getState()
+      if (state.auth?.isAuthenticated && state.user?.id) return
       if (lastWordsRef !== state.words.words) {
         lastWordsRef = state.words.words
         const wordsSerialized = JSON.stringify(state.words.words)
@@ -99,7 +102,6 @@ if (typeof window !== "undefined") {
           selectedIds: state.words.selectedIds,
           search: state.words.search,
           searchField: state.words.searchField,
-          useMemory: state.words.useMemory,
         },
         settings: state.settings,
         recognition: state.recognition,

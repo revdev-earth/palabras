@@ -5,7 +5,6 @@ import Link from "next/link"
 import { ChevronDown, LogOut } from "lucide-react"
 
 import { AudioPanel } from "+/components/AudioPanel"
-import { MemoryMenu } from "+/components/MemoryMenu"
 import AuthModal from "+/components/auth/AuthModal"
 import ResetPasswordModal from "+/components/auth/ResetPasswordModal"
 import { logout } from "+/components/auth/hooks/getSession"
@@ -114,7 +113,6 @@ export function Header() {
             </div>
           )}
           <AudioPanel />
-          <MemoryMenu />
         </div>
       </header>
       <AuthModal />

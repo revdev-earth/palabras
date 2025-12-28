@@ -12,6 +12,7 @@ export const getUserAfterLogin = async ({ email }: { email: string }) => {
         email: true,
         name: true,
         lastName: true,
+        canUploadWords: true,
       },
     })
     if (!user) return null

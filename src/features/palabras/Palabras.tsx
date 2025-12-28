@@ -1,14 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
-
-import { useDispatch, useSelector } from "+/redux"
-
-import { setWords } from "+/redux/slices/wordsSlice"
+import { useState } from "react"
 
 import { Header } from "+/components/Header"
-import { getMemoryWords, setMemoryWords } from "../../shared/memoryStore"
-
 import { Biblioteca } from "../biblioteca/Biblioteca"
 import { Practicas } from "../practicas/Practicas"
 import { ReconocimientoDePalabrasEnElTexto } from "../reconocimiento/ReconocimientoDePalabrasEnElTexto"
@@ -22,21 +16,7 @@ const tabs = [
 type TabKey = (typeof tabs)[number]["key"]
 
 function Palabras() {
-  const dispatch = useDispatch()
-  const words = useSelector((s) => s.words.words)
-  const useMemory = useSelector((s) => s.words.useMemory)
   const [tab, setTab] = useState<TabKey>("reconocimiento")
-
-  useEffect(() => {
-    if (!useMemory) return
-    const memoryWords = getMemoryWords()
-    dispatch(setWords(memoryWords))
-  }, [dispatch, useMemory])
-
-  useEffect(() => {
-    if (!useMemory) return
-    setMemoryWords(words)
-  }, [useMemory, words])
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
