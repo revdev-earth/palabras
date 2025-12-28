@@ -5,15 +5,17 @@ import { ArrowRight, CheckCircle, Eye, EyeOff, Lock, Mail, User } from 'lucide-r
 import { authenticate } from '+/actions/auth/login'
 import { authInitialState, type AuthActionState } from './types'
 import { demoUsers as defaultDemoUsers } from './users'
-import { useDispatch } from '+/redux'
+import { HYDRATE_ACTION_TYPE, useDispatch } from '+/redux'
 import {
   setAuthVerificationExpires,
   setIsAuthenticated,
   setLoginState,
+  resetAuthProcess,
   setResetPasswordModalOpen,
 } from '+/redux/slices/auth'
 import { setUser } from '+/redux/slices/user'
-import { getUserAfterLogin } from '+/actions/user'
+import { getUserSyncPayload } from '+/actions/sync'
+import { initialState } from '+/redux/store'
 
 type LoginFormProps = {
   className?: string
@@ -38,11 +40,42 @@ export default function LoginForm({
 
     dispatch(setAuthVerificationExpires(null))
     dispatch(setLoginState('success'))
-    dispatch(setIsAuthenticated(true))
 
     const syncUser = async () => {
-      const user = await getUserAfterLogin({ email })
-      dispatch(setUser(user))
+      try {
+        const remote = await getUserSyncPayload()
+        if (remote) {
+          dispatch(setUser(remote.user))
+          dispatch(setIsAuthenticated(true))
+          dispatch({
+            type: HYDRATE_ACTION_TYPE,
+            payload: {
+              ...initialState,
+              words: {
+                ...initialState.words,
+                words: remote.words,
+              },
+              settings: remote.settings,
+              recognition: {
+                ...initialState.recognition,
+                recognitionText:
+                  remote.recognition?.recognitionText ??
+                  initialState.recognition.recognitionText,
+                textHistory:
+                  remote.recognition?.textHistory ??
+                  initialState.recognition.textHistory,
+              },
+            },
+          })
+          dispatch(resetAuthProcess())
+          dispatch(setLoginState('idle'))
+          return
+        }
+      } catch (error) {
+        console.error('Error syncing after login:', error)
+      }
+      dispatch(setUser(null))
+      dispatch(setIsAuthenticated(false))
       dispatch(setLoginState('idle'))
     }
 
