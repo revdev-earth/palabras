@@ -31,7 +31,7 @@ const preserveScroll = (fn: () => void) => {
   requestAnimationFrame(() => window.scrollTo({ top: y }))
 }
 
-const ITEMS_PER_PAGE = 25
+const ITEMS_PER_PAGE = 50
 
 function WordsTablePaginated({ words }: { words: WordEntry[] }) {
   const dispatch = useDispatch()
@@ -74,6 +74,41 @@ function WordsTablePaginated({ words }: { words: WordEntry[] }) {
     )
     return Array.from(set).sort((a, b) => a.localeCompare(b, "es"))
   }, [words])
+
+  const matchingWords = useMemo(() => {
+    if (!activeContexts.size && !activePracticeContexts.size) return words
+    return words.filter((word) => {
+      if (activeContexts.size) {
+        const contexts = word.context || []
+        const hasAll = Array.from(activeContexts).every((c) =>
+          contexts.includes(c)
+        )
+        if (!hasAll) return false
+      }
+      if (activePracticeContexts.size) {
+        const practices = word.contextForPractice || []
+        const hasAll = Array.from(activePracticeContexts).every((c) =>
+          practices.includes(c)
+        )
+        if (!hasAll) return false
+      }
+      return true
+    })
+  }, [activeContexts, activePracticeContexts, words])
+
+  const availableContextTags = useMemo(() => {
+    const set = new Set<string>()
+    matchingWords.forEach((w) => (w.context || []).forEach((c) => set.add(c)))
+    return set
+  }, [matchingWords])
+
+  const availablePracticeTags = useMemo(() => {
+    const set = new Set<string>()
+    matchingWords.forEach((w) =>
+      (w.contextForPractice || []).forEach((c) => set.add(c))
+    )
+    return set
+  }, [matchingWords])
 
   // Filtrar palabras visibles
   const visibleWords = useMemo(() => {
@@ -271,6 +306,8 @@ function WordsTablePaginated({ words }: { words: WordEntry[] }) {
         practiceOptions={contextPracticeOptions}
         activeContexts={activeContexts}
         activePracticeContexts={activePracticeContexts}
+        availableContexts={availableContextTags}
+        availablePracticeContexts={availablePracticeTags}
         onToggleContext={(ctx) => {
           setActiveContexts((prev) => {
             const next = new Set(prev)
