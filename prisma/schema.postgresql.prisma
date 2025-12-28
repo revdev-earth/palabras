@@ -1,0 +1,33 @@
+generator client {
+    provider   = "prisma-client-js"
+    engineType = "binary"
+}
+
+datasource db {
+    provider = "postgresql"
+}
+
+model User {
+    id                        String   @id @default(cuid())
+    email                     String   @unique
+    password                  String
+    name                      String
+    lastName                  String
+    disable                   Boolean  @default(false)
+    emailVerified             DateTime?
+
+    resetPasswordToken        String?
+    resetPasswordExpiresAt    DateTime?
+    resetPasswordUsed         Boolean  @default(false)
+    verificationCode          String?
+    verificationCodeExpiresAt DateTime?
+
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    lastLoginAt DateTime?
+
+    @@index([email])
+    @@index([createdAt])
+    @@index([lastLoginAt])
+    @@map("users")
+}

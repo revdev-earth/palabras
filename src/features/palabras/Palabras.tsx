@@ -6,8 +6,7 @@ import { useDispatch, useSelector } from "+/redux"
 
 import { setWords } from "+/redux/slices/wordsSlice"
 
-import { AudioPanel } from "../../components/AudioPanel"
-import { MemoryMenu } from "../../components/MemoryMenu"
+import { Header } from "+/components/Header"
 import { getMemoryWords, setMemoryWords } from "../../shared/memoryStore"
 
 import { Biblioteca } from "../biblioteca/Biblioteca"
@@ -41,13 +40,7 @@ function Palabras() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <header className="mb-6 flex flex-wrap items-start justify-between gap-3">
-        <h1 className="text-3xl font-semibold text-slate-900">Palabras</h1>
-        <div className="flex items-center gap-2">
-          <AudioPanel />
-          <MemoryMenu />
-        </div>
-      </header>
+      <Header />
 
       <main className="space-y-4">
         <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-slate-700">

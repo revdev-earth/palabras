@@ -1,4 +1,5 @@
 import {
+  type Middleware,
   PayloadAction,
   combineReducers,
   configureStore,
@@ -8,6 +9,8 @@ import { practiceSlice } from "+/redux/slices/practiceSlice"
 import { recognitionSlice } from "+/redux/slices/recognitionSlice"
 import { settingsSlice } from "+/redux/slices/settingsSlice"
 import { wordsSlice } from "+/redux/slices/wordsSlice"
+import { authSlice, resetAuthProcess, setIsAuthenticated } from "+/redux/slices/auth"
+import { userSlice } from "+/redux/slices/user"
 import { WORDS_STORE_KEY } from "+/constants"
 import { genId } from "+/utils"
 import type { WordEntry } from "+/redux/slices/wordsSlice"
@@ -19,6 +22,8 @@ const rootReducer = combineReducers({
   practice: practiceSlice.reducer,
   settings: settingsSlice.reducer,
   recognition: recognitionSlice.reducer,
+  auth: authSlice.reducer,
+  user: userSlice.reducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>
@@ -49,7 +54,18 @@ const reducer = (state: State | undefined, action: PayloadAction<State>) => {
   return rootReducer(state, action)
 }
 
-export const store = configureStore({ reducer })
+const authResetMiddleware: Middleware = (storeApi) => (next) => (action) => {
+  const result = next(action)
+  if (setIsAuthenticated.match(action)) {
+    storeApi.dispatch(resetAuthProcess())
+  }
+  return result
+}
+
+export const store = configureStore({
+  reducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authResetMiddleware),
+})
 
 export type AppDispatch = typeof store.dispatch
 export const initialState: State = store.getState()
