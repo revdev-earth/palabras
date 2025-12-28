@@ -6,6 +6,7 @@ import { auth } from "+/lib/auth"
 import { prisma } from "+/lib/prisma"
 import type { PracticeDateFilter, Settings, SortBy } from "+/types"
 import type { WordEntry } from "+/redux/slices/wordsSlice"
+import type { TextHistoryItem } from "+/redux/slices/recognitionSlice"
 import { defaultSettings } from "+/utils"
 
 type WordProgressInput = {
@@ -55,7 +56,7 @@ export const getUserSyncPayload = async () => {
   const userId = session?.user?.id
   if (!userId) return null
 
-  const [settings, progresses, user] = await Promise.all([
+  const [settings, progresses, user, recognitionState] = await Promise.all([
     prisma.settings.findUnique({ where: { userId } }),
     prisma.wordProgress.findMany({
       where: { userId },
@@ -70,6 +71,10 @@ export const getUserSyncPayload = async () => {
         lastName: true,
         canUploadWords: true,
       },
+    }),
+    prisma.textRecognition.findUnique({
+      where: { userId },
+      select: { recognitionText: true, textHistory: true },
     }),
   ])
   if (!user) return null
@@ -98,7 +103,19 @@ export const getUserSyncPayload = async () => {
       : defaultSettings.practiceScoreBuckets,
   }
 
-  return { user, words, settings: mappedSettings }
+  const textHistory = Array.isArray(recognitionState?.textHistory)
+    ? (recognitionState?.textHistory as TextHistoryItem[])
+    : []
+
+  return {
+    user,
+    words,
+    settings: mappedSettings,
+    recognition: {
+      recognitionText: recognitionState?.recognitionText ?? null,
+      textHistory,
+    },
+  }
 }
 
 export const syncWordLibrary = async (words: WordEntry[]) => {
@@ -175,6 +192,28 @@ export const syncSettings = async (nextSettings: Settings) => {
     },
     update: {
       ...nextSettings,
+    },
+  })
+}
+
+export const syncRecognitionState = async (payload: {
+  recognitionText: string
+  textHistory: TextHistoryItem[]
+}) => {
+  const session = await auth()
+  const userId = session?.user?.id
+  if (!userId) return
+
+  await prisma.textRecognition.upsert({
+    where: { userId },
+    create: {
+      userId,
+      recognitionText: payload.recognitionText,
+      textHistory: payload.textHistory,
+    },
+    update: {
+      recognitionText: payload.recognitionText,
+      textHistory: payload.textHistory,
     },
   })
 }

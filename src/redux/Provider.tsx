@@ -9,6 +9,7 @@ import { safeParse } from "+/utils"
 import { getUserSyncPayload } from "+/actions/sync"
 import { setIsAuthenticated } from "+/redux/slices/auth"
 import { setUser } from "+/redux/slices/user"
+import { setRecognitionText, setTextHistory } from "+/redux/slices/recognitionSlice"
 
 interface Props {
   children: ReactNode
@@ -26,6 +27,14 @@ const Hydrate = ({ children }: Props) => {
         if (remote) {
           dispatch(setUser(remote.user))
           dispatch(setIsAuthenticated(true))
+          if (remote.recognition) {
+            if (typeof remote.recognition.recognitionText === "string") {
+              dispatch(setRecognitionText(remote.recognition.recognitionText))
+            }
+            if (Array.isArray(remote.recognition.textHistory)) {
+              dispatch(setTextHistory(remote.recognition.textHistory))
+            }
+          }
           dispatch({
             type: HYDRATE_ACTION_TYPE,
             payload: {

@@ -14,10 +14,18 @@ import {
 } from "+/redux/slices/wordsSlice"
 import { setSettings } from "+/redux/slices/settingsSlice"
 import {
+  addTextHistory,
+  removeTextHistory,
+  setRecognitionText,
+  setTextHistory,
+  type TextHistoryItem,
+} from "+/redux/slices/recognitionSlice"
+import {
   deleteWordLibrary,
   syncSettings,
   syncWordLibrary,
   syncWordProgress,
+  syncRecognitionState,
 } from "+/actions/sync"
 
 type ProgressChange = {
@@ -31,6 +39,7 @@ type PendingSync = {
   progress: Map<string, ProgressChange>
   deleted: Set<string>
   settings?: Settings
+  recognition?: { recognitionText: string; textHistory: TextHistoryItem[] }
 }
 
 const HYDRATE_ACTION_TYPE = "HYDRATE"
@@ -56,13 +65,22 @@ export const syncMiddleware: Middleware = (storeApi) => {
     const library = Array.from(pending.library.values())
     const progress = Array.from(pending.progress.values())
     const settings = pending.settings
+    const recognition = pending.recognition
 
     pending.deleted.clear()
     pending.library.clear()
     pending.progress.clear()
     delete pending.settings
+    delete pending.recognition
 
-    if (!deletedIds.length && !library.length && !progress.length && !settings) return
+    if (
+      !deletedIds.length &&
+      !library.length &&
+      !progress.length &&
+      !settings &&
+      !recognition
+    )
+      return
 
     void (async () => {
       try {
@@ -70,6 +88,11 @@ export const syncMiddleware: Middleware = (storeApi) => {
         if (library.length) await syncWordLibrary(library)
         if (progress.length) await syncWordProgress(progress)
         if (settings) await syncSettings(settings)
+        if (recognition)
+          await syncRecognitionState({
+            recognitionText: recognition.recognitionText,
+            textHistory: recognition.textHistory,
+          })
       } catch (error) {
         console.error("Error syncing state:", error)
       }
@@ -171,6 +194,19 @@ export const syncMiddleware: Middleware = (storeApi) => {
 
     if (setSettings.match(action)) {
       pending.settings = state.settings
+      dirty = true
+    }
+
+    if (
+      setRecognitionText.match(action) ||
+      addTextHistory.match(action) ||
+      removeTextHistory.match(action) ||
+      setTextHistory.match(action)
+    ) {
+      pending.recognition = {
+        recognitionText: state.recognition.recognitionText,
+        textHistory: state.recognition.textHistory,
+      }
       dirty = true
     }
 
