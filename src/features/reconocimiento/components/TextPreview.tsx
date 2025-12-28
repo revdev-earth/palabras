@@ -15,7 +15,7 @@ type TextPreviewProps = {
   wordsByTerm: Map<string, WordEntry>
   toneVariant: ToneVariant
   phraseTone: PhraseTone
-  previewRef: RefObject<HTMLDivElement>
+  previewRef: RefObject<HTMLDivElement | null>
   tooltip: TooltipState | null
   activeWord: string | null
   draft: WordDraft

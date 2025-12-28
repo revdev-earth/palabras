@@ -1,24 +1,11 @@
 import { useEffect, useState } from "react"
+import type { Session } from "next-auth"
 import { getSession } from "./getSession"
 
 type SessionStatus = "loading" | "authenticated" | "unauthenticated"
 
-interface User {
-  id: string
-  name?: string | null
-  email?: string | null
-  image?: string
-  role: "admin" | "tenant"
-  profile?: string | null
-  adminLevel?: string
-  emailVerified?: Date | null
-  phoneVerified?: Date | null
-}
-
-interface Session {
-  user: User
-  expires: string
-}
+type User = Session["user"]
+type UserRole = NonNullable<User>["role"]
 
 interface UseSessionReturn {
   session: Session | null
@@ -26,7 +13,7 @@ interface UseSessionReturn {
   isLoading: boolean
   isAuthenticated: boolean
   user: User | null
-  role: "admin" | "tenant" | null
+  role: UserRole | null
   refreshSession: () => Promise<void>
   clearSession: () => void
 }
@@ -95,8 +82,8 @@ export const useSession = (): UseSessionReturn => {
     status,
     isLoading: status === "loading",
     isAuthenticated: status === "authenticated",
-    user: session?.user || null,
-    role: session?.user?.role || null,
+    user: session?.user ?? null,
+    role: session?.user?.role ?? null,
     refreshSession,
     clearSession,
   }

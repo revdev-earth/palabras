@@ -1,4 +1,4 @@
-import type { Middleware } from "@reduxjs/toolkit"
+import type { AnyAction, Middleware } from "@reduxjs/toolkit"
 
 import type { Settings } from "+/types"
 import type { WordEntry } from "+/redux/slices/wordsSlice"
@@ -113,7 +113,8 @@ export const syncMiddleware: Middleware = (storeApi) => {
     const result = next(action)
 
     if (typeof window === "undefined") return result
-    if (action.type === HYDRATE_ACTION_TYPE) return result
+    const actionType = (action as AnyAction).type
+    if (actionType === HYDRATE_ACTION_TYPE) return result
 
     const state = storeApi.getState()
     if (!state.auth?.isAuthenticated || !state.user?.id) return result
@@ -136,7 +137,6 @@ export const syncMiddleware: Middleware = (storeApi) => {
       }
     } else if (upsertWord.match(action)) {
       const word =
-        words.find((item: WordEntry) => item.id === action.payload?.id) ||
         findByTerm(words, action.payload?.term) ||
         findByTerm(words, action.payload?.previousTerm)
       if (word) {
@@ -170,7 +170,8 @@ export const syncMiddleware: Middleware = (storeApi) => {
       pending.progress.delete(action.payload)
       dirty = true
     } else if (applyScore.match(action) || touchLastPracticed.match(action)) {
-      const word = words.find((item) => item.id === action.payload.id)
+      const targetId = applyScore.match(action) ? action.payload.id : action.payload
+      const word = words.find((item: WordEntry) => item.id === targetId)
       if (word) {
         pending.progress.set(word.id, {
           id: word.id,
