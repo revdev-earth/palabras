@@ -1,10 +1,14 @@
-import type { Dispatch, SetStateAction } from "react"
+import { useState, type Dispatch, type SetStateAction } from "react"
 
 import type { WordEntry } from "+/redux/slices/wordsSlice"
 import { effectiveScore } from "+/utils"
+import { useSpeaker } from "+/hooks/useSpeaker"
 
 import { scoreTone, type ToneVariant } from "../../../shared/scoreTone"
-import { ReconocimientoEditorTabs, type WordDraft } from "./ReconocimientoEditorTabs"
+import {
+  ReconocimientoEditorTabs,
+  type WordDraft,
+} from "./ReconocimientoEditorTabs"
 
 export type PhraseTone = {
   bg: string
@@ -50,7 +54,11 @@ export type TooltipProps = {
   onScore: (id: string, delta: number) => void
   onStartEdit: (term: string) => void
   onToggleActive: (term: string) => void
-  onSave: (draft: WordDraft, previousTerm?: string, shouldAlert?: boolean) => boolean
+  onSave: (
+    draft: WordDraft,
+    previousTerm?: string,
+    shouldAlert?: boolean
+  ) => boolean
   onMouseEnter: () => void
   onMouseLeave: () => void
   setDraft: Dispatch<SetStateAction<WordDraft>>
@@ -59,6 +67,14 @@ export type TooltipProps = {
 const formatList = (items: string[] | undefined) => {
   if (!items || items.length === 0) return "—"
   return items.join(", ")
+}
+
+const getTags = (lookup?: WordEntry) => {
+  if (!lookup) return []
+  const tags = new Set<string>()
+  ;(lookup.context || []).forEach((tag) => tags.add(tag))
+  ;(lookup.contextForPractice || []).forEach((tag) => tags.add(tag))
+  return Array.from(tags)
 }
 
 export function ReconocimientoTooltip({
@@ -79,6 +95,24 @@ export function ReconocimientoTooltip({
   onMouseLeave,
   setDraft,
 }: TooltipProps) {
+  const { speak, stopSpeaking, isSpeaking } = useSpeaker({ enabled: true })
+  const [speakingTerm, setSpeakingTerm] = useState<string | null>(null)
+
+  const toggleSpeakTerm = (termText: string) => {
+    if (isSpeaking) {
+      stopSpeaking()
+      if (speakingTerm === termText) {
+        setSpeakingTerm(null)
+        return
+      }
+    }
+    setSpeakingTerm(termText)
+    speak(termText, {
+      onEnd: () => setSpeakingTerm(null),
+      onError: () => setSpeakingTerm(null),
+    })
+  }
+
   const borderClass =
     tooltip.kind === "phrase"
       ? phraseTone.border
@@ -92,7 +126,7 @@ export function ReconocimientoTooltip({
       style={{
         left: tooltip.left,
         top: tooltip.top,
-        transform: "translate(-50%, calc(-100% - 1px))",
+        transform: "translate(-10%, calc(-100% - 1px))",
       }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -104,7 +138,23 @@ export function ReconocimientoTooltip({
           return (
             <>
               <div className="flex items-center justify-between gap-2">
-                <div className="font-semibold text-slate-900">{tooltip.lookup.term}</div>
+                <div className="flex items-center gap-2">
+                  <div className="font-semibold text-slate-900">
+                    {tooltip.lookup.term}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => toggleSpeakTerm(tooltip.lookup.term)}
+                    className="rounded-full border border-slate-100 bg-white px-1.5 py-0.5 text-[10px] shadow-inner transition hover:bg-slate-50"
+                    title={
+                      speakingTerm === tooltip.lookup.term
+                        ? "Detener palabra"
+                        : "Reproducir palabra"
+                    }
+                  >
+                    {speakingTerm === tooltip.lookup.term ? "⏹️" : "🔊"}
+                  </button>
+                </div>
                 <div className="flex items-center gap-2 text-[11px] font-semibold text-slate-600">
                   <button
                     type="button"
@@ -127,7 +177,11 @@ export function ReconocimientoTooltip({
                     aria-label="Editar palabra"
                     title="Editar palabra"
                   >
-                    <svg viewBox="0 0 20 20" aria-hidden="true" className="h-3.5 w-3.5">
+                    <svg
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
+                      className="h-3.5 w-3.5"
+                    >
                       <path
                         d="M14.7 2.6a1.5 1.5 0 0 1 2.1 2.1l-9.2 9.2-3.3.7.7-3.3 9.2-9.2Zm-8.4 9.9-.3 1.2 1.2-.3 8.6-8.6-.9-.9-8.6 8.6Z"
                         fill="currentColor"
@@ -136,11 +190,30 @@ export function ReconocimientoTooltip({
                   </button>
                 </div>
               </div>
-              {tooltip.lookup.translation && <div className={tone.text}>{tooltip.lookup.translation}</div>}
-              <div className={`mt-1 text-[10px] uppercase tracking-wide ${tone.text}`}>
+              {tooltip.lookup.translation && (
+                <div className={tone.text}>{tooltip.lookup.translation}</div>
+              )}
+
+              {getTags(tooltip.lookup).length > 0 && (
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {getTags(tooltip.lookup).map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[12px] font-semibold text-slate-600"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <div
+                className={`mt-3 text-[12px] uppercase tracking-wide ${tone.text}`}
+              >
                 {tone.label} · Score {effectiveScore(tooltip.lookup).toFixed(1)}
               </div>
-              <details className="mt-2">
+
+              <details className="mt-3">
                 <summary className="inline-flex cursor-pointer items-center gap-1 text-[11px] font-semibold text-slate-700">
                   <span className="flex h-4 w-4 items-center justify-center rounded-full border border-emerald-200 text-emerald-700">
                     +
@@ -150,7 +223,10 @@ export function ReconocimientoTooltip({
                 <div className="mt-2 space-y-1 text-slate-600">
                   <div>Notas: {tooltip.lookup.notes || "—"}</div>
                   <div>Contexto: {formatList(tooltip.lookup.context)}</div>
-                  <div>Contexto practica: {formatList(tooltip.lookup.contextForPractice)}</div>
+                  <div>
+                    Contexto practica:{" "}
+                    {formatList(tooltip.lookup.contextForPractice)}
+                  </div>
                 </div>
               </details>
               {isActive && (
@@ -177,8 +253,26 @@ export function ReconocimientoTooltip({
           return (
             <div key={option.label}>
               {optionIndex > 0 && <div className="my-2 h-px bg-slate-100" />}
-              <div className="flex items-center justify-between gap-2">
-                <div className="font-semibold text-slate-900">{option.label}</div>
+              <div className="flex items-center justify-between gap-2 mb-2">
+                <div className="flex items-center gap-2">
+                  <div className="font-semibold text-slate-900">
+                    {option.label}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => toggleSpeakTerm(option.label)}
+                    className="rounded-full border border-slate-100 bg-white px-0.5 py-0.5 text-[10px] shadow-inner transition hover:bg-slate-50"
+                    title={
+                      speakingTerm === option.label
+                        ? "Detener palabra"
+                        : "Reproducir palabra"
+                    }
+                  >
+                    {speakingTerm === option.label ? "⏹️" : "🔊"}
+                  </button>
+                </div>
+
                 <div className="flex items-center gap-2 text-[11px] font-semibold text-slate-600">
                   {optionLookup && (
                     <>
@@ -205,7 +299,11 @@ export function ReconocimientoTooltip({
                     aria-label="Editar termino"
                     title="Editar termino"
                   >
-                    <svg viewBox="0 0 20 20" aria-hidden="true" className="h-3.5 w-3.5">
+                    <svg
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
+                      className="h-3.5 w-3.5"
+                    >
                       <path
                         d="M14.7 2.6a1.5 1.5 0 0 1 2.1 2.1l-9.2 9.2-3.3.7.7-3.3 9.2-9.2Zm-8.4 9.9-.3 1.2 1.2-.3 8.6-8.6-.9-.9-8.6 8.6Z"
                         fill="currentColor"
@@ -214,11 +312,30 @@ export function ReconocimientoTooltip({
                   </button>
                 </div>
               </div>
+
               {optionLookup?.translation ? (
-                <div className={phraseTone.text}>{optionLookup.translation}</div>
+                <div className={phraseTone.text}>
+                  {optionLookup.translation}
+                </div>
+              ) : optionLookup ? (
+                <div className="text-slate-500">—</div>
               ) : (
                 <div className="text-slate-500">No registrada</div>
               )}
+
+              {getTags(optionLookup).length > 0 && (
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {getTags(optionLookup).map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-semibold text-slate-600"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
               <details className="mt-2">
                 <summary className="inline-flex cursor-pointer items-center gap-1 text-[11px] font-semibold text-slate-700">
                   <span
@@ -231,9 +348,13 @@ export function ReconocimientoTooltip({
                 <div className="mt-2 space-y-1 text-slate-600">
                   <div>Notas: {optionLookup?.notes || "—"}</div>
                   <div>Contexto: {formatList(optionLookup?.context)}</div>
-                  <div>Contexto practica: {formatList(optionLookup?.contextForPractice)}</div>
+                  <div>
+                    Contexto practica:{" "}
+                    {formatList(optionLookup?.contextForPractice)}
+                  </div>
                 </div>
               </details>
+
               {optionIsActive && (
                 <div className="mt-2">
                   <ReconocimientoEditorTabs
@@ -256,7 +377,23 @@ export function ReconocimientoTooltip({
           const isActive = activeWord === tooltip.token
           return (
             <>
-              <div className="font-semibold text-slate-900">{tooltip.token}</div>
+              <div className="flex items-center gap-2">
+                <div className="font-semibold text-slate-900">
+                  {tooltip.token}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => toggleSpeakTerm(tooltip.token)}
+                  className="rounded-full border border-slate-100 bg-white px-1.5 py-0.5 text-[10px] shadow-inner transition hover:bg-slate-50"
+                  title={
+                    speakingTerm === tooltip.token
+                      ? "Detener palabra"
+                      : "Reproducir palabra"
+                  }
+                >
+                  {speakingTerm === tooltip.token ? "⏹️" : "🔊"}
+                </button>
+              </div>
               <div className="text-slate-700">No registrada</div>
               <details className="mt-2" open={isActive}>
                 <summary

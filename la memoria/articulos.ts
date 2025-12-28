@@ -37,6 +37,30 @@ const articulosAllgemein = [
     term: "kein",
     translation: "ningún/ninguno",
     context: ["A1", "artikel", "negativ"]
+  },
+  {
+    id: "de-des",
+    term: "des",
+    translation: "del (de + el)",
+    context: ["A1", "artikel", "genitiv", "maskulin-neutrum"]
+  },
+  {
+    id: "de-im",
+    term: "im",
+    translation: "en el (in + dem)",
+    context: ["A1", "artikel", "dativ", "maskulin-neutrum"]
+  },
+  {
+    id: "de-vom",
+    term: "vom",
+    translation: "del/de (von + dem)",
+    context: ["A1", "artikel", "dativ", "maskulin-neutrum"]
+  },
+  {
+    id: "de-zur",
+    term: "zur",
+    translation: "a la/hacia la (zu + der)",
+    context: ["A1", "artikel", "dativ", "feminin"]
   }
 ]
 

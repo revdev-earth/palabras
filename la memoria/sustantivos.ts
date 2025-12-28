@@ -913,6 +913,708 @@ const sustantivosAllgemein = [
     term: "Verkehrsmitteln",
     translation: "medios de transporte",
     context: ["A2", "neutrum", "plural", "substantiv"]
+  },
+  {
+    id: "de-rand",
+    term: "Rand",
+    translation: "borde/límite/margen",
+    context: ["A2", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-stern",
+    term: "Stern",
+    translation: "estrella",
+    context: ["A2", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-stil",
+    term: "Stil",
+    translation: "estilo",
+    context: ["A2", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-standort",
+    term: "Standort",
+    translation: "ubicación/lugar/emplazamiento",
+    context: ["B1", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-monument",
+    term: "Monument",
+    translation: "monumento",
+    context: ["A2", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-ausnahme",
+    term: "Ausnahme",
+    translation: "excepción",
+    context: ["B1", "feminin", "substantiv"]
+  },
+  {
+    id: "de-denkmal",
+    term: "Denkmal",
+    translation: "monumento/memorial",
+    context: ["B1", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-nationaldenkmal",
+    term: "Nationaldenkmal",
+    translation: "monumento nacional",
+    context: ["C1", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-tiergarten",
+    term: "Tiergarten",
+    translation: "parque zoológico/jardín de animales",
+    context: ["B1", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-reichskanzler",
+    term: "Reichskanzler",
+    translation: "canciller del Reich",
+    context: ["C1", "historia-alemana", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-reichstagsgebäude",
+    term: "Reichstagsgebäude",
+    translation: "edificio del Reichstag",
+    context: ["B2", "berlin", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-siegessäule",
+    term: "Siegessäule",
+    translation: "columna de la victoria",
+    context: ["B2", "berlin", "feminin", "substantiv"]
+  },
+  {
+    id: "de-neobarock",
+    term: "Neobarock",
+    translation: "neobarroco",
+    context: ["C1", "arte", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-bildhauerschule",
+    term: "Bildhauerschule",
+    translation: "escuela de escultura",
+    context: ["C1", "arte", "feminin", "substantiv"]
+  },
+  {
+    id: "de-meisterwerk",
+    term: "Meisterwerk",
+    translation: "obra maestra",
+    context: ["B2", "arte", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-sockelrelief",
+    term: "Sockelrelief",
+    translation: "relieve de pedestal/basamento",
+    context: ["C1", "arte", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-deutschland",
+    term: "Deutschland",
+    translation: "Alemania",
+    context: ["A1", "geografía", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-tor",
+    term: "Tor",
+    translation: "puerta/portón",
+    context: ["A1", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-berlin",
+    term: "Berlin",
+    translation: "Berlín",
+    context: ["A1", "geografía", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-triumphtor",
+    term: "Triumphtor",
+    translation: "arco de triunfo",
+    context: ["C1", "arquitectura", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-westflanke",
+    term: "Westflanke",
+    translation: "flanco oeste",
+    context: ["C1", "feminin", "substantiv"]
+  },
+  {
+    id: "de-platz",
+    term: "Platz",
+    translation: "plaza",
+    context: ["A1", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-ortsteil",
+    term: "Ortsteil",
+    translation: "distrito/barrio",
+    context: ["B1", "geografía", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-mitte",
+    term: "Mitte",
+    translation: "centro/medio",
+    context: ["A1", "berlin", "feminin", "substantiv"]
+  },
+  {
+    id: "de-abschluss",
+    term: "Abschluss",
+    translation: "conclusión/final",
+    context: ["B1", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-prachtstraße",
+    term: "Prachtstraße",
+    translation: "avenida suntuosa",
+    context: ["C1", "arquitectura", "feminin", "substantiv"]
+  },
+  {
+    id: "de-boulevard",
+    term: "Boulevard",
+    translation: "bulevar",
+    context: ["B2", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-anweisung",
+    term: "Anweisung",
+    translation: "instrucción/orden",
+    context: ["B2", "feminin", "substantiv"]
+  },
+  {
+    id: "de-könig",
+    term: "König",
+    translation: "rey",
+    context: ["A2", "historia", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-entwurf",
+    term: "Entwurf",
+    translation: "diseño/boceto",
+    context: ["B2", "arte", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-skulptur",
+    term: "Skulptur",
+    translation: "escultura",
+    context: ["B1", "arte", "feminin", "substantiv"]
+  },
+  {
+    id: "de-quadriga",
+    term: "Quadriga",
+    translation: "cuadriga",
+    context: ["C1", "arte", "feminin", "substantiv"]
+  },
+  {
+    id: "de-werk",
+    term: "Werk",
+    translation: "obra",
+    context: ["A2", "arte", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-bildhauer",
+    term: "Bildhauer",
+    translation: "escultor",
+    context: ["B2", "arte", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-grünfläche",
+    term: "Grünfläche",
+    translation: "zona verde/área verde",
+    context: ["B1", "feminin", "substantiv"]
+  },
+  {
+    id: "de-verlängerung",
+    term: "Verlängerung",
+    translation: "prolongación/extensión",
+    context: ["B1", "feminin", "substantiv"]
+  },
+  {
+    id: "de-platzfläche",
+    term: "Platzfläche",
+    translation: "superficie de plaza",
+    context: ["B2", "feminin", "substantiv"]
+  },
+  {
+    id: "de-name",
+    term: "Name",
+    translation: "nombre",
+    context: ["A1", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-märz",
+    term: "März",
+    translation: "marzo",
+    context: ["A1", "maskulin", "substantiv", "zeit"]
+  },
+  {
+    id: "de-stadttor",
+    term: "Stadttor",
+    translation: "puerta de ciudad",
+    context: ["B2", "arquitectura", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-formensprache",
+    term: "Formensprache",
+    translation: "lenguaje formal",
+    context: ["C1", "arte", "feminin", "substantiv"]
+  },
+  {
+    id: "de-hinwendung",
+    term: "Hinwendung",
+    translation: "orientación hacia",
+    context: ["C1", "feminin", "substantiv"]
+  },
+  {
+    id: "de-vorbild",
+    term: "Vorbild",
+    translation: "modelo/ejemplo",
+    context: ["B1", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-bauwerk",
+    term: "Bauwerk",
+    translation: "edificio/construcción/obra",
+    context: ["B2", "arquitectura", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-preußen",
+    term: "Preußen",
+    translation: "Prusia",
+    context: ["B2", "historia", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-beginn",
+    term: "Beginn",
+    translation: "comienzo/inicio",
+    context: ["A2", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-klassizismus",
+    term: "Klassizismus",
+    translation: "clasicismo",
+    context: ["C1", "arte", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-architektur",
+    term: "Architektur",
+    translation: "arquitectura",
+    context: ["B1", "arte", "feminin", "substantiv"]
+  },
+  {
+    id: "de-wahrzeichen",
+    term: "Wahrzeichen",
+    translation: "símbolo/emblema",
+    context: ["B2", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-nationalsymbol",
+    term: "Nationalsymbol",
+    translation: "símbolo nacional",
+    context: ["C1", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-ereignis",
+    term: "Ereignis",
+    translation: "acontecimiento/evento",
+    context: ["B1", "historia", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-jahrhundert",
+    term: "Jahrhundert",
+    translation: "siglo",
+    context: ["A2", "historia", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-weltkrieg",
+    term: "Weltkrieg",
+    translation: "guerra mundial",
+    context: ["B1", "historia", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-ende",
+    term: "Ende",
+    translation: "fin/final",
+    context: ["A1", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-herrschaft",
+    term: "Herrschaft",
+    translation: "dominio/gobierno",
+    context: ["B2", "historia", "feminin", "substantiv"]
+  },
+  {
+    id: "de-öffnung",
+    term: "Öffnung",
+    translation: "apertura",
+    context: ["A2", "feminin", "substantiv"]
+  },
+  {
+    id: "de-vorhang",
+    term: "Vorhang",
+    translation: "cortina",
+    context: ["A2", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-eiserner-vorhang",
+    term: "Eiserner Vorhang",
+    translation: "Telón de Acero",
+    context: ["C1", "historia", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-grenze",
+    term: "Grenze",
+    translation: "frontera/límite",
+    context: ["A2", "feminin", "substantiv"]
+  },
+  {
+    id: "de-ostsektor",
+    term: "Ostsektor",
+    translation: "sector este",
+    context: ["C1", "berlin", "historia", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-krieg",
+    term: "Krieg",
+    translation: "guerra",
+    context: ["A2", "historia", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-pakt",
+    term: "Pakt",
+    translation: "pacto",
+    context: ["B2", "historia", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-nato",
+    term: "NATO",
+    translation: "OTAN",
+    context: ["B1", "feminin", "historia", "substantiv"]
+  },
+  {
+    id: "de-stelle",
+    term: "Stelle",
+    translation: "lugar/sitio/puesto",
+    context: ["A2", "feminin", "substantiv"]
+  },
+  {
+    id: "de-grenzverlauf",
+    term: "Grenzverlauf",
+    translation: "trazado de frontera",
+    context: ["C1", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-symbol",
+    term: "Symbol",
+    translation: "símbolo",
+    context: ["A2", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-überwindung",
+    term: "Überwindung",
+    translation: "superación",
+    context: ["C1", "feminin", "substantiv"]
+  },
+  {
+    id: "de-teilung",
+    term: "Teilung",
+    translation: "división",
+    context: ["B2", "historia", "feminin", "substantiv"]
+  },
+  {
+    id: "de-europa",
+    term: "Europa",
+    translation: "Europa",
+    context: ["A1", "geografía", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-beschädigung",
+    term: "Beschädigung",
+    translation: "daño/deterioro",
+    context: ["B2", "feminin", "substantiv"]
+  },
+  {
+    id: "de-sanierung",
+    term: "Sanierung",
+    translation: "renovación/saneamiento",
+    context: ["B2", "feminin", "substantiv"]
+  },
+  {
+    id: "de-stiftung",
+    term: "Stiftung",
+    translation: "fundación",
+    context: ["B2", "feminin", "substantiv"]
+  },
+  {
+    id: "de-denkmalschutz",
+    term: "Denkmalschutz",
+    translation: "protección de monumentos",
+    context: ["C1", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-steg",
+    term: "Steg",
+    translation: "pasarela/puente pequeño",
+    context: ["A2", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-spreeübergang",
+    term: "Spreeübergang",
+    translation: "paso sobre el Spree",
+    context: ["C1", "berlin", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-spree",
+    term: "Spree",
+    translation: "Spree (río de Berlín)",
+    context: ["B1", "berlin", "geografía", "feminin", "substantiv"]
+  },
+  {
+    id: "de-gebäudebrücke",
+    term: "Gebäudebrücke",
+    translation: "puente-edificio",
+    context: ["C1", "arquitectura", "feminin", "substantiv"]
+  },
+  {
+    id: "de-fußgänger",
+    term: "Fußgänger",
+    translation: "peatón",
+    context: ["A2", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-parlamentsneubau",
+    term: "Parlamentsneubau",
+    translation: "edificio nuevo del parlamento",
+    context: ["C1", "berlin", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-marie-elisabeth-lüders-haus",
+    term: "Marie-Elisabeth-Lüders-Haus",
+    translation: "Casa Marie-Elisabeth-Lüders (edificio parlamento)",
+    context: ["C1", "berlin", "política", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-paul-löbe-haus",
+    term: "Paul-Löbe-Haus",
+    translation: "Casa Paul-Löbe (edificio parlamento)",
+    context: ["C1", "berlin", "política", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-haus",
+    term: "Haus",
+    translation: "casa/edificio",
+    context: ["A1", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-bezirk",
+    term: "Bezirk",
+    translation: "distrito",
+    context: ["B1", "geografía", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-ost",
+    term: "Ost",
+    translation: "este/oriente",
+    context: ["A2", "geografía", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-west-berlin",
+    term: "West-Berlin",
+    translation: "Berlín Oeste",
+    context: ["B2", "berlin", "geografía", "historia", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-aufeinandertreffen",
+    term: "Aufeinandertreffen",
+    translation: "encuentro/confrontación",
+    context: ["C1", "historia", "neutrum", "substantiv"]
+  },
+  {
+    id: "de-warschauer-pakt",
+    term: "Warschauer Pakt",
+    translation: "Pacto de Varsovia",
+    context: ["C1", "historia", "maskulin", "substantiv"]
+  },
+  {
+    id: "de-platzes",
+    term: "Platzes",
+    translation: "de la plaza",
+    context: ["A1", "genitiv", "maskulin", "singular", "substantiv", "Platz"]
+  },
+  {
+    id: "de-boulevards",
+    term: "Boulevards",
+    translation: "del bulevar",
+    context: ["B2", "genitiv", "maskulin", "singular", "substantiv", "Boulevard"]
+  },
+  {
+    id: "de-königs",
+    term: "Königs",
+    translation: "del rey",
+    context: ["A2", "genitiv", "historia", "maskulin", "singular", "substantiv", "König"]
+  },
+  {
+    id: "de-bildhauers",
+    term: "Bildhauers",
+    translation: "del escultor",
+    context: ["B2", "arte", "genitiv", "maskulin", "singular", "substantiv", "Bildhauer"]
+  },
+  {
+    id: "de-tores",
+    term: "Tores",
+    translation: "de la puerta",
+    context: ["A1", "genitiv", "neutrum", "singular", "substantiv", "Tor"]
+  },
+  {
+    id: "de-stadttoren",
+    term: "Stadttoren",
+    translation: "puertas de ciudad",
+    context: ["B2", "arquitectura", "dativ", "neutrum", "plural", "substantiv", "Stadttor"]
+  },
+  {
+    id: "de-bauwerke",
+    term: "Bauwerke",
+    translation: "edificios/construcciones",
+    context: ["B2", "arquitectura", "neutrum", "plural", "substantiv", "Bauwerk"]
+  },
+  {
+    id: "de-jahrhunderts",
+    term: "Jahrhunderts",
+    translation: "del siglo",
+    context: ["A2", "genitiv", "historia", "neutrum", "singular", "substantiv", "Jahrhundert"]
+  },
+  {
+    id: "de-vorhangs",
+    term: "Vorhangs",
+    translation: "de la cortina",
+    context: ["A2", "genitiv", "maskulin", "singular", "substantiv", "Vorhang"]
+  },
+  {
+    id: "de-krieges",
+    term: "Krieges",
+    translation: "de la guerra",
+    context: ["A2", "genitiv", "historia", "maskulin", "singular", "substantiv", "Krieg"]
+  },
+  {
+    id: "de-grenzverlaufes",
+    term: "Grenzverlaufes",
+    translation: "del trazado de frontera",
+    context: ["C1", "genitiv", "maskulin", "singular", "substantiv", "Grenzverlauf"]
+  },
+  {
+    id: "de-deutschlands",
+    term: "Deutschlands",
+    translation: "de Alemania",
+    context: ["A1", "geografía", "genitiv", "neutrum", "singular", "substantiv", "Deutschland"]
+  },
+  {
+    id: "de-europas",
+    term: "Europas",
+    translation: "de Europa",
+    context: ["A1", "geografía", "genitiv", "neutrum", "singular", "substantiv", "Europa"]
+  },
+  {
+    id: "de-grünflächen",
+    term: "Grünflächen",
+    translation: "zonas verdes",
+    context: ["B1", "feminin", "plural", "substantiv", "Grünfläche"]
+  },
+  {
+    id: "de-tiergartens",
+    term: "Tiergartens",
+    translation: "del Tiergarten",
+    context: ["B1", "berlin", "genitiv", "maskulin", "singular", "substantiv", "Tiergarten"]
+  },
+  {
+    id: "de-namen",
+    term: "Namen",
+    translation: "nombre(s)",
+    context: ["A1", "maskulin", "substantiv", "Name"]
+  },
+  {
+    id: "de-ereignisse",
+    term: "Ereignisse",
+    translation: "acontecimientos",
+    context: ["B1", "historia", "neutrum", "plural", "substantiv", "Ereignis"]
+  },
+  {
+    id: "de-entwürfen",
+    term: "Entwürfen",
+    translation: "diseños/bocetos",
+    context: ["B2", "arte", "dativ", "maskulin", "plural", "substantiv", "Entwurf"]
+  },
+  {
+    id: "de-juni",
+    term: "Juni",
+    translation: "junio",
+    context: ["A1", "maskulin", "substantiv", "zeit"]
+  },
+  {
+    id: "de-dorotheenstadt",
+    term: "Dorotheenstadt",
+    translation: "Dorotheenstadt (barrio histórico de Berlín)",
+    context: ["C1", "berlin", "geografía", "historia", "feminin", "substantiv"]
+  },
+  {
+    id: "de-linden",
+    term: "Linden",
+    translation: "tilos/Unter den Linden (avenida de Berlín)",
+    context: ["B2", "berlin", "geografía", "plural", "substantiv"]
+  },
+  {
+    id: "de-friedrich",
+    term: "Friedrich",
+    translation: "Federico (nombre propio)",
+    context: ["A2", "historia", "maskulin", "nombre-propio", "substantiv"]
+  },
+  {
+    id: "de-wilhelm",
+    term: "Wilhelm",
+    translation: "Guillermo (nombre propio)",
+    context: ["A2", "historia", "maskulin", "nombre-propio", "substantiv"]
+  },
+  {
+    id: "de-carl",
+    term: "Carl",
+    translation: "Carl (nombre propio)",
+    context: ["A1", "maskulin", "nombre-propio", "substantiv"]
+  },
+  {
+    id: "de-gotthard",
+    term: "Gotthard",
+    translation: "Gotthard (nombre propio)",
+    context: ["B1", "maskulin", "nombre-propio", "substantiv"]
+  },
+  {
+    id: "de-langhans",
+    term: "Langhans",
+    translation: "Langhans (apellido - arquitecto)",
+    context: ["C1", "arquitectura", "historia", "maskulin", "nombre-propio", "substantiv"]
+  },
+  {
+    id: "de-johann",
+    term: "Johann",
+    translation: "Johann (nombre propio)",
+    context: ["A2", "maskulin", "nombre-propio", "substantiv"]
+  },
+  {
+    id: "de-gottfried",
+    term: "Gottfried",
+    translation: "Gottfried (nombre propio)",
+    context: ["B1", "maskulin", "nombre-propio", "substantiv"]
+  },
+  {
+    id: "de-schadow",
+    term: "Schadow",
+    translation: "Schadow (apellido - escultor)",
+    context: ["C1", "arte", "historia", "maskulin", "nombre-propio", "substantiv"]
+  },
+  {
+    id: "de-ii",
+    term: "II",
+    translation: "II (segundo - número romano)",
+    context: ["A1", "número", "ordinalzahl"]
   }
 ]
 

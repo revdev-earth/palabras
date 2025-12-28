@@ -2459,6 +2459,144 @@ const verbosAllgemein = [
     term: "ärgern",
     translation: "molestar/enojar",
     context: ["A2", "verb"]
+  },
+  {
+    id: "de-errichten",
+    term: "errichten",
+    translation: "erigir/construir",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-versetzen",
+    term: "versetzen",
+    translation: "trasladar/desplazar",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-gehören",
+    term: "gehören",
+    translation: "pertenecer",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-befinden",
+    term: "befinden",
+    translation: "encontrarse",
+    context: ["A2", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-durchqueren",
+    term: "durchqueren",
+    translation: "atravesar",
+    context: ["B1", "trennbar", "verb"]
+  },
+  {
+    id: "de-darstellen",
+    term: "darstellen",
+    translation: "representar",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-markieren",
+    term: "markieren",
+    translation: "marcar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-verbinden",
+    term: "verbinden",
+    translation: "conectar/unir",
+    context: ["A2", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-symbolisieren",
+    term: "symbolisieren",
+    translation: "simbolizar",
+    context: ["B2", "verb"]
+  },
+  {
+    id: "de-wiederherstellen",
+    term: "wiederherstellen",
+    translation: "restaurar",
+    context: ["B2", "trennbar", "verb"]
+  },
+  {
+    id: "de-bezeichnen",
+    term: "bezeichnen",
+    translation: "denominar/designar/llamar",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-steht",
+    term: "steht",
+    translation: "está de pie/se encuentra",
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "stehen"]
+  },
+  {
+    id: "de-errichtet",
+    term: "errichtet",
+    translation: "erigido/construido",
+    context: ["B1", "partizip-ii", "verb", "errichten"]
+  },
+  {
+    id: "de-durchquert",
+    term: "durchquert",
+    translation: "atraviesa",
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "durchqueren"]
+  },
+  {
+    id: "de-trägt",
+    term: "trägt",
+    translation: "lleva/porta",
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "tragen"]
+  },
+  {
+    id: "de-stellt",
+    term: "stellt",
+    translation: "pone/coloca",
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "stellen"]
+  },
+  {
+    id: "de-markiert",
+    term: "markiert",
+    translation: "marca",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "markieren"]
+  },
+  {
+    id: "de-verbunden",
+    term: "verbunden",
+    translation: "conectado/unido",
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "verbinden"]
+  },
+  {
+    id: "de-stand",
+    term: "stand",
+    translation: "estaba/estuvo",
+    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "stehen"]
+  },
+  {
+    id: "de-symbolisierte",
+    term: "symbolisierte",
+    translation: "simbolizaba/simbolizó",
+    context: ["B2", "präteritum", "singular", "verb", "symbolisieren"]
+  },
+  {
+    id: "de-angesehen",
+    term: "angesehen",
+    translation: "considerado/visto",
+    context: ["B1", "partizip-ii", "trennbar", "unregelmäßig", "verb", "ansehen"]
+  },
+  {
+    id: "de-wiederhergestellt",
+    term: "wiederhergestellt",
+    translation: "restaurado/restablecido",
+    context: ["B2", "partizip-ii", "trennbar", "verb", "wiederherstellen"]
+  },
+  {
+    id: "de-fand",
+    term: "fand",
+    translation: "encontró/tuvo lugar",
+    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "finden"]
   }
 ]
 

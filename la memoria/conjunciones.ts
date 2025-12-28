@@ -46,6 +46,12 @@ const conjuncionesAllgemein = [
     term: "dass",
     translation: "que",
     context: ["A2", "konjunktion"]
+  },
+  {
+    id: "de-sowie",
+    term: "sowie",
+    translation: "así como/y también",
+    context: ["B1", "konjunktion", "nebenordnend"]
   }
 ]
 

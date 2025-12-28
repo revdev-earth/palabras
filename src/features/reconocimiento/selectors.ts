@@ -3,22 +3,26 @@ import type { RootState } from "+/redux/store"
 
 import { effectiveScore } from "+/utils"
 
-import { buildPhraseTrie, groupTokens, normalizeTerm, tokenize } from "./utils/text"
+import { buildPhraseTrie, expandTermVariants, groupTokens, normalizeTerm, tokenize } from "./utils/text"
 
 const buildBase = createSelector(
   [(state: RootState) => state.words.words, (state: RootState) => state.recognition.recognitionText],
   (words, text) => {
     const knownWords = new Set<string>()
     words.forEach((word) => {
-      const term = normalizeTerm(word.term)
-      if (term && word.translation.trim() && !term.includes(" ")) knownWords.add(term)
+      const variants = expandTermVariants(word.term)
+      variants.forEach((term) => {
+        if (term && word.translation.trim() && !term.includes(" ")) knownWords.add(term)
+      })
     })
 
     const tokens = tokenize(text, knownWords)
     const wordsByTerm = new Map<string, (typeof words)[number]>()
     words.forEach((word) => {
-      const key = normalizeTerm(word.term)
-      if (key && !wordsByTerm.has(key)) wordsByTerm.set(key, word)
+      const variants = expandTermVariants(word.term)
+      variants.forEach((key) => {
+        if (key && !wordsByTerm.has(key)) wordsByTerm.set(key, word)
+      })
     })
 
     const terms = words.map((word) => word.term)

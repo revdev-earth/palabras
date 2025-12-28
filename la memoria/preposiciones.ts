@@ -127,6 +127,36 @@ const preposicionesAllgemein = [
     term: "wegen",
     translation: "por/a causa de",
     context: ["A2", "präposition"]
+  },
+  {
+    id: "de-unter",
+    term: "unter",
+    translation: "bajo/debajo de",
+    context: ["A1", "dativ/akkusativ", "präposition"]
+  },
+  {
+    id: "de-bis",
+    term: "bis",
+    translation: "hasta",
+    context: ["A1", "akkusativ", "präposition"]
+  },
+  {
+    id: "de-zwischen",
+    term: "zwischen",
+    translation: "entre",
+    context: ["A1", "dativ/akkusativ", "präposition"]
+  },
+  {
+    id: "de-während",
+    term: "während",
+    translation: "durante",
+    context: ["A2", "genitiv", "präposition"]
+  },
+  {
+    id: "de-durch",
+    term: "durch",
+    translation: "por/a través de",
+    context: ["A1", "akkusativ", "präposition"]
   }
 ]
 

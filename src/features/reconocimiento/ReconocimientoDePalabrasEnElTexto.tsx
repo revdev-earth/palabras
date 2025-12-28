@@ -1,9 +1,10 @@
-import { useMemo, useRef, useState } from "react"
+import { useRef, useState } from "react"
 
 import { useDispatch, useSelector } from "+/redux"
 
 import { applyScore, upsertWord } from "+/redux/slices/wordsSlice"
 import { setRecognitionText } from "+/redux/slices/recognitionSlice"
+import { useSpeaker } from "+/hooks/useSpeaker"
 
 import { type WordDraft } from "./components/ReconocimientoEditorTabs"
 
@@ -42,7 +43,8 @@ export function ReconocimientoDePalabrasEnElTexto() {
   const toneVariant = useSelector((s) => s.recognition.toneVariant)
   const [showUnknownList, setShowUnknownList] = useState(false)
   const [showLearningList, setShowLearningList] = useState(false)
-  const [showJsonPreview, setShowJsonPreview] = useState(false)
+  const { speak, stopSpeaking, isSpeaking } = useSpeaker({ enabled: true })
+  const [isSpeakingText, setIsSpeakingText] = useState(false)
   const [draft, setDraft] = useState<WordDraft>({
     term: "",
     translation: "",
@@ -59,33 +61,6 @@ export function ReconocimientoDePalabrasEnElTexto() {
     previewRef,
     wordsByTerm,
   })
-  const wordsJson = useMemo(() => {
-    const counts = new Map<string, number>()
-    tokens.forEach((token) => {
-      if (token.type !== "word") return
-      const key = normalizeTerm(token.value)
-      if (!key) return
-      counts.set(key, (counts.get(key) || 0) + 1)
-    })
-
-    return Array.from(counts.entries()).map(([term, count]) => {
-      const known = wordsByTerm.get(term)
-      if (known) return { ...known, count }
-      return {
-        id: "",
-        term,
-        translation: "",
-        notes: "",
-        context: [],
-        contextForPractice: [],
-        baseScore: 0,
-        lastPracticedAt: null,
-        createdAt: "",
-        count,
-      }
-    })
-  }, [tokens, wordsByTerm])
-  const wordsJsonString = useMemo(() => JSON.stringify(wordsJson, null, 2), [wordsJson])
 
   const startAdd = (term: string) => {
     setActiveWord(term)
@@ -156,11 +131,37 @@ export function ReconocimientoDePalabrasEnElTexto() {
     practiceTargets.forEach((id) => dispatch(applyScore({ id, delta: 1 })))
   }
 
+  const toggleSpeakText = () => {
+    if (isSpeaking) {
+      stopSpeaking()
+      if (isSpeakingText) {
+        setIsSpeakingText(false)
+        return
+      }
+    }
+    setIsSpeakingText(true)
+    speak(text, {
+      sentencePerLine: true,
+      onEnd: () => setIsSpeakingText(false),
+      onError: () => setIsSpeakingText(false),
+    })
+  }
+
   return (
     <section className="space-y-4">
       <div className="rounded-2xl border border-slate-100 bg-white/90 px-4 py-3 shadow-lg">
         <div className="flex items-center justify-between gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
-          <span>Texto</span>
+          <div className="flex items-center gap-2">
+            <span>Texto</span>
+            <button
+              type="button"
+              onClick={toggleSpeakText}
+              className="rounded-full border border-slate-100 bg-white px-2 py-0.5 text-[10px] font-semibold text-slate-600 shadow-inner transition hover:bg-slate-50"
+              title={isSpeakingText ? "Detener texto" : "Reproducir texto"}
+            >
+              {isSpeakingText ? "⏹️" : "🔊"}
+            </button>
+          </div>
           <TextHistoryMenu />
         </div>
 
@@ -217,39 +218,10 @@ export function ReconocimientoDePalabrasEnElTexto() {
             >
               Aprendiendo {learningWords.length ? `(${learningWords.length})` : ""}
             </button>
-            <button
-              type="button"
-              onClick={() => setShowJsonPreview((prev) => !prev)}
-              className="rounded-full border border-slate-100 bg-white px-2.5 py-1 text-[10px] font-semibold text-slate-600 shadow-inner transition hover:bg-slate-50"
-            >
-              JSON
-            </button>
 
             <PreviewConfigMenu />
           </div>
         </div>
-
-        {showJsonPreview && (
-          <div className="relative mt-3 rounded-xl border border-slate-100 bg-slate-50/70 px-3 py-2 text-[11px] text-slate-700 shadow-inner">
-            <button
-              type="button"
-              onClick={async () => {
-                try {
-                  await navigator.clipboard.writeText(wordsJsonString)
-                } catch {
-                  window.prompt("Copia el JSON manualmente:", wordsJsonString)
-                }
-              }}
-              className="absolute right-2 top-2 rounded-full border border-slate-100 bg-white px-2 py-1 text-[10px] font-semibold text-slate-600 shadow-inner transition hover:bg-slate-50"
-              title="Copiar JSON"
-            >
-              Copiar
-            </button>
-            <pre className="max-h-48 overflow-auto whitespace-pre-wrap pr-10">
-              {wordsJsonString}
-            </pre>
-          </div>
-        )}
 
         <TextPreview
           tokens={tokens}

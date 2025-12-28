@@ -3595,6 +3595,30 @@ const adverbiosAllgemein = [
     term: "Außerdem",
     translation: "además, por otra parte",
     context: ["A2", "adverb"]
+  },
+  {
+    id: "de-darunter",
+    term: "darunter",
+    translation: "entre ellos/debajo",
+    context: ["A2", "adverb"]
+  },
+  {
+    id: "de-dar",
+    term: "dar",
+    translation: "allí/ahí (darstellen = representar)",
+    context: ["B1", "adverb", "trennbar"]
+  },
+  {
+    id: "de-hiermit",
+    term: "hiermit",
+    translation: "con esto/por la presente",
+    context: ["B2", "adverb"]
+  },
+  {
+    id: "de-allem",
+    term: "allem",
+    translation: "todo (vor allem = sobre todo)",
+    context: ["A1", "adverb", "pronomen"]
   }
 ]
 

@@ -4,6 +4,11 @@ export const MAX_PHRASE_WORDS = 4
 
 export const normalizeTerm = (value: string) => value.toLowerCase().replace(/\s+/g, " ").trim()
 
+export const expandTermVariants = (value: string) => {
+  const parts = value.split("/").map((part) => normalizeTerm(part)).filter(Boolean)
+  return Array.from(new Set(parts))
+}
+
 export const tokenize = (text: string, knownWords: Set<string>): Token[] => {
   const parts =
     text.match(/([\p{L}\p{N}]+(?:[-'’][\p{L}\p{N}]+)*|[^\p{L}\p{N}\s]+|\s+)/gu) ||
