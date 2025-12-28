@@ -58,7 +58,10 @@ const reducer = (state: State | undefined, action: PayloadAction<State>) => {
 const authResetMiddleware: Middleware = (storeApi) => (next) => (action) => {
   const result = next(action)
   if (setIsAuthenticated.match(action)) {
-    storeApi.dispatch(resetAuthProcess())
+    const authState = storeApi.getState().auth
+    if (authState.isAuthenticated === false) {
+      storeApi.dispatch(resetAuthProcess())
+    }
   }
   return result
 }
