@@ -19,7 +19,7 @@ export const memoryLibrary = [
   ...conjunciones,
   ...articulos,
   ...interjecciones,
-  ...numeros
+  ...numeros,
 ]
 
 export default memoryLibrary

@@ -1,7 +1,7 @@
-'use client'
+"use client"
 /* eslint-disable react-hooks/set-state-in-effect */
 
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from "react"
 
 interface ModalProps {
   isOpen: boolean
@@ -47,7 +47,7 @@ export default function Modal({ isOpen, onClose, children, ariaLabel, disableClo
   return (
     <div
       className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 ease-out ${
-        isClosing || isAnimatingIn ? 'opacity-0' : 'opacity-100'
+        isClosing || isAnimatingIn ? "opacity-0" : "opacity-100"
       }`}
       onClick={handleOverlayClick}
     >
@@ -57,9 +57,9 @@ export default function Modal({ isOpen, onClose, children, ariaLabel, disableClo
         aria-label={ariaLabel}
         className={`bg-white rounded-3xl shadow-2xl max-w-md w-full transform transition-all duration-300 ease-out ${
           isClosing || isAnimatingIn
-            ? 'opacity-0 scale-95 translate-y-2'
-            : 'opacity-100 scale-100 translate-y-0'
-        } ${className || ''}`}
+            ? "opacity-0 scale-95 translate-y-2"
+            : "opacity-100 scale-100 translate-y-0"
+        } ${className || ""}`}
         onClick={(e) => e.stopPropagation()}
       >
         {children}

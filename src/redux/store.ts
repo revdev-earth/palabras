@@ -1,9 +1,4 @@
-import {
-  type Middleware,
-  PayloadAction,
-  combineReducers,
-  configureStore,
-} from "@reduxjs/toolkit"
+import { type Middleware, PayloadAction, combineReducers, configureStore } from "@reduxjs/toolkit"
 
 import { practiceSlice } from "+/redux/slices/practiceSlice"
 import { recognitionSlice } from "+/redux/slices/recognitionSlice"
@@ -68,8 +63,7 @@ const authResetMiddleware: Middleware = (storeApi) => (next) => (action) => {
 
 export const store = configureStore({
   reducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(authResetMiddleware, syncMiddleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authResetMiddleware, syncMiddleware),
 })
 
 export type AppDispatch = typeof store.dispatch

@@ -35,9 +35,7 @@ export function PreviewConfigMenu() {
       {isOpen && (
         <div className="absolute right-0 top-full z-20 mt-2 w-[220px] rounded-xl border border-slate-100 bg-slate-50/95 px-3 py-3 text-[11px] font-medium text-slate-700 shadow-lg backdrop-blur">
           <label className="flex flex-col gap-1">
-            <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">
-              Tamano
-            </span>
+            <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Tamano</span>
             <div className="flex items-center gap-2">
               <input
                 type="range"
@@ -48,9 +46,7 @@ export function PreviewConfigMenu() {
                 onChange={(e) => dispatch(setPreviewFontSize(Number(e.target.value)))}
                 className="w-full"
               />
-              <span className="min-w-[24px] text-right text-[10px] font-semibold">
-                {fontSize}
-              </span>
+              <span className="min-w-[24px] text-right text-[10px] font-semibold">{fontSize}</span>
             </div>
           </label>
           <label className="mt-3 flex flex-col gap-1">

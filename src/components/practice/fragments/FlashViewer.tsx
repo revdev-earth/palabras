@@ -30,9 +30,7 @@ function FlashViewer() {
   const selectedIds = useSelector((s) => s.words.selectedIds)
   const [intervalMs, setIntervalMs] = useState(2500)
   const rounds = useSelector((s) => s.settings.practiceRounds)
-  const [showModes, setShowModes] = useState<Set<ShowKey>>(
-    new Set(["term", "translation"])
-  )
+  const [showModes, setShowModes] = useState<Set<ShowKey>>(new Set(["term", "translation"]))
   const [queue, setQueue] = useState<WordEntry[]>([])
   const [index, setIndex] = useState(0)
   const [playing, setPlaying] = useState(false)
@@ -45,20 +43,14 @@ function FlashViewer() {
     rounds: number
   } | null>(null)
   const finishTimer = useRef<number | null>(null)
-  const effectiveIndex = useMemo(
-    () => Math.min(index, Math.max(0, queue.length - 1)),
-    [index, queue.length]
-  )
+  const effectiveIndex = useMemo(() => Math.min(index, Math.max(0, queue.length - 1)), [index, queue.length])
   const { speak, speakEnabled, stopSpeaking, isSpeaking } = useSpeaker()
   const speakerBtnClass =
     "rounded-full border border-slate-100 bg-slate-50 px-2 py-1 text-[11px] font-semibold text-slate-800 shadow-inner transition hover:-translate-y-0.5 hover:shadow-sm"
 
   const wordsById = useMemo(() => new Map(words.map((w) => [w.id, w])), [words])
   const selectedWords = useMemo(
-    () =>
-      selectedIds
-        .map((id) => wordsById.get(id))
-        .filter((w): w is WordEntry => Boolean(w)),
+    () => selectedIds.map((id) => wordsById.get(id)).filter((w): w is WordEntry => Boolean(w)),
     [selectedIds, wordsById]
   )
 
@@ -109,10 +101,7 @@ function FlashViewer() {
 
   const startWithIds = useCallback(
     (ids: string[], forcedRounds?: number) => {
-      const r = Math.max(
-        1,
-        Math.min(10, Math.floor(forcedRounds ?? rounds) || 1)
-      )
+      const r = Math.max(1, Math.min(10, Math.floor(forcedRounds ?? rounds) || 1))
       const list = buildQueue(ids, r)
         .map((id) => wordsById.get(id))
         .filter((w): w is WordEntry => Boolean(w))
@@ -143,20 +132,16 @@ function FlashViewer() {
       const detail = (ev as CustomEvent<FlashStartDetail>).detail
       if (!detail || !Array.isArray(detail.ids)) return
       const ok = startWithIds(detail.ids, detail.rounds)
-      if (!ok)
-        window.alert("No se pudo armar la cola de palabras para el visor.")
+      if (!ok) window.alert("No se pudo armar la cola de palabras para el visor.")
     }
     window.addEventListener("flashviewer:start", handler as EventListener)
-    return () =>
-      window.removeEventListener("flashviewer:start", handler as EventListener)
+    return () => window.removeEventListener("flashviewer:start", handler as EventListener)
   }, [startWithIds])
 
   const stop = () => resetSession(true)
 
   const current = queue[effectiveIndex] || null
-  const progress = queue.length
-    ? `${effectiveIndex + 1} / ${queue.length}`
-    : "—"
+  const progress = queue.length ? `${effectiveIndex + 1} / ${queue.length}` : "—"
 
   useEffect(
     () => () => {
@@ -174,8 +159,7 @@ function FlashViewer() {
       waitingForSpeechRef.current = false
       return
     }
-    const includeNotes =
-      showModes.has("notes") && Boolean(current.notes?.trim())
+    const includeNotes = showModes.has("notes") && Boolean(current.notes?.trim())
     const parts = [current.term.trim()]
     if (includeNotes && current.notes) parts.push(current.notes)
     const text = parts.filter(Boolean).join("\n")
@@ -200,12 +184,10 @@ function FlashViewer() {
     <section className="rounded-2xl border border-slate-100 bg-white/90 p-4 shadow-lg">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="space-y-1">
-          <h3 className="text-base font-semibold text-slate-900">
-            Visor rápido (auto-play)
-          </h3>
+          <h3 className="text-base font-semibold text-slate-900">Visor rápido (auto-play)</h3>
           <p className="text-xs text-slate-600">
-            Cicla las palabras seleccionadas a la velocidad elegida. Útil para
-            repasos rápidos sin marcar aciertos.
+            Cicla las palabras seleccionadas a la velocidad elegida. Útil para repasos rápidos sin marcar
+            aciertos.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2 text-xs text-slate-700">
@@ -273,9 +255,7 @@ function FlashViewer() {
         </label>
         <div className="rounded-lg border border-slate-100 bg-white px-3 py-2 text-sm text-slate-700 shadow-inner sm:col-span-2 lg:col-span-2">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-sm font-semibold text-slate-800">
-              Mostrar:
-            </span>
+            <span className="text-sm font-semibold text-slate-800">Mostrar:</span>
             <div className="flex flex-wrap gap-1 rounded-full bg-slate-50 p-1">
               {(["term", "translation", "notes"] as ShowKey[]).map((key) => {
                 const active = showModes.has(key)
@@ -293,9 +273,7 @@ function FlashViewer() {
                       })
                     }
                     className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
-                      active
-                        ? "bg-slate-900 text-white"
-                        : "text-slate-700 hover:bg-white"
+                      active ? "bg-slate-900 text-white" : "text-slate-700 hover:bg-white"
                     }`}
                   >
                     {key === "term" && "Palabra"}
@@ -326,9 +304,7 @@ function FlashViewer() {
               </div>
             )}
             {showModes.has("translation") && (
-              <div className="mt-2 text-xl font-semibold text-slate-800">
-                {current.translation}
-              </div>
+              <div className="mt-2 text-xl font-semibold text-slate-800">{current.translation}</div>
             )}
             {showModes.has("notes") && current.notes && (
               <div className="mt-3 flex items-start justify-center gap-2 text-sm text-slate-700 opacity-80">
@@ -344,23 +320,20 @@ function FlashViewer() {
               </div>
             )}
             {showModes.has("notes") && !current.notes && (
-              <div className="text-sm text-slate-500">
-                Sin notas para esta palabra.
-              </div>
+              <div className="text-sm text-slate-500">Sin notas para esta palabra.</div>
             )}
           </>
         ) : (
           <div className="text-sm text-slate-600">
-            Usa el modo “Visor rápido” en los botones de Practicar o selecciona
-            palabras en la tabla para iniciar.
+            Usa el modo “Visor rápido” en los botones de Practicar o selecciona palabras en la tabla para
+            iniciar.
           </div>
         )}
         {ended && lastRun && (
           <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
             <button
               onClick={() => {
-                if (finishTimer.current)
-                  window.clearTimeout(finishTimer.current)
+                if (finishTimer.current) window.clearTimeout(finishTimer.current)
                 resetSession(false, false)
                 startWithIds(lastRun.ids, lastRun.rounds)
               }}
@@ -368,9 +341,7 @@ function FlashViewer() {
             >
               Repetir
             </button>
-            <span className="text-xs text-slate-500">
-              Se detuvo al completar las rondas.
-            </span>
+            <span className="text-xs text-slate-500">Se detuvo al completar las rondas.</span>
           </div>
         )}
       </div>

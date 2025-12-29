@@ -73,14 +73,7 @@ export const syncMiddleware: Middleware = (storeApi) => {
     delete pending.settings
     delete pending.recognition
 
-    if (
-      !deletedIds.length &&
-      !library.length &&
-      !progress.length &&
-      !settings &&
-      !recognition
-    )
-      return
+    if (!deletedIds.length && !library.length && !progress.length && !settings && !recognition) return
 
     void (async () => {
       try {
@@ -136,9 +129,7 @@ export const syncMiddleware: Middleware = (storeApi) => {
         dirty = true
       }
     } else if (upsertWord.match(action)) {
-      const word =
-        findByTerm(words, action.payload?.term) ||
-        findByTerm(words, action.payload?.previousTerm)
+      const word = findByTerm(words, action.payload?.term) || findByTerm(words, action.payload?.previousTerm)
       if (word) {
         pending.library.set(word.id, word)
         pending.progress.set(word.id, {

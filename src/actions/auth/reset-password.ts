@@ -1,19 +1,19 @@
-'use server'
+"use server"
 
-import { z } from 'zod'
-import { prisma } from '+/lib/prisma'
-import type { Prisma } from '@prisma/client'
-import crypto from 'crypto'
-import { Resend } from 'resend'
-import bcrypt from 'bcryptjs'
+import { z } from "zod"
+import { prisma } from "+/lib/prisma"
+import type { Prisma } from "@prisma/client"
+import crypto from "crypto"
+import { Resend } from "resend"
+import bcrypt from "bcryptjs"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 const resetPasswordSchema = z.object({
-  email: z.string().email('Email inválido'),
+  email: z.string().email("Email inválido"),
 })
 
-const isTestMode = process.env.NODE_ENV !== 'production'
+const isTestMode = process.env.NODE_ENV !== "production"
 const testEmail = process.env.RESEND_EMAIL_TEST
 
 export async function sendResetPasswordEmail(email: string) {
@@ -31,7 +31,7 @@ export async function sendResetPasswordEmail(email: string) {
     if (!user) return { success: true }
 
     // 3. Generar token único y seguro
-    const token = crypto.randomBytes(32).toString('hex')
+    const token = crypto.randomBytes(32).toString("hex")
     const tokenExpiry = new Date(Date.now() + 3600000) // 1 hora
 
     // 4. Guardar token en la base de datos (sobre el propio usuario para evitar modelo extra)
@@ -54,20 +54,20 @@ export async function sendResetPasswordEmail(email: string) {
     const emailToSend = isTestMode ? testEmail : validated.email
 
     if (!emailToSend) {
-      console.log('🔐 El email no esta definido')
+      console.log("🔐 El email no esta definido")
       return { success: true }
     }
 
-    console.log('🔐 Reset password info:')
-    console.log('   Usuario solicitante:', validated.email)
-    console.log('   Email enviado a:', emailToSend)
-    console.log('   Link de reset:', resetUrl)
-    console.log('   Modo:', isTestMode ? 'PRUEBA' : 'PRODUCCIÓN')
+    console.log("🔐 Reset password info:")
+    console.log("   Usuario solicitante:", validated.email)
+    console.log("   Email enviado a:", emailToSend)
+    console.log("   Link de reset:", resetUrl)
+    console.log("   Modo:", isTestMode ? "PRUEBA" : "PRODUCCIÓN")
 
     await resend.emails.send({
       from: process.env.FROM_EMAIL as string,
       to: emailToSend,
-      subject: 'Resetea tu Contraseña - PropertyHub',
+      subject: "Resetea tu Contraseña - PropertyHub",
       html: `
         <!DOCTYPE html>
         <html lang="es">
@@ -194,7 +194,7 @@ export async function sendResetPasswordEmail(email: string) {
               font-weight: 600;
             }
             `
-                : ''
+                : ""
             }
           </style>
         </head>
@@ -214,7 +214,7 @@ export async function sendResetPasswordEmail(email: string) {
                 <p style="font-size: 12px; margin-top: 8px;">Usuario: ${validated.email}</p>
               </div>
               `
-                  : ''
+                  : ""
               }
 
               <h2>Hola 👋</h2>
@@ -267,18 +267,18 @@ export async function sendResetPasswordEmail(email: string) {
 
     return { success: true }
   } catch (error) {
-    console.error('Error sending reset email:', error)
+    console.error("Error sending reset email:", error)
 
     if (error instanceof z.ZodError) {
       return {
         success: false,
-        message: 'Email inválido',
+        message: "Email inválido",
       }
     }
 
     return {
       success: false,
-      message: 'Error al procesar la solicitud. Por favor intenta nuevamente.',
+      message: "Error al procesar la solicitud. Por favor intenta nuevamente.",
     }
   }
 }
@@ -290,7 +290,7 @@ export async function validateResetToken(token: string) {
     })
 
     if (!user) {
-      return { valid: false, message: 'Token inválido' }
+      return { valid: false, message: "Token inválido" }
     }
 
     if (!user.resetPasswordExpiresAt || user.resetPasswordExpiresAt < new Date()) {
@@ -304,11 +304,11 @@ export async function validateResetToken(token: string) {
         where: { id: user.id },
         data: expiredUpdate,
       })
-      return { valid: false, message: 'Token expirado' }
+      return { valid: false, message: "Token expirado" }
     }
 
     if (user.resetPasswordUsed) {
-      return { valid: false, message: 'Token ya utilizado' }
+      return { valid: false, message: "Token ya utilizado" }
     }
 
     return {
@@ -317,8 +317,8 @@ export async function validateResetToken(token: string) {
       email: user.email,
     }
   } catch (error) {
-    console.error('Error validating token:', error)
-    return { valid: false, message: 'Error al validar token' }
+    console.error("Error validating token:", error)
+    return { valid: false, message: "Error al validar token" }
   }
 }
 
@@ -351,13 +351,13 @@ export async function resetPassword(token: string, newPassword: string) {
 
     return {
       success: true,
-      message: 'Contraseña actualizada exitosamente',
+      message: "Contraseña actualizada exitosamente",
     }
   } catch (error) {
-    console.error('Error resetting password:', error)
+    console.error("Error resetting password:", error)
     return {
       success: false,
-      message: 'Error al resetear la contraseña',
+      message: "Error al resetear la contraseña",
     }
   }
 }

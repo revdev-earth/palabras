@@ -1,17 +1,17 @@
-import { compare } from 'bcryptjs'
-import NextAuth from 'next-auth'
-import type { NextAuthConfig } from 'next-auth'
-import Credentials from 'next-auth/providers/credentials'
+import { compare } from "bcryptjs"
+import NextAuth from "next-auth"
+import type { NextAuthConfig } from "next-auth"
+import Credentials from "next-auth/providers/credentials"
 
-import { prisma } from '+/lib/prisma'
+import { prisma } from "+/lib/prisma"
 
 export const authConfig: NextAuthConfig = {
-  pages: { signIn: '/' },
+  pages: { signIn: "/" },
 
   logger: {
     error(error) {
       const err = error as unknown as { code?: string; name?: string; message?: string; cause?: unknown }
-      const code = err?.code || err?.name || 'error'
+      const code = err?.code || err?.name || "error"
       const cause =
         (err?.cause as { message?: string })?.message ||
         (err?.cause as string) ||
@@ -23,11 +23,11 @@ export const authConfig: NextAuthConfig = {
 
   providers: [
     Credentials({
-      name: 'credentials',
+      name: "credentials",
 
       credentials: {
-        email: { label: 'Email', type: 'email' },
-        password: { label: 'Password', type: 'password' },
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
       },
 
       async authorize(credentials) {
@@ -62,7 +62,7 @@ export const authConfig: NextAuthConfig = {
             name: user.name ?? undefined,
           }
         } catch (error) {
-          console.error('Error durante la autenticación:', error)
+          console.error("Error durante la autenticación:", error)
           return null
         }
       },
@@ -73,7 +73,7 @@ export const authConfig: NextAuthConfig = {
     authorized({ auth, request: { nextUrl } }) {
       const { pathname } = nextUrl
 
-      if (!pathname.startsWith('/dashboard')) return true
+      if (!pathname.startsWith("/dashboard")) return true
 
       return !!auth?.user
     },
@@ -102,7 +102,7 @@ export const authConfig: NextAuthConfig = {
   },
 
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60,
   },
 
@@ -111,8 +111,4 @@ export const authConfig: NextAuthConfig = {
   },
 }
 
-export const {
-  auth,
-  signIn,
-  signOut,
-} = NextAuth(authConfig)
+export const { auth, signIn, signOut } = NextAuth(authConfig)

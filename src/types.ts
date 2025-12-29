@@ -36,14 +36,7 @@ export type Settings = {
 }
 
 export type PracticeScoreBucket = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9+"
-export type PracticeDateFilter =
-  | "any"
-  | "today"
-  | "yesterday"
-  | "last3"
-  | "last7"
-  | "older7"
-  | "never"
+export type PracticeDateFilter = "any" | "today" | "yesterday" | "last3" | "last7" | "older7" | "never"
 
 export type PracticeStats = Record<string, { correct: number; total: number }>
 

@@ -5,10 +5,7 @@ import { effectiveScore } from "+/utils"
 import { useSpeaker } from "+/hooks/useSpeaker"
 
 import { scoreTone, type ToneVariant } from "../../../shared/scoreTone"
-import {
-  ReconocimientoEditorTabs,
-  type WordDraft,
-} from "./ReconocimientoEditorTabs"
+import { ReconocimientoEditorTabs, type WordDraft } from "./ReconocimientoEditorTabs"
 
 export type PhraseTone = {
   bg: string
@@ -54,11 +51,7 @@ export type TooltipProps = {
   onScore: (id: string, delta: number) => void
   onStartEdit: (term: string) => void
   onToggleActive: (term: string) => void
-  onSave: (
-    draft: WordDraft,
-    previousTerm?: string,
-    shouldAlert?: boolean
-  ) => boolean
+  onSave: (draft: WordDraft, previousTerm?: string, shouldAlert?: boolean) => boolean
   onMouseEnter: () => void
   onMouseLeave: () => void
   setDraft: Dispatch<SetStateAction<WordDraft>>
@@ -139,18 +132,12 @@ export function ReconocimientoTooltip({
             <>
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <div className="font-semibold text-slate-900">
-                    {tooltip.lookup.term}
-                  </div>
+                  <div className="font-semibold text-slate-900">{tooltip.lookup.term}</div>
                   <button
                     type="button"
                     onClick={() => toggleSpeakTerm(tooltip.lookup.term)}
                     className="rounded-full border border-slate-100 bg-white px-1.5 py-0.5 text-[10px] shadow-inner transition hover:bg-slate-50"
-                    title={
-                      speakingTerm === tooltip.lookup.term
-                        ? "Detener palabra"
-                        : "Reproducir palabra"
-                    }
+                    title={speakingTerm === tooltip.lookup.term ? "Detener palabra" : "Reproducir palabra"}
                   >
                     {speakingTerm === tooltip.lookup.term ? "⏹️" : "🔊"}
                   </button>
@@ -177,11 +164,7 @@ export function ReconocimientoTooltip({
                     aria-label="Editar palabra"
                     title="Editar palabra"
                   >
-                    <svg
-                      viewBox="0 0 20 20"
-                      aria-hidden="true"
-                      className="h-3.5 w-3.5"
-                    >
+                    <svg viewBox="0 0 20 20" aria-hidden="true" className="h-3.5 w-3.5">
                       <path
                         d="M14.7 2.6a1.5 1.5 0 0 1 2.1 2.1l-9.2 9.2-3.3.7.7-3.3 9.2-9.2Zm-8.4 9.9-.3 1.2 1.2-.3 8.6-8.6-.9-.9-8.6 8.6Z"
                         fill="currentColor"
@@ -190,26 +173,19 @@ export function ReconocimientoTooltip({
                   </button>
                 </div>
               </div>
-              {tooltip.lookup.translation && (
-                <div className={tone.text}>{tooltip.lookup.translation}</div>
-              )}
+              {tooltip.lookup.translation && <div className={tone.text}>{tooltip.lookup.translation}</div>}
 
               {getTags(tooltip.lookup).length > 0 && (
                 <div className="mt-2 flex flex-wrap gap-1.5">
                   {getTags(tooltip.lookup).map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[12px] font-semibold text-slate-600"
-                    >
+                    <span key={tag} className="text-[12px] font-semibold text-slate-600">
                       #{tag}
                     </span>
                   ))}
                 </div>
               )}
 
-              <div
-                className={`mt-3 text-[12px] uppercase tracking-wide ${tone.text}`}
-              >
+              <div className={`mt-3 text-[12px] uppercase tracking-wide ${tone.text}`}>
                 {tone.label} · Score {effectiveScore(tooltip.lookup).toFixed(1)}
               </div>
 
@@ -223,10 +199,7 @@ export function ReconocimientoTooltip({
                 <div className="mt-2 space-y-1 text-slate-600">
                   <div>Notas: {tooltip.lookup.notes || "—"}</div>
                   <div>Contexto: {formatList(tooltip.lookup.context)}</div>
-                  <div>
-                    Contexto practica:{" "}
-                    {formatList(tooltip.lookup.contextForPractice)}
-                  </div>
+                  <div>Contexto practica: {formatList(tooltip.lookup.contextForPractice)}</div>
                 </div>
               </details>
               {isActive && (
@@ -255,19 +228,13 @@ export function ReconocimientoTooltip({
               {optionIndex > 0 && <div className="my-2 h-px bg-slate-100" />}
               <div className="flex items-center justify-between gap-2 mb-2">
                 <div className="flex items-center gap-2">
-                  <div className="font-semibold text-slate-900">
-                    {option.label}
-                  </div>
+                  <div className="font-semibold text-slate-900">{option.label}</div>
 
                   <button
                     type="button"
                     onClick={() => toggleSpeakTerm(option.label)}
                     className="rounded-full border border-slate-100 bg-white px-0.5 py-0.5 text-[10px] shadow-inner transition hover:bg-slate-50"
-                    title={
-                      speakingTerm === option.label
-                        ? "Detener palabra"
-                        : "Reproducir palabra"
-                    }
+                    title={speakingTerm === option.label ? "Detener palabra" : "Reproducir palabra"}
                   >
                     {speakingTerm === option.label ? "⏹️" : "🔊"}
                   </button>
@@ -299,11 +266,7 @@ export function ReconocimientoTooltip({
                     aria-label="Editar termino"
                     title="Editar termino"
                   >
-                    <svg
-                      viewBox="0 0 20 20"
-                      aria-hidden="true"
-                      className="h-3.5 w-3.5"
-                    >
+                    <svg viewBox="0 0 20 20" aria-hidden="true" className="h-3.5 w-3.5">
                       <path
                         d="M14.7 2.6a1.5 1.5 0 0 1 2.1 2.1l-9.2 9.2-3.3.7.7-3.3 9.2-9.2Zm-8.4 9.9-.3 1.2 1.2-.3 8.6-8.6-.9-.9-8.6 8.6Z"
                         fill="currentColor"
@@ -314,9 +277,7 @@ export function ReconocimientoTooltip({
               </div>
 
               {optionLookup?.translation ? (
-                <div className={phraseTone.text}>
-                  {optionLookup.translation}
-                </div>
+                <div className={phraseTone.text}>{optionLookup.translation}</div>
               ) : optionLookup ? (
                 <div className="text-slate-500">—</div>
               ) : (
@@ -348,10 +309,7 @@ export function ReconocimientoTooltip({
                 <div className="mt-2 space-y-1 text-slate-600">
                   <div>Notas: {optionLookup?.notes || "—"}</div>
                   <div>Contexto: {formatList(optionLookup?.context)}</div>
-                  <div>
-                    Contexto practica:{" "}
-                    {formatList(optionLookup?.contextForPractice)}
-                  </div>
+                  <div>Contexto practica: {formatList(optionLookup?.contextForPractice)}</div>
                 </div>
               </details>
 
@@ -378,18 +336,12 @@ export function ReconocimientoTooltip({
           return (
             <>
               <div className="flex items-center gap-2">
-                <div className="font-semibold text-slate-900">
-                  {tooltip.token}
-                </div>
+                <div className="font-semibold text-slate-900">{tooltip.token}</div>
                 <button
                   type="button"
                   onClick={() => toggleSpeakTerm(tooltip.token)}
                   className="rounded-full border border-slate-100 bg-white px-1.5 py-0.5 text-[10px] shadow-inner transition hover:bg-slate-50"
-                  title={
-                    speakingTerm === tooltip.token
-                      ? "Detener palabra"
-                      : "Reproducir palabra"
-                  }
+                  title={speakingTerm === tooltip.token ? "Detener palabra" : "Reproducir palabra"}
                 >
                   {speakingTerm === tooltip.token ? "⏹️" : "🔊"}
                 </button>

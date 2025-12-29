@@ -3,8 +3,7 @@ import type { WordEntry } from "+/redux/slices/wordsSlice"
 import { genId, nowISO } from "+/utils"
 
 const normalizeList = (raw: unknown) => {
-  if (Array.isArray(raw))
-    return raw.map((item) => String(item).trim()).filter(Boolean)
+  if (Array.isArray(raw)) return raw.map((item) => String(item).trim()).filter(Boolean)
   if (typeof raw === "string") {
     return raw
       .split(",")
@@ -18,22 +17,14 @@ export const normalizeWord = (raw: unknown): WordEntry | null => {
   if (!raw || typeof raw !== "object") return null
   const obj = raw as Partial<WordEntry>
   const term = typeof obj.term === "string" ? obj.term.trim() : ""
-  const translation =
-    typeof obj.translation === "string" ? obj.translation.trim() : ""
+  const translation = typeof obj.translation === "string" ? obj.translation.trim() : ""
   if (!term || !translation) return null
   const notes = typeof obj.notes === "string" ? obj.notes : ""
   const baseScore =
-    typeof obj.baseScore === "number" && Number.isFinite(obj.baseScore)
-      ? Math.max(0, obj.baseScore)
-      : 2
+    typeof obj.baseScore === "number" && Number.isFinite(obj.baseScore) ? Math.max(0, obj.baseScore) : 2
   const lastPracticedAt =
-    typeof obj.lastPracticedAt === "string" && obj.lastPracticedAt.trim()
-      ? obj.lastPracticedAt
-      : null
-  const createdAt =
-    typeof obj.createdAt === "string" && obj.createdAt.trim()
-      ? obj.createdAt
-      : nowISO()
+    typeof obj.lastPracticedAt === "string" && obj.lastPracticedAt.trim() ? obj.lastPracticedAt : null
+  const createdAt = typeof obj.createdAt === "string" && obj.createdAt.trim() ? obj.createdAt : nowISO()
   const id = typeof obj.id === "string" && obj.id.trim() ? obj.id : genId()
   const context = normalizeList(obj.context)
   const contextForPractice = normalizeList(obj.contextForPractice)

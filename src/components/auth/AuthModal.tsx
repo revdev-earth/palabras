@@ -1,10 +1,15 @@
-'use client'
+"use client"
 
-import { useEffect } from 'react'
-import AuthFormsPanel from '+/components/auth/AuthFormsPanel'
-import Modal from '+/components/Modal'
-import { useDispatch, useSelector } from '+/redux'
-import { setAuthModalOpen, setCodeVerificationState, setLoginState, setRegisterState } from '+/redux/slices/auth'
+import { useEffect } from "react"
+import AuthFormsPanel from "+/components/auth/AuthFormsPanel"
+import Modal from "+/components/Modal"
+import { useDispatch, useSelector } from "+/redux"
+import {
+  setAuthModalOpen,
+  setCodeVerificationState,
+  setLoginState,
+  setRegisterState,
+} from "+/redux/slices/auth"
 
 export default function AuthModal() {
   const dispatch = useDispatch()
@@ -13,19 +18,19 @@ export default function AuthModal() {
   const codeVerificationState = useSelector((state) => state.auth.codeVerificationState)
 
   const handleClose = () => {
-    if (codeVerificationState === 'loading') return
+    if (codeVerificationState === "loading") return
     dispatch(setAuthModalOpen({ open: false }))
-    dispatch(setLoginState('idle'))
-    dispatch(setRegisterState('idle'))
-    dispatch(setCodeVerificationState('idle'))
+    dispatch(setLoginState("idle"))
+    dispatch(setRegisterState("idle"))
+    dispatch(setCodeVerificationState("idle"))
   }
 
   useEffect(() => {
     if (!isOpen) return
-    if (authTab === 'login') {
-      dispatch(setLoginState('start'))
+    if (authTab === "login") {
+      dispatch(setLoginState("start"))
     } else {
-      dispatch(setRegisterState('start'))
+      dispatch(setRegisterState("start"))
     }
   }, [authTab, dispatch, isOpen])
 
@@ -35,7 +40,7 @@ export default function AuthModal() {
       onClose={handleClose}
       ariaLabel="Autenticación"
       className="max-w-4xl"
-      disableClose={codeVerificationState === 'loading'}
+      disableClose={codeVerificationState === "loading"}
     >
       <AuthFormsPanel />
     </Modal>

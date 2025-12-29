@@ -41,10 +41,10 @@ function WordsTablePaginated({ words }: { words: WordEntry[] }) {
   const sortBy = useSelector((s) => s.settings.sortBy)
   const { speak, isSpeaking, stopSpeaking } = useSpeaker({ enabled: true })
   const [activeContexts, setActiveContexts] = useState<Set<string>>(new Set())
-  const [activePracticeContexts, setActivePracticeContexts] = useState<
-    Set<string>
-  >(new Set())
+  const [activePracticeContexts, setActivePracticeContexts] = useState<Set<string>>(new Set())
   const [currentPage, setCurrentPage] = useState(0)
+  const [quickScoreMode, setQuickScoreMode] = useState(false)
+  const [frozenOrder, setFrozenOrder] = useState<Map<string, number>>(new Map())
 
   // Pre-calcular scores una sola vez
   const scoresMap = useMemo(() => {
@@ -60,6 +60,43 @@ function WordsTablePaginated({ words }: { words: WordEntry[] }) {
     [words, search, sortBy, searchField]
   )
 
+  const baseOrderMap = useMemo(() => {
+    const map = new Map<string, number>()
+    filteredWords.forEach((word, index) => map.set(word.id, index))
+    return map
+  }, [filteredWords])
+
+  useEffect(() => {
+    if (!quickScoreMode) {
+      if (frozenOrder.size) setFrozenOrder(new Map())
+      return
+    }
+    if (sortBy !== "score" && sortBy !== "scoreAsc") {
+      if (frozenOrder.size) setFrozenOrder(new Map())
+      return
+    }
+    const next = new Map<string, number>()
+    filteredWords.forEach((word, index) => next.set(word.id, index))
+    setFrozenOrder(next)
+  }, [quickScoreMode, sortBy, search, searchField])
+
+  const orderedWords = useMemo(() => {
+    if (!quickScoreMode || (sortBy !== "score" && sortBy !== "scoreAsc")) {
+      return filteredWords
+    }
+    if (!frozenOrder.size) return filteredWords
+    return [...filteredWords].sort((a, b) => {
+      const aFrozen = frozenOrder.get(a.id)
+      const bFrozen = frozenOrder.get(b.id)
+      if (aFrozen !== undefined || bFrozen !== undefined) {
+        const aIndex = aFrozen !== undefined ? aFrozen : frozenOrder.size + (baseOrderMap.get(a.id) ?? 0)
+        const bIndex = bFrozen !== undefined ? bFrozen : frozenOrder.size + (baseOrderMap.get(b.id) ?? 0)
+        return aIndex - bIndex
+      }
+      return (baseOrderMap.get(a.id) ?? 0) - (baseOrderMap.get(b.id) ?? 0)
+    })
+  }, [filteredWords, quickScoreMode, sortBy, frozenOrder, baseOrderMap])
+
   // Optimizar generación de opciones de contexto
   const contextOptions = useMemo(() => {
     const set = new Set<string>()
@@ -69,9 +106,7 @@ function WordsTablePaginated({ words }: { words: WordEntry[] }) {
 
   const contextPracticeOptions = useMemo(() => {
     const set = new Set<string>()
-    words.forEach((w) =>
-      (w.contextForPractice || []).forEach((c) => set.add(c))
-    )
+    words.forEach((w) => (w.contextForPractice || []).forEach((c) => set.add(c)))
     return Array.from(set).sort((a, b) => a.localeCompare(b, "es"))
   }, [words])
 
@@ -80,16 +115,12 @@ function WordsTablePaginated({ words }: { words: WordEntry[] }) {
     return words.filter((word) => {
       if (activeContexts.size) {
         const contexts = word.context || []
-        const hasAll = Array.from(activeContexts).every((c) =>
-          contexts.includes(c)
-        )
+        const hasAll = Array.from(activeContexts).every((c) => contexts.includes(c))
         if (!hasAll) return false
       }
       if (activePracticeContexts.size) {
         const practices = word.contextForPractice || []
-        const hasAll = Array.from(activePracticeContexts).every((c) =>
-          practices.includes(c)
-        )
+        const hasAll = Array.from(activePracticeContexts).every((c) => practices.includes(c))
         if (!hasAll) return false
       }
       return true
@@ -104,35 +135,28 @@ function WordsTablePaginated({ words }: { words: WordEntry[] }) {
 
   const availablePracticeTags = useMemo(() => {
     const set = new Set<string>()
-    matchingWords.forEach((w) =>
-      (w.contextForPractice || []).forEach((c) => set.add(c))
-    )
+    matchingWords.forEach((w) => (w.contextForPractice || []).forEach((c) => set.add(c)))
     return set
   }, [matchingWords])
 
   // Filtrar palabras visibles
   const visibleWords = useMemo(() => {
-    if (!activeContexts.size && !activePracticeContexts.size)
-      return filteredWords
+    if (!activeContexts.size && !activePracticeContexts.size) return orderedWords
 
-    return filteredWords.filter((w) => {
+    return orderedWords.filter((w) => {
       if (activeContexts.size) {
         const contexts = w.context || []
-        const hasAll = Array.from(activeContexts).every((c) =>
-          contexts.includes(c)
-        )
+        const hasAll = Array.from(activeContexts).every((c) => contexts.includes(c))
         if (!hasAll) return false
       }
       if (activePracticeContexts.size) {
         const practices = w.contextForPractice || []
-        const hasAll = Array.from(activePracticeContexts).every((c) =>
-          practices.includes(c)
-        )
+        const hasAll = Array.from(activePracticeContexts).every((c) => practices.includes(c))
         if (!hasAll) return false
       }
       return true
     })
-  }, [activeContexts, activePracticeContexts, filteredWords])
+  }, [activeContexts, activePracticeContexts, orderedWords])
 
   // Calcular paginación
   const totalPages = Math.ceil(visibleWords.length / ITEMS_PER_PAGE)
@@ -155,9 +179,7 @@ function WordsTablePaginated({ words }: { words: WordEntry[] }) {
   const notesRef = useRef<HTMLTextAreaElement | null>(null)
   const [speakingKey, setSpeakingKey] = useState<string | null>(null)
 
-  const selectAllChecked =
-    paginatedWords.length > 0 &&
-    paginatedWords.every((w) => selectedSet.has(w.id))
+  const selectAllChecked = paginatedWords.length > 0 && paginatedWords.every((w) => selectedSet.has(w.id))
 
   const defaultSort = defaultSettings.sortBy
 
@@ -202,9 +224,7 @@ function WordsTablePaginated({ words }: { words: WordEntry[] }) {
   const startEdit = useCallback(
     (word: WordEntry) => {
       if (editingId && editingId !== word.id) {
-        const ok = window.confirm(
-          "Tienes otra fila en edición. ¿Descartar cambios y editar esta?"
-        )
+        const ok = window.confirm("Tienes otra fila en edición. ¿Descartar cambios y editar esta?")
         if (!ok) return
       }
       setEditingId(word.id)
@@ -244,9 +264,7 @@ function WordsTablePaginated({ words }: { words: WordEntry[] }) {
     (checked: boolean) => {
       if (!checked) {
         // Deseleccionar solo las palabras de la página actual
-        const next = selectedIds.filter(
-          (id) => !paginatedWords.find((w) => w.id === id)
-        )
+        const next = selectedIds.filter((id) => !paginatedWords.find((w) => w.id === id))
         dispatch(setSelectedIds(next))
         return
       }
@@ -290,6 +308,7 @@ function WordsTablePaginated({ words }: { words: WordEntry[] }) {
         search={search}
         searchField={searchField}
         selectAllChecked={selectAllChecked}
+        quickScoreMode={quickScoreMode}
         onSearchChange={(value) => {
           setCurrentPage(0)
           dispatch(setSearch(value))
@@ -299,6 +318,7 @@ function WordsTablePaginated({ words }: { words: WordEntry[] }) {
           dispatch(setSearchField(field))
         }}
         onSelectAll={selectAll}
+        onToggleQuickScoreMode={setQuickScoreMode}
       />
 
       <ContextFilters
@@ -342,8 +362,7 @@ function WordsTablePaginated({ words }: { words: WordEntry[] }) {
       {/* Información de paginación */}
       {visibleWords.length > ITEMS_PER_PAGE && (
         <div className="border-b border-slate-100 bg-slate-50 px-4 py-2 text-sm text-slate-600">
-          Mostrando {startIndex + 1}-{endIndex} de {visibleWords.length}{" "}
-          palabras
+          Mostrando {startIndex + 1}-{endIndex} de {visibleWords.length} palabras
         </div>
       )}
 
@@ -365,9 +384,7 @@ function WordsTablePaginated({ words }: { words: WordEntry[] }) {
               speakingKey={speakingKey}
               notesRef={notesRef}
               onToggleSelect={(checked) => handleToggleSelect(w.id, checked)}
-              onEditDraftChange={(field, value) =>
-                setEditDraft((prev) => ({ ...prev, [field]: value }))
-              }
+              onEditDraftChange={(field, value) => setEditDraft((prev) => ({ ...prev, [field]: value }))}
               onAutoSizeNotes={autoSizeNotes}
               onToggleExpand={() => toggleExpandNotes(w.id)}
               onScore={(delta) => onScore(w.id, delta)}
@@ -422,9 +439,7 @@ function WordsTablePaginated({ words }: { words: WordEntry[] }) {
           </div>
 
           <button
-            onClick={() =>
-              setCurrentPage(Math.min(totalPages - 1, effectivePage + 1))
-            }
+            onClick={() => setCurrentPage(Math.min(totalPages - 1, effectivePage + 1))}
             disabled={effectivePage === totalPages - 1}
             className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-slate-300 disabled:cursor-not-allowed disabled:opacity-50"
           >

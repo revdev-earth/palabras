@@ -110,10 +110,7 @@ export const wordsSlice = createSlice({
       state.words = action.payload
       state.selectedIds = []
     },
-    addWord(
-      state,
-      action: PayloadAction<Omit<WordEntry, "baseScore" | "lastPracticedAt" | "createdAt">>
-    ) {
+    addWord(state, action: PayloadAction<Omit<WordEntry, "baseScore" | "lastPracticedAt" | "createdAt">>) {
       state.words.unshift({
         ...action.payload,
         baseScore: 2,
@@ -204,7 +201,7 @@ export const wordsSlice = createSlice({
       const index = state.words.findIndex((word) => word.id === action.payload.id)
       if (index === -1) return
       const current = state.words[index]
-      const nextScore = Math.max(0, (current.baseScore || 0) + action.payload.delta)
+      const nextScore = Math.min(10, Math.max(0, (current.baseScore || 0) + action.payload.delta))
       state.words[index] = {
         ...current,
         baseScore: nextScore,
@@ -217,7 +214,10 @@ export const wordsSlice = createSlice({
       state.words = state.words.map((word) => {
         const delta = deltaMap.get(word.id)
         if (!delta) return word
-        return { ...word, baseScore: Math.max(0, (word.baseScore || 0) + delta) }
+        return {
+          ...word,
+          baseScore: Math.min(10, Math.max(0, (word.baseScore || 0) + delta)),
+        }
       })
     },
     touchLastPracticed(state, action: PayloadAction<string>) {

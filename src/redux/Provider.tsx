@@ -53,10 +53,7 @@ const Hydrate = ({ children }: Props) => {
       }
       dispatch(setUser(null))
       dispatch(setIsAuthenticated(false))
-      const localStorageState = safeParse(
-        localStorage.getItem(REDUX_KEY_LOCAL_STORAGE),
-        null as State | null
-      )
+      const localStorageState = safeParse(localStorage.getItem(REDUX_KEY_LOCAL_STORAGE), null as State | null)
       const storedWords = safeParse(
         localStorage.getItem(`${REDUX_KEY_LOCAL_STORAGE}:words`),
         null as State["words"]["words"] | null

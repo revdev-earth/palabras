@@ -1,12 +1,12 @@
-'use server'
+"use server"
 
-import { z } from 'zod'
-import { Resend } from 'resend'
+import { z } from "zod"
+import { Resend } from "resend"
 
-import { prisma } from '+/lib/prisma'
+import { prisma } from "+/lib/prisma"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
-const isTestMode = process.env.NODE_ENV !== 'production'
+const isTestMode = process.env.NODE_ENV !== "production"
 const testEmail = process.env.RESEND_EMAIL_TEST
 
 const emailSchema = z.object({ email: z.string().email() })
@@ -18,10 +18,10 @@ function generateVerificationCode() {
 
 export async function resendVerificationCode(email: string) {
   const parsed = emailSchema.safeParse({ email })
-  if (!parsed.success) return { success: false, errors: { email: ['Email inválido'] } }
+  if (!parsed.success) return { success: false, errors: { email: ["Email inválido"] } }
 
   const user = await prisma.user.findUnique({ where: { email: parsed.data.email } })
-  if (!user) return { success: false, errors: { form: ['Usuario no encontrado'] } }
+  if (!user) return { success: false, errors: { form: ["Usuario no encontrado"] } }
 
   const code = generateVerificationCode()
   const expiresAt = new Date(Date.now() + 15 * 60 * 1000)
@@ -37,7 +37,7 @@ export async function resendVerificationCode(email: string) {
   await resend.emails.send({
     from: process.env.FROM_EMAIL as string,
     to: emailToSend,
-    subject: 'Tu código de verificación',
+    subject: "Tu código de verificación",
     html: `<p>Tu código de verificación es: <strong>${code}</strong></p><p>Caduca en 15 minutos.</p>`,
   })
 
@@ -48,20 +48,20 @@ export async function verifyEmailCode(email: string, code: string) {
   const emailParsed = emailSchema.safeParse({ email })
   const codeParsed = codeSchema.safeParse({ code })
   if (!emailParsed.success || !codeParsed.success) {
-    return { success: false, errors: { form: ['Código o email inválidos'] } }
+    return { success: false, errors: { form: ["Código o email inválidos"] } }
   }
 
   const user = await prisma.user.findUnique({ where: { email: emailParsed.data.email } })
   if (!user || !user.verificationCode || !user.verificationCodeExpiresAt) {
-    return { success: false, errors: { form: ['No hay un código activo para este usuario.'] } }
+    return { success: false, errors: { form: ["No hay un código activo para este usuario."] } }
   }
 
   if (user.verificationCodeExpiresAt < new Date()) {
-    return { success: false, errors: { form: ['El código ha expirado. Solicita uno nuevo.'] } }
+    return { success: false, errors: { form: ["El código ha expirado. Solicita uno nuevo."] } }
   }
 
   if (user.verificationCode !== codeParsed.data.code) {
-    return { success: false, errors: { form: ['Código incorrecto.'] } }
+    return { success: false, errors: { form: ["Código incorrecto."] } }
   }
 
   await prisma.user.update({

@@ -2,8 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react"
 
 import { useSelector } from "+/redux"
 
-const clamp = (value: number, min: number, max: number) =>
-  Math.min(max, Math.max(min, value))
+const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value))
 
 const toSentencesByLine = (raw: string) =>
   raw
@@ -33,8 +32,7 @@ export const useSpeaker = (hookOpts?: { enabled?: boolean }) => {
     }
     loadVoices()
     window.speechSynthesis.addEventListener("voiceschanged", loadVoices)
-    return () =>
-      window.speechSynthesis.removeEventListener("voiceschanged", loadVoices)
+    return () => window.speechSynthesis.removeEventListener("voiceschanged", loadVoices)
   }, [])
 
   const stopSpeaking = useCallback(() => {
@@ -47,11 +45,7 @@ export const useSpeaker = (hookOpts?: { enabled?: boolean }) => {
     if (!voices.length) return null
     return (
       voices.find((v) => v.voiceURI === voiceId || v.name === voiceId) ||
-      voices.find((v) =>
-        voiceLang
-          ? v.lang?.toLowerCase().startsWith(voiceLang.toLowerCase())
-          : false
-      ) ||
+      voices.find((v) => (voiceLang ? v.lang?.toLowerCase().startsWith(voiceLang.toLowerCase()) : false)) ||
       voices.find((v) => v.lang?.toLowerCase().startsWith("es")) ||
       voices.find((v) => v.lang?.toLowerCase().startsWith("en")) ||
       voices[0]
@@ -67,19 +61,10 @@ export const useSpeaker = (hookOpts?: { enabled?: boolean }) => {
         sentencePerLine?: boolean
       }
     ) => {
-      const enabled =
-        typeof hookOpts?.enabled === "boolean" ? hookOpts.enabled : speakEnabled
-      const prepared = opts?.sentencePerLine
-        ? toSentencesByLine(text || "")
-        : text
+      const enabled = typeof hookOpts?.enabled === "boolean" ? hookOpts.enabled : speakEnabled
+      const prepared = opts?.sentencePerLine ? toSentencesByLine(text || "") : text
       const clean = prepared?.trim()
-      if (
-        !clean ||
-        typeof window === "undefined" ||
-        !window.speechSynthesis ||
-        !enabled
-      )
-        return false
+      if (!clean || typeof window === "undefined" || !window.speechSynthesis || !enabled) return false
       const utter = new SpeechSynthesisUtterance(clean)
       if (preferredVoice) utter.voice = preferredVoice
       utter.rate = clamp(voiceRate || 1, 0.5, 2)
@@ -99,8 +84,7 @@ export const useSpeaker = (hookOpts?: { enabled?: boolean }) => {
     [hookOpts, preferredVoice, speakEnabled, voiceRate]
   )
 
-  const enabled =
-    typeof hookOpts?.enabled === "boolean" ? hookOpts.enabled : speakEnabled
+  const enabled = typeof hookOpts?.enabled === "boolean" ? hookOpts.enabled : speakEnabled
   return {
     speak,
     stopSpeaking,

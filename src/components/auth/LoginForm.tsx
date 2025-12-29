@@ -1,36 +1,36 @@
-'use client'
+"use client"
 
-import { FormEvent, startTransition, useEffect, useState, useActionState } from 'react'
-import { ArrowRight, CheckCircle, Eye, EyeOff, Lock, Mail, User } from 'lucide-react'
-import { authenticate } from '+/actions/auth/login'
-import { authInitialState, type AuthActionState } from './types'
-import { demoUsers as defaultDemoUsers } from './users'
-import { HYDRATE_ACTION_TYPE, useDispatch } from '+/redux'
+import { FormEvent, startTransition, useEffect, useState, useActionState } from "react"
+import { ArrowRight, CheckCircle, Eye, EyeOff, Lock, Mail, User } from "lucide-react"
+import { authenticate } from "+/actions/auth/login"
+import { authInitialState, type AuthActionState } from "./types"
+import { demoUsers as defaultDemoUsers } from "./users"
+import { HYDRATE_ACTION_TYPE, useDispatch } from "+/redux"
 import {
   setAuthVerificationExpires,
   setIsAuthenticated,
   setLoginState,
   resetAuthProcess,
   setResetPasswordModalOpen,
-} from '+/redux/slices/auth'
-import { setUser } from '+/redux/slices/user'
-import { getUserSyncPayload } from '+/actions/sync'
-import { initialState } from '+/redux/store'
+} from "+/redux/slices/auth"
+import { setUser } from "+/redux/slices/user"
+import { getUserSyncPayload } from "+/actions/sync"
+import { initialState } from "+/redux/store"
 
 type LoginFormProps = {
   className?: string
 }
 
 export default function LoginForm({
-  className = 'transition-opacity duration-500 opacity-100',
+  className = "transition-opacity duration-500 opacity-100",
 }: LoginFormProps) {
   const dispatch = useDispatch()
   const [state, formAction, isPending] = useActionState<AuthActionState, FormData>(
     authenticate,
     authInitialState
   )
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [showUserMenu, setShowUserMenu] = useState(false)
   const demoUsers = defaultDemoUsers
@@ -39,7 +39,7 @@ export default function LoginForm({
     if (!state?.success) return
 
     dispatch(setAuthVerificationExpires(null))
-    dispatch(setLoginState('success'))
+    dispatch(setLoginState("success"))
 
     const syncUser = async () => {
       try {
@@ -59,24 +59,21 @@ export default function LoginForm({
               recognition: {
                 ...initialState.recognition,
                 recognitionText:
-                  remote.recognition?.recognitionText ??
-                  initialState.recognition.recognitionText,
-                textHistory:
-                  remote.recognition?.textHistory ??
-                  initialState.recognition.textHistory,
+                  remote.recognition?.recognitionText ?? initialState.recognition.recognitionText,
+                textHistory: remote.recognition?.textHistory ?? initialState.recognition.textHistory,
               },
             },
           })
           dispatch(resetAuthProcess())
-          dispatch(setLoginState('idle'))
+          dispatch(setLoginState("idle"))
           return
         }
       } catch (error) {
-        console.error('Error syncing after login:', error)
+        console.error("Error syncing after login:", error)
       }
       dispatch(setUser(null))
       dispatch(setIsAuthenticated(false))
-      dispatch(setLoginState('idle'))
+      dispatch(setLoginState("idle"))
     }
 
     void syncUser()
@@ -84,20 +81,20 @@ export default function LoginForm({
 
   useEffect(() => {
     if (!state?.errors) return
-    dispatch(setLoginState('idle'))
+    dispatch(setLoginState("idle"))
   }, [dispatch, state?.errors])
 
   const isDisabled = isPending || Boolean(state?.success)
-  const inputPadding = 'py-3'
-  const buttonPadding = 'py-3.5'
+  const inputPadding = "py-3"
+  const buttonPadding = "py-3.5"
   const hasDemoUsers = demoUsers.length > 0
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData()
-    formData.append('email', email.trim())
-    formData.append('password', password)
-    dispatch(setLoginState('loading'))
+    formData.append("email", email.trim())
+    formData.append("password", password)
+    dispatch(setLoginState("loading"))
     startTransition(() => {
       formAction(formData)
     })
@@ -182,7 +179,7 @@ export default function LoginForm({
         <div className="relative">
           <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
           <input
-            type={showPassword ? 'text' : 'password'}
+            type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="current-password"

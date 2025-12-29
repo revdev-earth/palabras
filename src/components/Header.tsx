@@ -59,11 +59,7 @@ export function Header() {
           <div>
             <h1 className="text-3xl font-semibold text-slate-900">Palabras</h1>
             <div className="mt-1 text-xs text-slate-500">
-              {isLoading
-                ? "Cargando sesion..."
-                : userEmail
-                  ? userEmail
-                  : "Sin sesion"}
+              {isLoading ? "Cargando sesion..." : userEmail ? userEmail : "Sin sesion"}
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2">
@@ -79,9 +75,7 @@ export function Header() {
                   <span className="hidden sm:block">
                     {userName} {userLastName}
                   </span>
-                  <ChevronDown
-                    className={`h-4 w-4 transition-transform ${menuOpen ? "rotate-180" : ""}`}
-                  />
+                  <ChevronDown className={`h-4 w-4 transition-transform ${menuOpen ? "rotate-180" : ""}`} />
                 </button>
                 {menuOpen && (
                   <div className="absolute right-0 mt-2 w-56 rounded-lg border border-slate-200 bg-white py-2 shadow-lg">
@@ -126,8 +120,7 @@ export function Header() {
         </div>
         <nav className="mt-4 flex flex-wrap items-center gap-2 text-sm font-semibold text-slate-700">
           {navItems.map((item) => {
-            const isActive =
-              item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)
+            const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)
             return (
               <Link
                 key={item.href}

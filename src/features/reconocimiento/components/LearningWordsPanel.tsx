@@ -12,9 +12,7 @@ export function LearningWordsPanel({ learningWords }: LearningWordsPanelProps) {
   const dispatch = useDispatch()
   const words = useSelector((s) => s.words.words)
   const selectedIds = useSelector((s) => s.words.selectedIds)
-  const wordsByTerm = new Map(
-    words.map((word) => [normalizeTerm(word.term), word] as const)
-  )
+  const wordsByTerm = new Map(words.map((word) => [normalizeTerm(word.term), word] as const))
 
   const handleTogglePractice = (term: string) => {
     const lookup = wordsByTerm.get(normalizeTerm(term))
@@ -54,9 +52,7 @@ export function LearningWordsPanel({ learningWords }: LearningWordsPanelProps) {
           })}
         </div>
       ) : (
-        <div className="mt-2 text-sm text-slate-500">
-          No hay palabras en aprendizaje.
-        </div>
+        <div className="mt-2 text-sm text-slate-500">No hay palabras en aprendizaje.</div>
       )}
     </div>
   )

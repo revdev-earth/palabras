@@ -14,9 +14,7 @@ export function AudioPanel({ className }: AudioPanelProps) {
   const voiceId = useSelector((s) => s.settings.practiceVoiceId)
   const voiceLang = useSelector((s) => s.settings.practiceVoiceLang)
   const voiceRate = useSelector((s) => s.settings.practiceVoiceRate)
-  const practiceSpeakEnabled = useSelector(
-    (s) => s.settings.practiceSpeakEnabled
-  )
+  const practiceSpeakEnabled = useSelector((s) => s.settings.practiceSpeakEnabled)
   const { speak, stopSpeaking, voices, isSpeaking } = useSpeaker({
     enabled: true,
   })
@@ -108,11 +106,7 @@ export function AudioPanel({ className }: AudioPanelProps) {
           type="button"
           onClick={togglePreview}
           className="rounded-lg border border-slate-100 bg-slate-50 px-2 py-1 font-semibold text-slate-800 shadow-inner"
-          title={
-            isAudioActive && speakingKey === "preview"
-              ? "Detener audio"
-              : "Probar audio"
-          }
+          title={isAudioActive && speakingKey === "preview" ? "Detener audio" : "Probar audio"}
         >
           {isAudioActive && speakingKey === "preview" ? "⏹️" : "🔊"}
         </button>
@@ -194,9 +188,7 @@ export function AudioPanel({ className }: AudioPanelProps) {
                 </select>
               </label>
               <label className="flex flex-col gap-1">
-                <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">
-                  Voz
-                </span>
+                <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Voz</span>
                 <select
                   value={voiceId}
                   onChange={(e) =>

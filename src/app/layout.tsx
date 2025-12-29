@@ -21,14 +21,10 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.ico" },
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ReduxProvider>
           <div className="mx-auto max-w-6xl px-4 py-8">
             <Header />

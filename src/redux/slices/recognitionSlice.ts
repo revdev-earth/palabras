@@ -17,9 +17,7 @@ export type RecognitionSliceState = {
   previewWordSpacing: number
 }
 
-const seedRecognitionText = "Hallo Danke bicicleta azul, Bitte Wasser y Buch con mesa."
-
-const initialRecognitionText = seedRecognitionText
+const initialRecognitionText = "Straße"
 const initialTextHistory: TextHistoryItem[] = []
 
 export const recognitionSlice = createSlice({
@@ -58,9 +56,7 @@ export const recognitionSlice = createSlice({
     addTextHistory(state, action: PayloadAction<string>) {
       const text = action.payload.trim()
       if (!text) return
-      const existingIndex = state.textHistory.findIndex(
-        (item) => item.text.trim() === text
-      )
+      const existingIndex = state.textHistory.findIndex((item) => item.text.trim() === text)
       if (existingIndex !== -1) {
         const existing = state.textHistory[existingIndex]
         state.textHistory.splice(existingIndex, 1)

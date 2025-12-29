@@ -32,10 +32,7 @@ export const authSlice = createSlice({
     setIsAuthenticated(state, action: { payload: boolean }) {
       state.isAuthenticated = action.payload
     },
-    setAuthModalOpen(
-      state,
-      action: { payload: { open: boolean; tab?: AuthModalTab } }
-    ) {
+    setAuthModalOpen(state, action: { payload: { open: boolean; tab?: AuthModalTab } }) {
       state.authModalOpen = action.payload.open
       if (action.payload.tab) state.authModalTab = action.payload.tab
     },

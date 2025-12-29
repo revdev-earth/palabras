@@ -4,18 +4,22 @@ type TableToolbarProps = {
   search: string
   searchField: SearchField
   selectAllChecked: boolean
+  quickScoreMode: boolean
   onSearchChange: (value: string) => void
   onSearchFieldChange: (field: SearchField) => void
   onSelectAll: (checked: boolean) => void
+  onToggleQuickScoreMode: (next: boolean) => void
 }
 
 export function TableToolbar({
   search,
   searchField,
   selectAllChecked,
+  quickScoreMode,
   onSearchChange,
   onSearchFieldChange,
   onSelectAll,
+  onToggleQuickScoreMode,
 }: TableToolbarProps) {
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 px-5 py-4">
@@ -27,9 +31,7 @@ export function TableToolbar({
             <input
               value={search}
               onChange={(e) => onSearchChange(e.target.value)}
-              placeholder={
-                searchField === "term" ? "Filtrar por palabra..." : "Filtrar por traducción..."
-              }
+              placeholder={searchField === "term" ? "Filtrar por palabra..." : "Filtrar por traducción..."}
               className="w-full flex-1 bg-transparent text-sm text-slate-900 outline-none"
             />
           </div>
@@ -52,15 +54,26 @@ export function TableToolbar({
           </div>
         </div>
       </div>
-      <label className="flex items-center gap-2 text-sm text-slate-700">
-        <input
-          type="checkbox"
-          checked={selectAllChecked}
-          onChange={(e) => onSelectAll(e.target.checked)}
-          className="h-4 w-4 rounded border-slate-300 text-slate-800"
-        />
-        Seleccionar todo (vista actual)
-      </label>
+      <div className="flex flex-wrap items-center gap-4 text-sm text-slate-700">
+        <label className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            checked={quickScoreMode}
+            onChange={(e) => onToggleQuickScoreMode(e.target.checked)}
+            className="h-4 w-4 rounded border-slate-300 text-slate-800"
+          />
+          Suma rápida
+        </label>
+        <label className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            checked={selectAllChecked}
+            onChange={(e) => onSelectAll(e.target.checked)}
+            className="h-4 w-4 rounded border-slate-300 text-slate-800"
+          />
+          Seleccionar todo (vista actual)
+        </label>
+      </div>
     </div>
   )
 }

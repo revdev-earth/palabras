@@ -1,19 +1,19 @@
-const passwordDemo = process.env.NEXT_PUBLIC_PASSWORD_DEMO || 'No Password'
+const passwordDemo = process.env.NEXT_PUBLIC_PASSWORD_DEMO || "No Password"
 
 export const demoUsers = [
   {
-    role: 'Sir',
-    email: 'sir@sir.sir',
+    role: "Sir",
+    email: "sir@sir.sir",
     password: passwordDemo,
   },
   {
-    role: 'Shr',
-    email: 'shr@shr.shr',
+    role: "Shr",
+    email: "shr@shr.shr",
     password: passwordDemo,
   },
   {
-    role: 'Was',
-    email: 'was@was.was',
+    role: "Was",
+    email: "was@was.was",
     password: passwordDemo,
   },
 ]

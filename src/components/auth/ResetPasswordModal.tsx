@@ -1,20 +1,20 @@
-'use client'
+"use client"
 
-import { useEffect, useState } from 'react'
-import { ArrowRight, Check, Mail, X } from 'lucide-react'
-import { sendResetPasswordEmail } from '+/actions/auth/reset-password'
-import { useDispatch, useSelector } from '+/redux'
-import { setResetPasswordModalOpen } from '+/redux/slices/auth'
-import Modal from '+/components/Modal'
+import { useEffect, useState } from "react"
+import { ArrowRight, Check, Mail, X } from "lucide-react"
+import { sendResetPasswordEmail } from "+/actions/auth/reset-password"
+import { useDispatch, useSelector } from "+/redux"
+import { setResetPasswordModalOpen } from "+/redux/slices/auth"
+import Modal from "+/components/Modal"
 
 export default function ResetPasswordModal() {
   const dispatch = useDispatch()
   const isOpen = useSelector((state) => state.auth.resetPasswordModalOpen)
 
-  const [resetEmail, setResetEmail] = useState('')
+  const [resetEmail, setResetEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
-  const [error, setError] = useState('')
+  const [error, setError] = useState("")
 
   const closeModal = () => dispatch(setResetPasswordModalOpen(false))
 
@@ -22,10 +22,10 @@ export default function ResetPasswordModal() {
   useEffect(() => {
     if (!isOpen) {
       const timeout = setTimeout(() => {
-        setResetEmail('')
+        setResetEmail("")
         setIsSubmitting(false)
         setIsSuccess(false)
-        setError('')
+        setError("")
       }, 300)
       return () => clearTimeout(timeout)
     }
@@ -33,14 +33,14 @@ export default function ResetPasswordModal() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setError('')
+    setError("")
     setIsSubmitting(true)
 
     try {
       const response = await sendResetPasswordEmail(resetEmail.trim())
 
       if (!response?.success) {
-        setError(response?.message || 'Error al enviar el correo. Por favor intenta nuevamente.')
+        setError(response?.message || "Error al enviar el correo. Por favor intenta nuevamente.")
         setIsSubmitting(false)
         return
       }
@@ -51,7 +51,7 @@ export default function ResetPasswordModal() {
         closeModal()
       }, 3000)
     } catch {
-      setError('Error al enviar el correo. Por favor intenta nuevamente.')
+      setError("Error al enviar el correo. Por favor intenta nuevamente.")
       setIsSubmitting(false)
     }
   }
@@ -152,7 +152,7 @@ export default function ResetPasswordModal() {
       {!isSuccess && (
         <div className="px-6 pb-6">
           <div className="text-center text-sm text-gray-500">
-            Remember your password?{' '}
+            Remember your password?{" "}
             <button
               onClick={closeModal}
               className="text-teal-600 hover:text-teal-700 font-medium"

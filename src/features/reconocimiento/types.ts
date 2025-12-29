@@ -1,6 +1,6 @@
 export type Token = {
   value: string
-  type: "word" | "space" | "punct"
+  type: "word" | "number" | "space" | "punct"
   known: boolean
 }
 

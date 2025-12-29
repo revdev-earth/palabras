@@ -35,7 +35,12 @@ export function ContextFilters({
   onTogglePracticeContext,
 }: ContextFiltersProps) {
   const extraContexts = contextOptions.filter((ctx) => !PRESET_TAGS.has(ctx))
-  if (LEVEL_TAGS.length === 0 && TYPE_TAGS.length === 0 && extraContexts.length === 0 && practiceOptions.length === 0) {
+  if (
+    LEVEL_TAGS.length === 0 &&
+    TYPE_TAGS.length === 0 &&
+    extraContexts.length === 0 &&
+    practiceOptions.length === 0
+  ) {
     return null
   }
 
@@ -94,7 +99,9 @@ export function ContextFilters({
         </div>
       )}
       {extraContexts.length > 0 && (
-        <div className={`flex flex-wrap items-center gap-2 ${LEVEL_TAGS.length > 0 || TYPE_TAGS.length > 0 ? "mt-2" : ""}`}>
+        <div
+          className={`flex flex-wrap items-center gap-2 ${LEVEL_TAGS.length > 0 || TYPE_TAGS.length > 0 ? "mt-2" : ""}`}
+        >
           <span className="font-semibold uppercase text-slate-500">context:</span>
           {extraContexts.map((ctx) => {
             const isActive = activeContexts.has(ctx)

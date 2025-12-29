@@ -82,54 +82,53 @@ const toTag = (value: string) =>
 export const selectRecognitionDerived = createSelector(
   [buildBase, (_state: RootState, activeWord: string | null) => activeWord],
   ({ words, text, tokens, wordsByTerm, groups }, activeWord) => {
+    const contextSuggestions = (() => {
+      const wordsRaw = text.match(/[\p{L}\p{N}]+/gu) || []
+      const wordsSlice = wordsRaw.slice(0, 4)
+      const pairs: string[] = []
+      if (wordsSlice.length >= 2) pairs.push(`${wordsSlice[0]} ${wordsSlice[1]}`)
+      if (wordsSlice.length >= 4) pairs.push(`${wordsSlice[2]} ${wordsSlice[3]}`)
+      const tags = pairs.map((pair) => toTag(pair)).filter(Boolean)
+      return Array.from(new Set(tags))
+    })()
 
-  const contextSuggestions = (() => {
-    const wordsRaw = text.match(/[\p{L}\p{N}]+/gu) || []
-    const wordsSlice = wordsRaw.slice(0, 4)
-    const pairs: string[] = []
-    if (wordsSlice.length >= 2) pairs.push(`${wordsSlice[0]} ${wordsSlice[1]}`)
-    if (wordsSlice.length >= 4) pairs.push(`${wordsSlice[2]} ${wordsSlice[3]}`)
-    const tags = pairs.map((pair) => toTag(pair)).filter(Boolean)
-    return Array.from(new Set(tags))
-  })()
-
-  const phraseSuggestions = (() => {
-    if (!activeWord) return []
-    const key = normalizeTerm(activeWord)
-    const suggestions = new Set<string>()
-    for (let i = 0; i < tokens.length - 2; i += 1) {
-      const token = tokens[i]
-      const next = tokens[i + 1]
-      const afterNext = tokens[i + 2]
-      if (
-        token.type === "word" &&
-        normalizeTerm(token.value) === key &&
-        next?.type === "space" &&
-        afterNext?.type === "word"
-      ) {
-        suggestions.add(`${token.value} ${afterNext.value}`)
+    const phraseSuggestions = (() => {
+      if (!activeWord) return []
+      const key = normalizeTerm(activeWord)
+      const suggestions = new Set<string>()
+      for (let i = 0; i < tokens.length - 2; i += 1) {
+        const token = tokens[i]
+        const next = tokens[i + 1]
+        const afterNext = tokens[i + 2]
+        if (
+          token.type === "word" &&
+          normalizeTerm(token.value) === key &&
+          next?.type === "space" &&
+          afterNext?.type === "word"
+        ) {
+          suggestions.add(`${token.value} ${afterNext.value}`)
+        }
       }
-    }
-    words.forEach((word) => {
-      const normalized = normalizeTerm(word.term)
-      if (normalized.startsWith(`${key} `)) {
-        suggestions.add(word.term)
-      }
-    })
-    return Array.from(suggestions)
-  })()
+      words.forEach((word) => {
+        const normalized = normalizeTerm(word.term)
+        if (normalized.startsWith(`${key} `)) {
+          suggestions.add(word.term)
+        }
+      })
+      return Array.from(suggestions)
+    })()
 
-  const practiceTargets = (() => {
-    const ids = new Set<string>()
-    tokens.forEach((token) => {
-      if (token.type !== "word") return
-      const lookup = wordsByTerm.get(normalizeTerm(token.value))
-      if (!lookup) return
-      if (effectiveScore(lookup) >= 10) return
-      ids.add(lookup.id)
-    })
-    return Array.from(ids)
-  })()
+    const practiceTargets = (() => {
+      const ids = new Set<string>()
+      tokens.forEach((token) => {
+        if (token.type !== "word") return
+        const lookup = wordsByTerm.get(normalizeTerm(token.value))
+        if (!lookup) return
+        if (effectiveScore(lookup) >= 10) return
+        ids.add(lookup.id)
+      })
+      return Array.from(ids)
+    })()
 
     return {
       tokens,

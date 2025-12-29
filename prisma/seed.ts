@@ -39,9 +39,9 @@ const normalizeWord = (word: RawWord): NormalizedWord => {
     term: String(word.term ?? ""),
     translation: String(word.translation ?? ""),
     notes: String(word.notes ?? ""),
-    context: toJsonInput(Array.isArray(word.context) ? word.context : word.context ?? []),
+    context: toJsonInput(Array.isArray(word.context) ? word.context : (word.context ?? [])),
     contextForPractice: toJsonInput(
-      Array.isArray(word.contextForPractice) ? word.contextForPractice : word.contextForPractice ?? []
+      Array.isArray(word.contextForPractice) ? word.contextForPractice : (word.contextForPractice ?? [])
     ),
     baseScore: Number.isFinite(word.baseScore) ? Math.round(word.baseScore as number) : 0,
     lastPracticedAt: word.lastPracticedAt ? new Date(word.lastPracticedAt) : null,

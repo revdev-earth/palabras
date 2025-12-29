@@ -121,12 +121,8 @@ export function Practicas() {
         <div className="space-y-4 rounded-2xl border border-slate-100 bg-white/90 px-4 py-4 text-sm text-slate-800 shadow-lg">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                Practicas
-              </div>
-              <div className="text-base font-semibold text-slate-900">
-                Selecciona y elige el modo
-              </div>
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Practicas</div>
+              <div className="text-base font-semibold text-slate-900">Selecciona y elige el modo</div>
             </div>
             <div className="text-xs text-slate-600">
               Seleccionadas: <span className="font-semibold">{selectedIds.length}</span>
@@ -210,9 +206,7 @@ export function Practicas() {
               </div>
 
               <div className="space-y-2">
-                <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-                  Score
-                </div>
+                <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Score</div>
                 <div className="flex flex-wrap gap-2">
                   {availableScoreBuckets.map((bucket) => {
                     const active = practiceScoreBuckets.includes(bucket)

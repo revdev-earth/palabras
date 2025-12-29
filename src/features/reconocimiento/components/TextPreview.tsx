@@ -153,15 +153,11 @@ export function TextPreview({
                       key={`known-high-${groupIndex}-${segmentIndex}`}
                       className={`rounded-md px-1 ${highTone.bg} ${highTone.shadow}`}
                     >
-                      {segment.tokens.map((token, tokenIndex) =>
-                        renderToken(token, tokenIndex, true)
-                      )}
+                      {segment.tokens.map((token, tokenIndex) => renderToken(token, tokenIndex, true))}
                     </span>
                   ) : (
                     <span key={`known-normal-${groupIndex}-${segmentIndex}`}>
-                      {segment.tokens.map((token, tokenIndex) =>
-                        renderToken(token, tokenIndex, false)
-                      )}
+                      {segment.tokens.map((token, tokenIndex) => renderToken(token, tokenIndex, false))}
                     </span>
                   )
                 )
@@ -221,6 +217,10 @@ export function TextPreview({
               {token.value}
             </span>
           )
+        }
+
+        if (token.type === "number") {
+          return <span key={`number-${groupIndex}`}>{token.value}</span>
         }
 
         return <span key={`punct-${groupIndex}`}>{token.value}</span>

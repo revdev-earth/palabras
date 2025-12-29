@@ -1,8 +1,8 @@
-'use server'
+"use server"
 
-import { AuthError } from 'next-auth'
+import { AuthError } from "next-auth"
 
-import { signIn } from '+/lib/auth'
+import { signIn } from "+/lib/auth"
 
 export const authenticate = async (
   prevState:
@@ -14,8 +14,8 @@ export const authenticate = async (
   formData: FormData
 ) => {
   try {
-    const email = formData.get('email') as string
-    const password = formData.get('password') as string
+    const email = formData.get("email") as string
+    const password = formData.get("password") as string
 
     console.log(`🔐 Iniciando autenticación para: ${email}`)
 
@@ -23,15 +23,15 @@ export const authenticate = async (
     const errors: Record<string, string[]> = {}
 
     if (!email) {
-      errors.email = ['El email es requerido']
+      errors.email = ["El email es requerido"]
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errors.email = ['El formato del email no es válido']
+      errors.email = ["El formato del email no es válido"]
     }
 
     if (!password) {
-      errors.password = ['La contraseña es requerida']
+      errors.password = ["La contraseña es requerida"]
     } else if (password.length < 6) {
-      errors.password = ['La contraseña debe tener al menos 6 caracteres']
+      errors.password = ["La contraseña debe tener al menos 6 caracteres"]
     }
 
     if (Object.keys(errors).length > 0) {
@@ -40,7 +40,7 @@ export const authenticate = async (
     }
 
     // Intentar login SIN redirección automática
-    const result = await signIn('credentials', {
+    const result = await signIn("credentials", {
       email,
       password,
       redirect: false, // ✅ NO redirigir - manejamos desde la página
@@ -51,7 +51,7 @@ export const authenticate = async (
       console.log(`❌ Login fallido para ${email}: ${result.error}`)
       return {
         success: false,
-        errors: { form: ['Credenciales incorrectas. Verifica tu email y contraseña.'] },
+        errors: { form: ["Credenciales incorrectas. Verifica tu email y contraseña."] },
       }
     }
 
@@ -59,28 +59,28 @@ export const authenticate = async (
 
     return { success: true }
   } catch (error) {
-    let message = 'Error interno del servidor'
+    let message = "Error interno del servidor"
 
     if (error instanceof AuthError) {
       switch (error.type) {
-        case 'CredentialsSignin':
-          message = 'Email o contraseña incorrectos'
+        case "CredentialsSignin":
+          message = "Email o contraseña incorrectos"
           break
-        case 'AccessDenied':
-          message = 'Tu cuenta está deshabilitada. Contacta al administrador.'
+        case "AccessDenied":
+          message = "Tu cuenta está deshabilitada. Contacta al administrador."
           break
-        case 'CallbackRouteError':
-          message = 'Error en el proceso de autenticación'
+        case "CallbackRouteError":
+          message = "Error en el proceso de autenticación"
           break
         default:
-          message = 'Error de autenticación. Intenta de nuevo.'
+          message = "Error de autenticación. Intenta de nuevo."
       }
     }
 
-    console.error('❌ Error en authenticate:', {
-      type: error instanceof AuthError ? error.type : 'Unknown',
-      message: error instanceof Error ? error.message : 'Unknown error',
-      email: formData.get('email'),
+    console.error("❌ Error en authenticate:", {
+      type: error instanceof AuthError ? error.type : "Unknown",
+      message: error instanceof Error ? error.message : "Unknown error",
+      email: formData.get("email"),
       timestamp: new Date().toISOString(),
     })
 

@@ -55,10 +55,7 @@ export const practiceSlice = createSlice({
     scoreDeltas: null,
   } as PracticeSliceState,
   reducers: {
-    startPracticeInternal(
-      state,
-      action: PayloadAction<{ ids: string[]; rounds: number }>
-    ) {
+    startPracticeInternal(state, action: PayloadAction<{ ids: string[]; rounds: number }>) {
       const ids = action.payload.ids
       const stats = ids.reduce<PracticeStats>((acc, id) => {
         acc[id] = { correct: 0, total: 0 }
@@ -66,10 +63,7 @@ export const practiceSlice = createSlice({
       }, {})
       state.currentPracticeSelectionIds = ids
       state.practiceStats = stats
-      state.practiceQueue = buildQueue(
-        ids,
-        action.payload.rounds || defaultSettings.practiceRounds
-      )
+      state.practiceQueue = buildQueue(ids, action.payload.rounds || defaultSettings.practiceRounds)
       state.practiceIndex = 0
       state.correctCount = 0
       state.wrongCount = 0
@@ -128,20 +122,18 @@ export const startPractice = (ids: string[]) => (dispatch: AppDispatch, getState
   dispatch(startPracticeInternal({ ids, rounds }))
 }
 
-export const markPractice = (payload: { ok: boolean }) => (
-  dispatch: AppDispatch,
-  getState: () => RootState
-) => {
-  const state = getState()
-  const currentId = state.practice.practiceQueue[state.practice.practiceIndex]
-  dispatch(markPracticeInternal(payload))
-  if (currentId) dispatch(touchLastPracticed(currentId))
-  const after = getState().practice
-  if (after.scoreDeltas) {
-    dispatch(applyScoreDeltas(after.scoreDeltas))
-    dispatch(clearScoreDeltas())
+export const markPractice =
+  (payload: { ok: boolean }) => (dispatch: AppDispatch, getState: () => RootState) => {
+    const state = getState()
+    const currentId = state.practice.practiceQueue[state.practice.practiceIndex]
+    dispatch(markPracticeInternal(payload))
+    if (currentId) dispatch(touchLastPracticed(currentId))
+    const after = getState().practice
+    if (after.scoreDeltas) {
+      dispatch(applyScoreDeltas(after.scoreDeltas))
+      dispatch(clearScoreDeltas())
+    }
   }
-}
 
 export const exitPractice = () => (dispatch: AppDispatch, getState: () => RootState) => {
   dispatch(exitPracticeInternal())

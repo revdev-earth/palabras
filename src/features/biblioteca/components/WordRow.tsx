@@ -11,11 +11,7 @@ type EditDraft = {
   notes: string
 }
 
-type ToggleSpeak = (
-  key: string,
-  text: string,
-  opts?: { sentencePerLine?: boolean }
-) => void
+type ToggleSpeak = (key: string, text: string, opts?: { sentencePerLine?: boolean }) => void
 
 type WordRowProps = {
   word: WordEntry
@@ -95,9 +91,7 @@ export const WordRow = memo(function WordRow({
             >
               {isTermSpeaking ? "⏹️" : "🔊"}
             </button>
-            <span className="wrap-break-word font-semibold text-slate-900">
-              {word.term}
-            </span>
+            <span className="wrap-break-word font-semibold text-slate-900">{word.term}</span>
           </div>
         )}
       </div>
@@ -111,9 +105,7 @@ export const WordRow = memo(function WordRow({
             className="w-full rounded-lg border border-slate-100 bg-white px-3 py-2 text-sm shadow-inner focus:border-slate-400 focus:outline-none"
           />
         ) : (
-          <span className="wrap-break-word text-slate-800">
-            {word.translation}
-          </span>
+          <span className="wrap-break-word text-slate-800">{word.translation}</span>
         )}
       </div>
 
@@ -142,11 +134,7 @@ export const WordRow = memo(function WordRow({
             >
               {isNotesSpeaking ? "⏹️" : "🔊"}
             </button>
-            <button
-              type="button"
-              onClick={onToggleExpand}
-              className="group w-full text-left text-slate-700"
-            >
+            <button type="button" onClick={onToggleExpand} className="group w-full text-left text-slate-700">
               <div
                 className={
                   expanded

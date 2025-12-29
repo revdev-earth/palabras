@@ -1,19 +1,19 @@
-import 'dotenv/config'
-import { PrismaClient } from '@prisma/client'
-import { PrismaLibSql } from '@prisma/adapter-libsql'
+import "dotenv/config"
+import { PrismaClient } from "@prisma/client"
+import { PrismaLibSql } from "@prisma/adapter-libsql"
 
 const databaseUrl = process.env.DATABASE_URL
 
-if (!databaseUrl) throw new Error('DATABASE_URL is not configured')
+if (!databaseUrl) throw new Error("DATABASE_URL is not configured")
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
   prismaAdapter: PrismaLibSql | undefined
 }
 
-const isPostgres = databaseUrl.toLowerCase().startsWith('postgres')
+const isPostgres = databaseUrl.toLowerCase().startsWith("postgres")
 const isLibSql =
-  databaseUrl.toLowerCase().startsWith('libsql') || databaseUrl.toLowerCase().startsWith('file:')
+  databaseUrl.toLowerCase().startsWith("libsql") || databaseUrl.toLowerCase().startsWith("file:")
 
 const adapter =
   !isPostgres && isLibSql
@@ -29,12 +29,12 @@ export const prisma =
     ...(accelerateUrl ? { accelerateUrl } : {}),
     log: [
       // 'query',
-      'error',
-      'warn',
+      "error",
+      "warn",
     ],
   })
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   globalForPrisma.prisma = prisma
   if (adapter) globalForPrisma.prismaAdapter = adapter
 }

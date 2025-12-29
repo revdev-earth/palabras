@@ -57,8 +57,11 @@ const dateValue = (iso: string | null, direction: "asc" | "desc") => {
 
 export const formatDate = (iso: string | null) =>
   iso
-    ? new Date(iso).toLocaleString(undefined, {
-        dateStyle: "short",
+    ? new Date(iso).toLocaleDateString("es-ES", {
+        timeZone: "UTC",
+        year: "2-digit",
+        month: "2-digit",
+        day: "2-digit",
       })
     : "—"
 
@@ -120,10 +123,8 @@ export const filterAndSortWords = <T extends WordLike>(
       return new Date(b.lastPracticedAt || 0).getTime() - new Date(a.lastPracticedAt || 0).getTime()
     if (sortBy === "lastPracticedAtAsc")
       return new Date(a.lastPracticedAt || 0).getTime() - new Date(b.lastPracticedAt || 0).getTime()
-    if (sortBy === "createdAt")
-      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    if (sortBy === "createdAtAsc")
-      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    if (sortBy === "createdAt") return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    if (sortBy === "createdAtAsc") return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
     if (sortBy === "term") return a.term.localeCompare(b.term)
     if (sortBy === "termDesc") return b.term.localeCompare(a.term)
     if (sortBy === "translation") return a.translation.localeCompare(b.translation)

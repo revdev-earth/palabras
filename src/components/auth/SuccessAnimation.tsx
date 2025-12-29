@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { Check } from 'lucide-react'
+import { Check } from "lucide-react"
 
 export default function SuccessAnimation() {
   return (

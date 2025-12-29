@@ -1,11 +1,6 @@
 import { useDispatch, useSelector } from "+/redux"
 import { useSpeaker } from "+/hooks/useSpeaker"
-import {
-  exitPractice,
-  markPractice,
-  setAlwaysShow,
-  toggleReveal,
-} from "+/redux/slices/practiceSlice"
+import { exitPractice, markPractice, setAlwaysShow, toggleReveal } from "+/redux/slices/practiceSlice"
 
 const badge = (label: string) => (
   <span className="rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs text-slate-700 shadow-sm">
@@ -16,9 +11,7 @@ const badge = (label: string) => (
 function PracticeSection() {
   const dispatch = useDispatch()
   const words = useSelector((s) => s.words.words)
-  const currentPracticeSelectionIds = useSelector(
-    (s) => s.practice.currentPracticeSelectionIds
-  )
+  const currentPracticeSelectionIds = useSelector((s) => s.practice.currentPracticeSelectionIds)
   const practiceQueue = useSelector((s) => s.practice.practiceQueue)
   const practiceIndex = useSelector((s) => s.practice.practiceIndex)
   const correctCount = useSelector((s) => s.practice.correctCount)
@@ -55,11 +48,7 @@ function PracticeSection() {
       <div className="flex flex-wrap items-center gap-2 text-sm text-slate-700">
         {badge(`Palabras: ${currentPracticeSelection.length}`)}
         {badge(`Reps/Palabra: ${practiceRounds}`)}
-        {badge(
-          `Progreso: ${Math.min(practiceIndex, practiceQueue.length)} / ${
-            practiceQueue.length
-          }`
-        )}
+        {badge(`Progreso: ${Math.min(practiceIndex, practiceQueue.length)} / ${practiceQueue.length}`)}
         {badge(`✔️ ${correctCount} · ❌ ${wrongCount}`)}
         <label className="flex items-center gap-2 rounded-full border border-slate-100 bg-white px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm">
           <input
@@ -80,15 +69,10 @@ function PracticeSection() {
       </div>
 
       <details className="mt-3 rounded-xl border border-slate-100 bg-slate-50/60 p-3 text-sm text-slate-700">
-        <summary className="cursor-pointer select-none font-semibold">
-          Ver palabras seleccionadas
-        </summary>
+        <summary className="cursor-pointer select-none font-semibold">Ver palabras seleccionadas</summary>
         <div className="mt-2 space-y-1 text-slate-700">
           {currentPracticeSelection.map((w) => (
-            <div
-              key={w.id}
-              className="rounded-lg bg-white px-3 py-2 shadow-inner"
-            >
+            <div key={w.id} className="rounded-lg bg-white px-3 py-2 shadow-inner">
               <strong>{w.term}</strong> → {w.translation}
             </div>
           ))}
@@ -117,9 +101,7 @@ function PracticeSection() {
         </div>
         {(reveal || alwaysShow) && (
           <>
-            <div className="mt-3 text-xl font-semibold text-slate-800">
-              {practiceWord.translation}
-            </div>
+            <div className="mt-3 text-xl font-semibold text-slate-800">{practiceWord.translation}</div>
             {practiceWord.notes && (
               <div className="mt-2 flex items-start justify-center gap-2 text-sm text-slate-700">
                 <button
@@ -135,9 +117,7 @@ function PracticeSection() {
                 >
                   {isSpeaking ? "⏹️" : "🔊"}
                 </button>
-                <div className="whitespace-pre-wrap text-left">
-                  {practiceWord.notes}
-                </div>
+                <div className="whitespace-pre-wrap text-left">{practiceWord.notes}</div>
               </div>
             )}
           </>

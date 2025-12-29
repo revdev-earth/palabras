@@ -22,8 +22,7 @@ export function useTooltipState({ previewRef, wordsByTerm }: UseTooltipStateProp
 
   const derivedTooltip = useMemo(() => {
     if (!tooltip) return tooltip
-    const sameLookup = (a?: WordEntry, b?: WordEntry) =>
-      (a?.id ?? null) === (b?.id ?? null)
+    const sameLookup = (a?: WordEntry, b?: WordEntry) => (a?.id ?? null) === (b?.id ?? null)
     if (tooltip.kind === "known") {
       const nextLookup = wordsByTerm.get(normalizeTerm(tooltip.lookup.term))
       if (!nextLookup || sameLookup(nextLookup, tooltip.lookup)) return tooltip
