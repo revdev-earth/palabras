@@ -3,80 +3,80 @@ const verbosBewegung = [
     id: "de-fahren",
     term: "fahren",
     translation: "conducir/viajar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-kommen",
     term: "kommen",
     translation: "venir",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-gehen",
     term: "gehen",
     translation: "ir",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-laufen",
     term: "laufen",
     translation: "correr/caminar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-losrennen",
     term: "losrennen",
     translation: "echar a correr",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-mitfahren",
     term: "mitfahren",
     translation: "ir con/acompañar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-weglaufen",
     term: "weglaufen",
     translation: "huir/irse corriendo",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-drankommen",
     term: "drankommen",
     translation: "tocar el turno/llegar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-rumlaufen",
     term: "rumlaufen",
     translation: "andar por ahí",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-fahre",
     term: "fahre",
     translation: "conduzco/viajo",
-    context: ["A1", "verb", "fahren"],
+    context: ["A1", "verb", "fahren"]
   },
   {
     id: "de-laufe",
     term: "laufe",
     translation: "corro/ando",
-    context: ["A1", "verb", "laufen"],
+    context: ["A1", "verb", "laufen"]
   },
   {
     id: "de-kommt",
     term: "kommt",
     translation: "viene",
-    context: ["A1", "verb", "kommen"],
+    context: ["A1", "verb", "kommen"]
   },
   {
     id: "de-gehe",
     term: "gehe",
     translation: "voy",
-    context: ["A1", "verb", "gehen"],
-  },
+    context: ["A1", "verb", "gehen"]
+  }
 ]
 
 const verbosEssentrinken = [
@@ -84,8 +84,8 @@ const verbosEssentrinken = [
     id: "de-fressen",
     term: "fressen",
     translation: "comer (animales)/devorar",
-    context: ["A2", "verb"],
-  },
+    context: ["A2", "verb"]
+  }
 ]
 
 const verbosHilfsverben = [
@@ -93,14 +93,14 @@ const verbosHilfsverben = [
     id: "de-haben",
     term: "haben",
     translation: "tener",
-    context: ["A1", "hilfsverb", "unregelmäßig", "verb"],
+    context: ["A1", "hilfsverb", "unregelmäßig", "verb"]
   },
   {
     id: "de-werden",
     term: "werden",
     translation: "llegar a ser/volverse",
-    context: ["A1", "hilfsverb", "unregelmäßig", "verb"],
-  },
+    context: ["A1", "hilfsverb", "unregelmäßig", "verb"]
+  }
 ]
 
 const verbosKommunikation = [
@@ -108,26 +108,26 @@ const verbosKommunikation = [
     id: "de-sagen",
     term: "sagen",
     translation: "decir",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-erzählen",
     term: "erzählen",
     translation: "contar/narrar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-sage",
     term: "sage",
     translation: "digo",
-    context: ["A1", "verb", "sagen"],
+    context: ["A1", "verb", "sagen"]
   },
   {
     id: "de-verb-besprich",
     term: "besprich",
     translation: "discute, habla sobre",
-    context: ["B1", "verb"],
-  },
+    context: ["B1", "verb"]
+  }
 ]
 
 const verbosModalverben = [
@@ -135,56 +135,56 @@ const verbosModalverben = [
     id: "de-wollen",
     term: "wollen",
     translation: "querer",
-    context: ["A1", "modalverb", "verb"],
+    context: ["A1", "modalverb", "verb"]
   },
   {
     id: "de-können",
     term: "können",
     translation: "poder",
-    context: ["A1", "modalverb", "verb"],
+    context: ["A1", "modalverb", "verb"]
   },
   {
     id: "de-wollte",
     term: "wollte",
     translation: "quería",
-    context: ["A1", "modalverb", "verb", "wollen"],
+    context: ["A1", "modalverb", "verb", "wollen"]
   },
   {
     id: "de-soll",
     term: "soll",
     translation: "debe/se supone",
-    context: ["A1", "modalverb", "verb", "sollen"],
+    context: ["A1", "modalverb", "verb", "sollen"]
   },
   {
     id: "de-verb-kannst",
     term: "kannst",
     translation: "puedes",
-    context: ["A1", "modalverb", "verb", "können"],
+    context: ["A1", "modalverb", "verb", "können"]
   },
   {
     id: "de-müssen",
     term: "müssen",
     translation: "deber/tener que",
-    context: ["A1", "modalverb", "verb"],
+    context: ["A1", "modalverb", "verb"]
   },
   {
     id: "de-sollen",
     term: "sollen",
     translation: "deber (recomendación)",
-    context: ["A1", "modalverb", "verb"],
+    context: ["A1", "modalverb", "verb"]
   },
   {
     id: "de-dürfen",
     term: "dürfen",
     translation: "poder (permiso)",
-    context: ["A1", "modalverb", "verb"],
+    context: ["A1", "modalverb", "verb"]
   },
   {
     id: "de-mögen",
     term: "mögen",
     translation: "gustar/querer",
-    context: ["A1", "modalverb", "verb"],
-  },
+    context: ["A1", "modalverb", "verb"]
+  }
 ]
 
 const verbosTrennbar = [
@@ -192,80 +192,81 @@ const verbosTrennbar = [
     id: "de-aufhören",
     term: "aufhören",
     translation: "parar/dejar de",
-    context: ["A1", "trennbar", "verb"],
+    context: ["A1", "trennbar", "verb"]
   },
   {
     id: "de-festhalten",
     term: "festhalten",
     translation: "sujetar/agarrar fuerte",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-hochsteigen",
     term: "hochsteigen",
     translation: "subir/ascender",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-aufwachen",
     term: "aufwachen",
     translation: "despertarse",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-ausholen",
     term: "ausholen",
     translation: "echarse atrás para golpear",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-ansehen",
     term: "ansehen",
     translation: "mirar/parecer",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-angucken",
     term: "angucken",
     translation: "mirar",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-anzeigen",
     term: "anzeigen",
     translation: "denunciar/mostrar",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-zuschnappen",
     term: "zuschnappen",
     translation: "cerrarse de golpe/morder",
-    context: ["B1", "trennbar", "verb"],
+    context: ["B1", "trennbar", "verb"]
   },
   {
     id: "de-aufreißen",
     term: "aufreißen",
     translation: "rasgar/abrir de golpe",
-    context: ["B1", "trennbar", "verb"],
+    context: ["B1", "trennbar", "verb"]
   },
   {
     id: "de-abziehen",
     term: "abziehen",
     translation: "quitar/arrancar",
-    context: ["B1", "trennbar", "verb"],
+    context: ["B1", "trennbar", "verb"]
   },
   {
     id: "de-loszureißen",
     term: "loszureißen",
     translation: "arrancar",
-    context: ["B2", "trennbar", "verb"],
+    context: ["B2", "trennbar", "verb"]
   },
   {
     id: "de-verb-vermieten",
     term: "vermieten",
     translation: "alquilar (como arrendador)",
-    context: ["A2", "trennbar", "verb"],
-  },
+    context: ["A2", "trennbar", "verb"]
+  }
+
 ]
 
 const verbosAllgemein = [
@@ -273,6296 +274,8096 @@ const verbosAllgemein = [
     id: "de-sein",
     term: "sein",
     translation: "ser/estar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-hören",
     term: "hören",
     translation: "oír/escuchar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-greifen",
     term: "greifen",
     translation: "agarrar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-packen",
     term: "packen",
     translation: "agarrar/empacar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-versuchen",
     term: "versuchen",
     translation: "intentar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-lassen",
     term: "lassen",
     translation: "dejar/permitir",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-machen",
     term: "machen",
     translation: "hacer",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-holen",
     term: "holen",
     translation: "buscar/traer",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-meinen",
     term: "meinen",
     translation: "opinar/pensar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-kontrollieren",
     term: "kontrollieren",
     translation: "controlar/revisar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-schätzen",
     term: "schätzen",
     translation: "estimar/valorar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-gucken",
     term: "gucken",
     translation: "mirar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-steigen",
     term: "steigen",
     translation: "subir/escalar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-drehen",
     term: "drehen",
     translation: "girar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-reißen",
     term: "reißen",
     translation: "arrancar/romper",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-wünschen",
     term: "wünschen",
     translation: "desear",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-brüllen",
     term: "brüllen",
     translation: "gritar/rugir",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-schreien",
     term: "schreien",
     translation: "gritar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-zählen",
     term: "zählen",
     translation: "contar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-krallen",
     term: "krallen",
     translation: "agarrar con las uñas",
-    context: ["A2", "reflexiv", "verb"],
+    context: ["A2", "reflexiv", "verb"]
   },
   {
     id: "de-ballen",
     term: "ballen",
     translation: "apretar/formar bola",
-    context: ["A2", "reflexiv", "verb"],
+    context: ["A2", "reflexiv", "verb"]
   },
   {
     id: "de-flippen",
     term: "flippen",
     translation: "flipar/enloquecer",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-überrumpeln",
     term: "überrumpeln",
     translation: "sorprender/abrumar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-schütteln",
     term: "schütteln",
     translation: "sacudir/agitar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-treffen",
     term: "treffen",
     translation: "encontrar/acertar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-fallen",
     term: "fallen",
     translation: "caer",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-stecken",
     term: "stecken",
     translation: "meter/estar atascado",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-krümmen",
     term: "krümmen",
     translation: "encorvarse/retorcerse",
-    context: ["A2", "reflexiv", "verb"],
+    context: ["A2", "reflexiv", "verb"]
   },
   {
     id: "de-wiegen",
     term: "wiegen",
     translation: "pesar/mecer",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-knacksen",
     term: "knacksen",
     translation: "crujir",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-rammen",
     term: "rammen",
     translation: "embestir/empotrar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-hallen",
     term: "hallen",
     translation: "resonar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-rutschen",
     term: "rutschen",
     translation: "resbalar/deslizar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-quetschen",
     term: "quetschen",
     translation: "aplastar/estrujar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-bilden",
     term: "bilden",
     translation: "formar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-tippen",
     term: "tippen",
     translation: "teclear/tocar ligeramente",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-wehren",
     term: "wehren",
     translation: "defenderse",
-    context: ["A2", "reflexiv", "verb"],
+    context: ["A2", "reflexiv", "verb"]
   },
   {
     id: "de-verdreschen",
     term: "verdreschen",
     translation: "apalear",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-retten",
     term: "retten",
     translation: "rescatar/salvar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-klären",
     term: "klären",
     translation: "aclarar/resolver",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-häkeln",
     term: "häkeln",
     translation: "hacer ganchillo",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-pflanzen",
     term: "pflanzen",
     translation: "plantar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-sich-ducken",
     term: "sich ducken",
     translation: "agacharse",
-    context: ["B1", "reflexiv", "verb"],
+    context: ["B1", "reflexiv", "verb"]
   },
   {
     id: "de-poltern",
     term: "poltern",
     translation: "retumbar/armar ruido",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-erwischen",
     term: "erwischen",
     translation: "atrapar/pillar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-fuchteln",
     term: "fuchteln",
     translation: "agitar los brazos",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-sprinten",
     term: "sprinten",
     translation: "esprintar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-sich-quetschen",
     term: "sich quetschen",
     translation: "apretujarse",
-    context: ["B1", "reflexiv", "verb"],
+    context: ["B1", "reflexiv", "verb"]
   },
   {
     id: "de-tänzeln",
     term: "tänzeln",
     translation: "danzar/andar dando saltitos",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-zimmern",
     term: "zimmern",
     translation: "carpintear/armar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-sacken",
     term: "sacken",
     translation: "hundirse/asentarse",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-taumeln",
     term: "taumeln",
     translation: "tambalearse",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-verfrachten",
     term: "verfrachten",
     translation: "transportar/cargar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-lauern",
     term: "lauern",
     translation: "acechar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-hinkriegen",
     term: "hinkriegen",
     translation: "conseguir/arreglar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-habe",
     term: "habe",
     translation: "tengo",
-    context: ["A1", "verb", "haben"],
+    context: ["A1", "verb", "haben"]
   },
   {
     id: "de-macht",
     term: "macht",
     translation: "hace",
-    context: ["A1", "verb", "machen"],
+    context: ["A1", "verb", "machen"]
   },
   {
     id: "de-meint",
     term: "meint",
     translation: "piensa/opina",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-sieht",
     term: "sieht",
     translation: "ve",
-    context: ["A1", "verb", "sehen"],
+    context: ["A1", "verb", "sehen"]
   },
   {
     id: "de-sind",
     term: "sind",
     translation: "son",
-    context: ["A1", "verb", "sein"],
+    context: ["A1", "verb", "sein"]
   },
   {
     id: "de-hore",
     term: "höre",
     translation: "oigo/escucho",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-ballt",
     term: "ballt",
     translation: "aprieta",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-steigt",
     term: "steigt",
     translation: "sube",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-flippt",
     term: "flippt",
     translation: "se descontrola",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-drehe",
     term: "drehe",
     translation: "giro",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-greife",
     term: "greife",
     translation: "agarro",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-packe",
     term: "packe",
     translation: "agarro",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-reisse",
     term: "reiße",
     translation: "arranco",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-wunsch",
     term: "wünschte",
     translation: "deseaba",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-waren",
     term: "wären",
     translation: "serían/fueran",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-lachle",
     term: "lächle",
     translation: "sonrío",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-versucht",
     term: "versucht",
     translation: "intenta/intentó",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-wird",
     term: "wird",
     translation: "será/se vuelve",
-    context: ["A1", "verb", "werden"],
+    context: ["A1", "verb", "werden"]
   },
   {
     id: "de-brullt",
     term: "brüllt",
     translation: "grita/ruge",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-ware",
     term: "wäre",
     translation: "sería",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-halte",
     term: "halte",
     translation: "sostengo",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-schreit",
     term: "schreit",
     translation: "grita",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-schuttle",
     term: "schüttle",
     translation: "sacudo",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-guckt",
     term: "guckt",
     translation: "mira",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-zahle",
     term: "zähle",
     translation: "cuento",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-krallt",
     term: "krallt",
     translation: "agarra con fuerza",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-verb-findest",
     term: "findest",
     translation: "encuentras",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-verb-veroeffentlichen",
     term: "veröffentlichen",
     translation: "publicar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-verb-findet",
     term: "findet",
     translation: "encuentra, tiene lugar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-verb-nimmt",
     term: "nimmt",
     translation: "toma, acepta",
-    context: ["A1", "verb", "nehmen"],
+    context: ["A1", "verb", "nehmen"]
   },
   {
     id: "de-verb-kontaktiere",
     term: "kontaktiere",
     translation: "contacta",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-verb-beinhalten",
     term: "beinhalten",
     translation: "incluir, contener",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-verb-bitten",
     term: "bitten",
     translation: "pedir, rogar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-verb-vereinbaren",
     term: "vereinbaren",
     translation: "acordar, pactar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-verb-uebernimmt",
     term: "übernimmt",
     translation: "asume, se hace cargo",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-verb-gebe",
     term: "gebe",
     translation: "doy",
-    context: ["A1", "verb", "geben"],
+    context: ["A1", "verb", "geben"]
   },
   {
     id: "de-verb-erwarten",
     term: "erwarten",
     translation: "esperar, aguardar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-verb-bist",
     term: "bist",
     translation: "eres, estás",
-    context: ["A1", "verb", "sein"],
+    context: ["A1", "verb", "sein"]
   },
   {
     id: "de-verb-weiss",
     term: "weiß",
     translation: "sé, sabe",
-    context: ["A1", "verb", "wissen"],
+    context: ["A1", "verb", "wissen"]
   },
   {
     id: "de-verb-versuch",
     term: "versuch",
     translation: "intenta",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-verb-erraten",
     term: "erraten",
     translation: "adivinar, acertar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-verb-nehmen",
     term: "nehmen",
     translation: "tomar, coger",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-verb-kuscheln",
     term: "Kuscheln",
     translation: "acurrucarse, abrazar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-verb-fingern",
     term: "Fingern",
     translation: "estimulación manual",
-    context: ["C1", "verb"],
+    context: ["C1", "verb"]
   },
   {
     id: "de-verb-werde",
     term: "werde",
     translation: "seré, me convertiré",
-    context: ["A2", "verb", "werden"],
+    context: ["A2", "verb", "werden"]
   },
   {
     id: "de-verb-lass",
     term: "Lass",
     translation: "deja, permite",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-verb-erleben",
     term: "erleben",
     translation: "experimentar, vivir",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-geben",
     term: "geben",
     translation: "dar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-sehen",
     term: "sehen",
     translation: "ver",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-heißen",
     term: "heißen",
     translation: "llamarse",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-wissen",
     term: "wissen",
     translation: "saber",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-bleiben",
     term: "bleiben",
     translation: "quedarse/permanecer",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-liegen",
     term: "liegen",
     translation: "estar acostado/yacer",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-stehen",
     term: "stehen",
     translation: "estar de pie/estar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-tun",
     term: "tun",
     translation: "hacer",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-essen",
     term: "essen",
     translation: "comer",
-    context: ["A1", "verb", "unregelmäßig"],
+    context: ["A1", "verb", "unregelmäßig"]
   },
   {
     id: "de-trinken",
     term: "trinken",
     translation: "beber",
-    context: ["A1", "verb", "unregelmäßig"],
+    context: ["A1", "verb", "unregelmäßig"]
   },
   {
     id: "de-schlafen",
     term: "schlafen",
     translation: "dormir",
-    context: ["A1", "verb", "unregelmäßig"],
+    context: ["A1", "verb", "unregelmäßig"]
   },
   {
     id: "de-sprechen",
     term: "sprechen",
     translation: "hablar",
-    context: ["A1", "verb", "unregelmäßig"],
+    context: ["A1", "verb", "unregelmäßig"]
   },
   {
     id: "de-lesen",
     term: "lesen",
     translation: "leer",
-    context: ["A1", "verb", "unregelmäßig"],
+    context: ["A1", "verb", "unregelmäßig"]
   },
   {
     id: "de-schreiben",
     term: "schreiben",
     translation: "escribir",
-    context: ["A1", "verb", "unregelmäßig"],
+    context: ["A1", "verb", "unregelmäßig"]
   },
   {
     id: "de-finden",
     term: "finden",
     translation: "encontrar",
-    context: ["A1", "verb", "unregelmäßig"],
+    context: ["A1", "verb", "unregelmäßig"]
   },
   {
     id: "de-kennen",
     term: "kennen",
     translation: "conocer",
-    context: ["A1", "verb", "unregelmäßig"],
+    context: ["A1", "verb", "unregelmäßig"]
   },
   {
     id: "de-denken",
     term: "denken",
     translation: "pensar",
-    context: ["A1", "verb", "unregelmäßig"],
+    context: ["A1", "verb", "unregelmäßig"]
   },
   {
     id: "de-bringen",
     term: "bringen",
     translation: "traer",
-    context: ["A1", "verb", "unregelmäßig"],
+    context: ["A1", "verb", "unregelmäßig"]
   },
   {
     id: "de-halten",
     term: "halten",
     translation: "sostener/parar",
-    context: ["A2", "verb", "unregelmäßig"],
+    context: ["A2", "verb", "unregelmäßig"]
   },
   {
     id: "de-tragen",
     term: "tragen",
     translation: "llevar/cargar",
-    context: ["A2", "verb", "unregelmäßig"],
+    context: ["A2", "verb", "unregelmäßig"]
   },
   {
     id: "de-helfen",
     term: "helfen",
     translation: "ayudar",
-    context: ["A1", "verb", "unregelmäßig"],
+    context: ["A1", "verb", "unregelmäßig"]
   },
   {
     id: "de-ist",
     term: "ist",
     translation: "es/está",
-    context: ["A1", "unregelmäßig", "verb", "sein"],
+    context: ["A1", "unregelmäßig", "verb", "sein"]
   },
   {
     id: "de-bin",
     term: "bin",
     translation: "soy/estoy",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "sein"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "sein"]
   },
   {
     id: "de-seid",
     term: "seid",
     translation: "sois/estáis",
-    context: ["A1", "präsens", "plural", "unregelmäßig", "verb", "zweite-person", "sein"],
+    context: ["A1", "präsens", "plural", "unregelmäßig", "verb", "zweite-person", "sein"]
   },
   {
     id: "de-war",
     term: "war",
     translation: "era/estaba",
-    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "sein"],
+    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "sein"]
   },
   {
     id: "de-warst",
     term: "warst",
     translation: "eras/estabas",
-    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "sein"],
+    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "sein"]
   },
   {
     id: "de-waren",
     term: "waren",
     translation: "éramos/estábamos",
-    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "sein"],
+    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "sein"]
   },
   {
     id: "de-wart",
     term: "wart",
     translation: "erais/estabais",
-    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "sein"],
+    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "sein"]
   },
   {
     id: "de-gewesen",
     term: "gewesen",
     translation: "sido/estado",
-    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "sein"],
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "sein"]
   },
   {
     id: "de-sei",
     term: "sei",
     translation: "sé/está",
-    context: ["A2", "imperativ", "singular", "unregelmäßig", "verb", "zweite-person", "sein"],
+    context: ["A2", "imperativ", "singular", "unregelmäßig", "verb", "zweite-person", "sein"]
   },
   {
     id: "de-seid-imperativ",
     term: "seid",
     translation: "sed/estad",
-    context: ["A2", "imperativ", "plural", "unregelmäßig", "verb", "zweite-person", "sein"],
+    context: ["A2", "imperativ", "plural", "unregelmäßig", "verb", "zweite-person", "sein"]
   },
   {
     id: "de-hast",
     term: "hast",
     translation: "tienes",
-    context: ["A1", "hilfsverb", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "haben"],
+    context: ["A1", "hilfsverb", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "haben"]
   },
   {
     id: "de-hat",
     term: "hat",
     translation: "tiene",
-    context: ["A1", "dritte-person", "hilfsverb", "präsens", "singular", "unregelmäßig", "verb", "haben"],
+    context: ["A1", "dritte-person", "hilfsverb", "präsens", "singular", "unregelmäßig", "verb", "haben"]
   },
   {
     id: "de-habt",
     term: "habt",
     translation: "tenéis/tienen",
-    context: ["A1", "hilfsverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "haben"],
+    context: ["A1", "hilfsverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "haben"]
   },
   {
     id: "de-hatte",
     term: "hatte",
     translation: "tenía",
-    context: ["A1", "hilfsverb", "präteritum", "singular", "unregelmäßig", "verb", "haben"],
+    context: ["A1", "hilfsverb", "präteritum", "singular", "unregelmäßig", "verb", "haben"]
   },
   {
     id: "de-hattest",
     term: "hattest",
     translation: "tenías",
-    context: ["A1", "hilfsverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "haben"],
+    context: ["A1", "hilfsverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "haben"]
   },
   {
     id: "de-hatten",
     term: "hatten",
     translation: "teníamos/tenían",
-    context: ["A1", "hilfsverb", "plural", "präteritum", "unregelmäßig", "verb", "haben"],
+    context: ["A1", "hilfsverb", "plural", "präteritum", "unregelmäßig", "verb", "haben"]
   },
   {
     id: "de-hattet",
     term: "hattet",
     translation: "teníais",
-    context: ["A1", "hilfsverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "haben"],
+    context: ["A1", "hilfsverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "haben"]
   },
   {
     id: "de-gehabt",
     term: "gehabt",
     translation: "tenido",
-    context: ["A1", "hilfsverb", "partizip-ii", "unregelmäßig", "verb", "haben"],
+    context: ["A1", "hilfsverb", "partizip-ii", "unregelmäßig", "verb", "haben"]
   },
   {
     id: "de-wirst",
     term: "wirst",
     translation: "te volverás/serás",
-    context: ["A1", "hilfsverb", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "werden"],
+    context: ["A1", "hilfsverb", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "werden"]
   },
   {
     id: "de-werdet",
     term: "werdet",
     translation: "os volveréis/seréis",
-    context: ["A1", "hilfsverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "werden"],
+    context: ["A1", "hilfsverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "werden"]
   },
   {
     id: "de-wurde",
     term: "wurde",
     translation: "me volví/fui",
-    context: ["A1", "hilfsverb", "präteritum", "singular", "unregelmäßig", "verb", "werden"],
+    context: ["A1", "hilfsverb", "präteritum", "singular", "unregelmäßig", "verb", "werden"]
   },
   {
     id: "de-wurdest",
     term: "wurdest",
     translation: "te volviste/fuiste",
-    context: ["A1", "hilfsverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "werden"],
+    context: ["A1", "hilfsverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "werden"]
   },
   {
     id: "de-wurden",
     term: "wurden",
     translation: "nos volvimos/fueron",
-    context: ["A1", "hilfsverb", "plural", "präteritum", "unregelmäßig", "verb", "werden"],
+    context: ["A1", "hilfsverb", "plural", "präteritum", "unregelmäßig", "verb", "werden"]
   },
   {
     id: "de-wurdet",
     term: "wurdet",
     translation: "os volvisteis",
-    context: ["A1", "hilfsverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "werden"],
+    context: ["A1", "hilfsverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "werden"]
   },
   {
     id: "de-geworden",
     term: "geworden",
     translation: "vuelto/sido",
-    context: ["A1", "hilfsverb", "partizip-ii", "unregelmäßig", "verb", "werden"],
+    context: ["A1", "hilfsverb", "partizip-ii", "unregelmäßig", "verb", "werden"]
   },
   {
     id: "de-kann",
     term: "kann",
     translation: "puedo/puede",
-    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "können"],
+    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "können"]
   },
   {
     id: "de-könnt",
     term: "könnt",
     translation: "podéis/pueden",
-    context: ["A1", "modalverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "können"],
+    context: ["A1", "modalverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "können"]
   },
   {
     id: "de-konnte",
     term: "konnte",
     translation: "podía/pude",
-    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "können"],
+    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "können"]
   },
   {
     id: "de-konntest",
     term: "konntest",
     translation: "podías/pudiste",
-    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "können"],
+    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "können"]
   },
   {
     id: "de-konnten",
     term: "konnten",
     translation: "podíamos/pudimos",
-    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "können"],
+    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "können"]
   },
   {
     id: "de-konntet",
     term: "konntet",
     translation: "podíais/pudisteis",
-    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "können"],
+    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "können"]
   },
   {
     id: "de-muss",
     term: "muss",
     translation: "debo/debe",
-    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "müssen"],
+    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "müssen"]
   },
   {
     id: "de-musst",
     term: "musst",
     translation: "debes",
-    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "müssen"],
+    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "müssen"]
   },
   {
     id: "de-müsst",
     term: "müsst",
     translation: "debéis/deben",
-    context: ["A1", "modalverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "müssen"],
+    context: ["A1", "modalverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "müssen"]
   },
   {
     id: "de-musste",
     term: "musste",
     translation: "debía/debí",
-    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "müssen"],
+    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "müssen"]
   },
   {
     id: "de-musstest",
     term: "musstest",
     translation: "debías/debiste",
-    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "müssen"],
+    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "müssen"]
   },
   {
     id: "de-mussten",
     term: "mussten",
     translation: "debíamos/debimos",
-    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "müssen"],
+    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "müssen"]
   },
   {
     id: "de-musstet",
     term: "musstet",
     translation: "debíais/debisteis",
-    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "müssen"],
+    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "müssen"]
   },
   {
     id: "de-will",
     term: "will",
     translation: "quiero/quiere",
-    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "wollen"],
+    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "wollen"]
   },
   {
     id: "de-willst",
     term: "willst",
     translation: "quieres",
-    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "wollen"],
+    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "wollen"]
   },
   {
     id: "de-wollt",
     term: "wollt",
     translation: "queréis/quieren",
-    context: ["A1", "modalverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "wollen"],
+    context: ["A1", "modalverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "wollen"]
   },
   {
     id: "de-wolltest",
     term: "wolltest",
     translation: "querías/quisiste",
-    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "wollen"],
+    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "wollen"]
   },
   {
     id: "de-wollten",
     term: "wollten",
     translation: "queríamos/quisimos",
-    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "wollen"],
+    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "wollen"]
   },
   {
     id: "de-wolltet",
     term: "wolltet",
     translation: "queríais/quisisteis",
-    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "wollen"],
+    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "wollen"]
   },
   {
     id: "de-sollst",
     term: "sollst",
     translation: "deberías",
-    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "sollen"],
+    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "sollen"]
   },
   {
     id: "de-sollt",
     term: "sollt",
     translation: "deberíais/deberían",
-    context: ["A1", "modalverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "sollen"],
+    context: ["A1", "modalverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "sollen"]
   },
   {
     id: "de-sollte",
     term: "sollte",
     translation: "debería",
-    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "sollen"],
+    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "sollen"]
   },
   {
     id: "de-solltest",
     term: "solltest",
     translation: "deberías",
-    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "sollen"],
+    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "sollen"]
   },
   {
     id: "de-sollten",
     term: "sollten",
     translation: "deberíamos/deberían",
-    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "sollen"],
+    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "sollen"]
   },
   {
     id: "de-solltet",
     term: "solltet",
     translation: "deberíais",
-    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "sollen"],
+    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "sollen"]
   },
   {
     id: "de-darf",
     term: "darf",
     translation: "puedo/puede (permiso)",
-    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "dürfen"],
+    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "dürfen"]
   },
   {
     id: "de-darfst",
     term: "darfst",
     translation: "puedes (permiso)",
-    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "dürfen"],
+    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "dürfen"]
   },
   {
     id: "de-dürft",
     term: "dürft",
     translation: "podéis/pueden (permiso)",
-    context: ["A1", "modalverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "dürfen"],
+    context: ["A1", "modalverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "dürfen"]
   },
   {
     id: "de-durfte",
     term: "durfte",
     translation: "podía/pude (permiso)",
-    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "dürfen"],
+    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "dürfen"]
   },
   {
     id: "de-durftest",
     term: "durftest",
     translation: "podías/pudiste (permiso)",
-    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "dürfen"],
+    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "dürfen"]
   },
   {
     id: "de-durften",
     term: "durften",
     translation: "podíamos/pudimos (permiso)",
-    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "dürfen"],
+    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "dürfen"]
   },
   {
     id: "de-durftet",
     term: "durftet",
     translation: "podíais/pudisteis (permiso)",
-    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "dürfen"],
+    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "dürfen"]
   },
   {
     id: "de-mag",
     term: "mag",
     translation: "me gusta/le gusta",
-    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "mögen"],
+    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "mögen"]
   },
   {
     id: "de-magst",
     term: "magst",
     translation: "te gusta",
-    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "mögen"],
+    context: ["A1", "modalverb", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "mögen"]
   },
   {
     id: "de-mögt",
     term: "mögt",
     translation: "os gusta/les gusta",
-    context: ["A1", "modalverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "mögen"],
+    context: ["A1", "modalverb", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "mögen"]
   },
   {
     id: "de-mochte",
     term: "mochte",
     translation: "me gustaba/gustó",
-    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "mögen"],
+    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "mögen"]
   },
   {
     id: "de-mochtest",
     term: "mochtest",
     translation: "te gustaba/gustó",
-    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "mögen"],
+    context: ["A1", "modalverb", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "mögen"]
   },
   {
     id: "de-mochten",
     term: "mochten",
     translation: "nos gustaba/gustó",
-    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "mögen"],
+    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "mögen"]
   },
   {
     id: "de-mochtet",
     term: "mochtet",
     translation: "os gustaba/gustó",
-    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "mögen"],
+    context: ["A1", "modalverb", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "mögen"]
   },
   {
     id: "de-gehst",
     term: "gehst",
     translation: "vas",
-    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "gehen"],
+    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "gehen"]
   },
   {
     id: "de-geht",
     term: "geht",
     translation: "va/vais/van",
-    context: ["A1", "präsens", "unregelmäßig", "verb", "gehen"],
+    context: ["A1", "präsens", "unregelmäßig", "verb", "gehen"]
   },
   {
     id: "de-ging",
     term: "ging",
     translation: "fui/fue",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "gehen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "gehen"]
   },
   {
     id: "de-gingst",
     term: "gingst",
     translation: "fuiste",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "gehen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "gehen"]
   },
   {
     id: "de-gingen",
     term: "gingen",
     translation: "fuimos/fueron",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "gehen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "gehen"]
   },
   {
     id: "de-gingt",
     term: "gingt",
     translation: "fuisteis",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "gehen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "gehen"]
   },
   {
     id: "de-gegangen",
     term: "gegangen",
     translation: "ido",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "gehen"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "gehen"]
   },
   {
     id: "de-komme",
     term: "komme",
     translation: "vengo",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "kommen"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "kommen"]
   },
   {
     id: "de-kommst",
     term: "kommst",
     translation: "vienes",
-    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "kommen"],
+    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "kommen"]
   },
   {
     id: "de-kam",
     term: "kam",
     translation: "vine/vino",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "kommen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "kommen"]
   },
   {
     id: "de-kamst",
     term: "kamst",
     translation: "viniste",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "kommen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "kommen"]
   },
   {
     id: "de-kamen",
     term: "kamen",
     translation: "vinimos/vinieron",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "kommen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "kommen"]
   },
   {
     id: "de-kamt",
     term: "kamt",
     translation: "vinisteis",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "kommen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "kommen"]
   },
   {
     id: "de-gekommen",
     term: "gekommen",
     translation: "venido",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "kommen"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "kommen"]
   },
   {
     id: "de-mache",
     term: "mache",
     translation: "hago",
-    context: ["A1", "erste-person", "präsens", "singular", "verb", "machen"],
+    context: ["A1", "erste-person", "präsens", "singular", "verb", "machen"]
   },
   {
     id: "de-machst",
     term: "machst",
     translation: "haces",
-    context: ["A1", "präsens", "singular", "verb", "zweite-person", "machen"],
+    context: ["A1", "präsens", "singular", "verb", "zweite-person", "machen"]
   },
   {
     id: "de-machte",
     term: "machte",
     translation: "hice/hizo",
-    context: ["A2", "präteritum", "singular", "verb", "machen"],
+    context: ["A2", "präteritum", "singular", "verb", "machen"]
   },
   {
     id: "de-machtest",
     term: "machtest",
     translation: "hiciste",
-    context: ["A2", "präteritum", "singular", "verb", "zweite-person", "machen"],
+    context: ["A2", "präteritum", "singular", "verb", "zweite-person", "machen"]
   },
   {
     id: "de-machten",
     term: "machten",
     translation: "hicimos/hicieron",
-    context: ["A2", "plural", "präteritum", "verb", "machen"],
+    context: ["A2", "plural", "präteritum", "verb", "machen"]
   },
   {
     id: "de-machtet",
     term: "machtet",
     translation: "hicisteis",
-    context: ["A2", "plural", "präteritum", "verb", "zweite-person", "machen"],
+    context: ["A2", "plural", "präteritum", "verb", "zweite-person", "machen"]
   },
   {
     id: "de-gemacht",
     term: "gemacht",
     translation: "hecho",
-    context: ["A2", "partizip-ii", "verb", "machen"],
+    context: ["A2", "partizip-ii", "verb", "machen"]
   },
   {
     id: "de-sagst",
     term: "sagst",
     translation: "dices",
-    context: ["A1", "präsens", "singular", "verb", "zweite-person", "sagen"],
+    context: ["A1", "präsens", "singular", "verb", "zweite-person", "sagen"]
   },
   {
     id: "de-sagt",
     term: "sagt",
     translation: "dice/decís/dicen",
-    context: ["A1", "präsens", "verb", "sagen"],
+    context: ["A1", "präsens", "verb", "sagen"]
   },
   {
     id: "de-sagte",
     term: "sagte",
     translation: "dije/dijo",
-    context: ["A2", "präteritum", "singular", "verb", "sagen"],
+    context: ["A2", "präteritum", "singular", "verb", "sagen"]
   },
   {
     id: "de-sagtest",
     term: "sagtest",
     translation: "dijiste",
-    context: ["A2", "präteritum", "singular", "verb", "zweite-person", "sagen"],
+    context: ["A2", "präteritum", "singular", "verb", "zweite-person", "sagen"]
   },
   {
     id: "de-sagten",
     term: "sagten",
     translation: "dijimos/dijeron",
-    context: ["A2", "plural", "präteritum", "verb", "sagen"],
+    context: ["A2", "plural", "präteritum", "verb", "sagen"]
   },
   {
     id: "de-sagtet",
     term: "sagtet",
     translation: "dijisteis",
-    context: ["A2", "plural", "präteritum", "verb", "zweite-person", "sagen"],
+    context: ["A2", "plural", "präteritum", "verb", "zweite-person", "sagen"]
   },
   {
     id: "de-gesagt",
     term: "gesagt",
     translation: "dicho",
-    context: ["A2", "partizip-ii", "verb", "sagen"],
+    context: ["A2", "partizip-ii", "verb", "sagen"]
   },
   {
     id: "de-gibst",
     term: "gibst",
     translation: "das",
-    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "geben"],
+    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "geben"]
   },
   {
     id: "de-gibt",
     term: "gibt",
     translation: "da/dais/dan",
-    context: ["A1", "präsens", "unregelmäßig", "verb", "geben"],
+    context: ["A1", "präsens", "unregelmäßig", "verb", "geben"]
   },
   {
     id: "de-gebt",
     term: "gebt",
     translation: "dad/den",
-    context: ["A1", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "geben"],
+    context: ["A1", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "geben"]
   },
   {
     id: "de-gab",
     term: "gab",
     translation: "di/dio",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "geben"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "geben"]
   },
   {
     id: "de-gabst",
     term: "gabst",
     translation: "diste",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "geben"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "geben"]
   },
   {
     id: "de-gaben",
     term: "gaben",
     translation: "dimos/dieron",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "geben"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "geben"]
   },
   {
     id: "de-gabt",
     term: "gabt",
     translation: "disteis",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "geben"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "geben"]
   },
   {
     id: "de-gegeben",
     term: "gegeben",
     translation: "dado",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "geben"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "geben"]
   },
   {
     id: "de-nehme",
     term: "nehme",
     translation: "tomo",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "nehmen"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "nehmen"]
   },
   {
     id: "de-nimmst",
     term: "nimmst",
     translation: "tomas",
-    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "nehmen"],
+    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "nehmen"]
   },
   {
     id: "de-nehmt",
     term: "nehmt",
     translation: "tomáis/toman",
-    context: ["A1", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "nehmen"],
+    context: ["A1", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "nehmen"]
   },
   {
     id: "de-nahm",
     term: "nahm",
     translation: "tomé/tomó",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "nehmen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "nehmen"]
   },
   {
     id: "de-nahmst",
     term: "nahmst",
     translation: "tomaste",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "nehmen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "nehmen"]
   },
   {
     id: "de-nahmen",
     term: "nahmen",
     translation: "tomamos/tomaron",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "nehmen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "nehmen"]
   },
   {
     id: "de-nahmt",
     term: "nahmt",
     translation: "tomasteis",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "nehmen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "nehmen"]
   },
   {
     id: "de-genommen",
     term: "genommen",
     translation: "tomado",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "nehmen"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "nehmen"]
   },
   {
     id: "de-sehe",
     term: "sehe",
     translation: "veo",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "sehen"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "sehen"]
   },
   {
     id: "de-siehst",
     term: "siehst",
     translation: "ves",
-    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "sehen"],
+    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "sehen"]
   },
   {
     id: "de-seht",
     term: "seht",
     translation: "veis/ven",
-    context: ["A1", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "sehen"],
+    context: ["A1", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "sehen"]
   },
   {
     id: "de-sah",
     term: "sah",
     translation: "vi/vio",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "sehen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "sehen"]
   },
   {
     id: "de-sahst",
     term: "sahst",
     translation: "viste",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "sehen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "sehen"]
   },
   {
     id: "de-sahen",
     term: "sahen",
     translation: "vimos/vieron",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "sehen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "sehen"]
   },
   {
     id: "de-saht",
     term: "saht",
     translation: "visteis",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "sehen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "sehen"]
   },
   {
     id: "de-gesehen",
     term: "gesehen",
     translation: "visto",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "sehen"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "sehen"]
   },
   {
     id: "de-weißt",
     term: "weißt",
     translation: "sabes",
-    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "wissen"],
+    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "wissen"]
   },
   {
     id: "de-wisst",
     term: "wisst",
     translation: "sabéis/saben",
-    context: ["A1", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "wissen"],
+    context: ["A1", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "wissen"]
   },
   {
     id: "de-wusste",
     term: "wusste",
     translation: "supe/supo",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "wissen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "wissen"]
   },
   {
     id: "de-wusstest",
     term: "wusstest",
     translation: "supiste",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "wissen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "wissen"]
   },
   {
     id: "de-wussten",
     term: "wussten",
     translation: "supimos/supieron",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "wissen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "wissen"]
   },
   {
     id: "de-wusstet",
     term: "wusstet",
     translation: "supisteis",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "wissen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "wissen"]
   },
   {
     id: "de-gewusst",
     term: "gewusst",
     translation: "sabido",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "wissen"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "wissen"]
   },
   {
     id: "de-fährst",
     term: "fährst",
     translation: "conduces/viajas",
-    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "fahren"],
+    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "fahren"]
   },
   {
     id: "de-fährt",
     term: "fährt",
     translation: "conduce/viaja",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "fahren"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "fahren"]
   },
   {
     id: "de-fahrt",
     term: "fahrt",
     translation: "conducís/viajáis",
-    context: ["A1", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "fahren"],
+    context: ["A1", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "fahren"]
   },
   {
     id: "de-fuhr",
     term: "fuhr",
     translation: "conduje/condujo",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "fahren"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "fahren"]
   },
   {
     id: "de-fuhrst",
     term: "fuhrst",
     translation: "condujiste",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "fahren"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "fahren"]
   },
   {
     id: "de-fuhren",
     term: "fuhren",
     translation: "condujimos/condujeron",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "fahren"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "fahren"]
   },
   {
     id: "de-fuhrt",
     term: "fuhrt",
     translation: "condujisteis",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "fahren"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "fahren"]
   },
   {
     id: "de-gefahren",
     term: "gefahren",
     translation: "conducido/viajado",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "fahren"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "fahren"]
   },
   {
     id: "de-läufst",
     term: "läufst",
     translation: "corres/caminas",
-    context: ["A2", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "laufen"],
+    context: ["A2", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "laufen"]
   },
   {
     id: "de-läuft",
     term: "läuft",
     translation: "corre/camina",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "laufen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "laufen"]
   },
   {
     id: "de-lauft",
     term: "lauft",
     translation: "corréis/camináis",
-    context: ["A2", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "laufen"],
+    context: ["A2", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "laufen"]
   },
   {
     id: "de-lief",
     term: "lief",
     translation: "corrí/corrió",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "laufen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "laufen"]
   },
   {
     id: "de-liefst",
     term: "liefst",
     translation: "corriste",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "laufen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "laufen"]
   },
   {
     id: "de-liefen",
     term: "liefen",
     translation: "corrimos/corrieron",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "laufen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "laufen"]
   },
   {
     id: "de-lieft",
     term: "lieft",
     translation: "corristeis",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "laufen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "laufen"]
   },
   {
     id: "de-gelaufen",
     term: "gelaufen",
     translation: "corrido/caminado",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "laufen"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "laufen"]
   },
   {
     id: "de-anfangen",
     term: "anfangen",
     translation: "empezar/comenzar",
-    context: ["A1", "trennbar", "unregelmäßig", "verb"],
+    context: ["A1", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-antworten",
     term: "antworten",
     translation: "responder",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-arbeiten",
     term: "arbeiten",
     translation: "trabajar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-aufstehen",
     term: "aufstehen",
     translation: "levantarse",
-    context: ["A1", "trennbar", "unregelmäßig", "verb"],
+    context: ["A1", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-beginnen",
     term: "beginnen",
     translation: "comenzar/empezar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-bekommen",
     term: "bekommen",
     translation: "recibir/obtener",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-bezahlen",
     term: "bezahlen",
     translation: "pagar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-brauchen",
     term: "brauchen",
     translation: "necesitar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-dauern",
     term: "dauern",
     translation: "durar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-enden",
     term: "enden",
     translation: "terminar/acabar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-erinnern",
     term: "erinnern",
     translation: "recordar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-fragen",
     term: "fragen",
     translation: "preguntar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-gefallen",
     term: "gefallen",
     translation: "gustar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-glauben",
     term: "glauben",
     translation: "creer",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-hängen",
     term: "hängen",
     translation: "colgar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-kaufen",
     term: "kaufen",
     translation: "comprar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-kennenlernen",
     term: "kennenlernen",
     translation: "conocer (por primera vez)",
-    context: ["A1", "trennbar", "verb"],
+    context: ["A1", "trennbar", "verb"]
   },
   {
     id: "de-kochen",
     term: "kochen",
     translation: "cocinar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-kosten",
     term: "kosten",
     translation: "costar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-lachen",
     term: "lachen",
     translation: "reír",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-leben",
     term: "leben",
     translation: "vivir",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-legen",
     term: "legen",
     translation: "poner/colocar (horizontal)",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-lernen",
     term: "lernen",
     translation: "aprender",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-lieben",
     term: "lieben",
     translation: "amar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-meinen",
     term: "meinen",
     translation: "opinar/pensar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-putzen",
     term: "putzen",
     translation: "limpiar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-rechnen",
     term: "rechnen",
     translation: "calcular",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-schließen",
     term: "schließen",
     translation: "cerrar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-schmecken",
     term: "schmecken",
     translation: "saber (sabor)",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-setzen",
     term: "setzen",
     translation: "sentar/poner",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-sitzen",
     term: "sitzen",
     translation: "estar sentado",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-spielen",
     term: "spielen",
     translation: "jugar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-stellen",
     term: "stellen",
     translation: "poner/colocar (vertical)",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-studieren",
     term: "studieren",
     translation: "estudiar (universidad)",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-suchen",
     term: "suchen",
     translation: "buscar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-vergessen",
     term: "vergessen",
     translation: "olvidar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-verkaufen",
     term: "verkaufen",
     translation: "vender",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-verstehen",
     term: "verstehen",
     translation: "entender/comprender",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-warten",
     term: "warten",
     translation: "esperar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-waschen",
     term: "waschen",
     translation: "lavar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-weinen",
     term: "weinen",
     translation: "llorar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-wohnen",
     term: "wohnen",
     translation: "vivir/residir",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-zeigen",
     term: "zeigen",
     translation: "mostrar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-öffnen",
     term: "öffnen",
     translation: "abrir",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-zählen",
     term: "zählen",
     translation: "contar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-aufräumen",
     term: "aufräumen",
     translation: "ordenar/limpiar",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-ausgeben",
     term: "ausgeben",
     translation: "gastar",
-    context: ["A2", "trennbar", "unregelmäßig", "verb"],
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-auspacken",
     term: "auspacken",
     translation: "desempacar",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-basteln",
     term: "basteln",
     translation: "hacer manualidades",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-bauen",
     term: "bauen",
     translation: "construir",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-begrüßen",
     term: "begrüßen",
     translation: "saludar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-bemerken",
     term: "bemerken",
     translation: "notar/darse cuenta",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-berichten",
     term: "berichten",
     translation: "informar/reportar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-beschreiben",
     term: "beschreiben",
     translation: "describir",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-besprechen",
     term: "besprechen",
     translation: "discutir/hablar sobre",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-besuchen",
     term: "besuchen",
     translation: "visitar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-borgen",
     term: "borgen",
     translation: "prestar/pedir prestado",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-diskutieren",
     term: "diskutieren",
     translation: "discutir",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-einladen",
     term: "einladen",
     translation: "invitar",
-    context: ["A2", "trennbar", "unregelmäßig", "verb"],
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-einpacken",
     term: "einpacken",
     translation: "empacar",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-empfehlen",
     term: "empfehlen",
     translation: "recomendar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-entwickeln",
     term: "entwickeln",
     translation: "desarrollar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-erfahren",
     term: "erfahren",
     translation: "enterarse/saber",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-erklären",
     term: "erklären",
     translation: "explicar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-erlauben",
     term: "erlauben",
     translation: "permitir",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-fliegen",
     term: "fliegen",
     translation: "volar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-freuen",
     term: "freuen",
     translation: "alegrarse",
-    context: ["A2", "reflexiv", "verb"],
+    context: ["A2", "reflexiv", "verb"]
   },
   {
     id: "de-fühlen",
     term: "fühlen",
     translation: "sentir",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-hoffen",
     term: "hoffen",
     translation: "esperar (esperanza)",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-informieren",
     term: "informieren",
     translation: "informar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-interessieren",
     term: "interessieren",
     translation: "interesar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-langweilen",
     term: "langweilen",
     translation: "aburrir",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-leihen",
     term: "leihen",
     translation: "prestar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-malen",
     term: "malen",
     translation: "pintar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-merken",
     term: "merken",
     translation: "notar/percibir",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-mitteilen",
     term: "mitteilen",
     translation: "comunicar",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-organisieren",
     term: "organisieren",
     translation: "organizar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-planen",
     term: "planen",
     translation: "planear",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-probieren",
     term: "probieren",
     translation: "probar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-rennen",
     term: "rennen",
     translation: "correr rápido",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-reparieren",
     term: "reparieren",
     translation: "reparar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-riechen",
     term: "riechen",
     translation: "oler",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-schenken",
     term: "schenken",
     translation: "regalar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-schwimmen",
     term: "schwimmen",
     translation: "nadar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-singen",
     term: "singen",
     translation: "cantar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-sparen",
     term: "sparen",
     translation: "ahorrar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-springen",
     term: "springen",
     translation: "saltar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-tanzen",
     term: "tanzen",
     translation: "bailar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-telefonieren",
     term: "telefonieren",
     translation: "telefonear",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-träumen",
     term: "träumen",
     translation: "soñar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-umziehen",
     term: "umziehen",
     translation: "mudarse",
-    context: ["A2", "trennbar", "unregelmäßig", "verb"],
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-verabschieden",
     term: "verabschieden",
     translation: "despedirse",
-    context: ["A2", "reflexiv", "verb"],
+    context: ["A2", "reflexiv", "verb"]
   },
   {
     id: "de-verbessern",
     term: "verbessern",
     translation: "mejorar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-verbieten",
     term: "verbieten",
     translation: "prohibir",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-verschlechtern",
     term: "verschlechtern",
     translation: "empeorar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-vorbereiten",
     term: "vorbereiten",
     translation: "preparar",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-vorschlagen",
     term: "vorschlagen",
     translation: "proponer/sugerir",
-    context: ["A2", "trennbar", "unregelmäßig", "verb"],
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-vorstellen",
     term: "vorstellen",
     translation: "presentar",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-wechseln",
     term: "wechseln",
     translation: "cambiar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-wundern",
     term: "wundern",
     translation: "sorprender/asombrarse",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-wünschen",
     term: "wünschen",
     translation: "desear",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-ändern",
     term: "ändern",
     translation: "cambiar/modificar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-ärgern",
     term: "ärgern",
     translation: "molestar/enojar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-errichten",
     term: "errichten",
     translation: "erigir/construir",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-versetzen",
     term: "versetzen",
     translation: "trasladar/desplazar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-gehören",
     term: "gehören",
     translation: "pertenecer",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-befinden",
     term: "befinden",
     translation: "encontrarse",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-durchqueren",
     term: "durchqueren",
     translation: "atravesar",
-    context: ["B1", "trennbar", "verb"],
+    context: ["B1", "trennbar", "verb"]
   },
   {
     id: "de-darstellen",
     term: "darstellen",
     translation: "representar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-markieren",
     term: "markieren",
     translation: "marcar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-verbinden",
     term: "verbinden",
     translation: "conectar/unir",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-symbolisieren",
     term: "symbolisieren",
     translation: "simbolizar",
-    context: ["B2", "verb"],
+    context: ["B2", "verb"]
   },
   {
     id: "de-wiederherstellen",
     term: "wiederherstellen",
     translation: "restaurar",
-    context: ["B2", "trennbar", "verb"],
+    context: ["B2", "trennbar", "verb"]
   },
   {
     id: "de-bezeichnen",
     term: "bezeichnen",
     translation: "denominar/designar/llamar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-steht",
     term: "steht",
     translation: "está de pie/se encuentra",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "stehen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "stehen"]
   },
   {
     id: "de-errichtet",
     term: "errichtet",
     translation: "erigido/construido",
-    context: ["B1", "partizip-ii", "verb", "errichten"],
+    context: ["B1", "partizip-ii", "verb", "errichten"]
   },
   {
     id: "de-durchquert",
     term: "durchquert",
     translation: "atraviesa",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "durchqueren"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "durchqueren"]
   },
   {
     id: "de-trägt",
     term: "trägt",
     translation: "lleva/porta",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "tragen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "tragen"]
   },
   {
     id: "de-stellt",
     term: "stellt",
     translation: "pone/coloca",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "stellen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "stellen"]
   },
   {
     id: "de-markiert",
     term: "markiert",
     translation: "marca",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "markieren"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "markieren"]
   },
   {
     id: "de-verbunden",
     term: "verbunden",
     translation: "conectado/unido",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "verbinden"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "verbinden"]
   },
   {
     id: "de-stand",
     term: "stand",
     translation: "estaba/estuvo",
-    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "stehen"],
+    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "stehen"]
   },
   {
     id: "de-symbolisierte",
     term: "symbolisierte",
     translation: "simbolizaba/simbolizó",
-    context: ["B2", "präteritum", "singular", "verb", "symbolisieren"],
+    context: ["B2", "präteritum", "singular", "verb", "symbolisieren"]
   },
   {
     id: "de-angesehen",
     term: "angesehen",
     translation: "considerado/visto",
-    context: ["B1", "partizip-ii", "trennbar", "unregelmäßig", "verb", "ansehen"],
+    context: ["B1", "partizip-ii", "trennbar", "unregelmäßig", "verb", "ansehen"]
   },
   {
     id: "de-wiederhergestellt",
     term: "wiederhergestellt",
     translation: "restaurado/restablecido",
-    context: ["B2", "partizip-ii", "trennbar", "verb", "wiederherstellen"],
+    context: ["B2", "partizip-ii", "trennbar", "verb", "wiederherstellen"]
   },
   {
     id: "de-fand",
     term: "fand",
     translation: "encontró/tuvo lugar",
-    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "finden"],
+    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "finden"]
   },
   {
     id: "de-stehe",
     term: "stehe",
     translation: "estoy de pie",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "stehen"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "stehen"]
   },
   {
     id: "de-stehst",
     term: "stehst",
     translation: "estás de pie",
-    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "stehen"],
+    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "stehen"]
   },
   {
     id: "de-standst",
     term: "standst",
     translation: "estuviste de pie",
-    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "stehen"],
+    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "stehen"]
   },
   {
     id: "de-standen",
     term: "standen",
     translation: "estuvimos/estuvieron de pie",
-    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "stehen"],
+    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "stehen"]
   },
   {
     id: "de-standet",
     term: "standet",
     translation: "estuvisteis de pie",
-    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "stehen"],
+    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "stehen"]
   },
   {
     id: "de-gestanden",
     term: "gestanden",
     translation: "estado de pie",
-    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "stehen"],
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "stehen"]
   },
   {
     id: "de-errichte",
     term: "errichte",
     translation: "erijo/construyo",
-    context: ["B1", "erste-person", "präsens", "singular", "verb", "errichten"],
+    context: ["B1", "erste-person", "präsens", "singular", "verb", "errichten"]
   },
   {
     id: "de-errichtest",
     term: "errichtest",
     translation: "eriges/construyes",
-    context: ["B1", "präsens", "singular", "verb", "zweite-person", "errichten"],
+    context: ["B1", "präsens", "singular", "verb", "zweite-person", "errichten"]
   },
   {
     id: "de-errichtete",
     term: "errichtete",
     translation: "erigió/construyó",
-    context: ["B1", "präteritum", "singular", "verb", "errichten"],
+    context: ["B1", "präteritum", "singular", "verb", "errichten"]
   },
   {
     id: "de-errichtetest",
     term: "errichtetest",
     translation: "erigiste/construiste",
-    context: ["B1", "präteritum", "singular", "verb", "zweite-person", "errichten"],
+    context: ["B1", "präteritum", "singular", "verb", "zweite-person", "errichten"]
   },
   {
     id: "de-errichteten",
     term: "errichteten",
     translation: "erigieron/construyeron",
-    context: ["B1", "plural", "präteritum", "verb", "errichten"],
+    context: ["B1", "plural", "präteritum", "verb", "errichten"]
   },
   {
     id: "de-errichtetet",
     term: "errichtetet",
     translation: "erigisteis/construisteis",
-    context: ["B1", "plural", "präteritum", "verb", "zweite-person", "errichten"],
+    context: ["B1", "plural", "präteritum", "verb", "zweite-person", "errichten"]
   },
   {
     id: "de-durchquere",
     term: "durchquere",
     translation: "atravieso",
-    context: ["B1", "erste-person", "präsens", "singular", "verb", "durchqueren"],
+    context: ["B1", "erste-person", "präsens", "singular", "verb", "durchqueren"]
   },
   {
     id: "de-durchquerst",
     term: "durchquerst",
     translation: "atraviesas",
-    context: ["B1", "präsens", "singular", "verb", "zweite-person", "durchqueren"],
+    context: ["B1", "präsens", "singular", "verb", "zweite-person", "durchqueren"]
   },
   {
     id: "de-durchquerte",
     term: "durchquerte",
     translation: "atravesó",
-    context: ["B1", "präteritum", "singular", "verb", "durchqueren"],
+    context: ["B1", "präteritum", "singular", "verb", "durchqueren"]
   },
   {
     id: "de-durchquertest",
     term: "durchquertest",
     translation: "atravesaste",
-    context: ["B1", "präteritum", "singular", "verb", "zweite-person", "durchqueren"],
+    context: ["B1", "präteritum", "singular", "verb", "zweite-person", "durchqueren"]
   },
   {
     id: "de-durchquerten",
     term: "durchquerten",
     translation: "atravesaron",
-    context: ["B1", "plural", "präteritum", "verb", "durchqueren"],
+    context: ["B1", "plural", "präteritum", "verb", "durchqueren"]
   },
   {
     id: "de-durchquertet",
     term: "durchquertet",
     translation: "atravesasteis",
-    context: ["B1", "plural", "präteritum", "verb", "zweite-person", "durchqueren"],
+    context: ["B1", "plural", "präteritum", "verb", "zweite-person", "durchqueren"]
   },
   {
     id: "de-trage",
     term: "trage",
     translation: "llevo/porto",
-    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "tragen"],
+    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "tragen"]
   },
   {
     id: "de-trägst",
     term: "trägst",
     translation: "llevas/portas",
-    context: ["A2", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "tragen"],
+    context: ["A2", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "tragen"]
   },
   {
     id: "de-tragt",
     term: "tragt",
     translation: "lleváis/portáis",
-    context: ["A2", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "tragen"],
+    context: ["A2", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "tragen"]
   },
   {
     id: "de-trug",
     term: "trug",
     translation: "llevé/llevó",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "tragen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "tragen"]
   },
   {
     id: "de-trugst",
     term: "trugst",
     translation: "llevaste",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "tragen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "tragen"]
   },
   {
     id: "de-trugen",
     term: "trugen",
     translation: "llevamos/llevaron",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "tragen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "tragen"]
   },
   {
     id: "de-trugt",
     term: "trugt",
     translation: "llevasteis",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "tragen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "tragen"]
   },
   {
     id: "de-getragen",
     term: "getragen",
     translation: "llevado/portado",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "tragen"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "tragen"]
   },
   {
     id: "de-stelle",
     term: "stelle",
     translation: "pongo/coloco",
-    context: ["A1", "erste-person", "präsens", "singular", "verb", "stellen"],
+    context: ["A1", "erste-person", "präsens", "singular", "verb", "stellen"]
   },
   {
     id: "de-stellst",
     term: "stellst",
     translation: "pones/colocas",
-    context: ["A1", "präsens", "singular", "verb", "zweite-person", "stellen"],
+    context: ["A1", "präsens", "singular", "verb", "zweite-person", "stellen"]
   },
   {
     id: "de-stellte",
     term: "stellte",
     translation: "puso/colocó",
-    context: ["A1", "präteritum", "singular", "verb", "stellen"],
+    context: ["A1", "präteritum", "singular", "verb", "stellen"]
   },
   {
     id: "de-stelltest",
     term: "stelltest",
     translation: "pusiste/colocaste",
-    context: ["A1", "präteritum", "singular", "verb", "zweite-person", "stellen"],
+    context: ["A1", "präteritum", "singular", "verb", "zweite-person", "stellen"]
   },
   {
     id: "de-stellten",
     term: "stellten",
     translation: "pusimos/pusieron",
-    context: ["A1", "plural", "präteritum", "verb", "stellen"],
+    context: ["A1", "plural", "präteritum", "verb", "stellen"]
   },
   {
     id: "de-stelltet",
     term: "stelltet",
     translation: "pusisteis/colocasteis",
-    context: ["A1", "plural", "präteritum", "verb", "zweite-person", "stellen"],
+    context: ["A1", "plural", "präteritum", "verb", "zweite-person", "stellen"]
   },
   {
     id: "de-gestellt",
     term: "gestellt",
     translation: "puesto/colocado",
-    context: ["A1", "partizip-ii", "verb", "stellen"],
+    context: ["A1", "partizip-ii", "verb", "stellen"]
   },
   {
     id: "de-markiere",
     term: "markiere",
     translation: "marco",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "markieren"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "markieren"]
   },
   {
     id: "de-markierst",
     term: "markierst",
     translation: "marcas",
-    context: ["A2", "präsens", "singular", "verb", "zweite-person", "markieren"],
+    context: ["A2", "präsens", "singular", "verb", "zweite-person", "markieren"]
   },
   {
     id: "de-markierte",
     term: "markierte",
     translation: "marcó",
-    context: ["A2", "präteritum", "singular", "verb", "markieren"],
+    context: ["A2", "präteritum", "singular", "verb", "markieren"]
   },
   {
     id: "de-markiertest",
     term: "markiertest",
     translation: "marcaste",
-    context: ["A2", "präteritum", "singular", "verb", "zweite-person", "markieren"],
+    context: ["A2", "präteritum", "singular", "verb", "zweite-person", "markieren"]
   },
   {
     id: "de-markierten",
     term: "markierten",
     translation: "marcaron",
-    context: ["A2", "plural", "präteritum", "verb", "markieren"],
+    context: ["A2", "plural", "präteritum", "verb", "markieren"]
   },
   {
     id: "de-markiertet",
     term: "markiertet",
     translation: "marcasteis",
-    context: ["A2", "plural", "präteritum", "verb", "zweite-person", "markieren"],
+    context: ["A2", "plural", "präteritum", "verb", "zweite-person", "markieren"]
   },
   {
     id: "de-finde",
     term: "finde",
     translation: "encuentro",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "finden"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "finden"]
   },
   {
     id: "de-fandest",
     term: "fandest",
     translation: "encontraste",
-    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "finden"],
+    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "finden"]
   },
   {
     id: "de-fanden",
     term: "fanden",
     translation: "encontramos/encontraron",
-    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "finden"],
+    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "finden"]
   },
   {
     id: "de-fandet",
     term: "fandet",
     translation: "encontrasteis",
-    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "finden"],
+    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "finden"]
   },
   {
     id: "de-gefunden",
     term: "gefunden",
     translation: "encontrado",
-    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "finden"],
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "finden"]
   },
   {
     id: "de-stehe",
     term: "stehe",
     translation: "estoy de pie",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "stehen"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "stehen"]
   },
   {
     id: "de-stehst",
     term: "stehst",
     translation: "estás de pie",
-    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "stehen"],
+    context: ["A1", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "stehen"]
   },
   {
     id: "de-standst",
     term: "standst",
     translation: "estabas/estuviste de pie",
-    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "stehen"],
+    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "stehen"]
   },
   {
     id: "de-standen",
     term: "standen",
     translation: "estábamos/estuvimos de pie",
-    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "stehen"],
+    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "stehen"]
   },
   {
     id: "de-standet",
     term: "standet",
     translation: "estabais/estuvisteis de pie",
-    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "stehen"],
+    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "stehen"]
   },
   {
     id: "de-gestanden",
     term: "gestanden",
     translation: "estado de pie",
-    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "stehen"],
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "stehen"]
   },
   {
     id: "de-errichte",
     term: "errichte",
     translation: "erijo/construyo",
-    context: ["B1", "erste-person", "präsens", "singular", "verb", "errichten"],
+    context: ["B1", "erste-person", "präsens", "singular", "verb", "errichten"]
   },
   {
     id: "de-errichtest",
     term: "errichtest",
     translation: "eriges/construyes",
-    context: ["B1", "präsens", "singular", "verb", "zweite-person", "errichten"],
+    context: ["B1", "präsens", "singular", "verb", "zweite-person", "errichten"]
   },
   {
     id: "de-errichtete",
     term: "errichtete",
     translation: "erigió/construyó",
-    context: ["B1", "präteritum", "singular", "verb", "errichten"],
+    context: ["B1", "präteritum", "singular", "verb", "errichten"]
   },
   {
     id: "de-errichtetest",
     term: "errichtetest",
     translation: "erigiste/construiste",
-    context: ["B1", "präteritum", "singular", "verb", "zweite-person", "errichten"],
+    context: ["B1", "präteritum", "singular", "verb", "zweite-person", "errichten"]
   },
   {
     id: "de-errichteten",
     term: "errichteten",
     translation: "erigieron/construyeron",
-    context: ["B1", "plural", "präteritum", "verb", "errichten"],
+    context: ["B1", "plural", "präteritum", "verb", "errichten"]
   },
   {
     id: "de-errichtetet",
     term: "errichtetet",
     translation: "erigisteis/construisteis",
-    context: ["B1", "plural", "präteritum", "verb", "zweite-person", "errichten"],
+    context: ["B1", "plural", "präteritum", "verb", "zweite-person", "errichten"]
   },
   {
     id: "de-durchquere",
     term: "durchquere",
     translation: "atravieso",
-    context: ["B1", "erste-person", "präsens", "singular", "verb", "durchqueren"],
+    context: ["B1", "erste-person", "präsens", "singular", "verb", "durchqueren"]
   },
   {
     id: "de-durchquerst",
     term: "durchquerst",
     translation: "atraviesas",
-    context: ["B1", "präsens", "singular", "verb", "zweite-person", "durchqueren"],
+    context: ["B1", "präsens", "singular", "verb", "zweite-person", "durchqueren"]
   },
   {
     id: "de-durchquerte",
     term: "durchquerte",
     translation: "atravesó",
-    context: ["B1", "präteritum", "singular", "verb", "durchqueren"],
+    context: ["B1", "präteritum", "singular", "verb", "durchqueren"]
   },
   {
     id: "de-durchquertest",
     term: "durchquertest",
     translation: "atravesaste",
-    context: ["B1", "präteritum", "singular", "verb", "zweite-person", "durchqueren"],
+    context: ["B1", "präteritum", "singular", "verb", "zweite-person", "durchqueren"]
   },
   {
     id: "de-durchquerten",
     term: "durchquerten",
     translation: "atravesaron",
-    context: ["B1", "plural", "präteritum", "verb", "durchqueren"],
+    context: ["B1", "plural", "präteritum", "verb", "durchqueren"]
   },
   {
     id: "de-durchquertet",
     term: "durchquertet",
     translation: "atravesasteis",
-    context: ["B1", "plural", "präteritum", "verb", "zweite-person", "durchqueren"],
+    context: ["B1", "plural", "präteritum", "verb", "zweite-person", "durchqueren"]
   },
   {
     id: "de-trage",
     term: "trage",
     translation: "llevo/porto",
-    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "tragen"],
+    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "tragen"]
   },
   {
     id: "de-trägst",
     term: "trägst",
     translation: "llevas/portas",
-    context: ["A2", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "tragen"],
+    context: ["A2", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "tragen"]
   },
   {
     id: "de-tragt",
     term: "tragt",
     translation: "lleváis/portáis",
-    context: ["A2", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "tragen"],
+    context: ["A2", "plural", "präsens", "unregelmäßig", "verb", "zweite-person", "tragen"]
   },
   {
     id: "de-trug",
     term: "trug",
     translation: "llevó/portó",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "tragen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "tragen"]
   },
   {
     id: "de-trugst",
     term: "trugst",
     translation: "llevaste/portaste",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "tragen"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "tragen"]
   },
   {
     id: "de-trugen",
     term: "trugen",
     translation: "llevaron/portaron",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "tragen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "tragen"]
   },
   {
     id: "de-trugt",
     term: "trugt",
     translation: "llevasteis/portasteis",
-    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "tragen"],
+    context: ["A2", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "tragen"]
   },
   {
     id: "de-getragen",
     term: "getragen",
     translation: "llevado/portado",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "tragen"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "tragen"]
   },
   {
     id: "de-stelle",
     term: "stelle",
     translation: "pongo/coloco",
-    context: ["A1", "erste-person", "präsens", "singular", "verb", "stellen"],
+    context: ["A1", "erste-person", "präsens", "singular", "verb", "stellen"]
   },
   {
     id: "de-stellst",
     term: "stellst",
     translation: "pones/colocas",
-    context: ["A1", "präsens", "singular", "verb", "zweite-person", "stellen"],
+    context: ["A1", "präsens", "singular", "verb", "zweite-person", "stellen"]
   },
   {
     id: "de-stellte",
     term: "stellte",
     translation: "puso/colocó",
-    context: ["A1", "präteritum", "singular", "verb", "stellen"],
+    context: ["A1", "präteritum", "singular", "verb", "stellen"]
   },
   {
     id: "de-stelltest",
     term: "stelltest",
     translation: "pusiste/colocaste",
-    context: ["A1", "präteritum", "singular", "verb", "zweite-person", "stellen"],
+    context: ["A1", "präteritum", "singular", "verb", "zweite-person", "stellen"]
   },
   {
     id: "de-stellten",
     term: "stellten",
     translation: "pusieron/colocaron",
-    context: ["A1", "plural", "präteritum", "verb", "stellen"],
+    context: ["A1", "plural", "präteritum", "verb", "stellen"]
   },
   {
     id: "de-stelltet",
     term: "stelltet",
     translation: "pusisteis/colocasteis",
-    context: ["A1", "plural", "präteritum", "verb", "zweite-person", "stellen"],
+    context: ["A1", "plural", "präteritum", "verb", "zweite-person", "stellen"]
   },
   {
     id: "de-gestellt",
     term: "gestellt",
     translation: "puesto/colocado",
-    context: ["A1", "partizip-ii", "verb", "stellen"],
+    context: ["A1", "partizip-ii", "verb", "stellen"]
   },
   {
     id: "de-markiere",
     term: "markiere",
     translation: "marco",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "markieren"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "markieren"]
   },
   {
     id: "de-markierst",
     term: "markierst",
     translation: "marcas",
-    context: ["A2", "präsens", "singular", "verb", "zweite-person", "markieren"],
+    context: ["A2", "präsens", "singular", "verb", "zweite-person", "markieren"]
   },
   {
     id: "de-markierte",
     term: "markierte",
     translation: "marcó",
-    context: ["A2", "präteritum", "singular", "verb", "markieren"],
+    context: ["A2", "präteritum", "singular", "verb", "markieren"]
   },
   {
     id: "de-markiertest",
     term: "markiertest",
     translation: "marcaste",
-    context: ["A2", "präteritum", "singular", "verb", "zweite-person", "markieren"],
+    context: ["A2", "präteritum", "singular", "verb", "zweite-person", "markieren"]
   },
   {
     id: "de-markierten",
     term: "markierten",
     translation: "marcaron",
-    context: ["A2", "plural", "präteritum", "verb", "markieren"],
+    context: ["A2", "plural", "präteritum", "verb", "markieren"]
   },
   {
     id: "de-markiertet",
     term: "markiertet",
     translation: "marcasteis",
-    context: ["A2", "plural", "präteritum", "verb", "zweite-person", "markieren"],
+    context: ["A2", "plural", "präteritum", "verb", "zweite-person", "markieren"]
   },
   {
     id: "de-finde",
     term: "finde",
     translation: "encuentro",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "finden"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "finden"]
   },
   {
     id: "de-fandest",
     term: "fandest",
     translation: "encontraste",
-    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "finden"],
+    context: ["A1", "präteritum", "singular", "unregelmäßig", "verb", "zweite-person", "finden"]
   },
   {
     id: "de-fanden",
     term: "fanden",
     translation: "encontraron",
-    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "finden"],
+    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "finden"]
   },
   {
     id: "de-fandet",
     term: "fandet",
     translation: "encontrasteis",
-    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "finden"],
+    context: ["A1", "plural", "präteritum", "unregelmäßig", "verb", "zweite-person", "finden"]
   },
   {
     id: "de-gefunden",
     term: "gefunden",
     translation: "encontrado",
-    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "finden"],
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "finden"]
   },
   {
     id: "de-leisten",
     term: "leisten",
     translation: "rendir/prestar (Gesellschaft leisten = hacer compañía)",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-freue",
     term: "freue",
     translation: "me alegro",
-    context: ["A2", "erste-person", "präsens", "reflexiv", "singular", "verb", "freuen"],
+    context: ["A2", "erste-person", "präsens", "reflexiv", "singular", "verb", "freuen"]
   },
   {
     id: "de-wünsche",
     term: "wünsche",
     translation: "deseo",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "wünschen"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "wünschen"]
   },
   {
     id: "de-gefällt",
     term: "gefällt",
     translation: "gusta",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "gefallen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "gefallen"]
   },
   {
     id: "de-braten",
     term: "braten",
     translation: "freír",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-erscheinen",
     term: "erscheinen",
     translation: "aparecer",
-    context: ["B1", "unregelmäßig", "verb"],
+    context: ["B1", "unregelmäßig", "verb"]
   },
   {
     id: "de-bedanken",
     term: "bedanken",
     translation: "agradecer",
-    context: ["A2", "reflexiv", "verb"],
+    context: ["A2", "reflexiv", "verb"]
   },
   {
     id: "de-reden",
     term: "reden",
     translation: "hablar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-abholen",
     term: "abholen",
     translation: "recoger",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-denkt",
     term: "denkt",
     translation: "piensa",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "denken"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "denken"]
   },
   {
     id: "de-kennt",
     term: "kennt",
     translation: "conoce",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "kennen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "kennen"]
   },
   {
     id: "de-erzählt",
     term: "erzählt",
     translation: "cuenta/narra",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "erzählen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "erzählen"]
   },
   {
     id: "de-erscheint",
     term: "erscheint",
     translation: "aparece",
-    context: ["B1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "erscheinen"],
+    context: ["B1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "erscheinen"]
   },
   {
     id: "de-erwartet",
     term: "erwartet",
     translation: "espera",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "erwarten"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "erwarten"]
   },
   {
     id: "de-abgeholt",
     term: "abgeholt",
     translation: "recogido",
-    context: ["A2", "partizip-ii", "trennbar", "verb", "abholen"],
+    context: ["A2", "partizip-ii", "trennbar", "verb", "abholen"]
   },
   {
     id: "de-verwenden",
     term: "verwenden",
     translation: "usar/utilizar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-verwende",
     term: "verwende",
     translation: "uso",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "verwenden"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "verwenden"]
   },
   {
     id: "de-verwendest",
     term: "verwendest",
     translation: "usas",
-    context: ["A2", "präsens", "singular", "verb", "zweite-person", "verwenden"],
+    context: ["A2", "präsens", "singular", "verb", "zweite-person", "verwenden"]
   },
   {
     id: "de-verwendet",
     term: "verwendet",
     translation: "usa",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "verwenden"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "verwenden"]
   },
   {
     id: "de-verwenden-plural",
     term: "verwenden",
     translation: "usamos/usan",
-    context: ["A2", "plural", "präsens", "verb", "verwenden"],
+    context: ["A2", "plural", "präsens", "verb", "verwenden"]
   },
   {
     id: "de-verwendete",
     term: "verwendete",
     translation: "usó",
-    context: ["A2", "präteritum", "singular", "verb", "verwenden"],
+    context: ["A2", "präteritum", "singular", "verb", "verwenden"]
   },
   {
     id: "de-verwendeten",
     term: "verwendeten",
     translation: "usaron",
-    context: ["A2", "plural", "präteritum", "verb", "verwenden"],
+    context: ["A2", "plural", "präteritum", "verb", "verwenden"]
   },
   {
     id: "de-verwendet-partizip",
     term: "verwendet",
     translation: "usado",
-    context: ["A2", "partizip-ii", "verb", "verwenden"],
+    context: ["A2", "partizip-ii", "verb", "verwenden"]
   },
   {
     id: "de-entscheiden",
     term: "entscheiden",
     translation: "decidir",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-entscheide",
     term: "entscheide",
     translation: "decido",
-    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "entscheiden"],
+    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "entscheiden"]
   },
   {
     id: "de-entscheidest",
     term: "entscheidest",
     translation: "decides",
-    context: ["A2", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "entscheiden"],
+    context: ["A2", "präsens", "singular", "unregelmäßig", "verb", "zweite-person", "entscheiden"]
   },
   {
     id: "de-entscheidet",
     term: "entscheidet",
     translation: "decide",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "entscheiden"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "entscheiden"]
   },
   {
     id: "de-entscheiden-plural",
     term: "entscheiden",
     translation: "decidimos/deciden",
-    context: ["A2", "plural", "präsens", "unregelmäßig", "verb", "entscheiden"],
+    context: ["A2", "plural", "präsens", "unregelmäßig", "verb", "entscheiden"]
   },
   {
     id: "de-entschied",
     term: "entschied",
     translation: "decidió",
-    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "entscheiden"],
+    context: ["A2", "präteritum", "singular", "unregelmäßig", "verb", "entscheiden"]
   },
   {
     id: "de-entschieden",
     term: "entschieden",
     translation: "decidido",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "entscheiden"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "entscheiden"]
   },
   {
     id: "de-verknüpfen",
     term: "verknüpfen",
     translation: "vincular/conectar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-verknüpfe",
     term: "verknüpfe",
     translation: "vinculo",
-    context: ["B1", "erste-person", "präsens", "singular", "verb", "verknüpfen"],
+    context: ["B1", "erste-person", "präsens", "singular", "verb", "verknüpfen"]
   },
   {
     id: "de-verknüpfst",
     term: "verknüpfst",
     translation: "vinculas",
-    context: ["B1", "präsens", "singular", "verb", "zweite-person", "verknüpfen"],
+    context: ["B1", "präsens", "singular", "verb", "zweite-person", "verknüpfen"]
   },
   {
     id: "de-verknüpft",
     term: "verknüpft",
     translation: "vincula",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "verknüpfen"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "verknüpfen"]
   },
   {
     id: "de-verknüpfen-plural",
     term: "verknüpfen",
     translation: "vinculamos/vinculan",
-    context: ["B1", "plural", "präsens", "verb", "verknüpfen"],
+    context: ["B1", "plural", "präsens", "verb", "verknüpfen"]
   },
   {
     id: "de-verknüpfte",
     term: "verknüpfte",
     translation: "vinculó",
-    context: ["B1", "präteritum", "singular", "verb", "verknüpfen"],
+    context: ["B1", "präteritum", "singular", "verb", "verknüpfen"]
   },
   {
     id: "de-verknüpften",
     term: "verknüpften",
     translation: "vincularon",
-    context: ["B1", "plural", "präteritum", "verb", "verknüpfen"],
+    context: ["B1", "plural", "präteritum", "verb", "verknüpfen"]
   },
   {
     id: "de-verknüpft-partizip",
     term: "verknüpft",
     translation: "vinculado",
-    context: ["B1", "partizip-ii", "verb", "verknüpfen"],
+    context: ["B1", "partizip-ii", "verb", "verknüpfen"]
   },
   {
     id: "de-erwischen",
     term: "erwischen",
     translation: "atrapar/pillar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-erwischt",
     term: "erwischt",
     translation: "atrapó/pillado",
-    context: ["A2", "partizip-ii", "verb", "erwischen"],
+    context: ["A2", "partizip-ii", "verb", "erwischen"]
   },
   {
     id: "de-anspringen",
     term: "anspringen",
     translation: "saltar sobre",
-    context: ["B1", "trennbar", "verb"],
+    context: ["B1", "trennbar", "verb"]
   },
   {
     id: "de-angesprungen",
     term: "angesprungen",
     translation: "saltado sobre",
-    context: ["B1", "partizip-ii", "trennbar", "verb", "anspringen"],
+    context: ["B1", "partizip-ii", "trennbar", "verb", "anspringen"]
   },
   {
     id: "de-loslassen",
     term: "loslassen",
     translation: "soltar",
-    context: ["A2", "trennbar", "unregelmäßig", "verb"],
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-loslasse",
     term: "loslasse",
     translation: "suelto",
-    context: ["A2", "erste-person", "präsens", "singular", "trennbar", "verb", "loslassen"],
+    context: ["A2", "erste-person", "präsens", "singular", "trennbar", "verb", "loslassen"]
   },
   {
     id: "de-zermanschen",
     term: "zermanschen",
     translation: "aplastar/machacar",
-    context: ["B2", "verb"],
+    context: ["B2", "verb"]
   },
   {
     id: "de-zermanscht",
     term: "zermanscht",
     translation: "aplastado",
-    context: ["B2", "partizip-ii", "verb", "zermanschen"],
+    context: ["B2", "partizip-ii", "verb", "zermanschen"]
   },
   {
     id: "de-überrumpeln",
     term: "überrumpeln",
     translation: "tomar por sorpresa",
-    context: ["B2", "verb"],
+    context: ["B2", "verb"]
   },
   {
     id: "de-überrumpelt",
     term: "überrumpelt",
     translation: "tomado por sorpresa",
-    context: ["B2", "partizip-ii", "verb", "überrumpeln"],
+    context: ["B2", "partizip-ii", "verb", "überrumpeln"]
   },
   {
     id: "de-schütteln",
     term: "schütteln",
     translation: "sacudir",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-schüttelte",
     term: "schüttelte",
     translation: "sacudió",
-    context: ["A2", "präteritum", "singular", "verb", "schütteln"],
+    context: ["A2", "präteritum", "singular", "verb", "schütteln"]
   },
   {
     id: "de-stecken",
     term: "stecken",
     translation: "meter/estar metido",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-steckt",
     term: "steckt",
     translation: "mete/está metido",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "stecken"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "stecken"]
   },
   {
     id: "de-häkeln",
     term: "häkeln",
     translation: "hacer ganchillo",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-gehäkelt",
     term: "gehäkelt",
     translation: "hecho a ganchillo",
-    context: ["B1", "partizip-ii", "verb", "häkeln"],
+    context: ["B1", "partizip-ii", "verb", "häkeln"]
   },
   {
     id: "de-pflanzen",
     term: "pflanzen",
     translation: "plantar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-pflanze",
     term: "pflanze",
     translation: "planto",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "pflanzen"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "pflanzen"]
   },
   {
     id: "de-ducken",
     term: "ducken",
     translation: "agacharse",
-    context: ["A2", "reflexiv", "verb"],
+    context: ["A2", "reflexiv", "verb"]
   },
   {
     id: "de-duckt",
     term: "duckt",
     translation: "se agacha",
-    context: ["A2", "dritte-person", "präsens", "reflexiv", "singular", "verb", "ducken"],
+    context: ["A2", "dritte-person", "präsens", "reflexiv", "singular", "verb", "ducken"]
   },
   {
     id: "de-treffen",
     term: "treffen",
     translation: "encontrar/acertar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-treffe",
     term: "treffe",
     translation: "encuentro/acierto",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "treffen"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "treffen"]
   },
   {
     id: "de-fallen",
     term: "fallen",
     translation: "caer",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-fällt",
     term: "fällt",
     translation: "cae",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "fallen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "fallen"]
   },
   {
     id: "de-träumen",
     term: "träumen",
     translation: "soñar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-träumt",
     term: "träumt",
     translation: "sueña",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "träumen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "träumen"]
   },
   {
     id: "de-überlegen",
     term: "überlegen",
     translation: "pensar/reflexionar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-überlege",
     term: "überlege",
     translation: "pienso/reflexiono",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "überlegen"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "überlegen"]
   },
   {
     id: "de-ficken",
     term: "ficken",
     translation: "joder (vulgar)",
-    context: ["C1", "verb"],
+    context: ["C1", "verb"]
   },
   {
     id: "de-poltern",
     term: "poltern",
     translation: "hacer ruido/estruendo",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-poltert",
     term: "poltert",
     translation: "hace estruendo",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "poltern"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "poltern"]
   },
   {
     id: "de-fuchteln",
     term: "fuchteln",
     translation: "agitar/gesticular",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-fuchtelt",
     term: "fuchtelt",
     translation: "agita/gesticula",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "fuchteln"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "fuchteln"]
   },
   {
     id: "de-rufen",
     term: "rufen",
     translation: "llamar/gritar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-rufe",
     term: "rufe",
     translation: "llamo/grito",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "rufen"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "rufen"]
   },
   {
     id: "de-ruft",
     term: "ruft",
     translation: "llama/grita",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "rufen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "rufen"]
   },
   {
     id: "de-rennen",
     term: "rennen",
     translation: "correr",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-renne",
     term: "renne",
     translation: "corro",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "rennen"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "rennen"]
   },
   {
     id: "de-rennt",
     term: "rennt",
     translation: "corre",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "rennen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "rennen"]
   },
   {
     id: "de-sprinten",
     term: "sprinten",
     translation: "esprintar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-sprinte",
     term: "sprinte",
     translation: "esprinto",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "sprinten"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "sprinten"]
   },
   {
     id: "de-quetschen",
     term: "quetschen",
     translation: "aplastar/estrujar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-quetsche",
     term: "quetsche",
     translation: "aplasto/me meto",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "quetschen"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "quetschen"]
   },
   {
     id: "de-quetscht",
     term: "quetscht",
     translation: "aplasta/estruja",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "quetschen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "quetschen"]
   },
   {
     id: "de-reißen",
     term: "reißen",
     translation: "arrancar/romper",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-reißt",
     term: "reißt",
     translation: "arranca/rompe",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "reißen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "reißen"]
   },
   {
     id: "de-heben",
     term: "heben",
     translation: "levantar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-hebt",
     term: "hebt",
     translation: "levanta",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "heben"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "heben"]
   },
   {
     id: "de-tänzeln",
     term: "tänzeln",
     translation: "bailotear",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-tänzelt",
     term: "tänzelt",
     translation: "bailotea",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "tänzeln"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "tänzeln"]
   },
   {
     id: "de-zimmern",
     term: "zimmern",
     translation: "golpear/construir",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-zimmere",
     term: "zimmere",
     translation: "golpeo/construyo",
-    context: ["B1", "erste-person", "präsens", "singular", "verb", "zimmern"],
+    context: ["B1", "erste-person", "präsens", "singular", "verb", "zimmern"]
   },
   {
     id: "de-krümmen",
     term: "krümmen",
     translation: "doblar/curvar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-krümmt",
     term: "krümmt",
     translation: "dobla/curva",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "krümmen"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "krümmen"]
   },
   {
     id: "de-schlagen",
     term: "schlagen",
     translation: "golpear/pegar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-greifen",
     term: "greifen",
     translation: "agarrar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-greift",
     term: "greift",
     translation: "agarra",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "greifen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "greifen"]
   },
   {
     id: "de-lässt",
     term: "lässt",
     translation: "deja/permite",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "lassen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "lassen"]
   },
   {
     id: "de-bilden",
     term: "bilden",
     translation: "formar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-bildet",
     term: "bildet",
     translation: "forma",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "bilden"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "bilden"]
   },
   {
     id: "de-bearbeiten",
     term: "bearbeiten",
     translation: "trabajar/procesar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-bearbeite",
     term: "bearbeite",
     translation: "trabajo/proceso",
-    context: ["B1", "erste-person", "präsens", "singular", "verb", "bearbeiten"],
+    context: ["B1", "erste-person", "präsens", "singular", "verb", "bearbeiten"]
   },
   {
     id: "de-holen",
     term: "holen",
     translation: "traer/buscar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-holst",
     term: "holst",
     translation: "traes/buscas",
-    context: ["A1", "präsens", "singular", "verb", "zweite-person", "holen"],
+    context: ["A1", "präsens", "singular", "verb", "zweite-person", "holen"]
   },
   {
     id: "de-hauen",
     term: "hauen",
     translation: "golpear (informal)",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-hau",
     term: "hau",
     translation: "golpea (imperativo)",
-    context: ["B1", "imperativ", "verb", "hauen"],
+    context: ["B1", "imperativ", "verb", "hauen"]
   },
   {
     id: "de-heulen",
     term: "heulen",
     translation: "aullar/llorar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-heult",
     term: "heult",
     translation: "aúlla/llora",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "heulen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "heulen"]
   },
   {
     id: "de-fühlen",
     term: "fühlen",
     translation: "sentir",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-fühlt",
     term: "fühlt",
     translation: "siente",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "fühlen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "fühlen"]
   },
   {
     id: "de-brennen",
     term: "brennen",
     translation: "arder/quemar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-brennt",
     term: "brennt",
     translation: "arde/quema",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "brennen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "brennen"]
   },
   {
     id: "de-knacken",
     term: "knacken",
     translation: "crujir/romper",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-knackt",
     term: "knackt",
     translation: "cruje/rompe",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "knacken"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "knacken"]
   },
   {
     id: "de-rammen",
     term: "rammen",
     translation: "embestir/golpear",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-ramme",
     term: "ramme",
     translation: "embisto",
-    context: ["B1", "erste-person", "präsens", "singular", "verb", "rammen"],
+    context: ["B1", "erste-person", "präsens", "singular", "verb", "rammen"]
   },
   {
     id: "de-hallen",
     term: "hallen",
     translation: "resonar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-hallt",
     term: "hallt",
     translation: "resuena",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "hallen"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "hallen"]
   },
   {
     id: "de-taumeln",
     term: "taumeln",
     translation: "tambalearse",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-taumelt",
     term: "taumelt",
     translation: "se tambalea",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "taumeln"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "taumeln"]
   },
   {
     id: "de-rutschen",
     term: "rutschen",
     translation: "resbalar/deslizarse",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-rutscht",
     term: "rutscht",
     translation: "resbala",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "rutschen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "rutschen"]
   },
   {
     id: "de-liegen",
     term: "liegen",
     translation: "estar acostado/yacer",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-liegt",
     term: "liegt",
     translation: "está acostado/yace",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "liegen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "liegen"]
   },
   {
     id: "de-treten",
     term: "treten",
     translation: "pisar/patear",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-trete",
     term: "trete",
     translation: "piso/pateo",
-    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "treten"],
+    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "treten"]
   },
   {
     id: "de-klauen",
     term: "klauen",
     translation: "robar (informal)",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-umnieten",
     term: "umnieten",
     translation: "matar (jerga)",
-    context: ["C1", "trennbar", "verb"],
+    context: ["C1", "trennbar", "verb"]
   },
   {
     id: "de-schießen",
     term: "schießen",
     translation: "disparar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-schießt",
     term: "schießt",
     translation: "dispara",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "schießen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "schießen"]
   },
   {
     id: "de-sträuben",
     term: "sträuben",
     translation: "erizarse",
-    context: ["B2", "reflexiv", "verb"],
+    context: ["B2", "reflexiv", "verb"]
   },
   {
     id: "de-festbeißen",
     term: "festbeißen",
     translation: "morder y no soltar",
-    context: ["B2", "reflexiv", "trennbar", "unregelmäßig", "verb"],
+    context: ["B2", "reflexiv", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-festgebissen",
     term: "festgebissen",
     translation: "mordido y aferrado",
-    context: ["B2", "partizip-ii", "reflexiv", "trennbar", "unregelmäßig", "verb", "festbeißen"],
+    context: ["B2", "partizip-ii", "reflexiv", "trennbar", "unregelmäßig", "verb", "festbeißen"]
   },
   {
     id: "de-wachsen",
     term: "wachsen",
     translation: "crecer",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-wächst",
     term: "wächst",
     translation: "crece",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "wachsen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "wachsen"]
   },
   {
     id: "de-lehnen",
     term: "lehnen",
     translation: "apoyar/reclinarse",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-lehne",
     term: "lehne",
     translation: "apoyo/reclino",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "lehnen"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "lehnen"]
   },
   {
     id: "de-lehnt",
     term: "lehnt",
     translation: "apoya/reclina",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "lehnen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "lehnen"]
   },
   {
     id: "de-streichen",
     term: "streichen",
     translation: "acariciar/pintar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-streiche",
     term: "streiche",
     translation: "acaricio",
-    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "streichen"],
+    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "streichen"]
   },
   {
     id: "de-anfühlen",
     term: "anfühlen",
     translation: "sentir al tacto",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-angreifen",
     term: "angreifen",
     translation: "atacar",
-    context: ["B1", "trennbar", "unregelmäßig", "verb"],
+    context: ["B1", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-angreift",
     term: "angreift",
     translation: "ataca",
-    context: ["B1", "dritte-person", "präsens", "singular", "trennbar", "unregelmäßig", "verb", "angreifen"],
+    context: ["B1", "dritte-person", "präsens", "singular", "trennbar", "unregelmäßig", "verb", "angreifen"]
   },
   {
     id: "de-anführen",
     term: "anführen",
     translation: "liderar",
-    context: ["B1", "trennbar", "verb"],
+    context: ["B1", "trennbar", "verb"]
   },
   {
     id: "de-ballern",
     term: "ballern",
     translation: "disparar (informal)",
-    context: ["C1", "verb"],
+    context: ["C1", "verb"]
   },
   {
     id: "de-ballert",
     term: "ballert",
     translation: "dispara",
-    context: ["C1", "dritte-person", "präsens", "singular", "verb", "ballern"],
+    context: ["C1", "dritte-person", "präsens", "singular", "verb", "ballern"]
   },
   {
     id: "de-ankommen",
     term: "ankommen",
     translation: "llegar/importar",
-    context: ["A1", "trennbar", "unregelmäßig", "verb"],
+    context: ["A1", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-ankommt",
     term: "ankommt",
     translation: "llega/importa",
-    context: ["A1", "dritte-person", "präsens", "singular", "trennbar", "unregelmäßig", "verb", "ankommen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "trennbar", "unregelmäßig", "verb", "ankommen"]
   },
   {
     id: "de-abschaffen",
     term: "abschaffen",
     translation: "abolir",
-    context: ["B2", "trennbar", "verb"],
+    context: ["B2", "trennbar", "verb"]
   },
   {
     id: "de-drüberfahren",
     term: "drüberfahren",
     translation: "pasar por encima",
-    context: ["B2", "trennbar", "unregelmäßig", "verb"],
+    context: ["B2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-rechnen",
     term: "rechnen",
     translation: "calcular/contar con",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-rechnet",
     term: "rechnet",
     translation: "calcula/cuenta con",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "rechnen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "rechnen"]
   },
   {
     id: "de-aufgehen",
     term: "aufgehen",
     translation: "abrirse/salir (sol)",
-    context: ["A2", "trennbar", "unregelmäßig", "verb"],
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-aufgeht",
     term: "aufgeht",
     translation: "se abre/sale",
-    context: ["A2", "dritte-person", "präsens", "singular", "trennbar", "unregelmäßig", "verb", "aufgehen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "trennbar", "unregelmäßig", "verb", "aufgehen"]
   },
   {
     id: "de-gewinnen",
     term: "gewinnen",
     translation: "ganar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-gewinnt",
     term: "gewinnt",
     translation: "gana",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "gewinnen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "gewinnen"]
   },
   {
     id: "de-verschränken",
     term: "verschränken",
     translation: "cruzar (brazos)",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-verschränkt",
     term: "verschränkt",
     translation: "cruza",
-    context: ["B1", "partizip-ii", "verb", "verschränken"],
+    context: ["B1", "partizip-ii", "verb", "verschränken"]
   },
   {
     id: "de-säufen",
     term: "säufen",
     translation: "beber (como animal/borracho)",
-    context: ["C1", "unregelmäßig", "verb"],
+    context: ["C1", "unregelmäßig", "verb"]
   },
   {
     id: "de-säuft",
     term: "säuft",
     translation: "bebe",
-    context: ["C1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "säufen"],
+    context: ["C1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "säufen"]
   },
   {
     id: "de-meckern",
     term: "meckern",
     translation: "quejarse",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-meckert",
     term: "meckert",
     translation: "se queja",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "meckern"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "meckern"]
   },
   {
     id: "de-beuten",
     term: "beuten",
     translation: "explotar",
-    context: ["B2", "verb"],
+    context: ["B2", "verb"]
   },
   {
     id: "de-schützen",
     term: "schützen",
     translation: "proteger",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-schneiden",
     term: "schneiden",
     translation: "cortar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-aufmucken",
     term: "aufmucken",
     translation: "protestar/revelarse",
-    context: ["B2", "trennbar", "verb"],
+    context: ["B2", "trennbar", "verb"]
   },
   {
     id: "de-stechen",
     term: "stechen",
     translation: "picar/punzar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-sticht",
     term: "sticht",
     translation: "pica",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "stechen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "stechen"]
   },
   {
     id: "de-anbrüllen",
     term: "anbrüllen",
     translation: "gritar a alguien",
-    context: ["B2", "trennbar", "verb"],
+    context: ["B2", "trennbar", "verb"]
   },
   {
     id: "de-schlucken",
     term: "schlucken",
     translation: "tragar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-schlucke",
     term: "schlucke",
     translation: "trago",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "schlucken"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "schlucken"]
   },
   {
     id: "de-schreien",
     term: "schreien",
     translation: "gritar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-schreie",
     term: "schreie",
     translation: "grito",
-    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "schreien"],
+    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "schreien"]
   },
   {
     id: "de-klingen",
     term: "klingen",
     translation: "sonar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-klinge",
     term: "klinge",
     translation: "sueno",
-    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "klingen"],
+    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "klingen"]
   },
   {
     id: "de-lachen",
     term: "lachen",
     translation: "reír",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-lacht",
     term: "lacht",
     translation: "ríe",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "lachen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "lachen"]
   },
   {
     id: "de-kämpfen",
     term: "kämpfen",
     translation: "luchar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-spucken",
     term: "spucken",
     translation: "escupir",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-spuckt",
     term: "spuckt",
     translation: "escupe",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "spucken"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "spucken"]
   },
   {
     id: "de-kapieren",
     term: "kapieren",
     translation: "entender (informal)",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-kapierst",
     term: "kapierst",
     translation: "entiendes",
-    context: ["B1", "präsens", "singular", "verb", "zweite-person", "kapieren"],
+    context: ["B1", "präsens", "singular", "verb", "zweite-person", "kapieren"]
   },
   {
     id: "de-aufmachen",
     term: "aufmachen",
     translation: "abrir",
-    context: ["A1", "trennbar", "verb"],
+    context: ["A1", "trennbar", "verb"]
   },
   {
     id: "de-murksen",
     term: "murksen",
     translation: "matar (jerga)",
-    context: ["C1", "verb"],
+    context: ["C1", "verb"]
   },
   {
     id: "de-tippen",
     term: "tippen",
     translation: "teclear/tocar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-tippt",
     term: "tippt",
     translation: "teclea",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "tippen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "tippen"]
   },
   {
     id: "de-schrauben",
     term: "schrauben",
     translation: "atornillar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-schraubt",
     term: "schraubt",
     translation: "atornilla",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "schrauben"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "schrauben"]
   },
   {
     id: "de-kreischen",
     term: "kreischen",
     translation: "chillar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-kreischt",
     term: "kreischt",
     translation: "chilla",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "kreischen"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "kreischen"]
   },
   {
     id: "de-runterwerfen",
     term: "runterwerfen",
     translation: "tirar abajo",
-    context: ["B1", "trennbar", "unregelmäßig", "verb"],
+    context: ["B1", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-grinsen",
     term: "grinsen",
     translation: "sonreír ampliamente",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-grinst",
     term: "grinst",
     translation: "sonríe",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "grinsen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "grinsen"]
   },
   {
     id: "de-grinse",
     term: "grinse",
     translation: "sonrío",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "grinsen"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "grinsen"]
   },
   {
     id: "de-vorstellen",
     term: "vorstellen",
     translation: "imaginar/presentar",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-vorstelle",
     term: "vorstelle",
     translation: "imagino",
-    context: ["A2", "erste-person", "präsens", "singular", "trennbar", "verb", "vorstellen"],
+    context: ["A2", "erste-person", "präsens", "singular", "trennbar", "verb", "vorstellen"]
   },
   {
     id: "de-wachen",
     term: "wachen",
     translation: "vigilar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-singen",
     term: "singen",
     translation: "cantar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-gesungen",
     term: "gesungen",
     translation: "cantado",
-    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "singen"],
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "singen"]
   },
   {
     id: "de-gekämpft",
     term: "gekämpft",
     translation: "luchado",
-    context: ["A2", "partizip-ii", "verb", "kämpfen"],
+    context: ["A2", "partizip-ii", "verb", "kämpfen"]
   },
   {
     id: "de-kochen",
     term: "kochen",
     translation: "cocinar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-kocht",
     term: "kocht",
     translation: "cocina",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "kochen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "kochen"]
   },
   {
     id: "de-schaffen",
     term: "schaffen",
     translation: "lograr/crear",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-schaffe",
     term: "schaffe",
     translation: "logro",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "schaffen"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "schaffen"]
   },
   {
     id: "de-stoppen",
     term: "stoppen",
     translation: "detener",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-verwandeln",
     term: "verwandeln",
     translation: "transformar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-verwandle",
     term: "verwandle",
     translation: "transformo",
-    context: ["B1", "erste-person", "präsens", "singular", "verb", "verwandeln"],
+    context: ["B1", "erste-person", "präsens", "singular", "verb", "verwandeln"]
   },
   {
     id: "de-wohnen",
     term: "wohnen",
     translation: "vivir/residir",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-gewohnt",
     term: "gewohnt",
     translation: "vivido",
-    context: ["A1", "partizip-ii", "verb", "wohnen"],
+    context: ["A1", "partizip-ii", "verb", "wohnen"]
   },
   {
     id: "de-schicken",
     term: "schicken",
     translation: "enviar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-geschickt",
     term: "geschickt",
     translation: "enviado/hábil",
-    context: ["A2", "partizip-ii", "verb", "schicken"],
+    context: ["A2", "partizip-ii", "verb", "schicken"]
   },
   {
     id: "de-schrubben",
     term: "schrubben",
     translation: "fregar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-schrubbt",
     term: "schrubbt",
     translation: "friega",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "schrubben"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "schrubben"]
   },
   {
     id: "de-heulen",
     term: "heulen",
     translation: "aullar/llorar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-geheult",
     term: "geheult",
     translation: "aullado/llorado",
-    context: ["A2", "partizip-ii", "verb", "heulen"],
+    context: ["A2", "partizip-ii", "verb", "heulen"]
   },
   {
     id: "de-rankommen",
     term: "rankommen",
     translation: "acercarse/alcanzar",
-    context: ["B1", "trennbar", "unregelmäßig", "verb"],
+    context: ["B1", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-werfen",
     term: "werfen",
     translation: "lanzar/tirar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-wirft",
     term: "wirft",
     translation: "lanza",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "werfen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "werfen"]
   },
   {
     id: "de-fangen",
     term: "fangen",
     translation: "atrapar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-fängt",
     term: "fängt",
     translation: "atrapa",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "fangen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "fangen"]
   },
   {
     id: "de-feststecken",
     term: "feststecken",
     translation: "quedar atascado",
-    context: ["B1", "trennbar", "verb"],
+    context: ["B1", "trennbar", "verb"]
   },
   {
     id: "de-verraten",
     term: "verraten",
     translation: "traicionar/revelar",
-    context: ["B1", "unregelmäßig", "verb"],
+    context: ["B1", "unregelmäßig", "verb"]
   },
   {
     id: "de-verrät",
     term: "verrät",
     translation: "traiciona/revela",
-    context: ["B1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "verraten"],
+    context: ["B1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "verraten"]
   },
   {
     id: "de-mitkriegen",
     term: "mitkriegen",
     translation: "enterarse",
-    context: ["B1", "trennbar", "verb"],
+    context: ["B1", "trennbar", "verb"]
   },
   {
     id: "de-mitgekriegt",
     term: "mitgekriegt",
     translation: "enterado",
-    context: ["B1", "partizip-ii", "trennbar", "verb", "mitkriegen"],
+    context: ["B1", "partizip-ii", "trennbar", "verb", "mitkriegen"]
   },
   {
     id: "de-ausfallen",
     term: "ausfallen",
     translation: "cancelarse/fallar",
-    context: ["A2", "trennbar", "unregelmäßig", "verb"],
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-ausgefallen",
     term: "ausgefallen",
     translation: "cancelado",
-    context: ["A2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "ausfallen"],
+    context: ["A2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "ausfallen"]
   },
   {
     id: "de-abhauen",
     term: "abhauen",
     translation: "largarse",
-    context: ["B2", "trennbar", "unregelmäßig", "verb"],
+    context: ["B2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-abgehauen",
     term: "abgehauen",
     translation: "largado",
-    context: ["B2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "abhauen"],
+    context: ["B2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "abhauen"]
   },
   {
     id: "de-schreien",
     term: "schreien",
     translation: "gritar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-geschrien",
     term: "geschrien",
     translation: "gritado",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "schreien"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "schreien"]
   },
   {
     id: "de-verstecken",
     term: "verstecken",
     translation: "esconder",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-strecken",
     term: "strecken",
     translation: "estirar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-streckt",
     term: "streckt",
     translation: "estira",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "strecken"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "strecken"]
   },
   {
     id: "de-schwenken",
     term: "schwenken",
     translation: "agitar/mover",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-schwenkt",
     term: "schwenkt",
     translation: "agita",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "schwenken"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "schwenken"]
   },
   {
     id: "de-hängen",
     term: "hängen",
     translation: "colgar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-hängt",
     term: "hängt",
     translation: "cuelga",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "hängen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "hängen"]
   },
   {
     id: "de-halten",
     term: "halten",
     translation: "sostener/parar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-hält",
     term: "hält",
     translation: "sostiene",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "halten"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "halten"]
   },
   {
     id: "de-gehalten",
     term: "gehalten",
     translation: "sostenido",
-    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "halten"],
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "halten"]
   },
   {
     id: "de-drücken",
     term: "drücken",
     translation: "presionar/apretar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-drücke",
     term: "drücke",
     translation: "presiono",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "drücken"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "drücken"]
   },
   {
     id: "de-schicken-imperativ",
     term: "schicke",
     translation: "envía/envío",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "schicken"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "schicken"]
   },
   {
     id: "de-erfinden",
     term: "erfinden",
     translation: "inventar",
-    context: ["B1", "unregelmäßig", "verb"],
+    context: ["B1", "unregelmäßig", "verb"]
   },
   {
     id: "de-erfunden",
     term: "erfunden",
     translation: "inventado",
-    context: ["B1", "partizip-ii", "unregelmäßig", "verb", "erfinden"],
+    context: ["B1", "partizip-ii", "unregelmäßig", "verb", "erfinden"]
   },
   {
     id: "de-verzaubern",
     term: "verzaubern",
     translation: "encantar/hechizar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-verzaubere",
     term: "verzaubere",
     translation: "hechizo",
-    context: ["B1", "erste-person", "präsens", "singular", "verb", "verzaubern"],
+    context: ["B1", "erste-person", "präsens", "singular", "verb", "verzaubern"]
   },
   {
     id: "de-umgehen",
     term: "umgehen",
     translation: "tratar con/evitar",
-    context: ["B2", "unregelmäßig", "verb"],
+    context: ["B2", "unregelmäßig", "verb"]
   },
   {
     id: "de-hören",
     term: "hören",
     translation: "oír/escuchar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-hört",
     term: "hört",
     translation: "oye",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "hören"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "hören"]
   },
   {
     id: "de-überreden",
     term: "überreden",
     translation: "persuadir",
-    context: ["B2", "verb"],
+    context: ["B2", "verb"]
   },
   {
     id: "de-sprechen",
     term: "sprechen",
     translation: "hablar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-spricht",
     term: "spricht",
     translation: "habla",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "sprechen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "sprechen"]
   },
   {
     id: "de-zielen",
     term: "zielen",
     translation: "apuntar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-gelacht",
     term: "gelacht",
     translation: "reído",
-    context: ["A1", "partizip-ii", "verb", "lachen"],
+    context: ["A1", "partizip-ii", "verb", "lachen"]
   },
   {
     id: "de-üben",
     term: "üben",
     translation: "practicar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-geübt",
     term: "geübt",
     translation: "practicado",
-    context: ["A2", "partizip-ii", "verb", "üben"],
+    context: ["A2", "partizip-ii", "verb", "üben"]
   },
   {
     id: "de-ausstrecken",
     term: "ausstrecken",
     translation: "extender",
-    context: ["B1", "trennbar", "verb"],
+    context: ["B1", "trennbar", "verb"]
   },
   {
     id: "de-abdrücken",
     term: "abdrücken",
     translation: "apretar el gatillo",
-    context: ["B2", "trennbar", "verb"],
+    context: ["B2", "trennbar", "verb"]
   },
   {
     id: "de-fragen",
     term: "fragen",
     translation: "preguntar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-fragt",
     term: "fragt",
     translation: "pregunta",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "fragen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "fragen"]
   },
   {
     id: "de-gefragt",
     term: "gefragt",
     translation: "preguntado",
-    context: ["A1", "partizip-ii", "verb", "fragen"],
+    context: ["A1", "partizip-ii", "verb", "fragen"]
   },
   {
     id: "de-knallen",
     term: "knallen",
     translation: "explotar/disparar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-zischen",
     term: "zischen",
     translation: "sisear",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-zischt",
     term: "zischt",
     translation: "sisea",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "zischen"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "zischen"]
   },
   {
     id: "de-erstarren",
     term: "erstarren",
     translation: "quedarse paralizado",
-    context: ["B2", "verb"],
+    context: ["B2", "verb"]
   },
   {
     id: "de-erstarre",
     term: "erstarre",
     translation: "me quedo paralizado",
-    context: ["B2", "erste-person", "präsens", "singular", "verb", "erstarren"],
+    context: ["B2", "erste-person", "präsens", "singular", "verb", "erstarren"]
   },
   {
     id: "de-atmen",
     term: "atmen",
     translation: "respirar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-überfahren",
     term: "überfahren",
     translation: "atropellar",
-    context: ["B1", "unregelmäßig", "verb"],
+    context: ["B1", "unregelmäßig", "verb"]
   },
   {
     id: "de-verbieten",
     term: "verbieten",
     translation: "prohibir",
-    context: ["B1", "unregelmäßig", "verb"],
+    context: ["B1", "unregelmäßig", "verb"]
   },
   {
     id: "de-verboten",
     term: "verboten",
     translation: "prohibido",
-    context: ["B1", "partizip-ii", "unregelmäßig", "verb", "verbieten"],
+    context: ["B1", "partizip-ii", "unregelmäßig", "verb", "verbieten"]
   },
   {
     id: "de-waschen",
     term: "waschen",
     translation: "lavar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-gewaschen",
     term: "gewaschen",
     translation: "lavado",
-    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "waschen"],
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "waschen"]
   },
   {
     id: "de-verhauen",
     term: "verhauen",
     translation: "golpear/pegar",
-    context: ["C1", "verb"],
+    context: ["C1", "verb"]
   },
   {
     id: "de-verhaut",
     term: "verhaut",
     translation: "golpeado",
-    context: ["C1", "partizip-ii", "verb", "verhauen"],
+    context: ["C1", "partizip-ii", "verb", "verhauen"]
   },
   {
     id: "de-riskieren",
     term: "riskieren",
     translation: "arriesgar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-glauben",
     term: "glauben",
     translation: "creer",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-glaube",
     term: "glaube",
     translation: "creo",
-    context: ["A1", "erste-person", "präsens", "singular", "verb", "glauben"],
+    context: ["A1", "erste-person", "präsens", "singular", "verb", "glauben"]
   },
   {
     id: "de-warten",
     term: "warten",
     translation: "esperar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-warte",
     term: "warte",
     translation: "espero",
-    context: ["A1", "erste-person", "präsens", "singular", "verb", "warten"],
+    context: ["A1", "erste-person", "präsens", "singular", "verb", "warten"]
   },
   {
     id: "de-zeigen",
     term: "zeigen",
     translation: "mostrar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-zeige",
     term: "zeige",
     translation: "muestro",
-    context: ["A1", "erste-person", "präsens", "singular", "verb", "zeigen"],
+    context: ["A1", "erste-person", "präsens", "singular", "verb", "zeigen"]
   },
   {
     id: "de-klappern",
     term: "klappern",
     translation: "traquetear",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-überholen",
     term: "überholen",
     translation: "adelantar/sobrepasar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-überhole",
     term: "überhole",
     translation: "adelanto",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "überholen"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "überholen"]
   },
   {
     id: "de-leiden",
     term: "leiden",
     translation: "sufrir/soportar",
-    context: ["B1", "unregelmäßig", "verb"],
+    context: ["B1", "unregelmäßig", "verb"]
   },
   {
     id: "de-streiten",
     term: "streiten",
     translation: "discutir/pelear",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-streitet",
     term: "streitet",
     translation: "discute",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "streiten"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "streiten"]
   },
   {
     id: "de-ziehen",
     term: "ziehen",
     translation: "tirar/arrastrar/mudarse",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-zieht",
     term: "zieht",
     translation: "tira/arrastra",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "ziehen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "ziehen"]
   },
   {
     id: "de-anzeigen",
     term: "anzeigen",
     translation: "denunciar/mostrar",
-    context: ["B1", "trennbar", "verb"],
+    context: ["B1", "trennbar", "verb"]
   },
   {
     id: "de-angezeigt",
     term: "angezeigt",
     translation: "denunciado",
-    context: ["B1", "partizip-ii", "trennbar", "verb", "anzeigen"],
+    context: ["B1", "partizip-ii", "trennbar", "verb", "anzeigen"]
   },
   {
     id: "de-fressen",
     term: "fressen",
     translation: "comer (animales)/devorar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-gefressen",
     term: "gefressen",
     translation: "comido/devorado",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "fressen"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "fressen"]
   },
   {
     id: "de-lauern",
     term: "lauern",
     translation: "acechar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-lauert",
     term: "lauert",
     translation: "acecha",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "lauern"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "lauern"]
   },
   {
     id: "de-wehren",
     term: "wehren",
     translation: "defenderse",
-    context: ["B1", "reflexiv", "verb"],
+    context: ["B1", "reflexiv", "verb"]
   },
   {
     id: "de-gewehrt",
     term: "gewehrt",
     translation: "defendido",
-    context: ["B1", "partizip-ii", "reflexiv", "verb", "wehren"],
+    context: ["B1", "partizip-ii", "reflexiv", "verb", "wehren"]
   },
   {
     id: "de-tun",
     term: "tun",
     translation: "hacer",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-tut",
     term: "tut",
     translation: "hace",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "tun"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "tun"]
   },
   {
     id: "de-verdreschen",
     term: "verdreschen",
     translation: "dar una paliza",
-    context: ["C1", "unregelmäßig", "verb"],
+    context: ["C1", "unregelmäßig", "verb"]
   },
   {
     id: "de-verdroschen",
     term: "verdroschen",
     translation: "dado una paliza",
-    context: ["C1", "partizip-ii", "unregelmäßig", "verb", "verdreschen"],
+    context: ["C1", "partizip-ii", "unregelmäßig", "verb", "verdreschen"]
   },
   {
     id: "de-retten",
     term: "retten",
     translation: "salvar/rescatar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-gerettet",
     term: "gerettet",
     translation: "salvado",
-    context: ["A2", "partizip-ii", "verb", "retten"],
+    context: ["A2", "partizip-ii", "verb", "retten"]
   },
   {
     id: "de-wegrennen",
     term: "wegrennen",
     translation: "salir corriendo",
-    context: ["A2", "trennbar", "unregelmäßig", "verb"],
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-weggerannt",
     term: "weggerannt",
     translation: "salido corriendo",
-    context: ["A2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "wegrennen"],
+    context: ["A2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "wegrennen"]
   },
   {
     id: "de-denken",
     term: "denken",
     translation: "pensar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-gedacht",
     term: "gedacht",
     translation: "pensado",
-    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "denken"],
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "denken"]
   },
   {
     id: "de-reinziehen",
     term: "reinziehen",
     translation: "meter/involucrar",
-    context: ["B2", "trennbar", "unregelmäßig", "verb"],
+    context: ["B2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-reinzuziehen",
     term: "reinzuziehen",
     translation: "meter/involucrar (infinitivo)",
-    context: ["B2", "infinitiv", "trennbar", "unregelmäßig", "verb", "reinziehen"],
+    context: ["B2", "infinitiv", "trennbar", "unregelmäßig", "verb", "reinziehen"]
   },
   {
     id: "de-knien",
     term: "knien",
     translation: "arrodillarse",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-kosten",
     term: "kosten",
     translation: "costar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-kostet",
     term: "kostet",
     translation: "cuesta",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "kosten"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "kosten"]
   },
   {
     id: "de-sollen-kontraktiv",
     term: "soll's",
     translation: "debe/debería (soll es)",
-    context: ["A2", "konjunktiv-ii", "kontraktion", "verb"],
+    context: ["A2", "konjunktiv-ii", "kontraktion", "verb"]
   },
   {
     id: "de-können-konjunktiv",
     term: "könnte",
     translation: "podría",
-    context: ["A1", "konjunktiv-ii", "verb", "können"],
+    context: ["A1", "konjunktiv-ii", "verb", "können"]
   },
   {
     id: "de-werden-konjunktiv",
     term: "würde",
     translation: "haría/sería",
-    context: ["A1", "konjunktiv-ii", "verb", "werden"],
+    context: ["A1", "konjunktiv-ii", "verb", "werden"]
   },
   {
     id: "de-haben-konjunktiv",
     term: "hätte",
     translation: "habría/tendría",
-    context: ["A1", "konjunktiv-ii", "verb", "haben"],
+    context: ["A1", "konjunktiv-ii", "verb", "haben"]
   },
   {
     id: "de-sein-konjunktiv",
     term: "wäre",
     translation: "sería/estaría",
-    context: ["A1", "konjunktiv-ii", "verb", "sein"],
+    context: ["A1", "konjunktiv-ii", "verb", "sein"]
   },
   {
     id: "de-müssen-konjunktiv",
     term: "müsste",
     translation: "debería/tendría que",
-    context: ["A1", "konjunktiv-ii", "verb", "müssen"],
+    context: ["A1", "konjunktiv-ii", "verb", "müssen"]
   },
   {
     id: "de-sollen-konjunktiv",
     term: "sollte",
     translation: "debería",
-    context: ["A1", "konjunktiv-ii", "verb", "sollen"],
+    context: ["A1", "konjunktiv-ii", "verb", "sollen"]
   },
   {
     id: "de-wollen-konjunktiv",
     term: "wollte",
     translation: "querría/quisiera",
-    context: ["A1", "konjunktiv-ii", "verb", "wollen"],
+    context: ["A1", "konjunktiv-ii", "verb", "wollen"]
   },
   {
     id: "de-dürfen-konjunktiv",
     term: "dürfte",
     translation: "podría/debería",
-    context: ["A1", "konjunktiv-ii", "verb", "dürfen"],
+    context: ["A1", "konjunktiv-ii", "verb", "dürfen"]
   },
   {
     id: "de-mögen-konjunktiv",
     term: "möchte",
     translation: "querría/me gustaría",
-    context: ["A1", "konjunktiv-ii", "verb", "mögen"],
+    context: ["A1", "konjunktiv-ii", "verb", "mögen"]
   },
   {
     id: "de-wissen-konjunktiv",
     term: "wüsste",
     translation: "sabría",
-    context: ["A2", "konjunktiv-ii", "unregelmäßig", "verb", "wissen"],
+    context: ["A2", "konjunktiv-ii", "unregelmäßig", "verb", "wissen"]
   },
   {
     id: "de-gehen-konjunktiv",
     term: "ginge",
     translation: "iría/fuera",
-    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "gehen"],
+    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "gehen"]
   },
   {
     id: "de-kommen-konjunktiv",
     term: "käme",
     translation: "vendría/viniera",
-    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "kommen"],
+    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "kommen"]
   },
   {
     id: "de-geben-konjunktiv",
     term: "gäbe",
     translation: "daría/diera",
-    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "geben"],
+    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "geben"]
   },
   {
     id: "de-sehen-konjunktiv",
     term: "sähe",
     translation: "vería",
-    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "sehen"],
+    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "sehen"]
   },
   {
     id: "de-tun-konjunktiv",
     term: "täte",
     translation: "haría/hiciera",
-    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "tun"],
+    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "tun"]
   },
   {
     id: "de-lassen-konjunktiv",
     term: "ließe",
     translation: "dejaría/dejara",
-    context: ["A2", "konjunktiv-ii", "unregelmäßig", "verb", "lassen"],
+    context: ["A2", "konjunktiv-ii", "unregelmäßig", "verb", "lassen"]
   },
   {
     id: "de-finden-konjunktiv",
     term: "fände",
     translation: "encontraría",
-    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "finden"],
+    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "finden"]
   },
   {
     id: "de-nehmen-konjunktiv",
     term: "nähme",
     translation: "tomaría/tomara",
-    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "nehmen"],
+    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "nehmen"]
   },
   {
     id: "de-sterben-konjunktiv",
     term: "stürbe",
     translation: "moriría/muriera",
-    context: ["A2", "konjunktiv-ii", "unregelmäßig", "verb", "sterben"],
+    context: ["A2", "konjunktiv-ii", "unregelmäßig", "verb", "sterben"]
   },
   {
     id: "de-stehen-konjunktiv",
     term: "stünde",
     translation: "estaría (de pie)/estuviera",
-    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "stehen"],
+    context: ["A1", "konjunktiv-ii", "unregelmäßig", "verb", "stehen"]
   },
   {
     id: "de-haben-konjunktiv-plural",
     term: "hätten",
     translation: "tendríamos/tendrían",
-    context: ["A1", "konjunktiv-ii", "plural", "verb", "haben"],
+    context: ["A1", "konjunktiv-ii", "plural", "verb", "haben"]
   },
   {
     id: "de-sein-konjunktiv-plural",
     term: "wären",
     translation: "seríamos/serían/estaríamos",
-    context: ["A1", "konjunktiv-ii", "plural", "verb", "sein"],
+    context: ["A1", "konjunktiv-ii", "plural", "verb", "sein"]
   },
   {
     id: "de-können-konjunktiv-plural",
     term: "könnten",
     translation: "podríamos/podrían",
-    context: ["A1", "konjunktiv-ii", "plural", "verb", "können"],
+    context: ["A1", "konjunktiv-ii", "plural", "verb", "können"]
   },
   {
     id: "de-müssen-konjunktiv-plural",
     term: "müssten",
     translation: "deberíamos/deberían",
-    context: ["A1", "konjunktiv-ii", "plural", "verb", "müssen"],
+    context: ["A1", "konjunktiv-ii", "plural", "verb", "müssen"]
   },
   {
     id: "de-sollen-konjunktiv-plural",
     term: "sollten",
     translation: "deberíamos/deberían",
-    context: ["A1", "konjunktiv-ii", "plural", "verb", "sollen"],
+    context: ["A1", "konjunktiv-ii", "plural", "verb", "sollen"]
   },
   {
     id: "de-wollen-konjunktiv-plural",
     term: "wollten",
     translation: "querríamos/querrían",
-    context: ["A1", "konjunktiv-ii", "plural", "verb", "wollen"],
+    context: ["A1", "konjunktiv-ii", "plural", "verb", "wollen"]
   },
   {
     id: "de-dürfen-konjunktiv-plural",
     term: "dürften",
     translation: "podríamos/podrían",
-    context: ["A1", "konjunktiv-ii", "plural", "verb", "dürfen"],
+    context: ["A1", "konjunktiv-ii", "plural", "verb", "dürfen"]
   },
   {
     id: "de-werden-konjunktiv-plural",
     term: "würden",
     translation: "haríamos/harían",
-    context: ["A1", "konjunktiv-ii", "plural", "verb", "werden"],
+    context: ["A1", "konjunktiv-ii", "plural", "verb", "werden"]
   },
   {
     id: "de-feiern",
     term: "feiern",
     translation: "celebrar/festejar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-gefeiert",
     term: "gefeiert",
     translation: "celebrado",
-    context: ["A1", "partizip-ii", "verb", "feiern"],
+    context: ["A1", "partizip-ii", "verb", "feiern"]
   },
   {
     id: "de-rauchen",
     term: "rauchen",
     translation: "fumar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-geraucht",
     term: "geraucht",
     translation: "fumado",
-    context: ["A1", "partizip-ii", "verb", "rauchen"],
+    context: ["A1", "partizip-ii", "verb", "rauchen"]
   },
   {
     id: "de-raucht",
     term: "raucht",
     translation: "fuma",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "rauchen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "rauchen"]
   },
   {
     id: "de-essen",
     term: "essen",
     translation: "comer",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-gegessen",
     term: "gegessen",
     translation: "comido",
-    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "essen"],
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "essen"]
   },
   {
     id: "de-backen",
     term: "backen",
     translation: "hornear",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-gebacken",
     term: "gebacken",
     translation: "horneado",
-    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "backen"],
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "backen"]
   },
   {
     id: "de-abhacken",
     term: "abhacken",
     translation: "cortar/picar",
-    context: ["B1", "trennbar", "verb"],
+    context: ["B1", "trennbar", "verb"]
   },
   {
     id: "de-nennen",
     term: "nennen",
     translation: "llamar/nombrar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-wiederholen",
     term: "wiederholen",
     translation: "repetir",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-heißen",
     term: "heißen",
     translation: "llamarse",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-heißt",
     term: "heißt",
     translation: "se llama",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "heißen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "heißen"]
   },
   {
     id: "de-dengeln",
     term: "dengeln",
     translation: "afilar (guadaña)",
-    context: ["B2", "verb"],
+    context: ["B2", "verb"]
   },
   {
     id: "de-richten",
     term: "richten",
     translation: "dirigir/apuntar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-gerichtet",
     term: "gerichtet",
     translation: "dirigido",
-    context: ["A2", "partizip-ii", "verb", "richten"],
+    context: ["A2", "partizip-ii", "verb", "richten"]
   },
   {
     id: "de-schieben",
     term: "schieben",
     translation: "empujar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-schiebe",
     term: "schiebe",
     translation: "empujo",
-    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "schieben"],
+    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "schieben"]
   },
   {
     id: "de-stampfen",
     term: "stampfen",
     translation: "pisotear/apisonar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-stampft",
     term: "stampft",
     translation: "pisotea",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "stampfen"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "stampfen"]
   },
   {
     id: "de-mitarbeiten",
     term: "mitarbeiten",
     translation: "colaborar",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-breiten",
     term: "breiten",
     translation: "extender",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-helfen",
     term: "helfen",
     translation: "ayudar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-geholfen",
     term: "geholfen",
     translation: "ayudado",
-    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "helfen"],
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "helfen"]
   },
   {
     id: "de-einreißen",
     term: "einreißen",
     translation: "derribar/demoler",
-    context: ["B1", "trennbar", "unregelmäßig", "verb"],
+    context: ["B1", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-einzureißen",
     term: "einzureißen",
     translation: "derribar (infinitivo)",
-    context: ["B1", "infinitiv", "trennbar", "unregelmäßig", "verb", "einreißen"],
+    context: ["B1", "infinitiv", "trennbar", "unregelmäßig", "verb", "einreißen"]
   },
   {
     id: "de-nennen-partizip",
     term: "genannt",
     translation: "llamado/nombrado",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "nennen"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "nennen"]
   },
   {
     id: "de-bauen",
     term: "bauen",
     translation: "construir",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-gebaut",
     term: "gebaut",
     translation: "construido",
-    context: ["A1", "partizip-ii", "verb", "bauen"],
+    context: ["A1", "partizip-ii", "verb", "bauen"]
   },
   {
     id: "de-scheinen",
     term: "scheinen",
     translation: "brillar/parecer",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-scheint",
     term: "scheint",
     translation: "brilla/parece",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "scheinen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "scheinen"]
   },
   {
     id: "de-glänzen",
     term: "glänzen",
     translation: "brillar/relucir",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-wohnen",
     term: "wohnen",
     translation: "vivir/habitar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-wohnt",
     term: "wohnt",
     translation: "vive",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "wohnen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "wohnen"]
   },
   {
     id: "de-anhalten",
     term: "anhalten",
     translation: "detenerse/parar",
-    context: ["A2", "trennbar", "unregelmäßig", "verb"],
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-anzuhalten",
     term: "anzuhalten",
     translation: "detenerse (infinitivo)",
-    context: ["A2", "infinitiv", "trennbar", "unregelmäßig", "verb", "anhalten"],
+    context: ["A2", "infinitiv", "trennbar", "unregelmäßig", "verb", "anhalten"]
   },
   {
     id: "de-schmecken",
     term: "schmecken",
     translation: "saber (sabor)",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-schmeckt",
     term: "schmeckt",
     translation: "sabe",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "schmecken"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "schmecken"]
   },
   {
     id: "de-aufmachen",
     term: "aufmachen",
     translation: "abrir",
-    context: ["A1", "trennbar", "verb"],
+    context: ["A1", "trennbar", "verb"]
   },
   {
     id: "de-aufgemacht",
     term: "aufgemacht",
     translation: "abierto",
-    context: ["A1", "partizip-ii", "trennbar", "verb", "aufmachen"],
+    context: ["A1", "partizip-ii", "trennbar", "verb", "aufmachen"]
   },
   {
     id: "de-stinken",
     term: "stinken",
     translation: "apestar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-stinkt",
     term: "stinkt",
     translation: "apesta",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "stinken"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "stinken"]
   },
   {
     id: "de-trinken",
     term: "trinken",
     translation: "beber",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-trinkt",
     term: "trinkt",
     translation: "bebe",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "trinken"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "trinken"]
   },
   {
     id: "de-stoßen",
     term: "stoßen",
     translation: "empujar/golpear",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-stoße",
     term: "stoße",
     translation: "empujo",
-    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "stoßen"],
+    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "stoßen"]
   },
   {
     id: "de-drehen",
     term: "drehen",
     translation: "girar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-dreht",
     term: "dreht",
     translation: "gira",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "drehen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "drehen"]
   },
   {
     id: "de-fordern",
     term: "fordern",
     translation: "exigir/pedir",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-fordere",
     term: "fordere",
     translation: "exijo",
-    context: ["B1", "erste-person", "präsens", "singular", "verb", "fordern"],
+    context: ["B1", "erste-person", "präsens", "singular", "verb", "fordern"]
   },
   {
     id: "de-rülpsen",
     term: "rülpsen",
     translation: "eructar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-rülpst",
     term: "rülpst",
     translation: "eructa",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "rülpsen"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "rülpsen"]
   },
   {
     id: "de-kratzen",
     term: "kratzen",
     translation: "rascar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-kratzt",
     term: "kratzt",
     translation: "rasca",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "kratzen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "kratzen"]
   },
   {
     id: "de-einsteigen",
     term: "einsteigen",
     translation: "subir/entrar",
-    context: ["A2", "trennbar", "unregelmäßig", "verb"],
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-eingestiegen",
     term: "eingestiegen",
     translation: "subido/entrado",
-    context: ["A2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "einsteigen"],
+    context: ["A2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "einsteigen"]
   },
   {
     id: "de-suchen",
     term: "suchen",
     translation: "buscar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-gesucht",
     term: "gesucht",
     translation: "buscado",
-    context: ["A1", "partizip-ii", "verb", "suchen"],
+    context: ["A1", "partizip-ii", "verb", "suchen"]
   },
   {
     id: "de-verstecken",
     term: "verstecken",
     translation: "esconder",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-versteckt",
     term: "versteckt",
     translation: "escondido",
-    context: ["A2", "partizip-ii", "verb", "verstecken"],
+    context: ["A2", "partizip-ii", "verb", "verstecken"]
   },
   {
     id: "de-verklickern",
     term: "verklickern",
     translation: "explicar (informal)",
-    context: ["B2", "verb"],
+    context: ["B2", "verb"]
   },
   {
     id: "de-entdecken",
     term: "entdecken",
     translation: "descubrir",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-entdeckt",
     term: "entdeckt",
     translation: "descubierto",
-    context: ["A2", "partizip-ii", "verb", "entdecken"],
+    context: ["A2", "partizip-ii", "verb", "entdecken"]
   },
   {
     id: "de-hochklappen",
     term: "hochklappen",
     translation: "levantar/plegar",
-    context: ["B1", "trennbar", "verb"],
+    context: ["B1", "trennbar", "verb"]
   },
   {
     id: "de-sinken",
     term: "sinken",
     translation: "hundirse",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-schleppern",
     term: "schleppern",
     translation: "traquetear (motor)",
-    context: ["B2", "verb"],
+    context: ["B2", "verb"]
   },
   {
     id: "de-mittagessen",
     term: "mittagessen",
     translation: "almorzar",
-    context: ["A1", "trennbar", "unregelmäßig", "verb"],
+    context: ["A1", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-mittaggegessen",
     term: "mittaggegessen",
     translation: "almorzado",
-    context: ["A1", "partizip-ii", "trennbar", "unregelmäßig", "verb", "mittagessen"],
+    context: ["A1", "partizip-ii", "trennbar", "unregelmäßig", "verb", "mittagessen"]
   },
   {
     id: "de-aufstellen",
     term: "aufstellen",
     translation: "colocar/formar",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-fassen",
     term: "fassen",
     translation: "agarrar/coger",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-sitzen",
     term: "sitzen",
     translation: "estar sentado",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-gesessen",
     term: "gesessen",
     translation: "estado sentado",
-    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "sitzen"],
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "sitzen"]
   },
   {
     id: "de-hassen",
     term: "hassen",
     translation: "odiar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-gehasst",
     term: "gehasst",
     translation: "odiado",
-    context: ["A2", "partizip-ii", "verb", "hassen"],
+    context: ["A2", "partizip-ii", "verb", "hassen"]
   },
   {
     id: "de-betteln",
     term: "betteln",
     translation: "mendigar/suplicar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-bettele",
     term: "bettele",
     translation: "mendigo",
-    context: ["B1", "erste-person", "präsens", "singular", "verb", "betteln"],
+    context: ["B1", "erste-person", "präsens", "singular", "verb", "betteln"]
   },
   {
     id: "de-merken",
     term: "merken",
     translation: "darse cuenta/notar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-merkt",
     term: "merkt",
     translation: "nota/se da cuenta",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "merken"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "merken"]
   },
   {
     id: "de-benutzen",
     term: "benutzen",
     translation: "usar/utilizar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-vorbeikommen",
     term: "vorbeikommen",
     translation: "pasar por/visitar",
-    context: ["A2", "trennbar", "unregelmäßig", "verb"],
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-zeigen",
     term: "zeigen",
     translation: "mostrar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-zeigt",
     term: "zeigt",
     translation: "muestra",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "zeigen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "zeigen"]
   },
   {
     id: "de-reingehen",
     term: "reingehen",
     translation: "entrar",
-    context: ["A2", "trennbar", "unregelmäßig", "verb"],
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-schleichen",
     term: "schleichen",
     translation: "deslizarse/ir sigilosamente",
-    context: ["B1", "unregelmäßig", "verb"],
+    context: ["B1", "unregelmäßig", "verb"]
   },
   {
     id: "de-riechen",
     term: "riechen",
     translation: "oler",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-riecht",
     term: "riecht",
     translation: "huele",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "riechen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "riechen"]
   },
   {
     id: "de-klettern",
     term: "klettern",
     translation: "trepar/escalar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-klettert",
     term: "klettert",
     translation: "trepa",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "klettern"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "klettern"]
   },
   {
     id: "de-ächzen",
     term: "ächzen",
     translation: "gemir/crujir",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-krabbeln",
     term: "krabbeln",
     translation: "gatear/reptar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-kriechen",
     term: "kriechen",
     translation: "arrastrarse",
-    context: ["B1", "unregelmäßig", "verb"],
+    context: ["B1", "unregelmäßig", "verb"]
   },
   {
     id: "de-holen",
     term: "holen",
     translation: "traer/ir a buscar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-holt",
     term: "holt",
     translation: "trae",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "holen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "holen"]
   },
   {
     id: "de-kundschaften",
     term: "kundschaften",
     translation: "reconocer/explorar",
-    context: ["B2", "verb"],
+    context: ["B2", "verb"]
   },
   {
     id: "de-kundschaftet",
     term: "kundschaftet",
     translation: "reconoce",
-    context: ["B2", "dritte-person", "präsens", "singular", "verb", "kundschaften"],
+    context: ["B2", "dritte-person", "präsens", "singular", "verb", "kundschaften"]
   },
   {
     id: "de-heben",
     term: "heben",
     translation: "levantar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-hebe",
     term: "hebe",
     translation: "levanto",
-    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "heben"],
+    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "heben"]
   },
   {
     id: "de-reinbeißen",
     term: "reinbeißen",
     translation: "morder/dar un bocado",
-    context: ["B1", "trennbar", "unregelmäßig", "verb"],
+    context: ["B1", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-biegen",
     term: "biegen",
     translation: "doblar/torcer",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-biegt",
     term: "biegt",
     translation: "dobla",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "biegen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "biegen"]
   },
   {
     id: "de-rauswachsen",
     term: "rauswachsen",
     translation: "crecer hacia afuera",
-    context: ["B1", "trennbar", "unregelmäßig", "verb"],
+    context: ["B1", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-steigen",
     term: "steigen",
     translation: "subir/escalar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-steige",
     term: "steige",
     translation: "subo",
-    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "steigen"],
+    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "steigen"]
   },
   {
     id: "de-schauen",
     term: "schauen",
     translation: "mirar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-schaue",
     term: "schaue",
     translation: "miro",
-    context: ["A1", "erste-person", "präsens", "singular", "verb", "schauen"],
+    context: ["A1", "erste-person", "präsens", "singular", "verb", "schauen"]
   },
   {
     id: "de-nuscheln",
     term: "nuscheln",
     translation: "mascullar/murmurar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-nuschelt",
     term: "nuschelt",
     translation: "masculla",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "nuscheln"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "nuscheln"]
   },
   {
     id: "de-klingen",
     term: "klingen",
     translation: "sonar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-klingt",
     term: "klingt",
     translation: "suena",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "klingen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "klingen"]
   },
   {
     id: "de-pfeifen",
     term: "pfeifen",
     translation: "silbar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-pfeif",
     term: "pfeif",
     translation: "silbo/silba",
-    context: ["A2", "imperativ", "unregelmäßig", "verb", "pfeifen"],
+    context: ["A2", "imperativ", "unregelmäßig", "verb", "pfeifen"]
   },
   {
     id: "de-kennen",
     term: "kennen",
     translation: "conocer",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-kenne",
     term: "kenne",
     translation: "conozco",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "kennen"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "kennen"]
   },
   {
     id: "de-wechseln",
     term: "wechseln",
     translation: "cambiar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-wechselt",
     term: "wechselt",
     translation: "cambia",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "wechseln"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "wechseln"]
   },
   {
     id: "de-lieben",
     term: "lieben",
     translation: "amar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-liebt",
     term: "liebt",
     translation: "ama",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "lieben"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "lieben"]
   },
   {
     id: "de-überspielen",
     term: "überspielen",
     translation: "grabar/copiar (música)",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-brauchen",
     term: "brauchen",
     translation: "necesitar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-brauch",
     term: "brauch",
     translation: "necesito",
-    context: ["A1", "erste-person", "präsens", "singular", "verb", "brauchen"],
+    context: ["A1", "erste-person", "präsens", "singular", "verb", "brauchen"]
   },
   {
     id: "de-kribbeln",
     term: "kribbeln",
     translation: "hormiguear",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-bewegen",
     term: "bewegen",
     translation: "mover",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-bewege",
     term: "bewege",
     translation: "muevo",
-    context: ["A1", "erste-person", "präsens", "singular", "verb", "bewegen"],
+    context: ["A1", "erste-person", "präsens", "singular", "verb", "bewegen"]
   },
   {
     id: "de-anfangen",
     term: "anfangen",
     translation: "empezar",
-    context: ["A1", "trennbar", "unregelmäßig", "verb"],
+    context: ["A1", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-angefangen",
     term: "angefangen",
     translation: "empezado",
-    context: ["A1", "partizip-ii", "trennbar", "unregelmäßig", "verb", "anfangen"],
+    context: ["A1", "partizip-ii", "trennbar", "unregelmäßig", "verb", "anfangen"]
   },
   {
     id: "de-erschrecken",
     term: "erschrecken",
     translation: "asustarse",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-erschrocken",
     term: "erschrocken",
     translation: "asustado",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "erschrecken"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "erschrecken"]
   },
   {
     id: "de-denken",
     term: "denken",
     translation: "pensar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-denke",
     term: "denke",
     translation: "pienso",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "denken"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "denken"]
   },
   {
     id: "de-gucken",
     term: "gucken",
     translation: "mirar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-geguckt",
     term: "geguckt",
     translation: "mirado",
-    context: ["A1", "partizip-ii", "verb", "gucken"],
+    context: ["A1", "partizip-ii", "verb", "gucken"]
   },
   {
     id: "de-aufkriechen",
     term: "aufkriechen",
     translation: "arrastrarse hacia arriba",
-    context: ["B2", "trennbar", "unregelmäßig", "verb"],
+    context: ["B2", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-aufgekrochen",
     term: "aufgekrochen",
     translation: "arrastrado hacia arriba",
-    context: ["B2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "aufkriechen"],
+    context: ["B2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "aufkriechen"]
   },
   {
     id: "de-sortieren",
     term: "sortieren",
     translation: "clasificar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-arbeiten",
     term: "arbeiten",
     translation: "trabajar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-arbeitet",
     term: "arbeitet",
     translation: "trabaja",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "arbeiten"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "arbeiten"]
   },
   {
     id: "de-kriegen",
     term: "kriegen",
     translation: "conseguir/obtener",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-kriegt",
     term: "kriegt",
     translation: "consigue",
-    context: ["A2", "dritte-person", "präsens", "singular", "verb", "kriegen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "kriegen"]
   },
   {
     id: "de-starren",
     term: "starren",
     translation: "mirar fijamente",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-schlappen",
     term: "schlappen",
     translation: "arrastrar (los pies)",
-    context: ["B2", "verb"],
+    context: ["B2", "verb"]
   },
   {
     id: "de-schlappt",
     term: "schlappt",
     translation: "arrastra",
-    context: ["B2", "dritte-person", "präsens", "singular", "verb", "schlappen"],
+    context: ["B2", "dritte-person", "präsens", "singular", "verb", "schlappen"]
   },
   {
     id: "de-verschrumpeln",
     term: "verschrumpeln",
     translation: "arrugarse/marchitarse",
-    context: ["B2", "verb"],
+    context: ["B2", "verb"]
   },
   {
     id: "de-überfressen",
     term: "überfressen",
     translation: "hartarse (vulgar)",
-    context: ["C1", "reflexiv", "verb"],
+    context: ["C1", "reflexiv", "verb"]
   },
   {
     id: "de-übergessen",
     term: "übergessen",
     translation: "hastiar de comida",
-    context: ["C1", "reflexiv", "verb"],
+    context: ["C1", "reflexiv", "verb"]
   },
   {
     id: "de-flanken",
     term: "flanken",
     translation: "flanquear",
-    context: ["B2", "verb"],
+    context: ["B2", "verb"]
   },
   {
     id: "de-geflankt",
     term: "geflankt",
     translation: "flanqueado",
-    context: ["B2", "partizip-ii", "verb", "flanken"],
+    context: ["B2", "partizip-ii", "verb", "flanken"]
   },
   {
     id: "de-erzähl-imperativ",
     term: "erzähl",
     translation: "cuenta (imperativo)",
-    context: ["A2", "imperativ", "verb", "erzählen"],
+    context: ["A2", "imperativ", "verb", "erzählen"]
   },
   {
     id: "de-erzähle-primera",
     term: "erzähle",
     translation: "cuento",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "erzählen"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "erzählen"]
   },
   {
     id: "de-lasse-primera",
     term: "lasse",
     translation: "dejo",
-    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "lassen"],
+    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "lassen"]
   },
   {
     id: "de-sitze-primera",
     term: "sitze",
     translation: "estoy sentado",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "sitzen"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "sitzen"]
   },
   {
     id: "de-aufmache-primera",
     term: "aufmache",
     translation: "abro",
-    context: ["A1", "erste-person", "präsens", "singular", "trennbar", "verb", "aufmachen"],
+    context: ["A1", "erste-person", "präsens", "singular", "trennbar", "verb", "aufmachen"]
   },
   {
     id: "de-kriegen-primera",
     term: "kriege",
     translation: "consigo",
-    context: ["A2", "erste-person", "präsens", "singular", "verb", "kriegen"],
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "kriegen"]
   },
   {
     id: "de-holen-primera",
     term: "hole",
     translation: "traigo/voy a buscar",
-    context: ["A1", "erste-person", "präsens", "singular", "verb", "holen"],
+    context: ["A1", "erste-person", "präsens", "singular", "verb", "holen"]
   },
   {
     id: "de-beweisen",
     term: "beweisen",
     translation: "demostrar/probar",
-    context: ["B1", "unregelmäßig", "verb"],
+    context: ["B1", "unregelmäßig", "verb"]
   },
   {
     id: "de-drüberfahren",
     term: "drübergefahren",
     translation: "pasado por encima (participio)",
-    context: ["B1", "partizip-ii", "trennbar", "unregelmäßig", "verb", "drüberfahren"],
+    context: ["B1", "partizip-ii", "trennbar", "unregelmäßig", "verb", "drüberfahren"]
   },
   {
     id: "de-tun-prät",
     term: "tat",
     translation: "hizo",
-    context: ["A1", "präteritum", "unregelmäßig", "verb", "tun"],
+    context: ["A1", "präteritum", "unregelmäßig", "verb", "tun"]
   },
   {
     id: "de-schnauben",
     term: "schnauben",
     translation: "resoplar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-schnaubt",
     term: "schnaubt",
     translation: "resopla",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "schnauben"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "schnauben"]
   },
   {
     id: "de-ducken-refl",
     term: "ducken",
     translation: "agacharse",
-    context: ["A2", "reflexiv", "verb"],
+    context: ["A2", "reflexiv", "verb"]
   },
   {
     id: "de-ducke",
     term: "ducke",
     translation: "me agacho",
-    context: ["A2", "erste-person", "präsens", "singular", "reflexiv", "verb", "ducken"],
+    context: ["A2", "erste-person", "präsens", "singular", "reflexiv", "verb", "ducken"]
   },
   {
     id: "de-kapieren",
     term: "kapieren",
     translation: "captar/entender (informal)",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-kapiert",
     term: "kapiert",
     translation: "captado/entendido",
-    context: ["B1", "partizip-ii", "verb", "kapieren"],
+    context: ["B1", "partizip-ii", "verb", "kapieren"]
   },
   {
     id: "de-gehören",
     term: "gehören",
     translation: "pertenecer",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-gehört",
     term: "gehört",
     translation: "pertenecido/escuchado",
-    context: ["A2", "partizip-ii", "verb", "gehören"],
+    context: ["A2", "partizip-ii", "verb", "gehören"]
   },
   {
     id: "de-teilen",
     term: "teilen",
     translation: "compartir/dividir",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-geteilt",
     term: "geteilt",
     translation: "compartido/dividido",
-    context: ["A1", "partizip-ii", "verb", "teilen"],
+    context: ["A1", "partizip-ii", "verb", "teilen"]
   },
   {
     id: "de-erklären",
     term: "erklären",
     translation: "explicar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-erklärt",
     term: "erklärt",
     translation: "explicado",
-    context: ["A2", "partizip-ii", "verb", "erklären"],
+    context: ["A2", "partizip-ii", "verb", "erklären"]
   },
   {
     id: "de-drücken",
     term: "drücken",
     translation: "apretar/empujar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-gedrückt",
     term: "gedrückt",
     translation: "apretado",
-    context: ["A2", "partizip-ii", "verb", "drücken"],
+    context: ["A2", "partizip-ii", "verb", "drücken"]
   },
   {
     id: "de-nicken",
     term: "nicken",
     translation: "asentir",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-genickt",
     term: "genickt",
     translation: "asentido",
-    context: ["A2", "partizip-ii", "verb", "nicken"],
+    context: ["A2", "partizip-ii", "verb", "nicken"]
   },
   {
     id: "de-reden",
     term: "reden",
     translation: "hablar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-geredet",
     term: "geredet",
     translation: "hablado",
-    context: ["A1", "partizip-ii", "verb", "reden"],
+    context: ["A1", "partizip-ii", "verb", "reden"]
   },
   {
     id: "de-anschreien",
     term: "anschreien",
     translation: "gritar a alguien",
-    context: ["B1", "trennbar", "unregelmäßig", "verb"],
+    context: ["B1", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-angeschrien",
     term: "angeschrien",
     translation: "gritado",
-    context: ["B1", "partizip-ii", "trennbar", "unregelmäßig", "verb", "anschreien"],
+    context: ["B1", "partizip-ii", "trennbar", "unregelmäßig", "verb", "anschreien"]
   },
   {
     id: "de-scheiden",
     term: "scheiden",
     translation: "separarse/divorciarse",
-    context: ["B1", "unregelmäßig", "verb"],
+    context: ["B1", "unregelmäßig", "verb"]
   },
   {
     id: "de-geschieden",
     term: "geschieden",
     translation: "divorciado",
-    context: ["B1", "partizip-ii", "unregelmäßig", "verb", "scheiden"],
+    context: ["B1", "partizip-ii", "unregelmäßig", "verb", "scheiden"]
   },
   {
     id: "de-heiraten",
     term: "heiraten",
     translation: "casarse",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-einigen-verb",
     term: "einigen",
     translation: "ponerse de acuerdo",
-    context: ["B1", "reflexiv", "verb"],
+    context: ["B1", "reflexiv", "verb"]
   },
   {
     id: "de-streiten",
     term: "streiten",
     translation: "pelear/discutir",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-gestritten",
     term: "gestritten",
     translation: "peleado",
-    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "streiten"],
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "streiten"]
   },
   {
     id: "de-behaupten",
     term: "behaupten",
     translation: "afirmar/sostener",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-behauptet",
     term: "behauptet",
     translation: "afirmado",
-    context: ["B1", "partizip-ii", "verb", "behaupten"],
+    context: ["B1", "partizip-ii", "verb", "behaupten"]
   },
   {
     id: "de-kaputtmachen",
     term: "kaputtmachen",
     translation: "romper/estropear",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-meinen",
     term: "meinen",
     translation: "opinar/pensar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-meinte",
     term: "meinte",
     translation: "opinaba/pensaba",
-    context: ["A1", "präteritum", "verb", "meinen"],
+    context: ["A1", "präteritum", "verb", "meinen"]
   },
   {
     id: "de-vernageln",
     term: "vernageln",
     translation: "clavar/tapar",
-    context: ["B2", "verb"],
+    context: ["B2", "verb"]
   },
   {
     id: "de-vernagelt",
     term: "vernagelt",
     translation: "clavado/tapado",
-    context: ["B2", "partizip-ii", "verb", "vernageln"],
+    context: ["B2", "partizip-ii", "verb", "vernageln"]
   },
   {
     id: "de-herunterlassen",
     term: "herunterlassen",
     translation: "bajar",
-    context: ["B1", "trennbar", "unregelmäßig", "verb"],
+    context: ["B1", "trennbar", "unregelmäßig", "verb"]
   },
   {
     id: "de-heruntergelassener",
     term: "heruntergelassener",
     translation: "bajado",
-    context: ["B1", "partizip-ii", "trennbar", "adjektiv"],
+    context: ["B1", "partizip-ii", "trennbar", "adjektiv"]
   },
   {
     id: "de-schreien",
     term: "schreien",
     translation: "gritar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-schrie",
     term: "schrie",
     translation: "gritó",
-    context: ["A2", "präteritum", "unregelmäßig", "verb", "schreien"],
+    context: ["A2", "präteritum", "unregelmäßig", "verb", "schreien"]
   },
   {
     id: "de-reißen",
     term: "reißen",
     translation: "arrancar/romper",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-riss",
     term: "riss",
     translation: "arrancó",
-    context: ["A2", "präteritum", "unregelmäßig", "verb", "reißen"],
+    context: ["A2", "präteritum", "unregelmäßig", "verb", "reißen"]
   },
   {
     id: "de-hängen-irr",
     term: "hängen",
     translation: "colgar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-hing",
     term: "hing",
     translation: "colgaba",
-    context: ["A1", "präteritum", "unregelmäßig", "verb", "hängen"],
+    context: ["A1", "präteritum", "unregelmäßig", "verb", "hängen"]
   },
   {
     id: "de-ziehen-zog",
     term: "zog",
     translation: "tiró/sacó",
-    context: ["A1", "präteritum", "unregelmäßig", "verb", "ziehen"],
+    context: ["A1", "präteritum", "unregelmäßig", "verb", "ziehen"]
   },
   {
     id: "de-rufen",
     term: "rufen",
     translation: "llamar/gritar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-riefen",
     term: "riefen",
     translation: "llamaron",
-    context: ["A1", "präteritum", "plural", "unregelmäßig", "verb", "rufen"],
+    context: ["A1", "präteritum", "plural", "unregelmäßig", "verb", "rufen"]
   },
   {
     id: "de-schauen-mirar",
     term: "schaute",
     translation: "miraba/miró",
-    context: ["A1", "präteritum", "verb", "schauen"],
+    context: ["A1", "präteritum", "verb", "schauen"]
   },
   {
     id: "de-glänzen-part",
     term: "geglänzt",
     translation: "brillado",
-    context: ["A2", "partizip-ii", "verb", "glänzen"],
+    context: ["A2", "partizip-ii", "verb", "glänzen"]
   },
   {
     id: "de-angucken",
     term: "angucken",
     translation: "mirar",
-    context: ["A1", "trennbar", "verb"],
+    context: ["A1", "trennbar", "verb"]
   },
   {
     id: "de-angeguckt",
     term: "angeguckt",
     translation: "mirado",
-    context: ["A1", "partizip-ii", "trennbar", "verb", "angucken"],
+    context: ["A1", "partizip-ii", "trennbar", "verb", "angucken"]
   },
   {
     id: "de-gerufen",
     term: "gerufen",
     translation: "llamado",
-    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "rufen"],
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "rufen"]
   },
   {
     id: "de-mitmachen",
     term: "mitmachen",
     translation: "participar",
-    context: ["A2", "trennbar", "verb"],
+    context: ["A2", "trennbar", "verb"]
   },
   {
     id: "de-mitgemacht",
     term: "mitgemacht",
     translation: "participado",
-    context: ["A2", "partizip-ii", "trennbar", "verb", "mitmachen"],
+    context: ["A2", "partizip-ii", "trennbar", "verb", "mitmachen"]
   },
   {
     id: "de-nennen-nennt",
     term: "nennt",
     translation: "llama/nombra",
-    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "nennen"],
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "nennen"]
   },
   {
     id: "de-binden",
     term: "binden",
     translation: "atar",
-    context: ["A2", "unregelmäßig", "verb"],
+    context: ["A2", "unregelmäßig", "verb"]
   },
   {
     id: "de-zwiebeln",
     term: "zwiebelt",
     translation: "chilla/molesta (jerga)",
-    context: ["C1", "dritte-person", "präsens", "singular", "verb"],
+    context: ["C1", "dritte-person", "präsens", "singular", "verb"]
   },
   {
     id: "de-hinmachen",
     term: "hinmachen",
     translation: "hacer/poner",
-    context: ["B1", "trennbar", "verb"],
+    context: ["B1", "trennbar", "verb"]
   },
   {
     id: "de-züchten",
     term: "züchten",
     translation: "criar/cultivar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-räumen",
     term: "räumen",
     translation: "despejar/ordenar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-singen",
     term: "singen",
     translation: "cantar",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-singt",
     term: "singt",
     translation: "canta",
-    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "singen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "singen"]
   },
   {
     id: "de-bauen-baut",
     term: "baut",
     translation: "construye",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "bauen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "bauen"]
   },
   {
     id: "de-auftauchen",
     term: "auftauchen",
     translation: "aparecer/surgir",
-    context: ["B1", "trennbar", "verb"],
+    context: ["B1", "trennbar", "verb"]
   },
   {
     id: "de-hacken",
     term: "hacken",
     translation: "picar/cavar",
-    context: ["A2", "verb"],
+    context: ["A2", "verb"]
   },
   {
     id: "de-gehackt",
     term: "gehackt",
     translation: "picado",
-    context: ["A2", "partizip-ii", "verb", "hacken"],
+    context: ["A2", "partizip-ii", "verb", "hacken"]
   },
   {
     id: "de-fragen",
     term: "fragen",
     translation: "preguntar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-frage",
     term: "frage",
     translation: "pregunto",
-    context: ["A1", "erste-person", "präsens", "singular", "verb", "fragen"],
+    context: ["A1", "erste-person", "präsens", "singular", "verb", "fragen"]
   },
   {
     id: "de-brummen",
     term: "brummen",
     translation: "gruñir/refunfuñar",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-brummt",
     term: "brummt",
     translation: "gruñe",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "brummen"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "brummen"]
   },
   {
     id: "de-verstehen",
     term: "verstehen",
     translation: "entender",
-    context: ["A1", "unregelmäßig", "verb"],
+    context: ["A1", "unregelmäßig", "verb"]
   },
   {
     id: "de-verstehe",
     term: "verstehe",
     translation: "entiendo",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "verstehen"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "verstehen"]
   },
   {
     id: "de-legen",
     term: "legen",
     translation: "poner/colocar",
-    context: ["A1", "verb"],
+    context: ["A1", "verb"]
   },
   {
     id: "de-legt",
     term: "legt",
     translation: "pone",
-    context: ["A1", "dritte-person", "präsens", "singular", "verb", "legen"],
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "legen"]
   },
   {
     id: "de-brutzeln",
     term: "brutzeln",
     translation: "chisporrotear/freír",
-    context: ["B1", "verb"],
+    context: ["B1", "verb"]
   },
   {
     id: "de-brutzelt",
     term: "brutzelt",
     translation: "chisporrotea",
-    context: ["B1", "dritte-person", "präsens", "singular", "verb", "brutzeln"],
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "brutzeln"]
   },
   {
     id: "de-draufmachen",
     term: "draufmachen",
     translation: "poner encima",
-    context: ["B1", "trennbar", "verb"],
+    context: ["B1", "trennbar", "verb"]
   },
   {
     id: "de-ziehen-ziehe",
     term: "ziehe",
     translation: "tiro/saco",
-    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "ziehen"],
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "ziehen"]
   },
+  {
+    id: "de-konzentrieren",
+    term: "Konzentrieren",
+    translation: "concentrarse",
+    context: ["A2", "reflexiv", "verb"]
+  },
+  {
+    id: "de-andrehen",
+    term: "andrehen",
+    translation: "endosar/engañar",
+    context: ["B2", "trennbar", "verb"]
+  },
+  {
+    id: "de-zurückhalten",
+    term: "zurückhalten",
+    translation: "contener/retener",
+    context: ["B1", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-landen",
+    term: "landen",
+    translation: "aterrizar/terminar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-gelandet",
+    term: "gelandet",
+    translation: "aterrizado",
+    context: ["A2", "partizip-ii", "verb", "landen"]
+  },
+  {
+    id: "de-wiederkommen",
+    term: "wiederkommen",
+    translation: "volver/regresar",
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-wiedergekommen",
+    term: "wiedergekommen",
+    translation: "vuelto/regresado",
+    context: ["A2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "wiederkommen"]
+  },
+  {
+    id: "de-abholen",
+    term: "abholen",
+    translation: "recoger",
+    context: ["A2", "trennbar", "verb"]
+  },
+  {
+    id: "de-abgeholt",
+    term: "abgeholt",
+    translation: "recogido",
+    context: ["A2", "partizip-ii", "trennbar", "verb", "abholen"]
+  },
+  {
+    id: "de-zulaufen",
+    term: "zulaufen",
+    translation: "ir hacia/aparecer",
+    context: ["B1", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-zugelaufen",
+    term: "zugelaufen",
+    translation: "aparecido",
+    context: ["B1", "partizip-ii", "trennbar", "unregelmäßig", "verb", "zulaufen"]
+  },
+  {
+    id: "de-stolzieren",
+    term: "stolzieren",
+    translation: "pavonearse",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-ausdenken",
+    term: "ausdenken",
+    translation: "inventar",
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-abwimmeln",
+    term: "abwimmeln",
+    translation: "quitarse de encima",
+    context: ["C1", "trennbar", "verb"]
+  },
+  {
+    id: "de-gratulieren",
+    term: "gratulieren",
+    translation: "felicitar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-gratuliert",
+    term: "gratuliert",
+    translation: "felicitado",
+    context: ["A2", "partizip-ii", "verb", "gratulieren"]
+  },
+  {
+    id: "de-hinterhergucken",
+    term: "hinterhergeguckt",
+    translation: "mirado después",
+    context: ["B1", "partizip-ii", "trennbar", "verb"]
+  },
+  {
+    id: "de-fallen",
+    term: "fallen",
+    translation: "caer",
+    context: ["A1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-fällt",
+    term: "fällt",
+    translation: "cae",
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "fallen"]
+  },
+  {
+    id: "de-spiegeln",
+    term: "spiegeln",
+    translation: "reflejar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-spiegelt",
+    term: "spiegelt",
+    translation: "refleja",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "spiegeln"]
+  },
+  {
+    id: "de-thronen",
+    term: "thronen",
+    translation: "entronizar",
+    context: ["B2", "verb"]
+  },
+  {
+    id: "de-thront",
+    term: "thront",
+    translation: "entroniza",
+    context: ["B2", "dritte-person", "präsens", "singular", "verb", "thronen"]
+  },
+  {
+    id: "de-wegnehmen",
+    term: "wegnehmen",
+    translation: "quitar",
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-weggenommen",
+    term: "weggenommen",
+    translation: "quitado",
+    context: ["A2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "wegnehmen"]
+  },
+  {
+    id: "de-ankommen",
+    term: "ankommen",
+    translation: "llegar",
+    context: ["A1", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-umarmen",
+    term: "umarmen",
+    translation: "abrazar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-umarme",
+    term: "umarme",
+    translation: "abrazo",
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "umarmen"]
+  },
+  {
+    id: "de-versinken",
+    term: "versinken",
+    translation: "hundirse",
+    context: ["B1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-versinke",
+    term: "versinke",
+    translation: "me hundo",
+    context: ["B1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "versinken"]
+  },
+  {
+    id: "de-beben",
+    term: "beben",
+    translation: "temblar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-bebt",
+    term: "bebt",
+    translation: "tiembla",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "beben"]
+  },
+  {
+    id: "de-haken",
+    term: "haken",
+    translation: "enganchar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-hakt",
+    term: "hakt",
+    translation: "engancha",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "haken"]
+  },
+  {
+    id: "de-färben",
+    term: "färben",
+    translation: "teñir",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-gefärbt",
+    term: "gefärbt",
+    translation: "teñido",
+    context: ["A2", "partizip-ii", "verb", "färben"]
+  },
+  {
+    id: "de-abschneiden",
+    term: "abschneiden",
+    translation: "cortar",
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-abgeschnitten",
+    term: "abgeschnitten",
+    translation: "cortado",
+    context: ["A2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "abschneiden"]
+  },
+  {
+    id: "de-treffen",
+    term: "treffen",
+    translation: "encontrar/reunirse",
+    context: ["A1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-getroffen",
+    term: "getroffen",
+    translation: "encontrado",
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "treffen"]
+  },
+  {
+    id: "de-zugucken",
+    term: "Zugucken",
+    translation: "mirar",
+    context: ["A2", "trennbar", "verb"]
+  },
+  {
+    id: "de-anschnauzen",
+    term: "anschnauzen",
+    translation: "regañar bruscamente",
+    context: ["C1", "trennbar", "verb"]
+  },
+  {
+    id: "de-angeschnauzt",
+    term: "angeschnauzt",
+    translation: "regañado bruscamente",
+    context: ["C1", "partizip-ii", "trennbar", "verb", "anschnauzen"]
+  },
+  {
+    id: "de-rumknutschen",
+    term: "rumgeknutscht",
+    translation: "besado/besuqueado",
+    context: ["C1", "partizip-ii", "trennbar", "verb"]
+  },
+  {
+    id: "de-kneten",
+    term: "kneten",
+    translation: "amasar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-weinen",
+    term: "weinen",
+    translation: "llorar",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-geweint",
+    term: "geweint",
+    translation: "llorado",
+    context: ["A1", "partizip-ii", "verb", "weinen"]
+  },
+  {
+    id: "de-kochen",
+    term: "kochen",
+    translation: "cocinar",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-kocht",
+    term: "kocht",
+    translation: "cocina",
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "kochen"]
+  },
+  {
+    id: "de-bleiben",
+    term: "bleiben",
+    translation: "quedarse",
+    context: ["A1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-bleibt",
+    term: "bleibt",
+    translation: "queda",
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "bleiben"]
+  },
+  {
+    id: "de-stinken-stinken",
+    term: "stinken",
+    translation: "apestar",
+    context: ["A2", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-stülpen",
+    term: "stülpen",
+    translation: "poner/cubrir",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-küssen",
+    term: "Küssen",
+    translation: "besar",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-aufschneiden",
+    term: "aufschneiden",
+    translation: "cortar/abrir",
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-aufgeschnitten",
+    term: "aufgeschnitten",
+    translation: "cortado/abierto",
+    context: ["A2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "aufschneiden"]
+  },
+  {
+    id: "de-mitnehmen",
+    term: "mitnehmen",
+    translation: "llevarse",
+    context: ["A1", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-ausbreiten",
+    term: "ausbreiten",
+    translation: "extender",
+    context: ["A2", "trennbar", "verb"]
+  },
+  {
+    id: "de-ausgebreiteten",
+    term: "ausgebreiteten",
+    translation: "extendido",
+    context: ["A2", "partizip-ii", "adjektiv", "trennbar"]
+  },
+  {
+    id: "de-werfen",
+    term: "werfen",
+    translation: "lanzar",
+    context: ["A2", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-wirft",
+    term: "wirft",
+    translation: "lanza",
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "werfen"]
+  },
+  {
+    id: "de-verschwinden",
+    term: "verschwinden",
+    translation: "desaparecer",
+    context: ["A2", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-verschwindet",
+    term: "verschwindet",
+    translation: "desaparece",
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "verschwinden"]
+  },
+  {
+    id: "de-heiraten-verb",
+    term: "geheiratet",
+    translation: "casado",
+    context: ["A1", "partizip-ii", "verb", "heiraten"]
+  },
+  {
+    id: "de-pinkeln",
+    term: "pinkeln",
+    translation: "orinar (informal)",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-gepinkelt",
+    term: "gepinkelt",
+    translation: "orinado",
+    context: ["B1", "partizip-ii", "verb", "pinkeln"]
+  },
+  {
+    id: "de-schlafen",
+    term: "schlafen",
+    translation: "dormir",
+    context: ["A1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-geschlafen",
+    term: "geschlafen",
+    translation: "dormido",
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "schlafen"]
+  },
+  {
+    id: "de-drücken-verb",
+    term: "drück",
+    translation: "aprieto/empujo",
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "drücken"]
+  },
+  {
+    id: "de-schieben-verb",
+    term: "schiebt",
+    translation: "empuja",
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "schieben"]
+  },
+  {
+    id: "de-nageln",
+    term: "nageln",
+    translation: "clavar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-genagelt",
+    term: "genagelt",
+    translation: "clavado",
+    context: ["A2", "partizip-ii", "verb", "nageln"]
+  },
+  {
+    id: "de-kämpfen",
+    term: "kämpfen",
+    translation: "luchar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-gekämpft",
+    term: "gekämpft",
+    translation: "luchado",
+    context: ["A2", "partizip-ii", "verb", "kämpfen"]
+  },
+  {
+    id: "de-zunebeln",
+    term: "zunebeln",
+    translation: "llenar de niebla",
+    context: ["B2", "verb"]
+  },
+  {
+    id: "de-zugenebelt",
+    term: "zugenebelt",
+    translation: "lleno de niebla",
+    context: ["B2", "partizip-ii", "verb", "zunebeln"]
+  },
+  {
+    id: "de-dampfen",
+    term: "dampfen",
+    translation: "humear",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-winken",
+    term: "winken",
+    translation: "saludar con la mano",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-winkt",
+    term: "winkt",
+    translation: "saluda",
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "winken"]
+  },
+  {
+    id: "de-bringen",
+    term: "bringen",
+    translation: "traer",
+    context: ["A1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-gebracht",
+    term: "gebracht",
+    translation: "traído",
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "bringen"]
+  },
+  {
+    id: "de-fetzen",
+    term: "fetzen",
+    translation: "rasgar/destrozar",
+    context: ["B2", "verb"]
+  },
+  {
+    id: "de-prügeln",
+    term: "prügeln",
+    translation: "pegar/golpear",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-geprügelt",
+    term: "geprügelt",
+    translation: "pegado/golpeado",
+    context: ["B1", "partizip-ii", "verb", "prügeln"]
+  },
+  {
+    id: "de-verdienen",
+    term: "verdienen",
+    translation: "ganar (dinero)",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-verdient",
+    term: "verdient",
+    translation: "ganado",
+    context: ["A2", "partizip-ii", "verb", "verdienen"]
+  },
+  {
+    id: "de-übernehmen",
+    term: "übernehmen",
+    translation: "hacerse cargo",
+    context: ["B1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-einführen",
+    term: "einführen",
+    translation: "introducir",
+    context: ["B1", "trennbar", "verb"]
+  },
+  {
+    id: "de-aufwachen",
+    term: "aufwachen",
+    translation: "despertarse",
+    context: ["A1", "trennbar", "verb"]
+  },
+  {
+    id: "de-wacht",
+    term: "wacht",
+    translation: "despierta",
+    context: ["A1", "dritte-person", "präsens", "singular", "trennbar", "verb", "aufwachen"]
+  },
+  {
+    id: "de-brabbeln",
+    term: "brabbeln",
+    translation: "balbucear",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-brabbelt",
+    term: "brabbelt",
+    translation: "balbucea",
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "brabbeln"]
+  },
+  {
+    id: "de-schütten",
+    term: "schütten",
+    translation: "verter",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-schütte",
+    term: "schütte",
+    translation: "vierto",
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "schütten"]
+  },
+  {
+    id: "de-tanzen",
+    term: "tanzen",
+    translation: "bailar",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-tanzt",
+    term: "tanzt",
+    translation: "baila",
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "tanzen"]
+  },
+  {
+    id: "de-schnappen",
+    term: "schnappen",
+    translation: "agarrar/atrapar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-geschnappt",
+    term: "geschnappt",
+    translation: "agarrado",
+    context: ["A2", "partizip-ii", "verb", "schnappen"]
+  },
+  {
+    id: "de-wackeln",
+    term: "wackeln",
+    translation: "tambalearse",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-wackelt",
+    term: "wackelt",
+    translation: "se tambalea",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "wackeln"]
+  },
+  {
+    id: "de-hausen",
+    term: "hausen",
+    translation: "vivir/habitar",
+    context: ["B2", "verb"]
+  },
+  {
+    id: "de-verneigen",
+    term: "verneigen",
+    translation: "inclinarse",
+    context: ["B1", "reflexiv", "verb"]
+  },
+  {
+    id: "de-verneigt",
+    term: "verneigt",
+    translation: "inclinado",
+    context: ["B1", "partizip-ii", "reflexiv", "verb", "verneigen"]
+  },
+  {
+    id: "de-spitzen",
+    term: "spitzen",
+    translation: "aguzar/afilar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-spitzt",
+    term: "spitzt",
+    translation: "aguza",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "spitzen"]
+  },
+  {
+    id: "de-singen-verb",
+    term: "singt",
+    translation: "canta",
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "singen"]
+  },
+  {
+    id: "de-runter-ziehen",
+    term: "runter",
+    translation: "abajo",
+    context: ["A1", "adverb"]
+  },
+  {
+    id: "de-federn",
+    term: "federn",
+    translation: "desplumar",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-passieren",
+    term: "passieren",
+    translation: "pasar/ocurrir",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-passiert",
+    term: "passiert",
+    translation: "pasado",
+    context: ["A2", "partizip-ii", "verb", "passieren"]
+  },
+  {
+    id: "de-rufen-verb",
+    term: "ruft",
+    translation: "llama/grita",
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "rufen"]
+  },
+  {
+    id: "de-johlen",
+    term: "johlen",
+    translation: "gritar/vociferar",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-johlt",
+    term: "johlt",
+    translation: "grita",
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "johlen"]
+  },
+  {
+    id: "de-klatschen",
+    term: "klatschen",
+    translation: "aplaudir",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-klatscht",
+    term: "klatscht",
+    translation: "aplaude",
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "klatschen"]
+  },
+  {
+    id: "de-summen",
+    term: "summen",
+    translation: "tararear",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-lernen-verb",
+    term: "gelernt",
+    translation: "aprendido",
+    context: ["A1", "partizip-ii", "verb", "lernen"]
+  },
+  {
+    id: "de-einladen",
+    term: "einladen",
+    translation: "invitar",
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-eingeladen",
+    term: "eingeladen",
+    translation: "invitado",
+    context: ["A2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "einladen"]
+  },
+  {
+    id: "de-hängen-verb",
+    term: "hängt",
+    translation: "cuelga",
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "hängen"]
+  },
+  {
+    id: "de-krachen",
+    term: "krachen",
+    translation: "crujir/estrellarse",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-kracht",
+    term: "kracht",
+    translation: "cruje",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "krachen"]
+  },
+  {
+    id: "de-kippen",
+    term: "kippen",
+    translation: "volcar/inclinar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-kippt",
+    term: "kippt",
+    translation: "vuelca",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "kippen"]
+  },
+  {
+    id: "de-knallen",
+    term: "knallen",
+    translation: "estallar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-knallt",
+    term: "knallt",
+    translation: "estalla",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "knallen"]
+  },
+  {
+    id: "de-schütteln",
+    term: "schütteln",
+    translation: "sacudir",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-schüttelt",
+    term: "schüttelt",
+    translation: "sacude",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "schütteln"]
+  },
+  {
+    id: "de-stemmen",
+    term: "stemmen",
+    translation: "levantar/apoyar",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-stemmt",
+    term: "stemmt",
+    translation: "levanta",
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "stemmen"]
+  },
+  {
+    id: "de-zittern",
+    term: "zittern",
+    translation: "temblar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-breiten",
+    term: "breiten",
+    translation: "extender",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-breitet",
+    term: "breitet",
+    translation: "extiende",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "breiten"]
+  },
+  {
+    id: "de-aufhängen",
+    term: "aufhängen",
+    translation: "colgar",
+    context: ["A2", "trennbar", "verb"]
+  },
+  {
+    id: "de-zurückkommen",
+    term: "zurückkommen",
+    translation: "volver",
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-zurückkommst",
+    term: "zurückkommst",
+    translation: "vuelves",
+    context: ["A2", "zweite-person", "präsens", "singular", "trennbar", "unregelmäßig", "verb", "zurückkommen"]
+  },
+  {
+    id: "de-tapere",
+    term: "tapere",
+    translation: "valiente (dialecto)",
+    context: ["C1", "adjektiv"]
+  },
+  {
+    id: "de-aufknallen",
+    term: "aufknallen",
+    translation: "golpear/azotar",
+    context: ["B1", "trennbar", "verb"]
+  },
+  {
+    id: "de-aufreißen",
+    term: "aufreißen",
+    translation: "abrir de golpe",
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-aufgerissen",
+    term: "aufgerissen",
+    translation: "abierto de golpe",
+    context: ["A2", "partizip-ii", "trennbar", "unregelmäßig", "verb", "aufreißen"]
+  },
+  {
+    id: "de-faulen",
+    term: "faulen",
+    translation: "pudrirse",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-einfallen",
+    term: "einfallen",
+    translation: "ocurrirse",
+    context: ["B1", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-eingefallen",
+    term: "eingefallen",
+    translation: "ocurrido",
+    context: ["B1", "partizip-ii", "trennbar", "unregelmäßig", "verb", "einfallen"]
+  },
+  {
+    id: "de-legen",
+    term: "legen",
+    translation: "poner/colocar",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-lege",
+    term: "lege",
+    translation: "pongo",
+    context: ["A1", "erste-person", "präsens", "singular", "verb", "legen"]
+  },
+  {
+    id: "de-reichen",
+    term: "reichen",
+    translation: "alcanzar/bastar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-runterbringen",
+    term: "runterbringen",
+    translation: "bajar",
+    context: ["A2", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-klappen",
+    term: "klappen",
+    translation: "funcionar/salir bien",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-klappt",
+    term: "klappt",
+    translation: "funciona",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "klappen"]
+  },
+  {
+    id: "de-lügen",
+    term: "lügen",
+    translation: "mentir",
+    context: ["A2", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-lügt",
+    term: "lügt",
+    translation: "miente",
+    context: ["A2", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "lügen"]
+  },
+  {
+    id: "de-drucken",
+    term: "drucken",
+    translation: "imprimir",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-gedruckt",
+    term: "gedruckt",
+    translation: "impreso",
+    context: ["A2", "partizip-ii", "verb", "drucken"]
+  },
+  {
+    id: "de-weichklopfen",
+    term: "weichklopfen",
+    translation: "ablandar golpeando",
+    context: ["B2", "trennbar", "verb"]
+  },
+  {
+    id: "de-erledigen",
+    term: "erledigen",
+    translation: "hacer/terminar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-erledigt",
+    term: "erledigt",
+    translation: "hecho/terminado",
+    context: ["A2", "partizip-ii", "verb", "erledigen"]
+  },
+  {
+    id: "de-stecken",
+    term: "stecken",
+    translation: "meter/estar metido",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-stecke",
+    term: "stecke",
+    translation: "meto",
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "stecken"]
+  },
+  {
+    id: "de-steckt",
+    term: "steckt",
+    translation: "mete/está metido",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "stecken"]
+  },
+  {
+    id: "de-gesteckt",
+    term: "gesteckt",
+    translation: "metido",
+    context: ["A2", "partizip-ii", "verb", "stecken"]
+  },
+  {
+    id: "de-strahlen",
+    term: "strahlen",
+    translation: "brillar/irradiar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-gestrahlt",
+    term: "gestrahlt",
+    translation: "brillado",
+    context: ["A2", "partizip-ii", "verb", "strahlen"]
+  },
+  {
+    id: "de-waschen",
+    term: "waschen",
+    translation: "lavar",
+    context: ["A1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-wäscht",
+    term: "wäscht",
+    translation: "lava",
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "waschen"]
+  },
+  {
+    id: "de-wäschst",
+    term: "Wäschst",
+    translation: "lavas",
+    context: ["A1", "zweite-person", "präsens", "singular", "unregelmäßig", "verb", "waschen"]
+  },
+  {
+    id: "de-durcheinanderbringen",
+    term: "durcheinanderbringen",
+    translation: "confundir/mezclar",
+    context: ["B1", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-durcheinanderbringt",
+    term: "durcheinanderbringt",
+    translation: "confunde",
+    context: ["B1", "dritte-person", "präsens", "singular", "trennbar", "unregelmäßig", "verb", "durcheinanderbringen"]
+  },
+  {
+    id: "de-lärmen",
+    term: "lärmen",
+    translation: "hacer ruido",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-lärmt",
+    term: "lärmt",
+    translation: "hace ruido",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "lärmen"]
+  },
+  {
+    id: "de-beleidigen",
+    term: "Beleidige",
+    translation: "insulto",
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "beleidigen"]
+  },
+  {
+    id: "de-ablenken",
+    term: "ablenken",
+    translation: "distraer",
+    context: ["A2", "trennbar", "verb"]
+  },
+  {
+    id: "de-ablenke",
+    term: "ablenke",
+    translation: "distraigo",
+    context: ["A2", "erste-person", "präsens", "singular", "trennbar", "verb", "ablenken"]
+  },
+  {
+    id: "de-kotzen",
+    term: "kotzen",
+    translation: "vomitar (vulgar)",
+    context: ["C1", "verb"]
+  },
+  {
+    id: "de-kaufen",
+    term: "kaufen",
+    translation: "comprar",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-gekauft",
+    term: "gekauft",
+    translation: "comprado",
+    context: ["A1", "partizip-ii", "verb", "kaufen"]
+  },
+  {
+    id: "de-meckern",
+    term: "meckern",
+    translation: "quejarse/regañar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-gemeckert",
+    term: "gemeckert",
+    translation: "quejado/regañado",
+    context: ["A2", "partizip-ii", "verb", "meckern"]
+  },
+  {
+    id: "de-meckert",
+    term: "meckert",
+    translation: "se queja",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "meckern"]
+  },
+  {
+    id: "de-fummeln",
+    term: "fummelt",
+    translation: "manosea/toca",
+    context: ["B2", "dritte-person", "präsens", "singular", "verb", "fummeln"]
+  },
+  {
+    id: "de-gewinnen",
+    term: "gewinnen",
+    translation: "ganar",
+    context: ["A1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-gewonnen",
+    term: "gewonnen",
+    translation: "ganado",
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "gewinnen"]
+  },
+  {
+    id: "de-bestellen",
+    term: "bestellen",
+    translation: "pedir/encargar",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-bestellt",
+    term: "bestellt",
+    translation: "pedido",
+    context: ["A1", "partizip-ii", "verb", "bestellen"]
+  },
+  {
+    id: "de-entlassen",
+    term: "entlassen",
+    translation: "despedir",
+    context: ["B1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-freuen",
+    term: "freuen",
+    translation: "alegrarse",
+    context: ["A1", "reflexiv", "verb"]
+  },
+  {
+    id: "de-freut",
+    term: "freut",
+    translation: "alegra",
+    context: ["A1", "dritte-person", "präsens", "singular", "reflexiv", "verb", "freuen"]
+  },
+  {
+    id: "de-dröhnen",
+    term: "dröhnen",
+    translation: "resonar/retumbar",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-dröhnt",
+    term: "dröhnt",
+    translation: "resuena",
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "dröhnen"]
+  },
+  {
+    id: "de-wegmüssen",
+    term: "wegmuss",
+    translation: "tiene que irse",
+    context: ["A2", "dritte-person", "präsens", "singular", "trennbar", "verb"]
+  },
+  {
+    id: "de-saufen",
+    term: "saufen",
+    translation: "beber (alcohol/animales)",
+    context: ["B2", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-beschützen",
+    term: "beschützt",
+    translation: "protegido",
+    context: ["A2", "partizip-ii", "verb", "beschützen"]
+  },
+  {
+    id: "de-quietschen",
+    term: "quietschen",
+    translation: "chillar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-quietscht",
+    term: "quietscht",
+    translation: "chilla",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "quietschen"]
+  },
+  {
+    id: "de-beißen",
+    term: "beißen",
+    translation: "morder",
+    context: ["A2", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-beiße",
+    term: "beiße",
+    translation: "muerdo",
+    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "beißen"]
+  },
+  {
+    id: "de-beeilen",
+    term: "beeilen",
+    translation: "apresurarse",
+    context: ["A2", "reflexiv", "verb"]
+  },
+  {
+    id: "de-beeile",
+    term: "beeile",
+    translation: "me apresuro",
+    context: ["A2", "erste-person", "präsens", "singular", "reflexiv", "verb", "beeilen"]
+  },
+  {
+    id: "de-leeren",
+    term: "leeren",
+    translation: "vaciar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-umkurven",
+    term: "umkurve",
+    translation: "rodeo",
+    context: ["B1", "erste-person", "präsens", "singular", "trennbar", "verb"]
+  },
+  {
+    id: "de-entscheiden",
+    term: "entscheiden",
+    translation: "decidir",
+    context: ["A2", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-abhauen",
+    term: "abhauen",
+    translation: "largarse",
+    context: ["B1", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-abhaust",
+    term: "abhaust",
+    translation: "te largas",
+    context: ["B1", "zweite-person", "präsens", "singular", "trennbar", "unregelmäßig", "verb", "abhauen"]
+  },
+  {
+    id: "de-anfangen",
+    term: "anfangen",
+    translation: "empezar",
+    context: ["A1", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-anfängt",
+    term: "anfängt",
+    translation: "empieza",
+    context: ["A1", "dritte-person", "präsens", "singular", "trennbar", "unregelmäßig", "verb", "anfangen"]
+  },
+  {
+    id: "de-warten",
+    term: "warten",
+    translation: "esperar",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-wartet",
+    term: "wartet",
+    translation: "espera",
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "warten"]
+  },
+  {
+    id: "de-benutzen",
+    term: "benutzen",
+    translation: "usar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-benutzt",
+    term: "benutzt",
+    translation: "usado",
+    context: ["A2", "partizip-ii", "verb", "benutzen"]
+  },
+  {
+    id: "de-besetzen",
+    term: "besetzen",
+    translation: "ocupar",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-besetzt",
+    term: "besetzt",
+    translation: "ocupado",
+    context: ["B1", "partizip-ii", "verb", "besetzen"]
+  },
+  {
+    id: "de-dauern",
+    term: "dauern",
+    translation: "durar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-dauert",
+    term: "dauert",
+    translation: "dura",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "dauern"]
+  },
+  {
+    id: "de-drücken",
+    term: "drücken",
+    translation: "empujar/apretar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-drückt",
+    term: "drückt",
+    translation: "empuja",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "drücken"]
+  },
+  {
+    id: "de-fangen",
+    term: "fangen",
+    translation: "atrapar",
+    context: ["A1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-fange",
+    term: "fange",
+    translation: "atrapo",
+    context: ["A1", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "fangen"]
+  },
+  {
+    id: "de-arbeiten",
+    term: "arbeiten",
+    translation: "trabajar",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-gearbeitet",
+    term: "gearbeitet",
+    translation: "trabajado",
+    context: ["A1", "partizip-ii", "verb", "arbeiten"]
+  },
+  {
+    id: "de-schaffen",
+    term: "schaffen",
+    translation: "lograr",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-geschafft",
+    term: "geschafft",
+    translation: "logrado",
+    context: ["A2", "partizip-ii", "verb", "schaffen"]
+  },
+  {
+    id: "de-schreiben",
+    term: "schreiben",
+    translation: "escribir",
+    context: ["A1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-geschrieben",
+    term: "geschrieben",
+    translation: "escrito",
+    context: ["A1", "partizip-ii", "unregelmäßig", "verb", "schreiben"]
+  },
+  {
+    id: "de-werfen",
+    term: "werfen",
+    translation: "lanzar/tirar",
+    context: ["A2", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-geworfen",
+    term: "geworfen",
+    translation: "lanzado",
+    context: ["A2", "partizip-ii", "unregelmäßig", "verb", "werfen"]
+  },
+  {
+    id: "de-hassen",
+    term: "hassen",
+    translation: "odiar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-hasst",
+    term: "hasst",
+    translation: "odia",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "hassen"]
+  },
+  {
+    id: "de-helfen",
+    term: "helfen",
+    translation: "ayudar",
+    context: ["A1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-hilft",
+    term: "hilft",
+    translation: "ayuda",
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "helfen"]
+  },
+  {
+    id: "de-hängen",
+    term: "hängen",
+    translation: "colgar",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-hänge",
+    term: "hänge",
+    translation: "cuelgo",
+    context: ["A1", "erste-person", "präsens", "singular", "verb", "hängen"]
+  },
+  {
+    id: "de-gucken",
+    term: "gucken",
+    translation: "mirar",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-gucke",
+    term: "gucke",
+    translation: "miro",
+    context: ["A1", "erste-person", "präsens", "singular", "verb", "gucken"]
+  },
+  {
+    id: "de-lernen",
+    term: "lernen",
+    translation: "aprender",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-lernt",
+    term: "lernt",
+    translation: "aprende",
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "lernen"]
+  },
+  {
+    id: "de-merken",
+    term: "merken",
+    translation: "notar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-merke",
+    term: "merke",
+    translation: "noto",
+    context: ["A2", "erste-person", "präsens", "singular", "verb", "merken"]
+  },
+  {
+    id: "de-müde",
+    term: "müde",
+    translation: "cansado",
+    context: ["A1", "adjektiv"]
+  },
+  {
+    id: "de-nennen",
+    term: "nennen",
+    translation: "llamar/nombrar",
+    context: ["A2", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-nenne",
+    term: "nenne",
+    translation: "llamo",
+    context: ["A2", "erste-person", "präsens", "singular", "unregelmäßig", "verb", "nennen"]
+  },
+  {
+    id: "de-nicken",
+    term: "nicken",
+    translation: "asentir",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-nickt",
+    term: "nickt",
+    translation: "asiente",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "nicken"]
+  },
+  {
+    id: "de-reden",
+    term: "reden",
+    translation: "hablar",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-redet",
+    term: "redet",
+    translation: "habla",
+    context: ["A1", "dritte-person", "präsens", "singular", "verb", "reden"]
+  },
+  {
+    id: "de-sitzen",
+    term: "sitzen",
+    translation: "sentarse/estar sentado",
+    context: ["A1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-sitzt",
+    term: "sitzt",
+    translation: "está sentado",
+    context: ["A1", "dritte-person", "präsens", "singular", "unregelmäßig", "verb", "sitzen"]
+  },
+  {
+    id: "de-umarmen",
+    term: "umarmen",
+    translation: "abrazar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-umarmt",
+    term: "umarmt",
+    translation: "abraza/abrazado",
+    context: ["A2", "partizip-ii", "verb", "umarmen"]
+  },
+  {
+    id: "de-heiraten",
+    term: "heiraten",
+    translation: "casarse",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-verheiratet",
+    term: "verheiratet",
+    translation: "casado",
+    context: ["A1", "partizip-ii", "adjektiv"]
+  },
+  {
+    id: "de-liegen",
+    term: "liegen",
+    translation: "estar acostado/tumbado",
+    context: ["A1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-liegst",
+    term: "liegst",
+    translation: "estás acostado",
+    context: ["A1", "zweite-person", "präsens", "singular", "unregelmäßig", "verb", "liegen"]
+  },
+  {
+    id: "de-würden",
+    term: "würden",
+    translation: "harían (condicional)",
+    context: ["A2", "konjunktiv-ii", "plural", "verb"]
+  },
+  {
+    id: "de-würdest",
+    term: "würdest",
+    translation: "harías (condicional)",
+    context: ["A2", "konjunktiv-ii", "zweite-person", "singular", "verb"]
+  },
+  {
+    id: "de-könntest",
+    term: "könntest",
+    translation: "podrías",
+    context: ["A2", "konjunktiv-ii", "zweite-person", "singular", "verb", "können"]
+  },
+  {
+    id: "de-müsstest",
+    term: "müsstest",
+    translation: "deberías",
+    context: ["A2", "konjunktiv-ii", "zweite-person", "singular", "verb", "müssen"]
+  },
+  {
+    id: "de-hierherfahren",
+    term: "hierhergefahren",
+    translation: "conducido hasta aquí",
+    context: ["B1", "partizip-ii", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-springen",
+    term: "springen",
+    translation: "saltar",
+    context: ["A1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-springst",
+    term: "springst",
+    translation: "saltas",
+    context: ["A1", "zweite-person", "präsens", "singular", "unregelmäßig", "verb", "springen"]
+  },
+  {
+    id: "de-kacken",
+    term: "kacken",
+    translation: "cagar (vulgar)",
+    context: ["C1", "verb"]
+  },
+  {
+    id: "de-merken",
+    term: "merken",
+    translation: "notar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-merkst",
+    term: "merkst",
+    translation: "notas",
+    context: ["A2", "zweite-person", "präsens", "singular", "verb", "merken"]
+  },
+  {
+    id: "de-leuchten",
+    term: "leuchten",
+    translation: "brillar/iluminar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-leuchtend",
+    term: "leuchtend",
+    translation: "brillante/luminoso",
+    context: ["A2", "partizip-präsens", "adjektiv"]
+  },
+  {
+    id: "de-erkennen",
+    term: "erkennen",
+    translation: "reconocer",
+    context: ["A2", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-erkennst",
+    term: "erkennst",
+    translation: "reconoces",
+    context: ["A2", "zweite-person", "präsens", "singular", "unregelmäßig", "verb", "erkennen"]
+  },
+  {
+    id: "de-wölben",
+    term: "wölben",
+    translation: "abombar/arquear",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-wölbt",
+    term: "wölbt",
+    translation: "se abomba",
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "wölben"]
+  },
+  {
+    id: "de-verschlingen",
+    term: "verschlingen",
+    translation: "devorar/entrelazar",
+    context: ["B2", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-verschlungen",
+    term: "verschlungen",
+    translation: "devorado/entrelazado",
+    context: ["B2", "partizip-ii", "unregelmäßig", "verb", "verschlingen"]
+  },
+  {
+    id: "de-pissen",
+    term: "pissen",
+    translation: "mear (vulgar)",
+    context: ["C1", "verb"]
+  },
+  {
+    id: "de-gepisst",
+    term: "gepisst",
+    translation: "meado",
+    context: ["C1", "partizip-ii", "verb", "pissen"]
+  },
+  {
+    id: "de-waten",
+    term: "waten",
+    translation: "vadear",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-watet",
+    term: "watet",
+    translation: "vadea",
+    context: ["B1", "dritte-person", "präsens", "singular", "verb", "waten"]
+  },
+  {
+    id: "de-verpacken",
+    term: "verpacken",
+    translation: "empaquetar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-verpackt",
+    term: "verpackt",
+    translation: "empaquetado",
+    context: ["A2", "partizip-ii", "verb", "verpacken"]
+  },
+  {
+    id: "de-wischen",
+    term: "wischen",
+    translation: "limpiar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-wischt",
+    term: "wischt",
+    translation: "limpia",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "wischen"]
+  },
+  {
+    id: "de-drehen",
+    term: "drehen",
+    translation: "girar",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-gedreht",
+    term: "gedreht",
+    translation: "girado",
+    context: ["A1", "partizip-ii", "verb", "drehen"]
+  },
+  {
+    id: "de-gießen",
+    term: "gießen",
+    translation: "verter/regar",
+    context: ["A2", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-weggehen",
+    term: "weggehen",
+    translation: "irse",
+    context: ["A1", "trennbar", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-wühlen",
+    term: "wühlen",
+    translation: "hurgar/escarbar",
+    context: ["B1", "verb"]
+  },
+  {
+    id: "de-auftauchen",
+    term: "auftauchen",
+    translation: "aparecer/emerger",
+    context: ["B1", "trennbar", "verb"]
+  },
+  {
+    id: "de-auftaucht",
+    term: "auftaucht",
+    translation: "aparece",
+    context: ["B1", "dritte-person", "präsens", "singular", "trennbar", "verb", "auftauchen"]
+  },
+  {
+    id: "de-schnappen",
+    term: "schnappen",
+    translation: "agarrar/atrapar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-schnappt",
+    term: "schnappt",
+    translation: "agarra",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "schnappen"]
+  },
+  {
+    id: "de-fassen",
+    term: "fassen",
+    translation: "agarrar/captar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-fasst",
+    term: "fasst",
+    translation: "agarra",
+    context: ["A2", "dritte-person", "präsens", "singular", "verb", "fassen"]
+  },
+  {
+    id: "de-rennen",
+    term: "rennen",
+    translation: "correr",
+    context: ["A1", "unregelmäßig", "verb"]
+  },
+  {
+    id: "de-rennst",
+    term: "rennst",
+    translation: "corres",
+    context: ["A1", "zweite-person", "präsens", "singular", "unregelmäßig", "verb", "rennen"]
+  },
+  {
+    id: "de-zählen",
+    term: "zählen",
+    translation: "contar",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-zählst",
+    term: "zählst",
+    translation: "cuentas",
+    context: ["A1", "zweite-person", "präsens", "singular", "verb", "zählen"]
+  },
+  {
+    id: "de-flüstern",
+    term: "flüstern",
+    translation: "susurrar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-geflüstert",
+    term: "geflüstert",
+    translation: "susurrado",
+    context: ["A2", "partizip-ii", "verb", "flüstern"]
+  },
+  {
+    id: "de-hören",
+    term: "hören",
+    translation: "oír/escuchar",
+    context: ["A1", "verb"]
+  },
+  {
+    id: "de-hörst",
+    term: "hörst",
+    translation: "oyes",
+    context: ["A1", "zweite-person", "präsens", "singular", "verb", "hören"]
+  },
+  {
+    id: "de-sprühen",
+    term: "sprühen",
+    translation: "rociar",
+    context: ["A2", "verb"]
+  },
+  {
+    id: "de-dürfen-dürftet",
+    term: "dürftet",
+    translation: "podríais (permiso)",
+    context: ["A2", "konjunktiv-ii", "zweite-person", "plural", "verb", "dürfen"]
+  },
+  {
+    id: "de-redest",
+    term: "redest",
+    translation: "hablas",
+    context: ["A1", "zweite-person", "präsens", "singular", "verb", "reden"]
+  },
+  {
+    id: "de-wartest",
+    term: "wartest",
+    translation: "esperas",
+    context: ["A1", "zweite-person", "präsens", "singular", "verb", "warten"]
+  }
 ]
 
 const verbos = [
@@ -6572,7 +8373,7 @@ const verbos = [
   ...verbosKommunikation,
   ...verbosModalverben,
   ...verbosTrennbar,
-  ...verbosAllgemein,
+  ...verbosAllgemein
 ]
 
 export default verbos

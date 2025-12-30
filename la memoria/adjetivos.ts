@@ -3,14 +3,14 @@ const adjetivosFarben = [
     id: "de-schwarz",
     term: "schwarz",
     translation: "negro",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-dunkelgrün",
     term: "dunkelgrün",
     translation: "verde oscuro",
-    context: ["A2", "adjektiv"],
-  },
+    context: ["A2", "adjektiv"]
+  }
 ]
 
 const adjetivosAllgemein = [
@@ -18,2254 +18,2743 @@ const adjetivosAllgemein = [
     id: "de-groß",
     term: "groß",
     translation: "grande",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-gut",
     term: "gut",
     translation: "bueno",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-lang",
     term: "lang",
     translation: "largo",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-nächste",
     term: "nächste",
     translation: "próximo/siguiente",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-ruhig",
     term: "ruhig",
     translation: "tranquilo/calmado",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-eckig",
     term: "eckig",
     translation: "angular/cuadrado",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-abgehackt",
     term: "abgehackt",
     translation: "entrecortado/abrupto",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-fett",
     term: "fett",
     translation: "gordo/grasoso",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-vorletzt",
     term: "vorletzt",
     translation: "penúltimo",
-    context: ["A1", "A2", "B2", "adjektiv"],
+    context: ["A1", "A2", "B2", "adjektiv"]
   },
   {
     id: "de-hart",
     term: "hart",
     translation: "duro",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-seltsam",
     term: "seltsam",
     translation: "extraño",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-fair",
     term: "fair",
     translation: "justo",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-klein",
     term: "klein",
     translation: "pequeño",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-faul",
     term: "faul",
     translation: "perezoso/flojo",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-flauschig",
     term: "flauschig",
     translation: "esponjoso/suave",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-schwul",
     term: "schwul",
     translation: "gay",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-überrascht",
     term: "überrascht",
     translation: "sorprendido",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-verwirrt",
     term: "verwirrt",
     translation: "confundido",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-schützend",
     term: "schützend",
     translation: "protector",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-katzensatt",
     term: "katzensatt",
     translation: "llenísimo",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-verfilzt",
     term: "verfilzt",
     translation: "enmarañado/afieltrado",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-bunt",
     term: "bunt",
     translation: "colorido",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-bescheuert",
     term: "bescheuert",
     translation: "estúpido",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-riskant",
     term: "riskant",
     translation: "arriesgado",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-ersten",
     term: "ersten",
     translation: "primer/primero",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-bullig",
     term: "bullig",
     translation: "robusto",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-gleicher",
     term: "gleicher",
     translation: "igual",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-langen",
     term: "langen",
     translation: "largos",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-flauschige",
     term: "flauschige",
     translation: "suaves/afelpadas",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-eckige",
     term: "eckige",
     translation: "angulares",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-abgehackte",
     term: "abgehackte",
     translation: "entrecortados",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-nachsten",
     term: "nächsten",
     translation: "siguiente",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-rechten",
     term: "rechten",
     translation: "derecho",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-schwules",
     term: "schwules",
     translation: "gay",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-dunnen",
     term: "dünnen",
     translation: "delgados",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-grunen",
     term: "grünen",
     translation: "verdes",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-adj-schoenste",
     term: "schönste",
     translation: "más bonito/a, el/la más hermoso/a",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-adj-erotische",
     term: "erotische",
     translation: "erótico/a",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-adj-kuerzere",
     term: "kürzere",
     translation: "más cortos/cortas",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-adj-moeglich",
     term: "möglich",
     translation: "posible",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-adj-folgenden",
     term: "folgenden",
     translation: "siguientes",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-adj-selbststaendig",
     term: "selbstständig",
     translation: "independiente, autónomo",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-adj-taetigen",
     term: "tätigen",
     translation: "activos, que ejercen",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-adj-jeweilige",
     term: "jeweilige",
     translation: "respectivo/a, correspondiente",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-adj-jeweiligen-var",
     term: "jeweiligen",
     translation: "respectivos, correspondientes",
-    context: ["B2", "adjektiv", "akkusativ", "dativ"],
+    context: ["B2", "adjektiv", "akkusativ", "dativ"]
   },
   {
     id: "de-adj-verantwortlich",
     term: "verantwortlich",
     translation: "responsable",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-adj-einzelnen",
     term: "einzelnen",
     translation: "individuales, particulares",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-adj-lieber",
     term: "Lieber",
     translation: "querido, estimado",
-    context: ["A1", "adjektiv", "nominativ"],
+    context: ["A1", "adjektiv", "nominativ"]
   },
   {
     id: "de-adj-alt",
     term: "alt",
     translation: "viejo, antiguo",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-adj-aufgeschlossen",
     term: "aufgeschlossen",
     translation: "abierto (de mente), receptivo",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-adj-erotischen-var",
     term: "erotischen",
     translation: "erótico/a",
-    context: ["B1", "adjektiv", "dativ"],
+    context: ["B1", "adjektiv", "dativ"]
   },
   {
     id: "de-adj-kleinen",
     term: "kleinen",
     translation: "pequeño/a",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-adj-lustige",
     term: "lustige",
     translation: "divertido/a, gracioso/a",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-adj-flirty",
     term: "flirty",
     translation: "coqueto/a, seductor/a",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-adj-heisse",
     term: "heiße",
     translation: "caliente, ardiente",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-adj-unvergesslichen",
     term: "unvergesslichen",
     translation: "inolvidable",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-adj-richtig-var",
     term: "richtig",
     translation: "correcto, adecuado",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-verb-besorgt",
     term: "besorgt",
     translation: "preocupado / consigue",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-adj-zusaetzlichen",
     term: "zusätzlichen",
     translation: "adicionales, extras",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-adj-einfuehlsam",
     term: "einfühlsam",
     translation: "empático, comprensivo",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-adj-behilflich",
     term: "behilflich",
     translation: "servicial, útil",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-adj-voller",
     term: "voller",
     translation: "lleno de",
-    context: ["A2", "adjektiv", "genitiv"],
+    context: ["A2", "adjektiv", "genitiv"]
   },
   {
     id: "de-moderate",
     term: "moderate",
     translation: "moderado",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-gute",
     term: "gute",
     translation: "bueno/buena",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-erforderlich",
     term: "erforderlich",
     translation: "requerido/necesario",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-begehbare",
     term: "begehbare",
     translation: "transitable/accesible",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-besonderes",
     term: "besonderes",
     translation: "especial",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-öffentlichen",
     term: "öffentlichen",
     translation: "público/pública",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-erreichbar",
     term: "erreichbar",
     translation: "alcanzable/accesible",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-nördlich",
     term: "nördlich",
     translation: "del norte/septentrional",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-groß",
     term: "groß",
     translation: "grande",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-deutsch",
     term: "deutsch",
     translation: "alemán",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-ursprünglich",
     term: "ursprünglich",
     translation: "original/originalmente",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-heutig",
     term: "heutig",
     translation: "actual/de hoy",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-bedeutend",
     term: "bedeutend",
     translation: "significativo/importante",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-verschollen",
     term: "verschollen",
     translation: "desaparecido/perdido",
-    context: ["C1", "adjektiv"],
+    context: ["C1", "adjektiv"]
   },
   {
     id: "de-erhalten",
     term: "erhalten",
     translation: "conservado/preservado",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-berliner",
     term: "Berliner",
     translation: "berlinés",
-    context: ["A2", "adjektiv", "geografía"],
+    context: ["A2", "adjektiv", "geografía"]
   },
   {
     id: "de-frühklassizistisch",
     term: "frühklassizistisch",
     translation: "neoclásico temprano",
-    context: ["C1", "adjektiv", "arte"],
+    context: ["C1", "adjektiv", "arte"]
   },
   {
     id: "de-quadratisch",
     term: "quadratisch",
     translation: "cuadrado",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-zentral",
     term: "zentral",
     translation: "central",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-preußisch",
     term: "preußisch",
     translation: "prusiano",
-    context: ["B2", "adjektiv", "historia"],
+    context: ["B2", "adjektiv", "historia"]
   },
   {
     id: "de-krönend",
     term: "krönend",
     translation: "coronante",
-    context: ["C1", "adjektiv"],
+    context: ["C1", "adjektiv"]
   },
   {
     id: "de-ausgedehnt",
     term: "ausgedehnt",
     translation: "extenso/amplio",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-gradlinig",
     term: "gradlinig",
     translation: "rectilíneo",
-    context: ["C1", "adjektiv"],
+    context: ["C1", "adjektiv"]
   },
   {
     id: "de-unmittelbar",
     term: "unmittelbar",
     translation: "inmediato/directo",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-römisch",
     term: "römisch",
     translation: "romano",
-    context: ["A2", "adjektiv", "historia"],
+    context: ["A2", "adjektiv", "historia"]
   },
   {
     id: "de-griechisch",
     term: "griechisch",
     translation: "griego",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-klassizistisch",
     term: "klassizistisch",
     translation: "clasicista",
-    context: ["C1", "adjektiv", "arte"],
+    context: ["C1", "adjektiv", "arte"]
   },
   {
     id: "de-staatstragend",
     term: "staatstragend",
     translation: "que sustenta el estado",
-    context: ["C1", "adjektiv"],
+    context: ["C1", "adjektiv"]
   },
   {
     id: "de-bekannt",
     term: "bekannt",
     translation: "conocido",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-wichtig",
     term: "wichtig",
     translation: "importante",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-geschichtlich",
     term: "geschichtlich",
     translation: "histórico",
-    context: ["B1", "adjektiv", "historia"],
+    context: ["B1", "adjektiv", "historia"]
   },
   {
     id: "de-napoleonisch",
     term: "napoleonisch",
     translation: "napoleónico",
-    context: ["B2", "adjektiv", "historia"],
+    context: ["B2", "adjektiv", "historia"]
   },
   {
     id: "de-eisern",
     term: "eisern",
     translation: "férreo/de hierro",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-kalt",
     term: "kalt",
     translation: "frío",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-weltpolitisch",
     term: "weltpolitisch",
     translation: "de política mundial",
-    context: ["C1", "adjektiv"],
+    context: ["C1", "adjektiv"]
   },
   {
     id: "de-heikel",
     term: "heikel",
     translation: "delicado/espinoso",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-gemeinsam",
     term: "gemeinsam",
     translation: "común/conjunto",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-umfassend",
     term: "umfassend",
     translation: "integral/completo/amplio",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-zweijährig",
     term: "zweijährig",
     translation: "de dos años/bienal",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-pariser",
     term: "Pariser",
     translation: "parisino",
-    context: ["A2", "adjektiv", "geografía"],
+    context: ["A2", "adjektiv", "geografía"]
   },
   {
     id: "de-gelegen",
     term: "gelegen",
     translation: "situado/ubicado",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-öffentlich",
     term: "öffentlich",
     translation: "público",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-gleichnamig",
     term: "gleichnamig",
     translation: "del mismo nombre/homónimo",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-warschauer",
     term: "Warschauer",
     translation: "de Varsovia/varsoviano",
-    context: ["B2", "adjektiv", "geografía", "historia"],
+    context: ["B2", "adjektiv", "geografía", "historia"]
   },
   {
     id: "de-heikelst",
     term: "heikelst",
     translation: "más delicado/espinoso",
-    context: ["B2", "adjektiv", "superlativ"],
+    context: ["B2", "adjektiv", "superlativ"]
   },
   {
     id: "de-frühklassizistisches",
     term: "frühklassizistisches",
     translation: "neoclásico temprano",
-    context: ["C1", "adjektiv", "arte", "neutrum", "frühklassizistisch"],
+    context: ["C1", "adjektiv", "arte", "neutrum", "frühklassizistisch"]
   },
   {
     id: "de-quadratischen",
     term: "quadratischen",
     translation: "cuadrado",
-    context: ["A2", "adjektiv", "quadratisch"],
+    context: ["A2", "adjektiv", "quadratisch"]
   },
   {
     id: "de-zentralen",
     term: "zentralen",
     translation: "central",
-    context: ["A2", "adjektiv", "zentral"],
+    context: ["A2", "adjektiv", "zentral"]
   },
   {
     id: "de-preußischen",
     term: "preußischen",
     translation: "prusiano",
-    context: ["B2", "adjektiv", "historia", "preußisch"],
+    context: ["B2", "adjektiv", "historia", "preußisch"]
   },
   {
     id: "de-krönende",
     term: "krönende",
     translation: "coronante",
-    context: ["C1", "adjektiv", "feminin", "krönend"],
+    context: ["C1", "adjektiv", "feminin", "krönend"]
   },
   {
     id: "de-ausgedehnten",
     term: "ausgedehnten",
     translation: "extenso",
-    context: ["B2", "adjektiv", "ausgedehnt"],
+    context: ["B2", "adjektiv", "ausgedehnt"]
   },
   {
     id: "de-gradliniger",
     term: "gradliniger",
     translation: "rectilíneo",
-    context: ["C1", "adjektiv", "genitiv", "feminin", "gradlinig"],
+    context: ["C1", "adjektiv", "genitiv", "feminin", "gradlinig"]
   },
   {
     id: "de-römischen",
     term: "römischen",
     translation: "romano",
-    context: ["A2", "adjektiv", "historia", "römisch"],
+    context: ["A2", "adjektiv", "historia", "römisch"]
   },
   {
     id: "de-griechischen",
     term: "griechischen",
     translation: "griego",
-    context: ["A2", "adjektiv", "griechisch"],
+    context: ["A2", "adjektiv", "griechisch"]
   },
   {
     id: "de-klassizistischen",
     term: "klassizistischen",
     translation: "clasicista",
-    context: ["C1", "adjektiv", "arte", "klassizistisch"],
+    context: ["C1", "adjektiv", "arte", "klassizistisch"]
   },
   {
     id: "de-staatstragende",
     term: "staatstragende",
     translation: "que sustenta el estado",
-    context: ["C1", "adjektiv", "feminin", "staatstragend"],
+    context: ["C1", "adjektiv", "feminin", "staatstragend"]
   },
   {
     id: "de-deutsches",
     term: "deutsches",
     translation: "alemán",
-    context: ["A1", "adjektiv", "neutrum", "deutsch"],
+    context: ["A1", "adjektiv", "neutrum", "deutsch"]
   },
   {
     id: "de-wichtige",
     term: "wichtige",
     translation: "importante",
-    context: ["A1", "adjektiv", "wichtig"],
+    context: ["A1", "adjektiv", "wichtig"]
   },
   {
     id: "de-geschichtliche",
     term: "geschichtliche",
     translation: "histórico",
-    context: ["B1", "adjektiv", "historia", "geschichtlich"],
+    context: ["B1", "adjektiv", "historia", "geschichtlich"]
   },
   {
     id: "de-napoleonischen",
     term: "napoleonischen",
     translation: "napoleónico",
-    context: ["B2", "adjektiv", "historia", "napoleonisch"],
+    context: ["B2", "adjektiv", "historia", "napoleonisch"]
   },
   {
     id: "de-heikelsten",
     term: "heikelsten",
     translation: "más delicado",
-    context: ["B2", "adjektiv", "dativ", "superlativ", "heikelst"],
+    context: ["B2", "adjektiv", "dativ", "superlativ", "heikelst"]
   },
   {
     id: "de-gemeinsamen",
     term: "gemeinsamen",
     translation: "común",
-    context: ["A2", "adjektiv", "gemeinsam"],
+    context: ["A2", "adjektiv", "gemeinsam"]
   },
   {
     id: "de-umfassende",
     term: "umfassende",
     translation: "integral",
-    context: ["B2", "adjektiv", "feminin", "umfassend"],
+    context: ["B2", "adjektiv", "feminin", "umfassend"]
   },
   {
     id: "de-zweijährige",
     term: "zweijährige",
     translation: "de dos años",
-    context: ["B1", "adjektiv", "feminin", "zweijährig"],
+    context: ["B1", "adjektiv", "feminin", "zweijährig"]
   },
   {
     id: "de-großen",
     term: "Großen",
     translation: "grande",
-    context: ["A1", "adjektiv", "groß"],
+    context: ["A1", "adjektiv", "groß"]
   },
   {
     id: "de-erhaltene",
     term: "erhaltene",
     translation: "conservado",
-    context: ["B1", "adjektiv", "erhalten"],
+    context: ["B1", "adjektiv", "erhalten"]
   },
   {
     id: "de-bekannteste",
     term: "bekannteste",
     translation: "más conocido",
-    context: ["A1", "adjektiv", "superlativ", "bekannt"],
+    context: ["A1", "adjektiv", "superlativ", "bekannt"]
   },
   {
     id: "de-eisernen",
     term: "Eisernen",
     translation: "férreo",
-    context: ["B1", "adjektiv", "eisern"],
+    context: ["B1", "adjektiv", "eisern"]
   },
   {
     id: "de-kalten",
     term: "Kalten",
     translation: "frío",
-    context: ["A1", "adjektiv", "kalt"],
+    context: ["A1", "adjektiv", "kalt"]
   },
   {
     id: "de-zweiten",
     term: "Zweiten",
     translation: "segundo",
-    context: ["A1", "adjektiv", "ordinalzahl"],
+    context: ["A1", "adjektiv", "ordinalzahl"]
   },
   {
     id: "de-brandenburger",
     term: "Brandenburger",
     translation: "de Brandeburgo/brandemburqués",
-    context: ["B1", "adjektiv", "geografía"],
+    context: ["B1", "adjektiv", "geografía"]
   },
   {
     id: "de-westlich",
     term: "westlich",
     translation: "occidental/del oeste",
-    context: ["A2", "adjektiv", "geografía"],
+    context: ["A2", "adjektiv", "geografía"]
   },
   {
     id: "de-entsprechend",
     term: "entsprechend",
     translation: "correspondiente/conforme",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-schön",
     term: "schön",
     translation: "bonito/hermoso",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-neu",
     term: "neu",
     translation: "nuevo",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-gemeinsame",
     term: "gemeinsame",
     translation: "común",
-    context: ["A2", "adjektiv", "gemeinsam"],
+    context: ["A2", "adjektiv", "gemeinsam"]
   },
   {
     id: "de-schönen",
     term: "schönen",
     translation: "bonito/hermoso",
-    context: ["A1", "adjektiv", "schön"],
+    context: ["A1", "adjektiv", "schön"]
   },
   {
     id: "de-neue",
     term: "neue",
     translation: "nuevo",
-    context: ["A1", "adjektiv", "neu"],
+    context: ["A1", "adjektiv", "neu"]
   },
   {
     id: "de-spannend",
     term: "spannend",
     translation: "emocionante/apasionante",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-verrückt",
     term: "verrückt",
     translation: "loco",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-diesjährig",
     term: "diesjährig",
     translation: "de este año",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-zusammengewürfelt",
     term: "zusammengewürfelt",
     translation: "mezclado",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-toll",
     term: "toll",
     translation: "genial/estupendo",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-viel",
     term: "viel",
     translation: "mucho",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-all",
     term: "all",
     translation: "todo",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-ander",
     term: "ander",
     translation: "otro",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-beispiellos",
     term: "beispiellos",
     translation: "sin precedentes",
-    context: ["C1", "adjektiv"],
+    context: ["C1", "adjektiv"]
   },
   {
     id: "de-herzlich",
     term: "herzlich",
     translation: "cordial",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-gespannt",
     term: "gespannt",
     translation: "tenso/expectante",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-abenteuerlich",
     term: "abenteuerlich",
     translation: "aventurero",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-wunderbar",
     term: "wunderbar",
     translation: "maravilloso",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-spannender",
     term: "spannender",
     translation: "emocionante",
-    context: ["A2", "adjektiv", "spannend"],
+    context: ["A2", "adjektiv", "spannend"]
   },
   {
     id: "de-verrückter",
     term: "verrückter",
     translation: "loco",
-    context: ["A2", "adjektiv", "verrückt"],
+    context: ["A2", "adjektiv", "verrückt"]
   },
   {
     id: "de-diesjährigen",
     term: "diesjährigen",
     translation: "de este año",
-    context: ["B1", "adjektiv", "diesjährig"],
+    context: ["B1", "adjektiv", "diesjährig"]
   },
   {
     id: "de-zusammengewürfelten",
     term: "zusammengewürfelten",
     translation: "mezclado",
-    context: ["B2", "adjektiv", "zusammengewürfelt"],
+    context: ["B2", "adjektiv", "zusammengewürfelt"]
   },
   {
     id: "de-tollen",
     term: "tollen",
     translation: "genial",
-    context: ["A1", "adjektiv", "toll"],
+    context: ["A1", "adjektiv", "toll"]
   },
   {
     id: "de-vieler",
     term: "vieler",
     translation: "muchos",
-    context: ["A1", "adjektiv", "genitiv", "viel"],
+    context: ["A1", "adjektiv", "genitiv", "viel"]
   },
   {
     id: "de-aller",
     term: "aller",
     translation: "todos",
-    context: ["A1", "adjektiv", "genitiv", "all"],
+    context: ["A1", "adjektiv", "genitiv", "all"]
   },
   {
     id: "de-anderen",
     term: "anderen",
     translation: "otros",
-    context: ["A1", "adjektiv", "ander"],
+    context: ["A1", "adjektiv", "ander"]
   },
   {
     id: "de-beispiellose",
     term: "beispiellose",
     translation: "sin precedentes",
-    context: ["C1", "adjektiv", "beispiellos"],
+    context: ["C1", "adjektiv", "beispiellos"]
   },
   {
     id: "de-abenteuerliche",
     term: "abenteuerliche",
     translation: "aventurero",
-    context: ["B1", "adjektiv", "abenteuerlich"],
+    context: ["B1", "adjektiv", "abenteuerlich"]
   },
   {
     id: "de-wunderbaren",
     term: "wunderbaren",
     translation: "maravilloso",
-    context: ["A2", "adjektiv", "wunderbar"],
+    context: ["A2", "adjektiv", "wunderbar"]
   },
   {
     id: "de-rassistisch",
     term: "rassistisch",
     translation: "racista",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-rassistische",
     term: "rassistische",
     translation: "racista",
-    context: ["B1", "adjektiv", "rassistisch"],
+    context: ["B1", "adjektiv", "rassistisch"]
   },
   {
     id: "de-antisemitisch",
     term: "antisemitisch",
     translation: "antisemita",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-antisemitische",
     term: "antisemitische",
     translation: "antisemita",
-    context: ["B2", "adjektiv", "antisemitisch"],
+    context: ["B2", "adjektiv", "antisemitisch"]
   },
   {
     id: "de-sexistisch",
     term: "sexistisch",
     translation: "sexista",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-sexistische",
     term: "sexistische",
     translation: "sexista",
-    context: ["B1", "adjektiv", "sexistisch"],
+    context: ["B1", "adjektiv", "sexistisch"]
   },
   {
     id: "de-homophob",
     term: "homophob",
     translation: "homofóbico",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-homophobe",
     term: "homophobe",
     translation: "homofóbico",
-    context: ["B2", "adjektiv", "homophob"],
+    context: ["B2", "adjektiv", "homophob"]
   },
   {
     id: "de-diskriminierend",
     term: "diskriminierend",
     translation: "discriminatorio",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-diskriminierende",
     term: "diskriminierende",
     translation: "discriminatorio",
-    context: ["B2", "adjektiv", "diskriminierend"],
+    context: ["B2", "adjektiv", "diskriminierend"]
   },
   {
     id: "de-laut",
     term: "laut",
     translation: "ruidoso/fuerte",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-link",
     term: "link",
     translation: "izquierdo",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-komisch",
     term: "komisch",
     translation: "extraño/raro",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-rot",
     term: "rot",
     translation: "rojo",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-blond",
     term: "blond",
     translation: "rubio",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-echt",
     term: "echt",
     translation: "auténtico/real",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-suboptimal",
     term: "suboptimal",
     translation: "subóptimo",
-    context: ["C1", "adjektiv"],
+    context: ["C1", "adjektiv"]
   },
   {
     id: "de-katholisch",
     term: "katholisch",
     translation: "católico",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-ganz",
     term: "ganz",
     translation: "entero/completo",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-kleiner",
     term: "kleiner",
     translation: "pequeño",
-    context: ["A1", "adjektiv", "klein"],
+    context: ["A1", "adjektiv", "klein"]
   },
   {
     id: "de-fauler",
     term: "fauler",
     translation: "perezoso",
-    context: ["A2", "adjektiv", "faul"],
+    context: ["A2", "adjektiv", "faul"]
   },
   {
     id: "de-lauter",
     term: "lauter",
     translation: "más fuerte/solo",
-    context: ["A1", "adjektiv", "laut"],
+    context: ["A1", "adjektiv", "laut"]
   },
   {
     id: "de-größer",
     term: "größer",
     translation: "más grande",
-    context: ["A1", "adjektiv", "groß"],
+    context: ["A1", "adjektiv", "groß"]
   },
   {
     id: "de-linken",
     term: "linken",
     translation: "izquierdo",
-    context: ["A1", "adjektiv", "link"],
+    context: ["A1", "adjektiv", "link"]
   },
   {
     id: "de-linke",
     term: "linke",
     translation: "izquierdo",
-    context: ["A1", "adjektiv", "link"],
+    context: ["A1", "adjektiv", "link"]
   },
   {
     id: "de-rote",
     term: "rote",
     translation: "rojo",
-    context: ["A1", "adjektiv", "rot"],
+    context: ["A1", "adjektiv", "rot"]
   },
   {
     id: "de-fettes",
     term: "fettes",
     translation: "gordo/graso",
-    context: ["A2", "adjektiv", "fett"],
+    context: ["A2", "adjektiv", "fett"]
   },
   {
     id: "de-vorletzten",
     term: "vorletzten",
     translation: "penúltimo",
-    context: ["B1", "adjektiv", "vorletzt"],
+    context: ["B1", "adjektiv", "vorletzt"]
   },
   {
     id: "de-zuschnappenden",
     term: "zuschnappenden",
     translation: "que se cierra de golpe",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-schützendes",
     term: "schützendes",
     translation: "protector",
-    context: ["A2", "adjektiv", "schützend"],
+    context: ["A2", "adjektiv", "schützend"]
   },
   {
     id: "de-blonde",
     term: "blonde",
     translation: "rubio",
-    context: ["A2", "adjektiv", "blond"],
+    context: ["A2", "adjektiv", "blond"]
   },
   {
     id: "de-keinen",
     term: "keinen",
     translation: "ningún",
-    context: ["A1", "adjektiv", "kein"],
+    context: ["A1", "adjektiv", "kein"]
   },
   {
     id: "de-echte",
     term: "echte",
     translation: "auténtico",
-    context: ["A2", "adjektiv", "echt"],
+    context: ["A2", "adjektiv", "echt"]
   },
   {
     id: "de-katholischen",
     term: "katholischen",
     translation: "católico",
-    context: ["A2", "adjektiv", "katholisch"],
+    context: ["A2", "adjektiv", "katholisch"]
   },
   {
     id: "de-ganzen",
     term: "ganzen",
     translation: "entero",
-    context: ["A1", "adjektiv", "ganz"],
+    context: ["A1", "adjektiv", "ganz"]
   },
   {
     id: "de-fairer",
     term: "fairer",
     translation: "más justo",
-    context: ["A2", "adjektiv", "fair"],
+    context: ["A2", "adjektiv", "fair"]
   },
   {
     id: "de-verfilzte",
     term: "verfilzte",
     translation: "enmarañado/apelmazado",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-dünn",
     term: "dünn",
     translation: "delgado/fino",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-hell",
     term: "hell",
     translation: "claro/brillante",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-hellen",
     term: "hellen",
     translation: "claro",
-    context: ["A1", "adjektiv", "hell"],
+    context: ["A1", "adjektiv", "hell"]
   },
   {
     id: "de-tollwütig",
     term: "tollwütig",
     translation: "rabioso",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-tollwütiges",
     term: "tollwütiges",
     translation: "rabioso",
-    context: ["B2", "adjektiv", "tollwütig"],
+    context: ["B2", "adjektiv", "tollwütig"]
   },
   {
     id: "de-gelb",
     term: "gelb",
     translation: "amarillo",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-gelbes",
     term: "gelbes",
     translation: "amarillo",
-    context: ["A1", "adjektiv", "gelb"],
+    context: ["A1", "adjektiv", "gelb"]
   },
   {
     id: "de-braun",
     term: "braun",
     translation: "marrón",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-braunen",
     term: "braunen",
     translation: "marrón",
-    context: ["A1", "adjektiv", "braun"],
+    context: ["A1", "adjektiv", "braun"]
   },
   {
     id: "de-braungebrannten",
     term: "braungebrannten",
     translation: "bronceado",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-dick",
     term: "dick",
     translation: "grueso/gordo",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-dickste",
     term: "dickste",
     translation: "más grueso",
-    context: ["A1", "adjektiv", "superlativ", "dick"],
+    context: ["A1", "adjektiv", "superlativ", "dick"]
   },
   {
     id: "de-dicker",
     term: "dicker",
     translation: "más gordo",
-    context: ["A1", "adjektiv", "dick"],
+    context: ["A1", "adjektiv", "dick"]
   },
   {
     id: "de-alt",
     term: "alt",
     translation: "viejo",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-alten",
     term: "alten",
     translation: "viejo",
-    context: ["A1", "adjektiv", "alt"],
+    context: ["A1", "adjektiv", "alt"]
   },
   {
     id: "de-alter",
     term: "alter",
     translation: "viejo",
-    context: ["A1", "adjektiv", "alt"],
+    context: ["A1", "adjektiv", "alt"]
   },
   {
     id: "de-breit",
     term: "breit",
     translation: "ancho",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-national",
     term: "national",
     translation: "nacional",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-nationalen",
     term: "Nationalen",
     translation: "nacional",
-    context: ["B1", "adjektiv", "national"],
+    context: ["B1", "adjektiv", "national"]
   },
   {
     id: "de-gestrand",
     term: "gestrandet",
     translation: "varado",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-feige",
     term: "feige",
     translation: "cobarde",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-schlimm",
     term: "schlimm",
     translation: "malo/grave",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-eklig",
     term: "eklig",
     translation: "asqueroso",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-reich",
     term: "reich",
     translation: "rico",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-reichen",
     term: "Reichen",
     translation: "ricos",
-    context: ["A2", "adjektiv", "substantiviert", "reich"],
+    context: ["A2", "adjektiv", "substantiviert", "reich"]
   },
   {
     id: "de-arm",
     term: "arm",
     translation: "pobre",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-armen",
     term: "Armen",
     translation: "pobres",
-    context: ["A1", "adjektiv", "substantiviert", "arm"],
+    context: ["A1", "adjektiv", "substantiviert", "arm"]
   },
   {
     id: "de-weiß",
     term: "weiß",
     translation: "blanco",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-weißen",
     term: "Weißen",
     translation: "blancos",
-    context: ["A1", "adjektiv", "substantiviert", "weiß"],
+    context: ["A1", "adjektiv", "substantiviert", "weiß"]
   },
   {
     id: "de-abgelutscht",
     term: "abgelutscht",
     translation: "chupado/gastado",
-    context: ["C1", "adjektiv"],
+    context: ["C1", "adjektiv"]
   },
   {
     id: "de-abgelutschten",
     term: "abgelutschten",
     translation: "chupado",
-    context: ["C1", "adjektiv", "abgelutscht"],
+    context: ["C1", "adjektiv", "abgelutscht"]
   },
   {
     id: "de-klar",
     term: "klar",
     translation: "claro",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-klein",
     term: "klein",
     translation: "pequeño",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-kleine",
     term: "kleine",
     translation: "pequeño",
-    context: ["A1", "adjektiv", "klein"],
+    context: ["A1", "adjektiv", "klein"]
   },
   {
     id: "de-blöd",
     term: "blöd",
     translation: "tonto",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-blöde",
     term: "blöde",
     translation: "tonto",
-    context: ["A2", "adjektiv", "blöd"],
+    context: ["A2", "adjektiv", "blöd"]
   },
   {
     id: "de-heiß",
     term: "heiß",
     translation: "caliente",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-tief",
     term: "tief",
     translation: "profundo",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-sauer",
     term: "sauer",
     translation: "agrio/enfadado",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-weiße",
     term: "weiße",
     translation: "blanco",
-    context: ["A1", "adjektiv", "weiß"],
+    context: ["A1", "adjektiv", "weiß"]
   },
   {
     id: "de-roten",
     term: "roten",
     translation: "rojo",
-    context: ["A1", "adjektiv", "rot"],
+    context: ["A1", "adjektiv", "rot"]
   },
   {
     id: "de-sauber",
     term: "sauber",
     translation: "limpio",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-dreckig",
     term: "dreckig",
     translation: "sucio",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-rotgelb",
     term: "rotgelb",
     translation: "rojo-amarillo",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-rotgelbe",
     term: "rotgelbe",
     translation: "rojo-amarillo",
-    context: ["A2", "adjektiv", "rotgelb"],
+    context: ["A2", "adjektiv", "rotgelb"]
   },
   {
     id: "de-inneren",
     term: "Inneren",
     translation: "interior",
-    context: ["B1", "adjektiv", "substantiviert"],
+    context: ["B1", "adjektiv", "substantiviert"]
   },
   {
     id: "de-spitz",
     term: "spitz",
     translation: "puntiagudo",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-raspelkurz",
     term: "raspelkurz",
     translation: "muy corto (pelo)",
-    context: ["C1", "adjektiv"],
+    context: ["C1", "adjektiv"]
   },
   {
     id: "de-raspelkurze",
     term: "raspelkurze",
     translation: "muy corto",
-    context: ["C1", "adjektiv", "raspelkurz"],
+    context: ["C1", "adjektiv", "raspelkurz"]
   },
   {
     id: "de-dunkel",
     term: "dunkel",
     translation: "oscuro",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-dunkle",
     term: "dunkle",
     translation: "oscuro",
-    context: ["A1", "adjektiv", "dunkel"],
+    context: ["A1", "adjektiv", "dunkel"]
   },
   {
     id: "de-popeleinfach",
     term: "popeleinfach",
     translation: "muy fácil (informal)",
-    context: ["C1", "adjektiv"],
+    context: ["C1", "adjektiv"]
   },
   {
     id: "de-letzt",
     term: "letzt",
     translation: "último",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-letzten",
     term: "Letzten",
     translation: "último",
-    context: ["A1", "adjektiv", "letzt"],
+    context: ["A1", "adjektiv", "letzt"]
   },
   {
     id: "de-riesig",
     term: "riesig",
     translation: "enorme",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-riesige",
     term: "riesige",
     translation: "enorme",
-    context: ["A2", "adjektiv", "riesig"],
+    context: ["A2", "adjektiv", "riesig"]
   },
   {
     id: "de-schwarz",
     term: "schwarz",
     translation: "negro",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-schwarzen",
     term: "schwarzen",
     translation: "negro",
-    context: ["A1", "adjektiv", "schwarz"],
+    context: ["A1", "adjektiv", "schwarz"]
   },
   {
     id: "de-recht",
     term: "recht",
     translation: "derecho",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-rechte",
     term: "rechte",
     translation: "derecho",
-    context: ["A1", "adjektiv", "recht"],
+    context: ["A1", "adjektiv", "recht"]
   },
   {
     id: "de-ruhig",
     term: "ruhig",
     translation: "tranquilo",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-ruhiger",
     term: "ruhiger",
     translation: "más tranquilo",
-    context: ["A2", "adjektiv", "ruhig"],
+    context: ["A2", "adjektiv", "ruhig"]
   },
   {
     id: "de-grün",
     term: "grün",
     translation: "verde",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-grüner",
     term: "grüner",
     translation: "verde",
-    context: ["A1", "adjektiv", "grün"],
+    context: ["A1", "adjektiv", "grün"]
   },
   {
     id: "de-halb",
     term: "halb",
     translation: "medio",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-halbe",
     term: "halbe",
     translation: "medio",
-    context: ["A1", "adjektiv", "halb"],
+    context: ["A1", "adjektiv", "halb"]
   },
   {
     id: "de-doll",
     term: "doll",
     translation: "fuerte/mucho (informal)",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-lahm",
     term: "lahm",
     translation: "cojo/lento",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-lahme",
     term: "lahme",
     translation: "cojo",
-    context: ["B1", "adjektiv", "lahm"],
+    context: ["B1", "adjektiv", "lahm"]
   },
   {
     id: "de-locker",
     term: "locker",
     translation: "suelto/relajado",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-hoch",
     term: "hoch",
     translation: "alto",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-höher",
     term: "höher",
     translation: "más alto",
-    context: ["A1", "adjektiv", "komparativ", "hoch"],
+    context: ["A1", "adjektiv", "komparativ", "hoch"]
   },
   {
     id: "de-besser",
     term: "besser",
     translation: "mejor",
-    context: ["A1", "adjektiv", "komparativ", "gut"],
+    context: ["A1", "adjektiv", "komparativ", "gut"]
   },
   {
     id: "de-besseren",
     term: "besseren",
     translation: "mejor",
-    context: ["A1", "adjektiv", "komparativ", "gut"],
+    context: ["A1", "adjektiv", "komparativ", "gut"]
   },
   {
     id: "de-beste",
     term: "beste",
     translation: "mejor",
-    context: ["A1", "adjektiv", "superlativ", "gut"],
+    context: ["A1", "adjektiv", "superlativ", "gut"]
   },
   {
     id: "de-besten",
     term: "besten",
     translation: "mejor",
-    context: ["A1", "adjektiv", "superlativ", "gut"],
+    context: ["A1", "adjektiv", "superlativ", "gut"]
   },
   {
     id: "de-hölzern",
     term: "hölzern",
     translation: "de madera",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-hölzernen",
     term: "hölzernen",
     translation: "de madera",
-    context: ["A2", "adjektiv", "hölzern"],
+    context: ["A2", "adjektiv", "hölzern"]
   },
   {
     id: "de-überwachsen",
     term: "überwachsen",
     translation: "cubierto de vegetación",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-überwachsenen",
     term: "überwachsenen",
     translation: "cubierto de vegetación",
-    context: ["B2", "adjektiv", "überwachsen"],
+    context: ["B2", "adjektiv", "überwachsen"]
   },
   {
     id: "de-besonder",
     term: "besonder",
     translation: "especial",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-besonderen",
     term: "besonderen",
     translation: "especial",
-    context: ["A2", "adjektiv", "besonder"],
+    context: ["A2", "adjektiv", "besonder"]
   },
   {
     id: "de-goldgrün",
     term: "goldgrün",
     translation: "verde dorado",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-billig",
     term: "billig",
     translation: "barato",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-billige",
     term: "billige",
     translation: "barato",
-    context: ["A1", "adjektiv", "billig"],
+    context: ["A1", "adjektiv", "billig"]
   },
   {
     id: "de-süß",
     term: "süß",
     translation: "dulce",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-leer",
     term: "leer",
     translation: "vacío",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-streng",
     term: "streng",
     translation: "estricto/severo",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-strenge",
     term: "strenge",
     translation: "estricto",
-    context: ["A2", "adjektiv", "streng"],
+    context: ["A2", "adjektiv", "streng"]
   },
   {
     id: "de-kurz",
     term: "kurz",
     translation: "corto",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-kurzen",
     term: "kurzen",
     translation: "corto",
-    context: ["A1", "adjektiv", "kurz"],
+    context: ["A1", "adjektiv", "kurz"]
   },
   {
     id: "de-hoh",
     term: "hoh",
     translation: "alto",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-hohes",
     term: "hohes",
     translation: "alto",
-    context: ["A1", "adjektiv", "hoch"],
+    context: ["A1", "adjektiv", "hoch"]
   },
   {
     id: "de-lang",
     term: "lang",
     translation: "largo",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-langes",
     term: "langes",
     translation: "largo",
-    context: ["A1", "adjektiv", "lang"],
+    context: ["A1", "adjektiv", "lang"]
   },
   {
     id: "de-faulig",
     term: "faulig",
     translation: "podrido",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-dunkel",
     term: "dunkel",
     translation: "oscuro",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-dunklen",
     term: "dunklen",
     translation: "oscuro",
-    context: ["A1", "adjektiv", "dunkel"],
+    context: ["A1", "adjektiv", "dunkel"]
   },
   {
     id: "de-schwer",
     term: "schwer",
     translation: "pesado/difícil",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-schwere",
     term: "Schwere",
     translation: "pesadez",
-    context: ["B1", "die", "feminin", "substantiv"],
+    context: ["B1", "die", "feminin", "substantiv"]
   },
   {
     id: "de-quietschend",
     term: "quietschend",
     translation: "chirriante",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-lustig",
     term: "lustig",
     translation: "divertido/gracioso",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-lustiges",
     term: "lustiges",
     translation: "divertido",
-    context: ["A1", "adjektiv", "lustig"],
+    context: ["A1", "adjektiv", "lustig"]
   },
   {
     id: "de-traurig",
     term: "traurig",
     translation: "triste",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-komplett",
     term: "komplett",
     translation: "completo",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-kompletter",
     term: "kompletter",
     translation: "completo",
-    context: ["A2", "adjektiv", "komplett"],
+    context: ["A2", "adjektiv", "komplett"]
   },
   {
     id: "de-unbekannt",
     term: "unbekannt",
     translation: "desconocido",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-unbekannte",
     term: "unbekannte",
     translation: "desconocido",
-    context: ["A2", "adjektiv", "unbekannt"],
+    context: ["A2", "adjektiv", "unbekannt"]
   },
   {
     id: "de-steif",
     term: "steif",
     translation: "rígido/tieso",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-einzig",
     term: "einzig",
     translation: "único",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-einzigen",
     term: "einzigen",
     translation: "único",
-    context: ["A2", "adjektiv", "einzig"],
+    context: ["A2", "adjektiv", "einzig"]
   },
   {
     id: "de-richtig",
     term: "richtig",
     translation: "correcto",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-richtige",
     term: "richtige",
     translation: "correcto",
-    context: ["A1", "adjektiv", "richtig"],
+    context: ["A1", "adjektiv", "richtig"]
   },
   {
     id: "de-offen",
     term: "offen",
     translation: "abierto",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-zerfallen",
     term: "zerfallen",
     translation: "derrumbado",
-    context: ["B2", "adjektiv"],
+    context: ["B2", "adjektiv"]
   },
   {
     id: "de-zerfallenen",
     term: "zerfallenen",
     translation: "derrumbado",
-    context: ["B2", "adjektiv", "zerfallen"],
+    context: ["B2", "adjektiv", "zerfallen"]
   },
   {
     id: "de-scharf",
     term: "scharf",
     translation: "afilado/picante",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-tierisch",
     term: "tierisch",
     translation: "animal/brutal (informal)",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-still",
     term: "still",
     translation: "silencioso/quieto",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-viert",
     term: "viert",
     translation: "cuarto",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-vierte",
     term: "vierte",
     translation: "cuarto",
-    context: ["A1", "adjektiv", "viert"],
+    context: ["A1", "adjektiv", "viert"]
   },
   {
     id: "de-erst",
     term: "erst",
     translation: "primero",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-erste",
     term: "erste",
     translation: "primero",
-    context: ["A1", "adjektiv", "erst"],
+    context: ["A1", "adjektiv", "erst"]
   },
   {
     id: "de-zweit",
     term: "zweit",
     translation: "segundo",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-zweite",
     term: "zweite",
     translation: "segundo",
-    context: ["A1", "adjektiv", "zweit"],
+    context: ["A1", "adjektiv", "zweit"]
   },
   {
     id: "de-ordentlich",
     term: "ordentlich",
     translation: "ordenado/decente",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-normal",
     term: "normal",
     translation: "normal",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-normale",
     term: "normale",
     translation: "normal",
-    context: ["A1", "adjektiv", "normal"],
+    context: ["A1", "adjektiv", "normal"]
   },
   {
     id: "de-kirchlich",
     term: "kirchlich",
     translation: "eclesiástico",
-    context: ["B1", "adjektiv"],
+    context: ["B1", "adjektiv"]
   },
   {
     id: "de-alte",
     term: "alte",
     translation: "viejo",
-    context: ["A1", "adjektiv", "alt"],
+    context: ["A1", "adjektiv", "alt"]
   },
   {
     id: "de-altes",
     term: "altes",
     translation: "viejo",
-    context: ["A1", "adjektiv", "alt"],
+    context: ["A1", "adjektiv", "alt"]
   },
   {
     id: "de-große",
     term: "große",
     translation: "grande",
-    context: ["A1", "adjektiv", "groß"],
+    context: ["A1", "adjektiv", "groß"]
   },
   {
     id: "de-großes",
     term: "großes",
     translation: "grande",
-    context: ["A1", "adjektiv", "groß"],
+    context: ["A1", "adjektiv", "groß"]
   },
   {
     id: "de-weißer",
     term: "weißer",
     translation: "blanco",
-    context: ["A1", "adjektiv", "weiß"],
+    context: ["A1", "adjektiv", "weiß"]
   },
   {
     id: "de-weißes",
     term: "weißes",
     translation: "blanco",
-    context: ["A1", "adjektiv", "weiß"],
+    context: ["A1", "adjektiv", "weiß"]
   },
   {
     id: "de-blaue",
     term: "blaue",
     translation: "azul",
-    context: ["A1", "adjektiv", "blau"],
+    context: ["A1", "adjektiv", "blau"]
   },
   {
     id: "de-grauen",
     term: "grauen",
     translation: "gris",
-    context: ["A1", "adjektiv", "grau"],
+    context: ["A1", "adjektiv", "grau"]
   },
   {
     id: "de-dunklen",
     term: "dunklen",
     translation: "oscuro",
-    context: ["A1", "adjektiv", "dunkel"],
+    context: ["A1", "adjektiv", "dunkel"]
   },
   {
     id: "de-langes",
     term: "langes",
     translation: "largo",
-    context: ["A1", "adjektiv", "lang"],
+    context: ["A1", "adjektiv", "lang"]
   },
   {
     id: "de-hohes",
     term: "hohes",
     translation: "alto",
-    context: ["A1", "adjektiv", "hoch"],
+    context: ["A1", "adjektiv", "hoch"]
   },
   {
     id: "de-tiefe",
     term: "tiefe",
     translation: "profundo",
-    context: ["A2", "adjektiv", "tief"],
+    context: ["A2", "adjektiv", "tief"]
   },
   {
     id: "de-ganze",
     term: "ganze",
     translation: "entero/todo",
-    context: ["A1", "adjektiv", "ganz"],
+    context: ["A1", "adjektiv", "ganz"]
   },
   {
     id: "de-halbes",
     term: "halbes",
     translation: "medio",
-    context: ["A1", "adjektiv", "halb"],
+    context: ["A1", "adjektiv", "halb"]
   },
   {
     id: "de-letzte",
     term: "letzte",
     translation: "último",
-    context: ["A1", "adjektiv", "letzt"],
+    context: ["A1", "adjektiv", "letzt"]
   },
   {
     id: "de-letztes",
     term: "letztes",
     translation: "último",
-    context: ["A1", "adjektiv", "letzt"],
+    context: ["A1", "adjektiv", "letzt"]
   },
   {
     id: "de-anderes",
     term: "anderes",
     translation: "otro",
-    context: ["A1", "adjektiv", "ander"],
+    context: ["A1", "adjektiv", "ander"]
   },
   {
     id: "de-kaputt",
     term: "kaputt",
     translation: "roto",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-lieb",
     term: "lieb",
     translation: "querido/amable",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-gestrichen",
     term: "gestrichen",
     translation: "pintado",
-    context: ["B1", "partizip-ii", "adjektiv"],
+    context: ["B1", "partizip-ii", "adjektiv"]
   },
   {
     id: "de-worden",
     term: "worden",
     translation: "sido (pasivo)",
-    context: ["B1", "partizip-ii", "verb"],
+    context: ["B1", "partizip-ii", "verb"]
   },
   {
     id: "de-vollgerümpelt",
     term: "vollgerümpelt",
     translation: "abarrotado",
-    context: ["B2", "partizip-ii", "adjektiv"],
+    context: ["B2", "partizip-ii", "adjektiv"]
   },
   {
     id: "de-dicken",
     term: "dicken",
     translation: "grueso/gordo",
-    context: ["A1", "adjektiv", "dick"],
+    context: ["A1", "adjektiv", "dick"]
   },
   {
     id: "de-grau-base",
     term: "grau",
     translation: "gris",
-    context: ["A1", "adjektiv"],
+    context: ["A1", "adjektiv"]
   },
   {
     id: "de-verschrumplen-verb",
     term: "verschrumplen",
     translation: "arrugarse/marchitarse",
-    context: ["B2", "verb"],
+    context: ["B2", "verb"]
   },
   {
     id: "de-bunten",
     term: "bunten",
     translation: "colorido",
-    context: ["A2", "adjektiv", "bunt"],
+    context: ["A2", "adjektiv", "bunt"]
   },
   {
     id: "de-gestrandeter",
     term: "gestrandeter",
     translation: "varado",
-    context: ["B2", "adjektiv", "partizip-ii"],
+    context: ["B2", "adjektiv", "partizip-ii"]
   },
   {
     id: "de-tot",
     term: "tot",
     translation: "muerto",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-größte",
     term: "Größte",
     translation: "más grande (superlativo)",
-    context: ["A1", "adjektiv", "superlativ", "groß"],
+    context: ["A1", "adjektiv", "superlativ", "groß"]
   },
   {
     id: "de-fetten",
     term: "fetten",
     translation: "gordo/grueso",
-    context: ["A1", "adjektiv", "fett"],
+    context: ["A1", "adjektiv", "fett"]
   },
   {
     id: "de-fester",
     term: "fester",
     translation: "más firme",
-    context: ["A2", "adjektiv", "komparativ", "fest"],
+    context: ["A2", "adjektiv", "komparativ", "fest"]
   },
   {
     id: "de-helle",
     term: "helle",
     translation: "claro/luminoso",
-    context: ["A1", "adjektiv", "hell"],
+    context: ["A1", "adjektiv", "hell"]
   },
   {
     id: "de-ehrlich",
     term: "ehrlich",
     translation: "honesto/sincero",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-vierten-adjektiv",
     term: "vierten",
     translation: "cuarto",
-    context: ["A1", "adjektiv", "viert"],
+    context: ["A1", "adjektiv", "viert"]
   },
   {
     id: "de-dünner",
     term: "dünner",
     translation: "delgado",
-    context: ["A1", "adjektiv", "dünn"],
+    context: ["A1", "adjektiv", "dünn"]
   },
   {
     id: "de-unterschiedlich",
     term: "unterschiedlich",
     translation: "diferente/distinto",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-kirchliche",
     term: "Kirchliche",
     translation: "eclesiástico",
-    context: ["B1", "adjektiv", "kirchlich"],
+    context: ["B1", "adjektiv", "kirchlich"]
   },
   {
     id: "de-selben",
     term: "selben",
     translation: "mismo",
-    context: ["A2", "adjektiv", "selb"],
+    context: ["A2", "adjektiv", "selb"]
   },
   {
     id: "de-braune",
     term: "braune",
     translation: "marrón",
-    context: ["A1", "adjektiv", "braun"],
+    context: ["A1", "adjektiv", "braun"]
   },
   {
     id: "de-feucht",
     term: "feucht",
     translation: "húmedo",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-eigenes",
     term: "eigenes",
     translation: "propio",
-    context: ["A2", "adjektiv", "eigen"],
+    context: ["A2", "adjektiv", "eigen"]
   },
   {
     id: "de-hässlichen",
     term: "hässlichen",
     translation: "feo",
-    context: ["A2", "adjektiv", "hässlich"],
+    context: ["A2", "adjektiv", "hässlich"]
   },
   {
     id: "de-schief",
     term: "schief",
     translation: "torcido/inclinado",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-vierstöckiges",
     term: "vierstöckiges",
     translation: "de cuatro pisos",
-    context: ["A2", "adjektiv"],
+    context: ["A2", "adjektiv"]
   },
   {
     id: "de-neuen",
     term: "neuen",
     translation: "nuevo",
-    context: ["A1", "adjektiv", "neu"],
+    context: ["A1", "adjektiv", "neu"]
   },
+  {
+    id: "de-vorbeiziehenden",
+    term: "vorbeiziehenden",
+    translation: "que pasan",
+    context: ["B1", "partizip-präsens", "adjektiv"]
+  },
+  {
+    id: "de-schlau",
+    term: "schlau",
+    translation: "listo/astuto",
+    context: ["A2", "adjektiv"]
+  },
+  {
+    id: "de-dritte",
+    term: "dritte",
+    translation: "tercero",
+    context: ["A1", "ordinalzahl", "adjektiv"]
+  },
+  {
+    id: "de-hart",
+    term: "harten",
+    translation: "duro",
+    context: ["A2", "adjektiv", "hart"]
+  },
+  {
+    id: "de-alter",
+    term: "alter",
+    translation: "viejo",
+    context: ["A1", "adjektiv", "alt"]
+  },
+  {
+    id: "de-grüner",
+    term: "grüner",
+    translation: "verde",
+    context: ["A1", "adjektiv", "grün"]
+  },
+  {
+    id: "de-echt",
+    term: "echt",
+    translation: "auténtico/real",
+    context: ["A2", "adjektiv"]
+  },
+  {
+    id: "de-dynamisch",
+    term: "dynamisch",
+    translation: "dinámico",
+    context: ["B1", "adjektiv"]
+  },
+  {
+    id: "de-toller",
+    term: "toller",
+    translation: "genial",
+    context: ["A2", "adjektiv", "toll"]
+  },
+  {
+    id: "de-dynamischer",
+    term: "dynamischer",
+    translation: "dinámico",
+    context: ["B1", "adjektiv", "dynamisch"]
+  },
+  {
+    id: "de-schöner",
+    term: "schöner",
+    translation: "más bonito",
+    context: ["A1", "adjektiv", "komparativ", "schön"]
+  },
+  {
+    id: "de-rotem",
+    term: "rotem",
+    translation: "rojo",
+    context: ["A1", "adjektiv", "rot"]
+  },
+  {
+    id: "de-beste",
+    term: "beste",
+    translation: "mejor",
+    context: ["A1", "adjektiv", "superlativ", "gut"]
+  },
+  {
+    id: "de-obersten",
+    term: "obersten",
+    translation: "superior",
+    context: ["B1", "adjektiv", "superlativ"]
+  },
+  {
+    id: "de-kurzen-adj",
+    term: "kurzen",
+    translation: "corto",
+    context: ["A1", "adjektiv", "kurz"]
+  },
+  {
+    id: "de-blond",
+    term: "blond",
+    translation: "rubio",
+    context: ["A1", "adjektiv"]
+  },
+  {
+    id: "de-schwarzes",
+    term: "schwarzes",
+    translation: "negro",
+    context: ["A1", "adjektiv", "schwarz"]
+  },
+  {
+    id: "de-dunkelblau",
+    term: "dunkelblau",
+    translation: "azul oscuro",
+    context: ["A1", "adjektiv"]
+  },
+  {
+    id: "de-lauter",
+    term: "lauter",
+    translation: "más fuerte/puro",
+    context: ["A2", "adjektiv"]
+  },
+  {
+    id: "de-ordentliche",
+    term: "ordentliche",
+    translation: "ordenado/decente",
+    context: ["A2", "adjektiv", "ordentlich"]
+  },
+  {
+    id: "de-ganzen",
+    term: "ganzen",
+    translation: "entero",
+    context: ["A1", "adjektiv", "ganz"]
+  },
+  {
+    id: "de-okay",
+    term: "okay",
+    translation: "vale/ok",
+    context: ["A1", "adjektiv"]
+  },
+  {
+    id: "de-verwandt",
+    term: "verwandt",
+    translation: "emparentado",
+    context: ["A2", "partizip-ii", "adjektiv"]
+  },
+  {
+    id: "de-richtigen-adj",
+    term: "richtigen",
+    translation: "correcto",
+    context: ["A1", "adjektiv", "richtig"]
+  },
+  {
+    id: "de-größere",
+    term: "größere",
+    translation: "mayor",
+    context: ["A1", "adjektiv", "komparativ", "groß"]
+  },
+  {
+    id: "de-komische",
+    term: "komische",
+    translation: "raro/cómico",
+    context: ["A2", "adjektiv"]
+  },
+  {
+    id: "de-runde",
+    term: "runde",
+    translation: "redondo",
+    context: ["A1", "adjektiv"]
+  },
+  {
+    id: "de-dürres",
+    term: "dürres",
+    translation: "flaco/seco",
+    context: ["B1", "adjektiv"]
+  },
+  {
+    id: "de-knotiger",
+    term: "knotiger",
+    translation: "nudoso",
+    context: ["B2", "adjektiv"]
+  },
+  {
+    id: "de-richtiger-adj",
+    term: "richtiger",
+    translation: "correcto/real",
+    context: ["A1", "adjektiv", "richtig"]
+  },
+  {
+    id: "de-jung",
+    term: "jung",
+    translation: "joven",
+    context: ["A1", "adjektiv"]
+  },
+  {
+    id: "de-besoffen",
+    term: "besoffen",
+    translation: "borracho",
+    context: ["C1", "partizip-ii", "adjektiv"]
+  },
+  {
+    id: "de-sauer",
+    term: "sauer",
+    translation: "enfadado/ácido",
+    context: ["A2", "adjektiv"]
+  },
+  {
+    id: "de-fremden",
+    term: "fremden",
+    translation: "extraño/ajeno",
+    context: ["A2", "adjektiv", "fremd"]
+  },
+  {
+    id: "de-linken",
+    term: "linken",
+    translation: "izquierdo",
+    context: ["A1", "adjektiv", "link"]
+  },
+  {
+    id: "de-erwachsen",
+    term: "erwachsen",
+    translation: "adulto",
+    context: ["A2", "adjektiv"]
+  },
+  {
+    id: "de-stark",
+    term: "stark",
+    translation: "fuerte",
+    context: ["A1", "adjektiv"]
+  },
+  {
+    id: "de-fleischig",
+    term: "fleischig",
+    translation: "carnoso",
+    context: ["B1", "adjektiv"]
+  },
+  {
+    id: "de-jungen",
+    term: "jungen",
+    translation: "joven",
+    context: ["A1", "adjektiv", "jung"]
+  },
+  {
+    id: "de-unglücklich",
+    term: "unglücklich",
+    translation: "infeliz",
+    context: ["A2", "adjektiv"]
+  },
+  {
+    id: "de-kleiner",
+    term: "kleiner",
+    translation: "pequeño/menor",
+    context: ["A1", "adjektiv", "klein"]
+  },
+  {
+    id: "de-bebender",
+    term: "bebender",
+    translation: "tembloroso",
+    context: ["B1", "partizip-präsens", "adjektiv"]
+  },
+  {
+    id: "de-dunkle",
+    term: "dunkle",
+    translation: "oscuro",
+    context: ["A1", "adjektiv", "dunkel"]
+  },
+  {
+    id: "de-kurzer",
+    term: "kurzer",
+    translation: "corto",
+    context: ["A1", "adjektiv", "kurz"]
+  },
+  {
+    id: "de-fertig",
+    term: "fertig",
+    translation: "terminado/listo",
+    context: ["A1", "adjektiv"]
+  },
+  {
+    id: "de-fröhliche",
+    term: "fröhliche",
+    translation: "alegre",
+    context: ["A2", "adjektiv", "fröhlich"]
+  },
+  {
+    id: "de-letzten-adj",
+    term: "letzten",
+    translation: "último",
+    context: ["A1", "adjektiv", "letzt"]
+  },
+  {
+    id: "de-sachte",
+    term: "sachte",
+    translation: "suave/despacio",
+    context: ["B1", "adjektiv"]
+  },
+  {
+    id: "de-rechte",
+    term: "rechte",
+    translation: "derecho",
+    context: ["A1", "adjektiv", "recht"]
+  },
+  {
+    id: "de-taub",
+    term: "taub",
+    translation: "sordo",
+    context: ["A2", "adjektiv"]
+  },
+  {
+    id: "de-dritten",
+    term: "dritten",
+    translation: "tercero",
+    context: ["A1", "ordinalzahl", "adjektiv"]
+  },
+  {
+    id: "de-doll",
+    term: "doll",
+    translation: "fuerte/mucho (dialecto)",
+    context: ["B2", "adjektiv"]
+  },
+  {
+    id: "de-dumme",
+    term: "dumme",
+    translation: "tonto",
+    context: ["A1", "adjektiv", "dumm"]
+  },
+  {
+    id: "de-roten",
+    term: "roten",
+    translation: "rojo",
+    context: ["A1", "adjektiv", "rot"]
+  },
+  {
+    id: "de-innerer",
+    term: "innerer",
+    translation: "interior/interno",
+    context: ["B1", "adjektiv"]
+  },
+  {
+    id: "de-schlimmes",
+    term: "Schlimmes",
+    translation: "algo malo",
+    context: ["A2", "substantiv", "adjektiv"]
+  },
+  {
+    id: "de-schlimmer",
+    term: "schlimmer",
+    translation: "peor",
+    context: ["A2", "adjektiv", "komparativ"]
+  },
+  {
+    id: "de-kaltes",
+    term: "Kaltes",
+    translation: "algo frío",
+    context: ["A1", "substantiv", "adjektiv"]
+  },
+  {
+    id: "de-heiß",
+    term: "heiß",
+    translation: "caliente",
+    context: ["A1", "adjektiv"]
+  },
+  {
+    id: "de-gelbes",
+    term: "gelbes",
+    translation: "amarillo",
+    context: ["A1", "adjektiv", "gelb"]
+  },
+  {
+    id: "de-nett",
+    term: "nett",
+    translation: "amable",
+    context: ["A1", "adjektiv"]
+  },
+  {
+    id: "de-blöder",
+    term: "blöder",
+    translation: "más tonto",
+    context: ["A1", "adjektiv", "komparativ"]
+  },
+  {
+    id: "de-flachen",
+    term: "flachen",
+    translation: "plano",
+    context: ["A2", "adjektiv", "flach"]
+  },
+  {
+    id: "de-brav",
+    term: "brav",
+    translation: "bueno/obediente",
+    context: ["A2", "adjektiv"]
+  },
+  {
+    id: "de-weich",
+    term: "weich",
+    translation: "suave/blando",
+    context: ["A1", "adjektiv"]
+  },
+  {
+    id: "de-finster",
+    term: "finster",
+    translation: "oscuro/tenebroso",
+    context: ["B1", "adjektiv"]
+  },
+  {
+    id: "de-locker",
+    term: "locker",
+    translation: "suelto/relajado",
+    context: ["A2", "adjektiv"]
+  },
+  {
+    id: "de-volle",
+    term: "volle",
+    translation: "lleno",
+    context: ["A1", "adjektiv", "voll"]
+  },
+  {
+    id: "de-graues",
+    term: "graues",
+    translation: "gris",
+    context: ["A1", "adjektiv", "grau"]
+  },
+  {
+    id: "de-grüne-adj",
+    term: "grüne",
+    translation: "verde",
+    context: ["A1", "adjektiv", "grün"]
+  },
+  {
+    id: "de-weißen-adj",
+    term: "weißen",
+    translation: "blanco",
+    context: ["A1", "adjektiv", "weiß"]
+  },
+  {
+    id: "de-dunkelgrünes",
+    term: "dunkelgrünes",
+    translation: "verde oscuro",
+    context: ["A2", "adjektiv"]
+  },
+  {
+    id: "de-echter",
+    term: "echter",
+    translation: "auténtico/real",
+    context: ["A2", "adjektiv", "echt"]
+  },
+  {
+    id: "de-vielen",
+    term: "vielen",
+    translation: "muchos",
+    context: ["A1", "adjektiv", "viel"]
+  },
+  {
+    id: "de-matschige",
+    term: "matschige",
+    translation: "fangoso",
+    context: ["A2", "adjektiv"]
+  },
+  {
+    id: "de-länger",
+    term: "länger",
+    translation: "más largo",
+    context: ["A1", "adjektiv", "komparativ", "lang"]
+  },
+  {
+    id: "de-zäh",
+    term: "zäh",
+    translation: "duro/tenaz",
+    context: ["B1", "adjektiv"]
+  },
+  {
+    id: "de-morastigen",
+    term: "morastigen",
+    translation: "pantanoso",
+    context: ["B2", "adjektiv"]
+  },
+  {
+    id: "de-verschlungene",
+    term: "verschlungene",
+    translation: "entrelazado/sinuoso",
+    context: ["B2", "partizip-ii", "adjektiv"]
+  },
+  {
+    id: "de-dicke",
+    term: "dicke",
+    translation: "gordo/grueso",
+    context: ["A1", "adjektiv", "dick"]
+  },
+  {
+    id: "de-eingebildet",
+    term: "eingebildet",
+    translation: "presumido/imaginario",
+    context: ["B1", "partizip-ii", "adjektiv"]
+  }
 ]
 
-const adjetivos = [...adjetivosFarben, ...adjetivosAllgemein]
+const adjetivos = [
+  ...adjetivosFarben,
+  ...adjetivosAllgemein
+]
 
 export default adjetivos

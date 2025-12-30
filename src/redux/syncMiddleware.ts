@@ -20,24 +20,10 @@ import {
   setTextHistory,
   type TextHistoryItem,
 } from "+/redux/slices/recognitionSlice"
-import {
-  deleteWordLibrary,
-  syncSettings,
-  syncWordLibrary,
-  syncWordProgress,
-  syncRecognitionState,
-} from "+/actions/sync"
-
-type ProgressChange = {
-  id: string
-  baseScore: number
-  lastPracticedAt: string | null
-}
+import { syncSettings, syncWordProgress, syncRecognitionState } from "+/actions/sync"
 
 type PendingSync = {
-  library: Map<string, WordEntry>
-  progress: Map<string, ProgressChange>
-  deleted: Set<string>
+  words?: WordEntry[]
   settings?: Settings
   recognition?: { recognitionText: string; textHistory: TextHistoryItem[] }
 }
@@ -52,34 +38,24 @@ const findByTerm = (words: WordEntry[], term?: string) => {
 }
 
 export const syncMiddleware: Middleware = (storeApi) => {
-  const pending: PendingSync = {
-    library: new Map(),
-    progress: new Map(),
-    deleted: new Set(),
-  }
+  const pending: PendingSync = {}
   let scheduled = false
 
   const flush = () => {
     scheduled = false
-    const deletedIds = Array.from(pending.deleted)
-    const library = Array.from(pending.library.values())
-    const progress = Array.from(pending.progress.values())
+    const words = pending.words
     const settings = pending.settings
     const recognition = pending.recognition
 
-    pending.deleted.clear()
-    pending.library.clear()
-    pending.progress.clear()
+    delete pending.words
     delete pending.settings
     delete pending.recognition
 
-    if (!deletedIds.length && !library.length && !progress.length && !settings && !recognition) return
+    if (!words && !settings && !recognition) return
 
     void (async () => {
       try {
-        if (deletedIds.length) await deleteWordLibrary(deletedIds)
-        if (library.length) await syncWordLibrary(library)
-        if (progress.length) await syncWordProgress(progress)
+        if (words) await syncWordProgress(words)
         if (settings) await syncSettings(settings)
         if (recognition)
           await syncRecognitionState({
@@ -120,68 +96,41 @@ export const syncMiddleware: Middleware = (storeApi) => {
         words.find((item: WordEntry) => item.id === action.payload?.id) ||
         findByTerm(words, action.payload?.term)
       if (word) {
-        pending.library.set(word.id, word)
-        pending.progress.set(word.id, {
-          id: word.id,
-          baseScore: word.baseScore,
-          lastPracticedAt: word.lastPracticedAt,
-        })
+        pending.words = words
         dirty = true
       }
     } else if (upsertWord.match(action)) {
       const word = findByTerm(words, action.payload?.term) || findByTerm(words, action.payload?.previousTerm)
       if (word) {
-        pending.library.set(word.id, word)
-        pending.progress.set(word.id, {
-          id: word.id,
-          baseScore: word.baseScore,
-          lastPracticedAt: word.lastPracticedAt,
-        })
+        pending.words = words
         dirty = true
       }
     } else if (updateWord.match(action)) {
       const word = words.find((item: WordEntry) => item.id === action.payload.id)
       if (word) {
-        pending.library.set(word.id, word)
+        pending.words = words
         dirty = true
       }
     } else if (setWords.match(action)) {
-      action.payload.forEach((word: WordEntry) => {
-        pending.library.set(word.id, word)
-        pending.progress.set(word.id, {
-          id: word.id,
-          baseScore: word.baseScore,
-          lastPracticedAt: word.lastPracticedAt,
-        })
-      })
-      dirty = action.payload.length > 0
+      pending.words = words
+      dirty = true
     } else if (removeWord.match(action)) {
-      pending.deleted.add(action.payload)
-      pending.library.delete(action.payload)
-      pending.progress.delete(action.payload)
+      pending.words = words
       dirty = true
     } else if (applyScore.match(action) || touchLastPracticed.match(action)) {
       const targetId = applyScore.match(action) ? action.payload.id : action.payload
       const word = words.find((item: WordEntry) => item.id === targetId)
       if (word) {
-        pending.progress.set(word.id, {
-          id: word.id,
-          baseScore: word.baseScore,
-          lastPracticedAt: word.lastPracticedAt,
-        })
+        pending.words = words
         dirty = true
       }
     } else if (applyScoreDeltas.match(action)) {
       action.payload.forEach((item: { id: string }) => {
         const word = words.find((entry: WordEntry) => entry.id === item.id)
         if (!word) return
-        pending.progress.set(word.id, {
-          id: word.id,
-          baseScore: word.baseScore,
-          lastPracticedAt: word.lastPracticedAt,
-        })
         dirty = true
       })
+      if (dirty) pending.words = words
     }
 
     if (setSettings.match(action)) {

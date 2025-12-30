@@ -1,7 +1,5 @@
 "use server"
 
-import { Prisma } from "@prisma/client"
-
 import { auth } from "+/lib/auth"
 import { prisma } from "+/lib/prisma"
 import type { PracticeDateFilter, Settings, SortBy } from "+/types"
@@ -9,16 +7,6 @@ import type { WordEntry } from "+/redux/slices/wordsSlice"
 import type { TextHistoryItem } from "+/redux/slices/recognitionSlice"
 import { defaultSettings } from "+/utils"
 
-type WordProgressInput = {
-  id: string
-  baseScore: number
-  lastPracticedAt: string | null
-}
-
-const toStringArray = (value: Prisma.JsonValue | null | undefined): string[] =>
-  Array.isArray(value) ? value.filter((item): item is string => typeof item === "string") : []
-
-const toIso = (value: Date | null) => (value ? value.toISOString() : null)
 const sortByValues: SortBy[] = [
   "score",
   "scoreAsc",
@@ -51,17 +39,19 @@ const coercePracticeDate = (value: string | null | undefined): PracticeDateFilte
     ? (value as PracticeDateFilter)
     : defaultSettings.practiceDateFilter
 
+const normalizeWordList = (raw: unknown): WordEntry[] => {
+  if (!Array.isArray(raw)) return []
+  return raw.filter((entry): entry is WordEntry => Boolean(entry && typeof entry === "object"))
+}
+
 export const getUserSyncPayload = async () => {
   const session = await auth()
   const userId = session?.user?.id
   if (!userId) return null
 
-  const [settings, progresses, user, recognitionState] = await Promise.all([
+  const [settings, progress, user, recognitionState] = await Promise.all([
     prisma.settings.findUnique({ where: { userId } }),
-    prisma.wordProgress.findMany({
-      where: { userId },
-      include: { word: true },
-    }),
+    prisma.wordProgress.findUnique({ where: { id: userId } }),
     prisma.user.findUnique({
       where: { id: userId },
       select: {
@@ -79,19 +69,7 @@ export const getUserSyncPayload = async () => {
   ])
   if (!user) return null
 
-  const words: WordEntry[] = progresses.map((progress) => ({
-    id: progress.wordId,
-    term: progress.word.term,
-    translation: progress.word.translation,
-    notes: progress.word.notes,
-    context: toStringArray(progress.word.context as Prisma.JsonValue | null | undefined),
-    contextForPractice: toStringArray(
-      progress.word.contextForPractice as Prisma.JsonValue | null | undefined
-    ),
-    baseScore: progress.baseScore,
-    lastPracticedAt: toIso(progress.lastPracticedAt),
-    createdAt: progress.word.createdAt.toISOString(),
-  }))
+  const words = normalizeWordList(progress?.terms)
 
   const mappedSettings: Settings = {
     ...defaultSettings,
@@ -118,65 +96,22 @@ export const getUserSyncPayload = async () => {
   }
 }
 
-export const syncWordLibrary = async (words: WordEntry[]) => {
-  if (!words.length) return
-  const session = await auth()
-  if (!session?.user?.id) return
-  await Promise.all(
-    words.map((word) =>
-      prisma.wordLibrary.upsert({
-        where: { id: word.id },
-        create: {
-          id: word.id,
-          term: word.term,
-          translation: word.translation,
-          notes: word.notes,
-          context: word.context,
-          contextForPractice: word.contextForPractice,
-          createdAt: new Date(word.createdAt),
-        },
-        update: {
-          term: word.term,
-          translation: word.translation,
-          notes: word.notes,
-          context: word.context,
-          contextForPractice: word.contextForPractice,
-        },
-      })
-    )
-  )
-}
-
-export const syncWordProgress = async (changes: WordProgressInput[]) => {
-  if (!changes.length) return
+export const syncWordProgress = async (words: WordEntry[]) => {
   const session = await auth()
   const userId = session?.user?.id
   if (!userId) return
 
-  await Promise.all(
-    changes.map((change) =>
-      prisma.wordProgress.upsert({
-        where: { userId_wordId: { userId, wordId: change.id } },
-        create: {
-          userId,
-          wordId: change.id,
-          baseScore: change.baseScore,
-          lastPracticedAt: change.lastPracticedAt ? new Date(change.lastPracticedAt) : null,
-        },
-        update: {
-          baseScore: change.baseScore,
-          lastPracticedAt: change.lastPracticedAt ? new Date(change.lastPracticedAt) : null,
-        },
-      })
-    )
-  )
-}
-
-export const deleteWordLibrary = async (ids: string[]) => {
-  if (!ids.length) return
-  const session = await auth()
-  if (!session?.user?.id) return
-  await prisma.wordLibrary.deleteMany({ where: { id: { in: ids } } })
+  await prisma.wordProgress.upsert({
+    where: { id: userId },
+    create: {
+      id: userId,
+      userId,
+      terms: words,
+    },
+    update: {
+      terms: words,
+    },
+  })
 }
 
 export const syncSettings = async (nextSettings: Settings) => {

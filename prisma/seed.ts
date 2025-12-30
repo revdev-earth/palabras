@@ -1,5 +1,4 @@
 import bcrypt from "bcryptjs"
-import { Prisma } from "@prisma/client"
 import { prisma } from "+/lib/prisma"
 import memory from "../la memoria"
 
@@ -20,16 +19,21 @@ type NormalizedWord = {
   term: string
   translation: string
   notes: string
-  context?: Prisma.InputJsonValue
-  contextForPractice?: Prisma.InputJsonValue
+  context: string[]
+  contextForPractice: string[]
   baseScore: number
-  lastPracticedAt: Date | null
-  createdAt: Date
+  lastPracticedAt: string | null
+  createdAt: string
 }
 
-const toJsonInput = (value: unknown): Prisma.InputJsonValue | undefined => {
-  if (value === null || value === undefined) return undefined
-  return value as Prisma.InputJsonValue
+const normalizeList = (value: unknown): string[] => {
+  if (Array.isArray(value)) return value.map((item) => String(item).trim()).filter(Boolean)
+  if (typeof value === "string")
+    return value
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean)
+  return []
 }
 
 const normalizeWord = (word: RawWord): NormalizedWord => {
@@ -39,13 +43,11 @@ const normalizeWord = (word: RawWord): NormalizedWord => {
     term: String(word.term ?? ""),
     translation: String(word.translation ?? ""),
     notes: String(word.notes ?? ""),
-    context: toJsonInput(Array.isArray(word.context) ? word.context : (word.context ?? [])),
-    contextForPractice: toJsonInput(
-      Array.isArray(word.contextForPractice) ? word.contextForPractice : (word.contextForPractice ?? [])
-    ),
+    context: normalizeList(word.context),
+    contextForPractice: normalizeList(word.contextForPractice),
     baseScore: Number.isFinite(word.baseScore) ? Math.round(word.baseScore as number) : 0,
-    lastPracticedAt: word.lastPracticedAt ? new Date(word.lastPracticedAt) : null,
-    createdAt,
+    lastPracticedAt: word.lastPracticedAt ? new Date(word.lastPracticedAt).toISOString() : null,
+    createdAt: createdAt.toISOString(),
   }
 }
 
@@ -106,28 +108,18 @@ const seedUsers = async () => {
     seededUsers.push(seeded)
   }
 
-  for (const word of memoryWords) {
-    await prisma.wordLibrary.upsert({
-      where: { id: word.id },
-      create: {
-        id: word.id,
-        term: word.term,
-        translation: word.translation,
-        notes: word.notes,
-        context: word.context,
-        contextForPractice: word.contextForPractice,
-        createdAt: word.createdAt,
-      },
-      update: {
-        term: word.term,
-        translation: word.translation,
-        notes: word.notes,
-        context: word.context,
-        contextForPractice: word.contextForPractice,
-        createdAt: word.createdAt,
-      },
-    })
-  }
+  const now = new Date()
+  await prisma.words.upsert({
+    where: { id: "default" },
+    create: {
+      id: "default",
+      terms: memoryWords,
+      createdAt: now,
+    },
+    update: {
+      terms: memoryWords,
+    },
+  })
 
   for (const user of seededUsers) {
     await prisma.settings.upsert({
@@ -141,27 +133,17 @@ const seedUsers = async () => {
       },
     })
 
-    for (const word of memoryWords) {
-      await prisma.wordProgress.upsert({
-        where: {
-          userId_wordId: {
-            userId: user.id,
-            wordId: word.id,
-          },
-        },
-        create: {
-          userId: user.id,
-          wordId: word.id,
-          baseScore: word.baseScore,
-          lastPracticedAt: word.lastPracticedAt,
-          createdAt: word.createdAt,
-        },
-        update: {
-          baseScore: word.baseScore,
-          lastPracticedAt: word.lastPracticedAt,
-        },
-      })
-    }
+    await prisma.wordProgress.upsert({
+      where: { id: user.id },
+      create: {
+        id: user.id,
+        userId: user.id,
+        terms: memoryWords,
+      },
+      update: {
+        terms: memoryWords,
+      },
+    })
   }
 }
 
